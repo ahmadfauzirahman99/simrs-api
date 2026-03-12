@@ -1,3 +1,18 @@
+Jika repository ini membantu pengembangan **SIMRS atau sistem rumah sakit**, kamu bisa mendukung pengembangan project ini.
+
+Dukungan dari kamu akan membantu:
+
+- pengembangan fitur baru
+- update integrasi BPJS
+- maintenance repository
+- peningkatan dokumentasi
+
+Support project melalui Saweria:
+
+👉 https://saweria.co/fauzirahman05
+
+Terima kasih untuk semua yang mendukung pengembangan teknologi kesehatan di Indonesia 🙏
+
 
 # SIMRS API
 
