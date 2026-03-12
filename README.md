@@ -1,59 +1,336 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# SIMRS API
 
-## About Laravel
+Backend API untuk integrasi **Sistem Informasi Manajemen Rumah Sakit (SIMRS)** dengan layanan **BPJS VClaim** menggunakan **Laravel 12**.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Project ini dibuat sebagai fondasi layanan API internal untuk kebutuhan bridging SIMRS seperti:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- pencarian peserta BPJS
+- pengelolaan SEP
+- monitoring kunjungan
+- referensi master BPJS
+- integrasi layanan rumah sakit
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Repository ini dirancang agar mudah dikembangkan menjadi **backend service SIMRS skala besar**.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+# ✨ Fitur Utama
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Integrasi **BPJS VClaim V3**
+- Pencarian data peserta BPJS
+- Pencarian dan pengelolaan SEP
+- Monitoring kunjungan BPJS
+- Monitoring klaim BPJS
+- Referensi BPJS:
+  - Poli
+  - Diagnosa
+  - Faskes
+  - Dokter DPJP
+  - Provinsi
+  - Kabupaten
+  - Kecamatan
+  - Prosedur
+- Format response API konsisten
+- Konfigurasi environment terpisah
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+# 🏗️ Tech Stack
 
-### Premium Partners
+- PHP 8.2
+- Laravel 12
+- Laravel Sanctum
+- Spatie Permission
+- Vite
+- SQLite / MySQL
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+# 📁 Struktur Project
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```
+simrs-api/
+│
+├── app/
+├── bootstrap/
+├── config/
+├── database/
+├── public/
+├── resources/
+├── routes/
+├── storage/
+├── tests/
+│
+├── .env.example
+├── artisan
+├── composer.json
+├── package.json
+└── vite.config.js
+```
 
-## Code of Conduct
+Struktur ini mengikuti standar Laravel sehingga memudahkan pengembangan API secara modular.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+# 🚀 Instalasi
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 1 Clone repository
 
-## License
+```
+git clone https://github.com/ahmadfauzirahman99/simrs-api.git
+cd simrs-api
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## 2 Gunakan branch utama
+
+```
+git checkout pmaster
+```
+
+---
+
+## 3 Install dependency
+
+```
+composer install
+```
+
+---
+
+## 4 Install dependency frontend
+
+```
+npm install
+```
+
+---
+
+## 5 Copy environment file
+
+```
+cp .env.example .env
+```
+
+---
+
+## 6 Generate application key
+
+```
+php artisan key:generate
+```
+
+---
+
+## 7 Jalankan migrasi
+
+```
+php artisan migrate
+```
+
+---
+
+## 8 Jalankan aplikasi
+
+```
+php artisan serve
+```
+
+Untuk development asset:
+
+```
+npm run dev
+```
+
+---
+
+# ⚙️ Konfigurasi Environment
+
+Edit file `.env`
+
+```
+APP_NAME=SIMRS API
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://localhost
+
+DB_CONNECTION=sqlite
+```
+
+Konfigurasi BPJS:
+
+```
+BPJS_V3_API_VER=2
+BPJS_V3_BASE_URL=URL_BPJS_V3
+BPJS_V3_CONS_ID=CONS_ID_BPJS_V3
+BPJS_V3_SECRET_KEY=SECRET_KEY_BP
+BPJS_V3_USER_KEY=USER_KEY_BPJS_V3
+```
+
+---
+
+# ▶️ Menjalankan Project
+
+Mode development cepat
+
+```
+composer run dev
+```
+
+Mode manual
+
+```
+php artisan serve
+npm run dev
+```
+
+---
+
+# 📡 Base API
+
+Contoh base URL lokal
+
+```
+http://127.0.0.1:8000/api/v1
+```
+
+Endpoint root
+
+```
+GET /api/v1
+```
+
+Response:
+
+```
+{
+  "metaData": {
+    "code": "200",
+    "message": "Sukses"
+  },
+  "response": {
+    "app": "SIMRS API",
+    "version": "v1",
+    "status": "active"
+  }
+}
+```
+
+---
+
+# 📚 Daftar Endpoint
+
+## Cek status API
+
+```
+GET /api/v1
+```
+
+---
+
+## BPJS VClaim
+
+### Cari peserta
+
+```
+GET /api/v1/bpjs/peserta
+```
+
+Parameter
+
+```
+nomor
+tipe
+```
+
+---
+
+### Cari SEP
+
+```
+GET /api/v1/bpjs/sep
+```
+
+Parameter
+
+```
+no_sep
+```
+
+---
+
+### Monitoring kunjungan
+
+```
+GET /api/v1/bpjs/monitoring-kunjungan
+```
+
+Parameter
+
+```
+tanggal
+tipe
+```
+
+---
+
+### Monitoring klaim
+
+```
+GET /api/v1/bpjs/monitoring-klaim
+```
+
+Parameter
+
+```
+tanggal
+tipe
+status
+```
+
+---
+
+# 🧾 Format Response
+
+Success response
+
+```
+{
+  "metaData": {
+    "code": "200",
+    "message": "Sukses"
+  },
+  "response": {}
+}
+```
+
+Error response
+
+```
+{
+  "metaData": {
+    "code": "400",
+    "message": "Pesan error"
+  },
+  "response": {}
+}
+```
+
+---
+
+
+---
+
+# 👨‍💻 Author
+
+**Ahmad Fauzi Rahman**
+
+Backend Developer  
+SIMRS Developer  
+Healthcare Technology Enthusiast
+
+GitHub:  
+https://github.com/ahmadfauzirahman99
