@@ -1,0 +1,473 @@
+{
+  "info": {
+    "_postman_id": "f07e6be8-4907-426d-a9e2-303a2cf4c64e",
+    "name": "000001 - SIMRS NEW API",
+    "description": "**SIMRS New API** adalah kumpulan endpoint bridging rumah sakit berbasis Laravel untuk mendukung integrasi layanan **BPJS VClaim**, data referensi, monitoring kunjungan, monitoring klaim, dan pengembangan backend **Sistem Informasi Manajemen Rumah Sakit (SIMRS)**.  \n  \nCollection ini disusun agar memudahkan proses testing, integrasi, dan pengembangan API secara terstruktur.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "15750522"
+  },
+  "item": [
+    {
+      "name": "VCLAIM",
+      "item": [
+        {
+          "name": "PESERTA By No.Kartu",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}v1/bpjs/peserta?nomor={{No_Kartu}}&tipe=1",
+              "host": [
+                "{{base_url}}v1"
+              ],
+              "path": [
+                "bpjs",
+                "peserta"
+              ],
+              "query": [
+                {
+                  "key": "nomor",
+                  "value": "{{No_Kartu}}"
+                },
+                {
+                  "key": "tipe",
+                  "value": "1",
+                  "description": "1. No. Kartu\n2. No. NIK"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PESERTA By No. NIK",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}v1/bpjs/peserta?nomor={{No_NIK}}&tipe=2",
+              "host": [
+                "{{base_url}}v1"
+              ],
+              "path": [
+                "bpjs",
+                "peserta"
+              ],
+              "query": [
+                {
+                  "key": "nomor",
+                  "value": "{{No_NIK}}"
+                },
+                {
+                  "key": "tipe",
+                  "value": "2"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CARI SEP",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}v1/bpjs/sep?no_sep={{No_SEP}}",
+              "host": [
+                "{{base_url}}v1"
+              ],
+              "path": [
+                "bpjs",
+                "sep"
+              ],
+              "query": [
+                {
+                  "key": "no_sep",
+                  "value": "{{No_SEP}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "REFERENSI",
+      "item": [
+        {
+          "name": "PROVINSI",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}v1/bpjs/referensi/provinsi",
+              "host": [
+                "{{base_url}}v1"
+              ],
+              "path": [
+                "bpjs",
+                "referensi",
+                "provinsi"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "KABUPATEN",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}v1/bpjs/referensi/kabupaten?prov=04",
+              "host": [
+                "{{base_url}}v1"
+              ],
+              "path": [
+                "bpjs",
+                "referensi",
+                "kabupaten"
+              ],
+              "query": [
+                {
+                  "key": "prov",
+                  "value": "04",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POLI",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}v1/bpjs/referensi/poli?keyword=int",
+              "host": [
+                "{{base_url}}v1"
+              ],
+              "path": [
+                "bpjs",
+                "referensi",
+                "poli"
+              ],
+              "query": [
+                {
+                  "key": "keyword",
+                  "value": "int",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DIAGNOSA",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}v1/bpjs/referensi/diagnosa?keyword=k30",
+              "host": [
+                "{{base_url}}v1"
+              ],
+              "path": [
+                "bpjs",
+                "referensi",
+                "diagnosa"
+              ],
+              "query": [
+                {
+                  "key": "keyword",
+                  "value": "k30"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "KECAMATAN",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}v1/bpjs/referensi/kecamatan?kab=0064",
+              "host": [
+                "{{base_url}}v1"
+              ],
+              "path": [
+                "bpjs",
+                "referensi",
+                "kecamatan"
+              ],
+              "query": [
+                {
+                  "key": "kab",
+                  "value": "0064"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "MONITORING",
+      "item": [
+        {
+          "name": "DATA KUNJUNGAN",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}v1/bpjs/monitoring-kunjungan?tanggal=2026-02-01&tipe=1",
+              "host": [
+                "{{base_url}}v1"
+              ],
+              "path": [
+                "bpjs",
+                "monitoring-kunjungan"
+              ],
+              "query": [
+                {
+                  "key": "tanggal",
+                  "value": "2026-02-01"
+                },
+                {
+                  "key": "tipe",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DATA KLAIM",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}v1/bpjs/monitoring-klaim?tanggal=2026-01-02&tipe=2&status=2",
+              "host": [
+                "{{base_url}}v1"
+              ],
+              "path": [
+                "bpjs",
+                "monitoring-klaim"
+              ],
+              "query": [
+                {
+                  "key": "tanggal",
+                  "value": "2026-01-02"
+                },
+                {
+                  "key": "tipe",
+                  "value": "2"
+                },
+                {
+                  "key": "status",
+                  "value": "2"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DATA HISTORY PELAYANAN PESERTA",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}v1/bpjs/sep-riwayat?no_kartu=0003004057664",
+              "host": [
+                "{{base_url}}v1"
+              ],
+              "path": [
+                "bpjs",
+                "sep-riwayat"
+              ],
+              "query": [
+                {
+                  "key": "no_kartu",
+                  "value": "0003004057664"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "SUKON",
+      "item": [
+        {
+          "name": "INSERT SURAT KONTROL",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"request\": {\n        \"noSEP\": \"0301R0111018V000006\",\n        \"kodeDokter\": \"12345\",\n        \"poliKontrol\": \"INT\",\n        \"tglRencanaKontrol\": \"2021-03-20\",\n        \"user\": \"ws\"\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}v1/bpjs/surat-kontrol/insert",
+              "host": [
+                "{{base_url}}v1"
+              ],
+              "path": [
+                "bpjs",
+                "surat-kontrol",
+                "insert"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UPDATE SURAT KONTROL",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"request\": {\n        \"noSuratKontrol\": \"0301R0110321K000002\",\n        \"noSEP\": \"0301R0111018V000006\",\n        \"kodeDokter\": \"12345\",\n        \"poliKontrol\": \"INT\",\n        \"tglRencanaKontrol\": \"2021-03-20\",\n        \"user\": \"ws\"\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}v1/bpjs/surat-kontrol/update",
+              "host": [
+                "{{base_url}}v1"
+              ],
+              "path": [
+                "bpjs",
+                "surat-kontrol",
+                "update"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "SPRI",
+      "item": [
+        {
+          "name": "INSERT SPRI",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"request\": {\n        \"noSPRI\": \"0301R0110421K000116\",\n        \"kodeDokter\": \"31537\",\n        \"poliKontrol\": \"ANA\",\n        \"tglRencanaKontrol\": \"2021-04-13\",\n        \"user\": \"cobdda\"\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}v1/bpjs/spril/insert",
+              "host": [
+                "{{base_url}}v1"
+              ],
+              "path": [
+                "bpjs",
+                "spril",
+                "insert"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UPDATE SPRI",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "?Content-Type=application/json",
+              "query": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "No_Kartu",
+      "value": ""
+    },
+    {
+      "key": "No_NIK",
+      "value": ""
+    },
+    {
+      "key": "No_SEP",
+      "value": ""
+    }
+  ]
+}
