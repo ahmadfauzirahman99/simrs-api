@@ -204,6 +204,18 @@ class BridgingV3 extends BaseBridgingV3
         return $this;
     }
 
+
+    public function insertSpri(array $data): static
+    {
+        $this->setUpUrl(['RencanaKontrol', 'insertSPRI'], json_encode($data), 'POST');
+        return $this;
+    }
+
+     public function updateSpri(array $data): static
+    {
+        $this->setUpUrl(['RencanaKontrol', 'updateSPRI'], json_encode($data), 'POST');
+        return $this;
+    }
     public function updateSuratKontrol(array $data): static
     {
         $this->setUpUrl(['RencanaKontrol', 'Update'], json_encode($data), 'PUT');
