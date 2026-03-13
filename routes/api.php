@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\AntreanRsController;
 use App\Http\Controllers\Api\UserManagementController;
 use App\Http\Controllers\Api\Bpjs\BpjsVClaimController;
 use App\Http\Controllers\Api\Bpjs\BpjsReferensiController;
+use App\Http\Controllers\Api\Bpjs\BpjsSukonController;
 
 Route::prefix('v1')->group(function () {
     Route::get('/', function () {
@@ -45,7 +46,17 @@ Route::prefix('v1')->group(function () {
         Route::get('/referensi/kabupaten', [BpjsReferensiController::class, 'kabupaten']);
         Route::get('/referensi/kecamatan', [BpjsReferensiController::class, 'kecamatan']);
         Route::get('/referensi/prosedur', [BpjsReferensiController::class, 'prosedur']);
-    });
+
+
+        //Sukon
+        Route::post('/surat-kontrol/insert', [BpjsSukonController::class, 'insertSuratKontrol']);
+        Route::post('/surat-kontrol/update', [BpjsSukonController::class, 'updateSuratKontrol']);
+
+        // SPRI
+        Route::post('/spri/insert', [BpjsSukonController::class, 'insertSpri']);
+        Route::post('/spri/update', [BpjsSukonController::class, 'updateSpri']);
+
+        });
 
     Route::fallback(function () {
         return response()->json([
