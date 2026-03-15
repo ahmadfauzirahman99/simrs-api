@@ -1,15 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\ApotekController;
-use App\Http\Controllers\Api\VClaimController;
-use App\Http\Controllers\Api\DashboardController;
-use App\Http\Controllers\Api\AntreanRsController;
-use App\Http\Controllers\Api\UserManagementController;
+
+use App\Http\Controllers\Api\Antrol\AntreanRsController;
 use App\Http\Controllers\Api\Bpjs\BpjsVClaimController;
 use App\Http\Controllers\Api\Bpjs\BpjsReferensiController;
 use App\Http\Controllers\Api\Bpjs\BpjsSukonController;
+use App\Http\Controllers\Api\SatuSehat\EncounterController;
+use App\Http\Controllers\Api\SatuSehat\TokenController;
 
 Route::prefix('v1')->group(function () {
     Route::get('/', function () {
@@ -55,8 +53,18 @@ Route::prefix('v1')->group(function () {
         // SPRI
         Route::post('/spri/insert', [BpjsSukonController::class, 'insertSpri']);
         Route::post('/spri/update', [BpjsSukonController::class, 'updateSpri']);
+    });
 
-        });
+    Route::prefix('antrol')->group(function () {
+        Route::get('/antrean', [AntreanRsController::class, 'index']);
+    });
+
+
+
+    Route::prefix('satu-sehat')->group(function () {
+        Route::get('/token', [TokenController::class, 'index']);
+        Route::post('/encounter/send', [EncounterController::class, 'send']);
+    });
 
     Route::fallback(function () {
         return response()->json([

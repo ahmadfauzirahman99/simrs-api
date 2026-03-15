@@ -43,4 +43,20 @@ return [
         'user_key'   => env('BPJS_V3_USER_KEY'),
     ],
 
+    'satusehat' => [
+        'env' => env('SATUSEHAT_ENV', 'DEV'),
+
+        'auth_dev' => env('SATUSEHAT_AUTH_DEV'),
+        'fhir_dev' => env('SATUSEHAT_FHIR_DEV'),
+        'client_id_dev' => env('SATUSEHAT_CLIENTID_DEV'),
+        'client_secret_dev' => env('SATUSEHAT_CLIENTSECRET_DEV'),
+        'org_id_dev' => env('SATUSEHAT_ORGID_DEV'),
+
+        'auth_prod' => env('SATUSEHAT_AUTH_PROD'),
+        'fhir_prod' => env('SATUSEHAT_FHIR_PROD'),
+        'client_id_prod' => env('SATUSEHAT_CLIENTID_PROD'),
+        'client_secret_prod' => env('SATUSEHAT_CLIENTSECRET_PROD'),
+        'org_id_prod' => env('SATUSEHAT_ORGID_PROD'),
+    ],
+
 ];
