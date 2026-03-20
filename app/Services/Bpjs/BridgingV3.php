@@ -186,6 +186,40 @@ class BridgingV3 extends BaseBridgingV3
         return $this;
     }
 
+    public function queryListRencanaKontrolByNoKartu(string $bulan, string $tahun, string $noKartu, string $filter): static
+    {
+        $this->setUpUrl([
+            'RencanaKontrol',
+            'ListRencanaKontrol',
+            'Bulan',
+            $bulan,
+            'Tahun',
+            $tahun,
+            'Nokartu',
+            $noKartu,
+            'filter',
+            $filter,
+        ]);
+
+        return $this;
+    }
+
+    public function queryListRencanaKontrolByTanggal(string $tglAwal, string $tglAkhir, string $filter): static
+    {
+        $this->setUpUrl([
+            'RencanaKontrol',
+            'ListRencanaKontrol',
+            'tglAwal',
+            date('Y-m-d', strtotime($tglAwal)),
+            'tglAkhir',
+            date('Y-m-d', strtotime($tglAkhir)),
+            'filter',
+            $filter,
+        ]);
+
+        return $this;
+    }
+
     public function querySuratKontrol(string $noSuratKontrol): static
     {
         $this->setUpUrl(['RencanaKontrol', 'noSuratKontrol', $noSuratKontrol]);

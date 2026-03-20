@@ -2,184 +2,62 @@
 
 namespace App\Http\Controllers\Api\Bpjs;
 
-use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Bpjs\Referensi\DokterDpjpRequest;
+use App\Http\Requests\Bpjs\Referensi\FaskesRequest;
+use App\Http\Requests\Bpjs\Referensi\KabupatenRequest;
+use App\Http\Requests\Bpjs\Referensi\KecamatanRequest;
+use App\Http\Requests\Bpjs\Referensi\KeywordRequest;
 use App\Services\Bpjs\BridgingV3;
-use Illuminate\Http\Request;
+use App\Support\Api\ExternalIntegrationResponder;
+use Illuminate\Http\JsonResponse;
 
 class BpjsReferensiController extends Controller
 {
-    public function poli(Request $request, BridgingV3 $bpjs)
+    public function poli(KeywordRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
     {
-        $request->validate([
-            'keyword' => ['required'],
-        ]);
-
-        $ok = $bpjs->queryGetListPoli($request->keyword)->exec();
-
-        if (!$ok) {
-            return ApiResponse::error($bpjs->getError()['message'], (int) $bpjs->getError()['code']);
-        }
-
-        return response()->json([
-            'metaData' => [
-                'code' => '200',
-                'message' => 'Sukses',
-            ],
-            'response' => $bpjs->getResponse(),
-        ], 200);
+        return $responder->bpjs($bpjs, $bpjs->queryGetListPoli($request->keyword));
     }
 
-    public function diagnosa(Request $request, BridgingV3 $bpjs)
+    public function diagnosa(KeywordRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
     {
-        $request->validate([
-            'keyword' => ['required'],
-        ]);
-
-        $ok = $bpjs->queryGetListDiagnosa($request->keyword)->exec();
-
-        if (!$ok) {
-            return ApiResponse::error($bpjs->getError()['message'], (int) $bpjs->getError()['code']);
-        }
-
-        return response()->json([
-            'metaData' => [
-                'code' => '200',
-                'message' => 'Sukses',
-            ],
-            'response' => $bpjs->getResponse(),
-        ], 200);
+        return $responder->bpjs($bpjs, $bpjs->queryGetListDiagnosa($request->keyword));
     }
 
-    public function faskes(Request $request, BridgingV3 $bpjs)
+    public function faskes(FaskesRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
     {
-        $request->validate([
-            'keyword' => ['required'],
-            'tipe' => ['nullable', 'in:1,2'],
-        ]);
-
-        $ok = $bpjs->queryGetListFaskes(
+        return $responder->bpjs($bpjs, $bpjs->queryGetListFaskes(
             $request->keyword,
             (int) ($request->tipe ?? 1)
-        )->exec();
-
-        if (!$ok) {
-            return ApiResponse::error($bpjs->getError()['message'], (int) $bpjs->getError()['code']);
-        }
-
-        return response()->json([
-            'metaData' => [
-                'code' => '200',
-                'message' => 'Sukses',
-            ],
-            'response' => $bpjs->getResponse(),
-        ], 200);
+        ));
     }
 
-    public function dokterDpjp(Request $request, BridgingV3 $bpjs)
+    public function dokterDpjp(DokterDpjpRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
     {
-        $request->validate([
-            'kode' => ['required'],
-            'jenis' => ['required'],
-            'tgl' => ['required', 'date'],
-        ]);
-
-        $ok = $bpjs->queryGetDokterDpjp(
+        return $responder->bpjs($bpjs, $bpjs->queryGetDokterDpjp(
             $request->kode,
             $request->jenis,
             $request->tgl
-        )->exec();
-
-        if (!$ok) {
-            return ApiResponse::error($bpjs->getError()['message'], (int) $bpjs->getError()['code']);
-        }
-
-        return response()->json([
-            'metaData' => [
-                'code' => '200',
-                'message' => 'Sukses',
-            ],
-            'response' => $bpjs->getResponse(),
-        ], 200);
+        ));
     }
 
-    public function provinsi(BridgingV3 $bpjs)
+    public function provinsi(BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
     {
-        $ok = $bpjs->queryGetProvinsi()->exec();
-
-        if (!$ok) {
-            return ApiResponse::error($bpjs->getError()['message'], (int) $bpjs->getError()['code']);
-        }
-
-        return response()->json([
-            'metaData' => [
-                'code' => '200',
-                'message' => 'Sukses',
-            ],
-            'response' => $bpjs->getResponse(),
-        ], 200);
+        return $responder->bpjs($bpjs, $bpjs->queryGetProvinsi());
     }
 
-    public function kabupaten(Request $request, BridgingV3 $bpjs)
+    public function kabupaten(KabupatenRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
     {
-        $request->validate([
-            'prov' => ['required'],
-        ]);
-
-        $ok = $bpjs->queryGetKabupaten($request->prov)->exec();
-
-        if (!$ok) {
-            return ApiResponse::error($bpjs->getError()['message'], (int) $bpjs->getError()['code']);
-        }
-
-        return response()->json([
-            'metaData' => [
-                'code' => '200',
-                'message' => 'Sukses',
-            ],
-            'response' => $bpjs->getResponse(),
-        ], 200);
+        return $responder->bpjs($bpjs, $bpjs->queryGetKabupaten($request->prov));
     }
 
-    public function kecamatan(Request $request, BridgingV3 $bpjs)
+    public function kecamatan(KecamatanRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
     {
-        $request->validate([
-            'kab' => ['required'],
-        ]);
-
-        $ok = $bpjs->queryGetKecamatan($request->kab)->exec();
-
-        if (!$ok) {
-            return ApiResponse::error($bpjs->getError()['message'], (int) $bpjs->getError()['code']);
-        }
-
-        return response()->json([
-            'metaData' => [
-                'code' => '200',
-                'message' => 'Sukses',
-            ],
-            'response' => $bpjs->getResponse(),
-        ], 200);
+        return $responder->bpjs($bpjs, $bpjs->queryGetKecamatan($request->kab));
     }
 
-    public function prosedur(Request $request, BridgingV3 $bpjs)
+    public function prosedur(KeywordRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
     {
-        $request->validate([
-            'keyword' => ['required'],
-        ]);
-
-        $ok = $bpjs->getProsedur($request->keyword)->exec();
-
-        if (!$ok) {
-            return ApiResponse::error($bpjs->getError()['message'], (int) $bpjs->getError()['code']);
-        }
-
-        return response()->json([
-            'metaData' => [
-                'code' => '200',
-                'message' => 'Sukses',
-            ],
-            'response' => $bpjs->getResponse(),
-        ], 200);
+        return $responder->bpjs($bpjs, $bpjs->getProsedur($request->keyword));
     }
 }

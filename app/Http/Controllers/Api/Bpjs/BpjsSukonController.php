@@ -2,139 +2,67 @@
 
 namespace App\Http\Controllers\Api\Bpjs;
 
-use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Bpjs\SuratKontrol\InsertSpriRequest;
+use App\Http\Requests\Bpjs\SuratKontrol\InsertSuratKontrolRequest;
+use App\Http\Requests\Bpjs\SuratKontrol\ListRencanaKontrolRequest;
+use App\Http\Requests\Bpjs\SuratKontrol\ListRencanaKontrolTanggalRequest;
+use App\Http\Requests\Bpjs\SuratKontrol\SearchSepSuratKontrolRequest;
+use App\Http\Requests\Bpjs\SuratKontrol\SearchSuratKontrolRequest;
+use App\Http\Requests\Bpjs\SuratKontrol\UpdateSpriRequest;
+use App\Http\Requests\Bpjs\SuratKontrol\UpdateSuratKontrolRequest;
 use App\Services\Bpjs\BridgingV3;
-use Illuminate\Http\Request;
+use App\Support\Api\ExternalIntegrationResponder;
+use Illuminate\Http\JsonResponse;
 
 class BpjsSukonController extends Controller
 {
-
-    public function insertSuratKontrol(Request $request, BridgingV3 $bpjs)
+    public function cariSep(SearchSepSuratKontrolRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
     {
-        $validated = $request->validate([
-            'request' => ['required', 'array'],
-            'request.noSEP' => ['required', 'string'],
-            'request.kodeDokter' => ['required', 'string'],
-            'request.poliKontrol' => ['required', 'string'],
-            'request.tglRencanaKontrol' => ['required', 'date'],
-            'request.user' => ['required', 'string'],
-        ]);
-
-
-        $payload = $validated['request'];
-
-        $ok = $bpjs->insertSuratKontrol($payload)->exec();
-
-        if (!$ok) {
-            return ApiResponse::error(
-                $bpjs->getError()['message'],
-                (int) $bpjs->getError()['code']
-            );
-        }
-
-        return response()->json([
-            'metaData' => [
-                'code' => '200',
-                'message' => 'Sukses',
-            ],
-            'response' => $bpjs->getResponse(),
-        ], 200);
+        return $responder->bpjs($bpjs, $bpjs->queryCarisepSuratKontrol($request->no_sep));
     }
 
-    public function updateSuratKontrol(Request $request, BridgingV3 $bpjs)
+    public function cariSuratKontrol(SearchSuratKontrolRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
     {
-        $validated = $request->validate([
-            'request' => ['required', 'array'],
-            'request.noSuratKontrol' => ['required', 'string'],
-            'request.noSEP' => ['required', 'string'],
-            'request.kodeDokter' => ['required', 'string'],
-            'request.poliKontrol' => ['required', 'string'],
-            'request.tglRencanaKontrol' => ['required', 'date'],
-            'request.user' => ['required', 'string'],
-        ]);
-
-
-        $payload = $validated['request'];
-
-        $ok = $bpjs->updateSuratKontrol($payload)->exec();
-
-        if (!$ok) {
-            return ApiResponse::error(
-                $bpjs->getError()['message'],
-                (int) $bpjs->getError()['code']
-            );
-        }
-
-        return response()->json([
-            'metaData' => [
-                'code' => '200',
-                'message' => 'Sukses',
-            ],
-            'response' => $bpjs->getResponse(),
-        ], 200);
+        return $responder->bpjs($bpjs, $bpjs->querySuratKontrol($request->no_surat_kontrol));
     }
 
-
-    public function insertSpri(Request $request, BridgingV3 $bpjs)
+    public function listRencanaKontrol(ListRencanaKontrolRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
     {
-        $validated = $request->validate([
-            'request' => ['required', 'array'],
-            'request.noKartu' => ['required', 'string'],
-            'request.kodeDokter' => ['required', 'string'],
-            'request.poliKontrol' => ['required', 'string'],
-            'request.tglRencanaKontrol' => ['required', 'date'],
-            'request.user' => ['required', 'string'],
-        ]);
-
-        $payload = $validated['request'];
-
-        $ok = $bpjs->insertSpri($payload)->exec();
-
-        if (!$ok) {
-            return ApiResponse::error(
-                $bpjs->getError()['message'],
-                (int) $bpjs->getError()['code']
-            );
-        }
-
-        return response()->json([
-            'metaData' => [
-                'code' => '200',
-                'message' => 'Sukses',
-            ],
-            'response' => $bpjs->getResponse(),
-        ], 200);
+        return $responder->bpjs($bpjs, $bpjs->queryListRencanaKontrolByNoKartu(
+            $request->bulan,
+            $request->tahun,
+            $request->no_kartu,
+            $request->filter
+        ));
     }
 
-    public function updateSpri(Request $request, BridgingV3 $bpjs)
+    public function listRencanaKontrolByTanggal(ListRencanaKontrolTanggalRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
     {
-        $validated = $request->validate([
-            'request' => ['required', 'array'],
-            'request.noSPRI' => ['required', 'string'],
-            'request.kodeDokter' => ['required', 'string'],
-            'request.poliKontrol' => ['required', 'string'],
-            'request.tglRencanaKontrol' => ['required', 'date'],
-            'request.user' => ['required', 'string'],
-        ]);
+        return $responder->bpjs($bpjs, $bpjs->queryListRencanaKontrolByTanggal(
+            $request->tgl_awal,
+            $request->tgl_akhir,
+            $request->filter
+        ));
+    }
 
-        $payload = $validated['request'];
+    public function insertSuratKontrol(InsertSuratKontrolRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
+    {
+        return $responder->bpjs($bpjs, $bpjs->insertSuratKontrol($request->payload()));
+    }
 
-        $ok = $bpjs->updateSpri($payload)->exec();
+    public function updateSuratKontrol(UpdateSuratKontrolRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
+    {
+        return $responder->bpjs($bpjs, $bpjs->updateSuratKontrol($request->payload()));
+    }
 
-        if (!$ok) {
-            return ApiResponse::error(
-                $bpjs->getError()['message'],
-                (int) $bpjs->getError()['code']
-            );
-        }
+    public function insertSpri(InsertSpriRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
+    {
+        return $responder->bpjs($bpjs, $bpjs->insertSpri($request->payload()));
+    }
 
-        return response()->json([
-            'metaData' => [
-                'code' => '200',
-                'message' => 'Sukses',
-            ],
-            'response' => $bpjs->getResponse(),
-        ], 200);
+    public function updateSpri(UpdateSpriRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
+    {
+        return $responder->bpjs($bpjs, $bpjs->updateSpri($request->payload()));
     }
 }

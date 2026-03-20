@@ -47,6 +47,10 @@ Route::prefix('v1')->group(function () {
 
 
         //Sukon
+        Route::get('/surat-kontrol/sep', [BpjsSukonController::class, 'cariSep']);
+        Route::get('/surat-kontrol/detail', [BpjsSukonController::class, 'cariSuratKontrol']);
+        Route::get('/surat-kontrol/list', [BpjsSukonController::class, 'listRencanaKontrol']);
+        Route::get('/surat-kontrol/list-tanggal', [BpjsSukonController::class, 'listRencanaKontrolByTanggal']);
         Route::post('/surat-kontrol/insert', [BpjsSukonController::class, 'insertSuratKontrol']);
         Route::post('/surat-kontrol/update', [BpjsSukonController::class, 'updateSuratKontrol']);
 

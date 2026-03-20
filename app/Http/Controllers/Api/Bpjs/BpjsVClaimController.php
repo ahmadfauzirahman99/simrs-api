@@ -2,213 +2,71 @@
 
 namespace App\Http\Controllers\Api\Bpjs;
 
-use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Bpjs\HistoryPelayananPesertaRequest;
+use App\Http\Requests\Bpjs\MonitoringKlaimRequest;
+use App\Http\Requests\Bpjs\MonitoringKunjunganRequest;
+use App\Http\Requests\Bpjs\PesertaRequest;
+use App\Http\Requests\Bpjs\SearchSepRequest;
+use App\Http\Requests\Bpjs\Sep\DeleteSepRequest;
+use App\Http\Requests\Bpjs\Sep\InsertSepRequest;
+use App\Http\Requests\Bpjs\Sep\UpdateSepRequest;
 use App\Services\Bpjs\BridgingV3;
-use Illuminate\Http\Request;
+use App\Support\Api\ExternalIntegrationResponder;
+use Illuminate\Http\JsonResponse;
 
 class BpjsVClaimController extends Controller
 {
-    public function peserta(Request $request, BridgingV3 $bpjs)
+    // tipe: 1 = Nomor Kartu, 2 = Nomor KTP
+    public function peserta(PesertaRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
     {
-        // 1. Nomor Kartu
-        // 2. Nomor KTP
-        $request->validate([
-            'nomor' => ['required'],
-            'tipe' => ['nullable', 'in:1,2'],
-        ]);
-
-        $ok = $bpjs->queryGetPeserta(
+        return $responder->bpjs($bpjs, $bpjs->queryGetPeserta(
             $request->nomor,
             (int) ($request->tipe ?? 1)
-        )->exec();
-
-        if (!$ok) {
-            return ApiResponse::error($bpjs->getError()['message'], (int) $bpjs->getError()['code']);
-        }
-
-        return response()->json([
-            'metaData' => [
-                'code' => '200',
-                'message' => 'Sukses',
-            ],
-            'response' => $bpjs->getResponse(),
-        ], 200);
+        ));
     }
 
-    public function cariSep(Request $request, BridgingV3 $bpjs)
+    public function cariSep(SearchSepRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
     {
-        $request->validate([
-            'no_sep' => ['required'],
-        ]);
-
-        $ok = $bpjs->querySearchSEP($request->no_sep)->exec();
-
-        if (!$ok) {
-            return ApiResponse::error($bpjs->getError()['message'], (int) $bpjs->getError()['code']);
-        }
-
-        return response()->json([
-            'metaData' => [
-                'code' => '200',
-                'message' => 'Sukses',
-            ],
-            'response' => $bpjs->getResponse(),
-        ], 200);
+        return $responder->bpjs($bpjs, $bpjs->querySearchSEP($request->no_sep));
     }
 
-    public function riwayatSep(Request $request, BridgingV3 $bpjs)
+    public function riwayatSep(HistoryPelayananPesertaRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
     {
-        $request->validate([
-            'no_kartu' => ['required'],
-        ]);
-
-        $ok = $bpjs->queryGetRiwayatSEP($request->no_kartu)->exec();
-
-
-        dd($ok);
-        if (!$ok) {
-            return ApiResponse::error($bpjs->getError()['message'], (int) $bpjs->getError()['code']);
-        }
-
-        return response()->json([
-            'metaData' => [
-                'code' => '200',
-                'message' => 'Sukses',
-            ],
-            'response' => $bpjs->getResponse(),
-        ], 200);
+        return $responder->bpjs($bpjs, $bpjs->queryGetRiwayatSEP($request->no_kartu));
     }
 
-    public function insertSep(Request $request, BridgingV3 $bpjs)
+    public function insertSep(InsertSepRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
     {
-        $data = $request->all();
-
-        $ok = $bpjs->queryInsertSEP($data)->exec();
-
-        if (!$ok) {
-            return ApiResponse::error($bpjs->getError()['message'], (int) $bpjs->getError()['code']);
-        }
-
-        return response()->json([
-            'metaData' => [
-                'code' => '200',
-                'message' => 'SEP berhasil dibuat',
-            ],
-            'response' => $bpjs->getResponse(),
-        ], 200);
+        return $responder->bpjs($bpjs, $bpjs->queryInsertSEP($request->payload()), 'SEP berhasil dibuat');
     }
 
-    public function updateSep(Request $request, BridgingV3 $bpjs)
+    public function updateSep(UpdateSepRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
     {
-        $data = $request->all();
-
-        $ok = $bpjs->queryUpdateSEP($data)->exec();
-
-        if (!$ok) {
-            return ApiResponse::error($bpjs->getError()['message'], (int) $bpjs->getError()['code']);
-        }
-
-        return response()->json([
-            'metaData' => [
-                'code' => '200',
-                'message' => 'SEP berhasil diupdate',
-            ],
-            'response' => $bpjs->getResponse(),
-        ], 200);
+        return $responder->bpjs($bpjs, $bpjs->queryUpdateSEP($request->payload()), 'SEP berhasil diupdate');
     }
 
-    public function hapusSep(Request $request, BridgingV3 $bpjs)
+    public function hapusSep(DeleteSepRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
     {
-        $data = $request->all();
-
-        $ok = $bpjs->queryHapusSEP($data)->exec();
-
-        if (!$ok) {
-            return ApiResponse::error($bpjs->getError()['message'], (int) $bpjs->getError()['code']);
-        }
-
-        return response()->json([
-            'metaData' => [
-                'code' => '200',
-                'message' => 'SEP berhasil dihapus',
-            ],
-            'response' => $bpjs->getResponse(),
-        ], 200);
+        return $responder->bpjs($bpjs, $bpjs->queryHapusSEP($request->payload()), 'SEP berhasil dihapus');
     }
 
-    public function monitoringKlaim(Request $request, BridgingV3 $bpjs)
+    public function monitoringKlaim(MonitoringKlaimRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
     {
-        $request->validate([
-            'tanggal' => ['required', 'date'],
-            'tipe' => ['required'],
-            'status' => ['required'],
-
-        ]);
-
-        // dd($request);
-
-        $ok = $bpjs->monitoringKlaim($request->tanggal, $request->tipe, $request->status)->exec();
-
-        if (!$ok) {
-            return ApiResponse::error($bpjs->getError()['message'], (int) $bpjs->getError()['code']);
-        }
-
-        return response()->json([
-            'metaData' => [
-                'code' => '200',
-                'message' => 'Sukses',
-            ],
-            'response' => $bpjs->getResponse(),
-        ], 200);
+        return $responder->bpjs($bpjs, $bpjs->monitoringKlaim(
+            $request->tanggal,
+            $request->tipe,
+            $request->status
+        ));
     }
 
-    public function monitoringKunjungan(Request $request, BridgingV3 $bpjs)
+    public function monitoringKunjungan(MonitoringKunjunganRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
     {
-        $request->validate([
-            'tanggal' => ['required', 'date'],
-            'tipe' => ['required'],
-        ]);
-
-        $ok = $bpjs->monitoringKunjungan($request->tanggal, $request->tipe)->exec();
-
-        if (!$ok) {
-            return response()->json([
-                'metaData' => [
-                    'code' => (string) ($bpjs->getError()['code'] ?? 400),
-                    'message' => $bpjs->getError()['message'] ?? 'Gagal mengambil data peserta',
-                ],
-                'response' => (object) [],
-            ], (int) ($bpjs->getError()['code'] ?? 400));
-        }
-
-        return response()->json([
-            'metaData' => [
-                'code' => '200',
-                'message' => 'Sukses',
-            ],
-            'response' => $bpjs->getResponse(),
-        ], 200);
+        return $responder->bpjs($bpjs, $bpjs->monitoringKunjungan($request->tanggal, $request->tipe));
     }
 
-    public function historyPelayananPeserta(Request $request, BridgingV3 $bpjs)
+    public function historyPelayananPeserta(HistoryPelayananPesertaRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
     {
-        $request->validate([
-            'no_kartu' => ['required'],
-        ]);
-
-        $ok = $bpjs->queryHistoryPelayananPeserta($request->no_kartu)->exec();
-
-        if (!$ok) {
-            return ApiResponse::error($bpjs->getError()['message'], (int) $bpjs->getError()['code']);
-        }
-
-        return response()->json([
-            'metaData' => [
-                'code' => '200',
-                'message' => 'Sukses',
-            ],
-            'response' => $bpjs->getResponse(),
-        ], 200);
+        return $responder->bpjs($bpjs, $bpjs->queryHistoryPelayananPeserta($request->no_kartu));
     }
 }

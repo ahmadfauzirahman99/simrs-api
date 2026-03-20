@@ -201,6 +201,45 @@ class BaseBridgingV3
         return $this->parameter;
     }
 
+    public function getDebugHeadersSafe(): array
+    {
+        return [
+            'x_cons_id' => $this->header['X-cons-id'] ?? null,
+            'x_timestamp' => $this->header['X-timestamp'] ?? null,
+            'user_key_masked' => $this->maskValue($this->header['user_key'] ?? null),
+            'x_signature_present' => !empty($this->header['X-signature']) ? 'yes' : 'no',
+        ];
+    }
+
+    public function getFinalOutboundPayload(): array|string|null
+    {
+        return $this->parameter;
+    }
+
+    public function getFinalOutboundQueryParams(): array|string|null
+    {
+        if ($this->method !== 'GET') {
+            return null;
+        }
+
+        return $this->parameter;
+    }
+
+    protected function maskValue(?string $value): ?string
+    {
+        if ($value === null || $value === '') {
+            return $value;
+        }
+
+        $length = strlen($value);
+
+        if ($length <= 4) {
+            return str_repeat('*', $length);
+        }
+
+        return substr($value, 0, 2) . str_repeat('*', max(2, $length - 4)) . substr($value, -2);
+    }
+
     protected function writeLog(): void
     {
         Log::info('BPJS Bridging Log', [
