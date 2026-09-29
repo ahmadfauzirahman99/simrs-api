@@ -1,6 +1,6 @@
 # SIMRS API
 
-Backend API berbasis `Laravel 12` untuk kebutuhan integrasi `SIMRS`, `BPJS`, dan `SATUSEHAT`.
+Base project berbasis `Laravel 12` untuk kebutuhan integrasi `SIMRS`, `BPJS`, dan `SATUSEHAT`.
 
 Project ini ditujukan sebagai fondasi yang bisa dipakai ulang oleh programmer Indonesia untuk membangun bridging layanan kesehatan yang rapi, konsisten, dan mudah dikembangkan.
 
@@ -15,11 +15,12 @@ Repositori ini tidak hanya ditujukan untuk kebutuhan satu implementasi internal,
 
 ## Fokus Saat Ini
 
-Saat ini project masih berfokus pada lapisan `API backend`, dengan ruang pengembangan untuk:
+Saat ini project berfokus pada `API backend` dan `integration tester dashboard`, dengan ruang pengembangan untuk:
 
 - integrasi `BPJS VClaim`
 - integrasi `BPJS Antrean/Antrol`
 - integrasi `SATUSEHAT`
+- dashboard tester admin untuk `live` dan `mock preview`
 - standardisasi format response
 - dokumentasi implementasi integrasi
 - fondasi modular untuk pertumbuhan project skala besar
@@ -34,8 +35,33 @@ Saat ini project masih berfokus pada lapisan `API backend`, dengan ruang pengemb
 - Endpoint dasar `Antrol`
 - Generate dan cache token `SATUSEHAT`
 - Kirim `Encounter` ke `SATUSEHAT`
+- Dashboard admin tester untuk `BPJS`
+- Dashboard admin tester untuk `SATUSEHAT`
+- Mode `Live API` dan `Mock Preview`
+- Visualisasi request, response, dan debug payload outbound
 - Format response API konsisten
 - Dukungan environment terpisah untuk kredensial integrasi
+
+## Showcase Update Terbaru
+
+Update terbaru project ini membawa repositori dari versi `API-only` menjadi `API + Web Tester`.
+
+Yang sekarang sudah bisa dilakukan:
+
+- login admin untuk membuka integration console
+- testing endpoint `BPJS` langsung dari dashboard web
+- testing endpoint `SATUSEHAT` langsung dari dashboard web
+- mode `Live API` untuk memanggil endpoint Laravel yang aktif
+- mode `Mock Preview` untuk simulasi request/response
+- melihat `URL lokal`, `URL vendor BPJS`, `request sent`, `final outbound payload`, `final query params`, dan header debug aman
+- melihat response array seperti `list`, `klaim`, `sep`, `poli`, `diagnosa`, dan `faskes` dalam tampilan yang lebih mudah dibaca
+
+Project ini diarahkan untuk membantu:
+
+- programmer IT rumah sakit di Indonesia
+- vendor dan tim pengembang `SIMRS`
+- developer yang ingin belajar integrasi `BPJS` dan `SATUSEHAT`
+- tim yang membutuhkan fondasi integrasi kesehatan yang bisa langsung dikembangkan
 
 ## Tech Stack
 
@@ -110,6 +136,10 @@ GET    /api/v1/bpjs/referensi/kabupaten
 GET    /api/v1/bpjs/referensi/kecamatan
 GET    /api/v1/bpjs/referensi/prosedur
 
+GET    /api/v1/bpjs/surat-kontrol/list-tanggal
+GET    /api/v1/bpjs/surat-kontrol/list
+GET    /api/v1/bpjs/surat-kontrol/detail
+GET    /api/v1/bpjs/surat-kontrol/sep
 POST   /api/v1/bpjs/surat-kontrol/insert
 POST   /api/v1/bpjs/surat-kontrol/update
 POST   /api/v1/bpjs/spri/insert
@@ -210,6 +240,18 @@ php artisan serve
 npm run dev
 ```
 
+### Akses Dashboard Admin
+
+Dashboard tester tersedia melalui web route:
+
+```text
+http://127.0.0.1:8000/login
+http://127.0.0.1:8000/admin/bpjs-tester
+http://127.0.0.1:8000/admin/satusehat-tester
+```
+
+Gunakan akun admin yang sudah memiliki role `superadmin`.
+
 ## Konfigurasi Environment
 
 Contoh dasar:
@@ -271,9 +313,16 @@ Blueprint arsitektur pengembangan tersedia di:
 
 - [docs/api-documentation.md](/Users/ahmadfauzirahman/Documents/project/simrs-api/docs/api-documentation.md)
 - [docs/satusehat.md](/Users/ahmadfauzirahman/Documents/project/simrs-api/docs/satusehat.md)
+- [docs/bpjs-medical-record-database-design.md](/Users/ahmadfauzirahman/Documents/project/simrs-api/docs/bpjs-medical-record-database-design.md)
 - [docs/postman/000001 - SIMRS NEW API.postman_collection.json](/Users/ahmadfauzirahman/Documents/project/simrs-api/docs/postman/000001%20-%20SIMRS%20NEW%20API.postman_collection.json)
 
 ## Catatan
+
+## Disclaimer
+
+Project ini disediakan untuk tujuan pembelajaran, pengembangan, dan pengujian integrasi. Penggunaan layanan `BPJS` dan `SATUSEHAT` secara `live` hanya dapat dilakukan oleh rumah sakit, fasilitas kesehatan, atau institusi yang telah memiliki kerja sama resmi, kredensial aktif, dan akses yang sah sesuai ketentuan masing-masing layanan.
+
+Repositori ini tidak untuk diperjualbelikan kembali dalam bentuk source code asli maupun hasil repackaging yang hanya mengganti identitas project tanpa kontribusi pengembangan yang nyata.
 
 README ini sekarang difokuskan sebagai pintu masuk project. Dokumentasi endpoint yang lebih detail akan lebih baik jika dipisah per domain agar repo tetap mudah dipelajari.
 
@@ -285,14 +334,26 @@ Backend Developer
 SIMRS Developer  
 Healthcare Technology Enthusiast
 
-## License
+## Lisensi dan Penggunaan
 
-Project ini menggunakan lisensi `MIT`.
+Project ini dibagikan untuk tujuan:
 
-Selama copyright notice dan lisensi tetap disertakan, project ini bebas digunakan untuk:
+- pembelajaran
+- pengembangan
+- pengujian integrasi
+- implementasi internal yang sah
 
-- penggunaan pribadi
-- penggunaan komersial
-- modifikasi source code
-- distribusi ulang
-- integrasi dengan sistem lain
+Pengguna diperbolehkan untuk:
+
+- mempelajari source code
+- melakukan modifikasi sesuai kebutuhan implementasi
+- menggunakan project ini sebagai fondasi pengembangan sistem
+- mengintegrasikan project ini ke lingkungan kerja yang memiliki otorisasi yang sah
+
+Pengguna tidak diperbolehkan untuk:
+
+- memperjualbelikan ulang source code ini dalam bentuk mentah
+- melakukan repackaging lalu menjual ulang project ini tanpa kontribusi pengembangan yang nyata
+- mengklaim ulang project ini sebagai karya sendiri tanpa atribusi yang layak
+
+Jika ada kebutuhan kerja sama, distribusi khusus, atau penggunaan komersial yang melibatkan penjualan ulang source code, silakan hubungi author secara langsung.

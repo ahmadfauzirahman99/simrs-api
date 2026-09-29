@@ -43,6 +43,16 @@ class AdminBpjsTesterTest extends TestCase
             ->assertHeader('Content-Type', 'text/html; charset=UTF-8');
     }
 
+    public function test_superadmin_can_open_bpjs_medical_record_console(): void
+    {
+        $user = User::where('email', 'admin@simrs.local')->firstOrFail();
+
+        $response = $this->actingAs($user)->get('/admin/bpjs-medical-record');
+
+        $response->assertOk()
+            ->assertHeader('Content-Type', 'text/html; charset=UTF-8');
+    }
+
     public function test_non_superadmin_cannot_login_to_admin_console(): void
     {
         $user = User::create([

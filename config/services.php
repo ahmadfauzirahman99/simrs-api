@@ -43,6 +43,18 @@ return [
         'user_key'   => env('BPJS_V3_USER_KEY'),
     ],
 
+    'bpjs_medical_record' => [
+        'api_ver' => env('BPJS_MEDICAL_RECORD_API_VER', env('BPJS_V3_API_VER', '2')),
+        'base_url' => env('BPJS_MEDICAL_RECORD_BASE_URL', env('BPJS_V3_BASE_URL')),
+        'cons_id' => env('BPJS_MEDICAL_RECORD_CONS_ID', env('BPJS_V3_CONS_ID')),
+        'secret_key' => env('BPJS_MEDICAL_RECORD_SECRET_KEY', env('BPJS_V3_SECRET_KEY')),
+        'user_key' => env('BPJS_MEDICAL_RECORD_USER_KEY', env('BPJS_V3_USER_KEY')),
+        'rs_code' => env('BPJS_MEDICAL_RECORD_RS_CODE', env('BPJS_MEDICAL_RECORD_PROVIDER_CODE')),
+        'kemenkes_code' => env('BPJS_MEDICAL_RECORD_KEMENKES_CODE', env('BPJS_MEDICAL_RECORD_PROVIDER_CODE')),
+        'provider_code' => env('BPJS_MEDICAL_RECORD_PROVIDER_CODE'),
+        'sample_path' => base_path(env('BPJS_MEDICAL_RECORD_SAMPLE_PATH', 'sampling.normalized.json')),
+    ],
+
     'satusehat' => [
         'env' => env('SATUSEHAT_ENV', 'DEV'),
 

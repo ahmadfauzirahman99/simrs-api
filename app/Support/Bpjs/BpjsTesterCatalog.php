@@ -711,6 +711,134 @@ class BpjsTesterCatalog
                 ],
             ],
             [
+                'id' => 'medical-record',
+                'label' => 'Medical Record',
+                'items' => [
+                    $this->form(
+                        id: 'medical-record-insert',
+                        title: 'Insert Rekam Medis BPJS',
+                        method: 'POST',
+                        path: '/api/v1/bpjs/rekam-medis/insert',
+                        description: 'Membentuk payload dari sample bundle, menyimpan snapshot, lalu mengirim insert rekam medis ke BPJS.',
+                        fields: [
+                            ['path' => 'no_sep', 'label' => 'Nomor SEP', 'type' => 'text', 'value' => '0082R0120925V000002'],
+                            ['path' => 'jns_pelayanan', 'label' => 'Jenis Pelayanan', 'type' => 'select', 'value' => '1', 'options' => [
+                                ['label' => '1 - Rawat Inap', 'value' => '1'],
+                                ['label' => '2 - Rawat Jalan', 'value' => '2'],
+                            ]],
+                            ['path' => 'bulan', 'label' => 'Bulan', 'type' => 'text', 'value' => '09'],
+                            ['path' => 'tahun', 'label' => 'Tahun', 'type' => 'text', 'value' => '2025'],
+                        ],
+                        mockResponse: [
+                            'metaData' => [
+                                'code' => '200',
+                                'message' => 'Insert medical record BPJS berhasil dikirim',
+                            ],
+                            'response' => [
+                                'job_id' => 1,
+                                'payload_id' => 1,
+                                'bundle_snapshot' => [
+                                    'bundle_id' => '0082R012-1571159-1-ac06655c-2471-415d-980b-ba296bf44d1e',
+                                    'resource_type' => 'Bundle',
+                                    'bundle_type' => 'Document',
+                                    'identifier_system' => 'SEP',
+                                    'identifier_value' => '0082R0120925V000002',
+                                    'entry_count' => 99,
+                                    'resource_summary' => [
+                                        'Composition' => 1,
+                                        'Condition' => 6,
+                                        'DiagnosticReport' => 4,
+                                        'Encounter' => 1,
+                                        'MedicationRequest' => 45,
+                                        'Organization' => 6,
+                                        'Patient' => 1,
+                                        'Practitioner' => 4,
+                                        'Procedure' => 31,
+                                    ],
+                                ],
+                                'request_payload' => [
+                                    'request' => [
+                                        'noSep' => '0082R0120925V000002',
+                                        'jnsPelayanan' => '1',
+                                        'bulan' => '09',
+                                        'tahun' => '2025',
+                                        'dataMR' => 'encrypted-demo-payload',
+                                    ],
+                                ],
+                                'bpjs_response' => [
+                                    'metaData' => [
+                                        'code' => '200',
+                                        'message' => 'Sukses',
+                                    ],
+                                    'response' => [
+                                        'status' => 'ok',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ),
+                    $this->form(
+                        id: 'medical-record-preview',
+                        title: 'Preview Rekam Medis BPJS',
+                        method: 'POST',
+                        path: '/api/v1/bpjs/rekam-medis/preview',
+                        description: 'Membentuk preview request insert rekam medis BPJS dari sample bundle yang sudah dinormalisasi.',
+                        fields: [
+                            ['path' => 'no_sep', 'label' => 'Nomor SEP', 'type' => 'text', 'value' => '0082R0120925V000002'],
+                            ['path' => 'jns_pelayanan', 'label' => 'Jenis Pelayanan', 'type' => 'select', 'value' => '1', 'options' => [
+                                ['label' => '1 - Rawat Inap', 'value' => '1'],
+                                ['label' => '2 - Rawat Jalan', 'value' => '2'],
+                            ]],
+                            ['path' => 'bulan', 'label' => 'Bulan', 'type' => 'text', 'value' => '09'],
+                            ['path' => 'tahun', 'label' => 'Tahun', 'type' => 'text', 'value' => '2025'],
+                        ],
+                        mockResponse: [
+                            'metaData' => [
+                                'code' => '200',
+                                'message' => 'Preview medical record BPJS berhasil dibuat',
+                            ],
+                            'response' => [
+                                'bundle_snapshot' => [
+                                    'bundle_id' => '0082R012-1571159-1-ac06655c-2471-415d-980b-ba296bf44d1e',
+                                    'resource_type' => 'Bundle',
+                                    'bundle_type' => 'Document',
+                                    'identifier_system' => 'SEP',
+                                    'identifier_value' => '0082R0120925V000002',
+                                    'entry_count' => 99,
+                                    'resource_summary' => [
+                                        'Composition' => 1,
+                                        'Condition' => 6,
+                                        'DiagnosticReport' => 4,
+                                        'Encounter' => 1,
+                                        'MedicationRequest' => 45,
+                                        'Organization' => 6,
+                                        'Patient' => 1,
+                                        'Practitioner' => 4,
+                                        'Procedure' => 31,
+                                    ],
+                                ],
+                                'request_payload' => [
+                                    'request' => [
+                                        'noSep' => '0082R0120925V000002',
+                                        'jnsPelayanan' => '1',
+                                        'bulan' => '09',
+                                        'tahun' => '2025',
+                                        'dataMR' => 'encrypted-demo-payload',
+                                    ],
+                                ],
+                                'encoding' => [
+                                    'gzip_payload_base64_length' => 12000,
+                                    'encrypted_payload_length' => 16000,
+                                ],
+                                'source' => [
+                                    'sample_path' => '/app/sampling.normalized.json',
+                                ],
+                            ],
+                        ],
+                    ),
+                ],
+            ],
+            [
                 'id' => 'kontrol',
                 'label' => 'Surat Kontrol & SPRI',
                 'items' => [

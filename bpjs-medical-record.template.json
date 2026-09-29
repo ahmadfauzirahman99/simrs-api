@@ -1,0 +1,1337 @@
+{
+  "resourceType": "Bundle",
+  "id": "0220R002-1277015-2-7d954a0f-32f7-4930-8b7f-974d76b7ae33",
+  "meta": {
+    "lastUpdated": "2026-03-02T12:32:11+07:00"
+  },
+  "identifier": {
+    "use": null,
+    "type": {
+      "coding": [],
+      "text": null
+    },
+    "system": "SEP",
+    "value": "0220R0020226V000001",
+    "assigner": {
+      "display": null
+    }
+  },
+  "type": "Document",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Composition",
+        "id": "0220R002-1277015-2-ca86c2bf-b190-455c-9e0c-e2c06daa2a92",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11503-0",
+              "display": "Medical records"
+            }
+          ],
+          "text": "Medical records"
+        },
+        "subject": {
+          "reference": "Patient/0220R002-1277015-2-b367a8c5-3f26-472c-9cbf-4450dabb2390",
+          "display": "mu****** kh*****"
+        },
+        "encounter": {
+          "reference": "Encounter/0220R002-1277015-2-5e16dbce-710d-4290-abf8-820ef3d6abff"
+        },
+        "date": "2026-02-14T01:26:56+07:00",
+        "author": [
+          {
+            "reference": "Practitioner/0220R002-1277015-2-fe2a6f8e-9cd9-402d-8a11-bf6c719a6114",
+            "display": "dr. Aslima"
+          }
+        ],
+        "confidentiality": "N",
+        "title": "Medical records",
+        "section": [
+          {
+            "title": "Admission diagnosis",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "42347-5",
+                  "display": "Admission diagnosis Narrative"
+                }
+              ]
+            },
+            "text": {
+              "status": "additional",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Fever</div>"
+            },
+            "entry": []
+          },
+          {
+            "title": "Admission reason",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "42348-3",
+                  "display": "Admission reason Narrative"
+                }
+              ]
+            },
+            "text": {
+              "status": "additional",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Pasien datang ke IGD dengan keluhan yang memerlukan pemeriksaan lebih lanjut.</div>"
+            },
+            "entry": []
+          },
+          {
+            "title": "Chief complaint",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "10154-3",
+                  "display": "Chief complaint Narrative"
+                }
+              ]
+            },
+            "text": {
+              "status": "additional",
+              "div": "S"
+            },
+            "entry": []
+          },
+          {
+            "title": "Physical findings",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29545-1",
+                  "display": "Physical findings Narrative"
+                }
+              ]
+            },
+            "text": {
+              "status": "additional",
+              "div": "O"
+            },
+            "entry": []
+          },
+          {
+            "title": "Assessment note",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "51848-0",
+                  "display": "Assessment note Narrative"
+                }
+              ]
+            },
+            "text": {
+              "status": "additional",
+              "div": "A"
+            },
+            "entry": []
+          },
+          {
+            "title": "Plan of care",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "18776-5",
+                  "display": "Plan of care note"
+                }
+              ]
+            },
+            "text": {
+              "status": "additional",
+              "div": "P\n\nResep : \nAlprazolam 1 mg Jumlah 1 Aturan Pakai 1x1\n\n\nResep : \nCeftriaxon 1 gr Jumlah 3 Aturan Pakai 3x1\n\n\nResep : \nAcyclovir 400 mg Jumlah 7 Aturan Pakai 1x1\nAllopurinol 300 mg Jumlah 3 Aturan Pakai 1x1\n"
+            },
+            "entry": []
+          },
+          {
+            "title": "Hospital Discharge instruction",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8653-8",
+                  "display": "Hospital discharge instructions"
+                }
+              ]
+            },
+            "text": {
+              "status": "additional",
+              "div": ""
+            },
+            "entry": []
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "0220R002-1277015-2-b367a8c5-3f26-472c-9cbf-4450dabb2390",
+        "identifier": [
+          {
+            "use": "usual",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR",
+                  "display": "Medical record number"
+                }
+              ],
+              "text": "Medical record number"
+            },
+            "value": "042790",
+            "assigner": {
+              "display": "RS Tk. IV 01.07.03 Padangsidimpuan"
+            }
+          },
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MB",
+                  "display": "Member Number"
+                }
+              ],
+              "text": "No. Peserta BPJS"
+            },
+            "value": "0002034340953",
+            "assigner": {
+              "display": "BPJS KESEHATAN"
+            }
+          },
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NI",
+                  "display": "National unique individual identifier"
+                }
+              ],
+              "text": "Nomor KTP/NIK"
+            },
+            "system": "https://dukcapil.kemendagri.go.id",
+            "value": "1174012710070002",
+            "assigner": {
+              "display": "KEMENDAGRI"
+            }
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "text": "mu****** kh*****"
+          }
+        ],
+        "maritalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+              "code": "M",
+              "display": "Married"
+            }
+          ],
+          "text": "Married"
+        },
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "",
+            "use": "work"
+          },
+          {
+            "system": "phone",
+            "value": "0812233665544",
+            "use": "mobile"
+          },
+          {
+            "system": "phone",
+            "value": "",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2007-11-18",
+        "deceasedBoolean": false,
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "text": "Tes",
+            "line": [
+              "Tes"
+            ],
+            "city": "-",
+            "district": "-",
+            "state": "-",
+            "postalCode": "-"
+          }
+        ],
+        "managingOrganization": {
+          "reference": "Organization/0220R002-1277015-2-2adacdd6-6e62-47ba-8bdc-32e730644127",
+          "display": "Instalasi Gawat Darurat"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "0220R002-1277015-2-5e16dbce-710d-4290-abf8-820ef3d6abff",
+        "identifier": [
+          {
+            "use": "usual",
+            "type": {
+              "coding": {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                "code": "VN",
+                "display": "Visit number"
+              },
+              "text": "Nomor SEP"
+            },
+            "system": "https://apijkn-dev.bpjs-kesehatan.go.id/vclaim-rest-dev",
+            "value": "0220R0020226V000001",
+            "assigner": {
+              "display": "BPJS Kesehatan"
+            }
+          }
+        ],
+        "subject": {
+          "reference": "Patient/0220R002-1277015-2-b367a8c5-3f26-472c-9cbf-4450dabb2390",
+          "display": "mu****** kh*****",
+          "noSep": "0220R0020226V000001"
+        },
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "EMER",
+          "display": "Emergency"
+        },
+        "incomingReferral": [
+          {
+            "identifier": [
+              {
+                "use": "usual",
+                "type": {
+                  "coding": {
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                    "code": "RI",
+                    "display": "Resource identifier"
+                  },
+                  "text": "Nomor Rujukan BPJS"
+                },
+                "system": "nomor_rujukan_bpjs",
+                "value": "-",
+                "assigner": {
+                  "display": "RUMKIT TK IV PADANGSIDIMPUAN"
+                }
+              },
+              {
+                "use": "usual",
+                "type": {
+                  "coding": {
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                    "code": "RI",
+                    "display": "Resource identifier"
+                  },
+                  "text": "Nomor Rujukan Internal RS"
+                },
+                "system": "nomor_rujukan_internal_rs",
+                "value": "-",
+                "assigner": {
+                  "display": "-"
+                }
+              }
+            ]
+          }
+        ],
+        "reason": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/sid/icd-10",
+                "code": "A01",
+                "display": "A01 - Typhoid and paratyphoid fevers"
+              }
+            ],
+            "text": "A01 - Typhoid and paratyphoid fevers"
+          }
+        ],
+        "diagnosis": [
+          {
+            "condition": {
+              "reference": "Condition/0220R002-1277015-2-8cc50121-a751-451d-9c3f-12e5e1a91472",
+              "role": {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+                    "code": "DD",
+                    "display": "Discharge Diagnosis"
+                  }
+                ],
+                "text": "Discharge Diagnosis"
+              },
+              "rank": 1
+            }
+          },
+          {
+            "condition": {
+              "reference": "Condition/0220R002-1277015-2-b4a778e0-0d94-40f9-b857-195e4fc62307",
+              "role": {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+                    "code": "DD",
+                    "display": "Discharge Diagnosis"
+                  }
+                ],
+                "text": "Discharge Diagnosis"
+              },
+              "rank": 2
+            }
+          }
+        ],
+        "hospitalization": {
+          "dischargeDisposition": [
+            {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/discharge-disposition",
+                  "code": "home",
+                  "display": "Home"
+                }
+              ],
+              "text": "Sudah"
+            }
+          ]
+        },
+        "period": {
+          "start": "2026-02-14T01:26:56+07:00",
+          "end": "2026-02-14T02:14:08+07:00"
+        },
+        "status": "finished",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Admitted to Instalasi Gawat Darurat, RS Tk. IV 01.07.03 Padangsidimpuan at 2026-02-14 01:26:56 between 2026-02-14T01:26:56+07:00 and 2026-02-14T02:14:08+07:00</div>"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "text": {
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Ceftriaxon 1 gr</div>",
+          "status": "completed"
+        },
+        "identifier": {
+          "use": "usual",
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/prescription-category",
+                "code": "PRESCRIPTION-IPD",
+                "display": "Resep Rawatan"
+              }
+            ],
+            "text": "Resep Rawatan"
+          },
+          "system": "http://terminology.hl7.org/prescription-category",
+          "value": "0220R002-1277015-2-4bfcfb08-8ad2-4e7c-92ce-f029c40a6490",
+          "assigner": {
+            "display": "RS Tk. IV 01.07.03 Padangsidimpuan"
+          }
+        },
+        "subject": {
+          "reference": "Patient/0220R002-1277015-2-b367a8c5-3f26-472c-9cbf-4450dabb2390",
+          "display": "mu****** kh*****"
+        },
+        "meta": {
+          "lastUpdated": "2026-02-14T04:43:15+07:00"
+        },
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terapi.test/drug",
+              "code": "A0097",
+              "display": "Ceftriaxon 1 gr"
+            }
+          ],
+          "text": "Ceftriaxon 1 gr"
+        },
+        "requester": {
+          "agent": {
+            "display": "dr. Aslima",
+            "reference": "Practitioner/0220R002-1277015-2-fe2a6f8e-9cd9-402d-8a11-bf6c719a6114"
+          },
+          "onBehalfOf": {
+            "reference": "Organization/0220R002-1277015-2-2adacdd6-6e62-47ba-8bdc-32e730644127"
+          }
+        },
+        "dosageInstruction": [
+          {
+            "doseQuantity": {
+              "value": "3.00",
+              "unit": "VL",
+              "system": "http://unitsofmeasure.org",
+              "code": "VL"
+            },
+            "route": {
+              "coding": [
+                {
+                  "system": "https://api-satusehat-stg.dto.kemkes.go.id/kfa-v2",
+                  "code": "93007699",
+                  "display": "Ceftriaxone Sodium 1 g Serbuk Injeksi (INTERBAT)"
+                }
+              ],
+              "text": "Ceftriaxone Sodium 1 g Serbuk Injeksi (INTERBAT)"
+            },
+            "additionalInstruction": [
+              {
+                "text": "3x1"
+              }
+            ],
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            }
+          }
+        ],
+        "id": "0220R002-1277015-2-2bfe4a57-3b2c-43f6-879f-3bb7c5e88f51"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "text": {
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Alprazolam 1 mg</div>",
+          "status": "completed"
+        },
+        "identifier": {
+          "use": "usual",
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/prescription-category",
+                "code": "PRESCRIPTION-IPD",
+                "display": "Resep Rawatan"
+              }
+            ],
+            "text": "Resep Rawatan"
+          },
+          "system": "http://terminology.hl7.org/prescription-category",
+          "value": "0220R002-1277015-2-0aa6e292-fb8d-46bb-80c1-d4492d8b7e59",
+          "assigner": {
+            "display": "RS Tk. IV 01.07.03 Padangsidimpuan"
+          }
+        },
+        "subject": {
+          "reference": "Patient/0220R002-1277015-2-b367a8c5-3f26-472c-9cbf-4450dabb2390",
+          "display": "mu****** kh*****"
+        },
+        "meta": {
+          "lastUpdated": "2026-02-14T12:51:26+07:00"
+        },
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terapi.test/drug",
+              "code": "A0014",
+              "display": "Alprazolam 1 mg"
+            }
+          ],
+          "text": "Alprazolam 1 mg"
+        },
+        "requester": {
+          "agent": {
+            "display": "dr. Aslima",
+            "reference": "Practitioner/0220R002-1277015-2-fe2a6f8e-9cd9-402d-8a11-bf6c719a6114"
+          },
+          "onBehalfOf": {
+            "reference": "Organization/0220R002-1277015-2-2adacdd6-6e62-47ba-8bdc-32e730644127"
+          }
+        },
+        "dosageInstruction": [
+          {
+            "doseQuantity": {
+              "value": "1.00",
+              "unit": "TAB",
+              "system": "http://unitsofmeasure.org",
+              "code": "TAB"
+            },
+            "route": {
+              "coding": [
+                {
+                  "system": "https://api-satusehat-stg.dto.kemkes.go.id/kfa-v2",
+                  "code": "93001225",
+                  "display": "Alprazolam 1 mg Tablet (MERSIFARMA TIRMAKU MERCUSANA)"
+                }
+              ],
+              "text": "Alprazolam 1 mg Tablet (MERSIFARMA TIRMAKU MERCUSANA)"
+            },
+            "additionalInstruction": [
+              {
+                "text": "1x1"
+              }
+            ],
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            }
+          }
+        ],
+        "id": "0220R002-1277015-2-58d56d68-73a9-4c95-8c9c-28e1b4d53492"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "text": {
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Acyclovir 400 mg</div>",
+          "status": "completed"
+        },
+        "identifier": {
+          "use": "usual",
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/prescription-category",
+                "code": "PRESCRIPTION-IPD",
+                "display": "Resep Rawatan"
+              }
+            ],
+            "text": "Resep Rawatan"
+          },
+          "system": "http://terminology.hl7.org/prescription-category",
+          "value": "0220R002-1277015-2-d140f908-9b69-4f48-8385-ab95321bf864",
+          "assigner": {
+            "display": "RS Tk. IV 01.07.03 Padangsidimpuan"
+          }
+        },
+        "subject": {
+          "reference": "Patient/0220R002-1277015-2-b367a8c5-3f26-472c-9cbf-4450dabb2390",
+          "display": "mu****** kh*****"
+        },
+        "meta": {
+          "lastUpdated": "2026-02-14T14:39:11+07:00"
+        },
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terapi.test/drug",
+              "code": "A0001",
+              "display": "Acyclovir 400 mg"
+            }
+          ],
+          "text": "Acyclovir 400 mg"
+        },
+        "requester": {
+          "agent": {
+            "display": "dr. Aslima",
+            "reference": "Practitioner/0220R002-1277015-2-fe2a6f8e-9cd9-402d-8a11-bf6c719a6114"
+          },
+          "onBehalfOf": {
+            "reference": "Organization/0220R002-1277015-2-2adacdd6-6e62-47ba-8bdc-32e730644127"
+          }
+        },
+        "dosageInstruction": [
+          {
+            "doseQuantity": {
+              "value": "7.00",
+              "unit": "TAB",
+              "system": "http://unitsofmeasure.org",
+              "code": "TAB"
+            },
+            "route": {
+              "coding": [
+                {
+                  "system": "https://api-satusehat-stg.dto.kemkes.go.id/kfa-v2",
+                  "code": "93006499",
+                  "display": "Aciclovir 400 mg Tablet (KIMIA FARMA)"
+                }
+              ],
+              "text": "Aciclovir 400 mg Tablet (KIMIA FARMA)"
+            },
+            "additionalInstruction": [
+              {
+                "text": "1x1"
+              }
+            ],
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            }
+          }
+        ],
+        "id": "0220R002-1277015-2-7ea8a14e-2e59-49b0-b9fc-e684cd28f1c3"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "text": {
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Allopurinol 300 mg</div>",
+          "status": "completed"
+        },
+        "identifier": {
+          "use": "usual",
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/prescription-category",
+                "code": "PRESCRIPTION-IPD",
+                "display": "Resep Rawatan"
+              }
+            ],
+            "text": "Resep Rawatan"
+          },
+          "system": "http://terminology.hl7.org/prescription-category",
+          "value": "0220R002-1277015-2-465072e6-aa4e-4338-9db1-da039839f3b4",
+          "assigner": {
+            "display": "RS Tk. IV 01.07.03 Padangsidimpuan"
+          }
+        },
+        "subject": {
+          "reference": "Patient/0220R002-1277015-2-b367a8c5-3f26-472c-9cbf-4450dabb2390",
+          "display": "mu****** kh*****"
+        },
+        "meta": {
+          "lastUpdated": "2026-02-14T14:39:11+07:00"
+        },
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terapi.test/drug",
+              "code": "A0011",
+              "display": "Allopurinol 300 mg"
+            }
+          ],
+          "text": "Allopurinol 300 mg"
+        },
+        "requester": {
+          "agent": {
+            "display": "dr. Aslima",
+            "reference": "Practitioner/0220R002-1277015-2-fe2a6f8e-9cd9-402d-8a11-bf6c719a6114"
+          },
+          "onBehalfOf": {
+            "reference": "Organization/0220R002-1277015-2-2adacdd6-6e62-47ba-8bdc-32e730644127"
+          }
+        },
+        "dosageInstruction": [
+          {
+            "doseQuantity": {
+              "value": "3.00",
+              "unit": "TAB",
+              "system": "http://unitsofmeasure.org",
+              "code": "TAB"
+            },
+            "route": {
+              "coding": [
+                {
+                  "system": "https://api-satusehat-stg.dto.kemkes.go.id/kfa-v2",
+                  "code": "93003435",
+                  "display": "Allopurinol 300 mg Tablet (TRIMAN)"
+                }
+              ],
+              "text": "Allopurinol 300 mg Tablet (TRIMAN)"
+            },
+            "additionalInstruction": [
+              {
+                "text": "1x1"
+              }
+            ],
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            }
+          }
+        ],
+        "id": "0220R002-1277015-2-b18cb9fb-4ff2-46e8-b1b8-2f4a3d0d5f74"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "0220R002-1277015-2-fe2a6f8e-9cd9-402d-8a11-bf6c719a6114",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MD",
+                  "display": "Medical license number"
+                }
+              ],
+              "text": "Nomor SIP"
+            },
+            "system": "https://satusehat.kemkes.go.id/sdmk",
+            "value": "430/DPMPTSP/SIPD/2023",
+            "assigner": {
+              "display": "Kemenkes"
+            }
+          },
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NI",
+                  "display": "National unique individual identifier"
+                }
+              ],
+              "text": "Nomor KTP/NIK"
+            },
+            "system": "https://dukcapil.kemendagri.go.id",
+            "value": "1277016207930002",
+            "assigner": {
+              "display": "KEMENDAGRI"
+            }
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "dr. Aslima"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "00000000",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "-",
+            "use": "work"
+          },
+          {
+            "system": "fax",
+            "value": "-",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "JL.STN.PANINDOAN NO 30 WEK I KEC. PSP UTARA",
+            "line": [
+              "JL.STN.PANINDOAN NO 30 WEK I KEC. PSP UTARA"
+            ],
+            "city": "PADANGSIDIMPUAN",
+            "district": "-",
+            "state": "-",
+            "postalCode": "-",
+            "country": "INDONESIA"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1992-07-22"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "0220R002-1277015-2-2adacdd6-6e62-47ba-8bdc-32e730644127",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "urn:oid:bpjs",
+            "value": "0220R002"
+          },
+          {
+            "use": "official",
+            "system": "urn:oid:kemkes",
+            "value": "1277015"
+          }
+        ],
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Healthcare Provider"
+          }
+        ],
+        "name": "Instalasi Gawat Darurat",
+        "alias": [
+          "IGDK"
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "021-1234567",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "text": "Jalan Sudirman No. 1",
+            "line": [
+              "Jalan Sudirman No. 1"
+            ],
+            "city": "Kota Padangsidimpuan",
+            "state": "Sumatera Utara",
+            "postalCode": "22713",
+            "country": "Indonesia"
+          }
+        ],
+        "contact": [
+          {
+            "purpose": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
+                  "code": "ADMIN",
+                  "display": "Administrative"
+                }
+              ]
+            },
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "021-1234567",
+                "use": "work"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "0220R002-1277015-2-8cc50121-a751-451d-9c3f-12e5e1a91472",
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "386661006",
+              "display": "Fever"
+            }
+          ],
+          "text": "Fever"
+        },
+        "subject": {
+          "reference": "Patient/0220R002-1277015-2-b367a8c5-3f26-472c-9cbf-4450dabb2390"
+        },
+        "onsetDateTime": "2026-02-14T01:26:56+07:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "0220R002-1277015-2-b4a778e0-0d94-40f9-b857-195e4fc62307",
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "A01",
+              "display": "A01 - Typhoid and paratyphoid fevers"
+            }
+          ],
+          "text": "A01 - Typhoid and paratyphoid fevers"
+        },
+        "subject": {
+          "reference": "Patient/0220R002-1277015-2-b367a8c5-3f26-472c-9cbf-4450dabb2390"
+        },
+        "onsetDateTime": "2026-02-14T01:26:56+07:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "0220R002-1277015-2-cd15334d-6b46-4777-a5d0-23d3204c794a",
+        "status": "final",
+        "category": {
+          "coding": {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+            "code": "RAD",
+            "display": "Radiology"
+          }
+        },
+        "subject": {
+          "reference": "Patient/0220R002-1277015-2-b367a8c5-3f26-472c-9cbf-4450dabb2390",
+          "display": "mu****** kh*****",
+          "noSep": "0220R0020226V000001"
+        },
+        "performer": [
+          {
+            "reference": "Organization/0220R002-1277015-2-2adacdd6-6e62-47ba-8bdc-32e730644127",
+            "display": "Radiologi"
+          }
+        ],
+        "specimen": [],
+        "result": [
+          {
+            "resourceType": "Observation",
+            "id": "0220R002-1277015-2-ad3c1820-be83-4001-b8a8-084401c83bad",
+            "status": "final",
+            "text": {
+              "status": "generated",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Generated Narrative with Details</div>"
+            },
+            "issued": "2026-02-22T13:02:44+07:00",
+            "effectiveDateTime": "2026-02-14T13:04:02+07:00",
+            "code": {
+              "coding": {
+                "system": "http://snomed.info/sct",
+                "code": "241618007",
+                "display": "Thoracic ultrasound"
+              },
+              "text": "USG THORAX (Thoracic ultrasound)"
+            },
+            "performer": {
+              "reference": "Practitioner/0220R002-1277015-2-fe2a6f8e-9cd9-402d-8a11-bf6c719a6114",
+              "display": "dr. Alfina Rahmi"
+            },
+            "valueQuantity": {
+              "value": "",
+              "unit": "",
+              "code": ""
+            },
+            "interpretation": {
+              "coding": {
+                "value": "",
+                "code": ""
+              }
+            },
+            "referenceRange": {
+              "low": {
+                "value": "",
+                "code": ""
+              },
+              "high": {
+                "value": "",
+                "code": ""
+              }
+            },
+            "image": {
+              "comment": "Hasil pemeriksaan radiologi",
+              "link": {
+                "reference": "http://simrs.rumkittnipsp.com:2025/webapps/radiologi/pages/upload/WhatsApp_Image_2026-02-22_at_09.49.04.jpeg",
+                "display": "Hasil pemeriksaan radiologi"
+              }
+            },
+            "conclusion": "<div>Diagnosa Klinis:tes pemeriksaan</div><div>Informasi Tambahan:tes usg</div><div>Hasil: tes 1\ntes 2\nhasil pemeriksaan radiologi</div>"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "0220R002-1277015-2-cfb52ad8-847e-487f-a62e-a70e5aff8e39",
+        "status": "final",
+        "category": {
+          "coding": {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+            "code": "vital-signs",
+            "display": "Vital Signs"
+          }
+        },
+        "subject": {
+          "reference": "Patient/0220R002-1277015-2-b367a8c5-3f26-472c-9cbf-4450dabb2390",
+          "display": "mu****** kh*****",
+          "noSep": "0220R0020226V000001"
+        },
+        "performer": [
+          {
+            "reference": "Organization/0220R002-1277015-2-2adacdd6-6e62-47ba-8bdc-32e730644127",
+            "display": "Instalasi Gawat Darurat"
+          }
+        ],
+        "specimen": [],
+        "result": [
+          {
+            "resourceType": "Observation",
+            "id": "0220R002-1277015-2-57c8c964-ac3e-4e13-b7ac-0ffcfe421fdb",
+            "status": "final",
+            "code": {
+              "coding": {
+                "system": "http://loinc.org",
+                "code": "8310-5",
+                "display": "Body temperature"
+              }
+            },
+            "subject": {
+              "reference": "Patient/0220R002-1277015-2-b367a8c5-3f26-472c-9cbf-4450dabb2390"
+            },
+            "performer": [
+              {
+                "reference": "Practitioner/0220R002-1277015-2-fe2a6f8e-9cd9-402d-8a11-bf6c719a6114"
+              }
+            ],
+            "encounter": {
+              "reference": "Encounter/0220R002-1277015-2-5e16dbce-710d-4290-abf8-820ef3d6abff",
+              "display": "Pemeriksaan TTV"
+            },
+            "issued": "2026-02-14T01:29:19+07:00",
+            "effectiveDateTime": "2026-02-14T01:29:19+07:00",
+            "interpretation": {
+              "coding": {
+                "value": "",
+                "code": ""
+              }
+            },
+            "referenceRange": {
+              "low": {
+                "value": "",
+                "code": ""
+              },
+              "high": {
+                "value": "",
+                "code": ""
+              }
+            },
+            "valueQuantity": {
+              "value": "1",
+              "unit": "degree Celcius",
+              "system": "http://unitsofmeasure.org",
+              "code": "Cel"
+            },
+            "conclusion": "<div>Suhu: 1 °C</div>"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "0220R002-1277015-2-d165e189-2f66-4c40-9734-04b09ab73d36",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Generated Narrative with Details</div>"
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "91520000",
+              "display": "Injection of spinal steroid"
+            }
+          ],
+          "text": "Injection of spinal steroid"
+        },
+        "subject": {
+          "reference": "Patient/0220R002-1277015-2-b367a8c5-3f26-472c-9cbf-4450dabb2390",
+          "display": "mu****** kh*****"
+        },
+        "context": {
+          "reference": "Encounter/0220R002-1277015-2-5e16dbce-710d-4290-abf8-820ef3d6abff",
+          "display": "mu****** kh***** encounter on  2026-02-14T01:26:56+07:00"
+        },
+        "performedPeriod": {
+          "start": "2026-02-14T01:26:56+07:00",
+          "end": "2026-02-14T02:14:08+07:00"
+        },
+        "performer": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "",
+                  "code": "",
+                  "display": ""
+                }
+              ],
+              "text": ""
+            },
+            "actor": {
+              "reference": "Practitioner/0220R002-1277015-2-fe2a6f8e-9cd9-402d-8a11-bf6c719a6114",
+              "display": "dr. Aslima"
+            }
+          }
+        ],
+        "reasonCode": [
+          {
+            "text": "Injection of spinal steroid"
+          }
+        ],
+        "bodySite": [
+          {
+            "coding": [
+              {
+                "system": "",
+                "code": "",
+                "display": ""
+              }
+            ]
+          }
+        ],
+        "focalDevice": [
+          {
+            "action": {
+              "coding": [
+                {
+                  "system": "",
+                  "code": "",
+                  "display": ""
+                }
+              ]
+            },
+            "manipulated": {
+              "reference": ""
+            }
+          }
+        ],
+        "note": [
+          {
+            "text": "Prosedur ICD-9"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "0220R002-1277015-2-2081936c-f248-44c3-a595-db0f91bff7c9",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Generated Narrative with Details</div>"
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11429006",
+              "display": "Consultation"
+            }
+          ],
+          "text": "Consultation"
+        },
+        "subject": {
+          "reference": "Patient/0220R002-1277015-2-b367a8c5-3f26-472c-9cbf-4450dabb2390",
+          "display": "mu****** kh*****"
+        },
+        "context": {
+          "reference": "Encounter/0220R002-1277015-2-5e16dbce-710d-4290-abf8-820ef3d6abff",
+          "display": "mu****** kh***** encounter on  2026-02-14T14:06:56+07:00"
+        },
+        "performedPeriod": {
+          "start": "2026-02-14T14:06:56+07:00",
+          "end": "2026-02-14T14:06:56+07:00"
+        },
+        "performer": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "",
+                  "code": "",
+                  "display": ""
+                }
+              ],
+              "text": ""
+            },
+            "actor": {
+              "reference": "Practitioner/0220R002-1277015-2-fe2a6f8e-9cd9-402d-8a11-bf6c719a6114",
+              "display": "dr. Aslima"
+            }
+          }
+        ],
+        "reasonCode": [
+          {
+            "text": "Consultation"
+          }
+        ],
+        "bodySite": [
+          {
+            "coding": [
+              {
+                "system": "",
+                "code": "",
+                "display": ""
+              }
+            ]
+          }
+        ],
+        "focalDevice": [
+          {
+            "action": {
+              "coding": [
+                {
+                  "system": "",
+                  "code": "",
+                  "display": ""
+                }
+              ]
+            },
+            "manipulated": {
+              "reference": ""
+            }
+          }
+        ],
+        "note": [
+          {
+            "text": "Tindakan medis lainnya"
+          }
+        ]
+      }
+    }
+  ]
+}

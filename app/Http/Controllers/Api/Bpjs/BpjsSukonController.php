@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Bpjs;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Bpjs\SuratKontrol\DeleteSuratKontrolRequest;
 use App\Http\Requests\Bpjs\SuratKontrol\InsertSpriRequest;
 use App\Http\Requests\Bpjs\SuratKontrol\InsertSuratKontrolRequest;
 use App\Http\Requests\Bpjs\SuratKontrol\ListRencanaKontrolRequest;
@@ -64,5 +65,10 @@ class BpjsSukonController extends Controller
     public function updateSpri(UpdateSpriRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
     {
         return $responder->bpjs($bpjs, $bpjs->updateSpri($request->payload()));
+    }
+
+    public function hapusSuratKontrol(DeleteSuratKontrolRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
+    {
+        return $responder->bpjs($bpjs, $bpjs->deleteSuratKontrol($request->payload()), 'Surat kontrol berhasil dihapus');
     }
 }

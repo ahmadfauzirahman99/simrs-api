@@ -41,6 +41,20 @@ class BaseBridgingV3
         $this->cSecret  = (string) config('services.bpjs_v3.secret_key');
         $this->user_key = (string) config('services.bpjs_v3.user_key');
 
+        $this->refreshSecurityContext();
+
+        $this->setup = [
+            'verify' => false,
+            'timeout' => 60,
+        ];
+
+        date_default_timezone_set('Asia/Jakarta');
+    }
+
+    protected function refreshSecurityContext(): void
+    {
+        date_default_timezone_set('UTC');
+
         $this->timestamp = (string) time();
 
         $this->signature = base64_encode(
@@ -56,14 +70,7 @@ class BaseBridgingV3
             'Accept'       => 'application/json',
         ];
 
-        $this->setup = [
-            'verify' => false,
-            'timeout' => 60,
-        ];
-
         $this->dekripsi_key = $this->cID . $this->cSecret . $this->timestamp;
-
-        date_default_timezone_set('Asia/Jakarta');
     }
 
     public function setUpUrl(array|string $module, array|string|null $param = [], string $method = 'GET'): static
@@ -131,17 +138,17 @@ class BaseBridgingV3
         return match ($this->method) {
             'POST' => $http->withBody(
                 is_array($this->parameter) ? json_encode($this->parameter) : (string) $this->parameter,
-                'application/x-www-form-urlencoded'
+                $this->header['Content-Type'] ?? 'application/x-www-form-urlencoded'
             )->post($this->finalUrl)->body(),
 
             'PUT' => $http->withBody(
                 is_array($this->parameter) ? json_encode($this->parameter) : (string) $this->parameter,
-                'application/x-www-form-urlencoded'
+                $this->header['Content-Type'] ?? 'application/x-www-form-urlencoded'
             )->put($this->finalUrl)->body(),
 
             'DELETE' => $http->withBody(
                 is_array($this->parameter) ? json_encode($this->parameter) : (string) $this->parameter,
-                'application/x-www-form-urlencoded'
+                $this->header['Content-Type'] ?? 'application/x-www-form-urlencoded'
             )->delete($this->finalUrl)->body(),
 
             default => $http->get(

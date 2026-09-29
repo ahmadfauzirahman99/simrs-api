@@ -8,8 +8,11 @@ use App\Http\Requests\Bpjs\MonitoringKlaimRequest;
 use App\Http\Requests\Bpjs\MonitoringKunjunganRequest;
 use App\Http\Requests\Bpjs\PesertaRequest;
 use App\Http\Requests\Bpjs\SearchSepRequest;
+use App\Http\Requests\Bpjs\Sep\ApprovalSepRequest;
+use App\Http\Requests\Bpjs\Sep\CheckOutSepRequest;
 use App\Http\Requests\Bpjs\Sep\DeleteSepRequest;
 use App\Http\Requests\Bpjs\Sep\InsertSepRequest;
+use App\Http\Requests\Bpjs\Sep\PengajuanSepRequest;
 use App\Http\Requests\Bpjs\Sep\UpdateSepRequest;
 use App\Services\Bpjs\BridgingV3;
 use App\Support\Api\ExternalIntegrationResponder;
@@ -68,5 +71,20 @@ class BpjsVClaimController extends Controller
     public function historyPelayananPeserta(HistoryPelayananPesertaRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
     {
         return $responder->bpjs($bpjs, $bpjs->queryHistoryPelayananPeserta($request->no_kartu));
+    }
+
+    public function checkoutSep(CheckOutSepRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
+    {
+        return $responder->bpjs($bpjs, $bpjs->queryCheckOutSEP($request->payload()), 'SEP berhasil di-checkout');
+    }
+
+    public function pengajuanSep(PengajuanSepRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
+    {
+        return $responder->bpjs($bpjs, $bpjs->pengajuanSEP($request->payload()), 'Pengajuan SEP berhasil dikirim');
+    }
+
+    public function approvalSep(ApprovalSepRequest $request, BridgingV3 $bpjs, ExternalIntegrationResponder $responder): JsonResponse
+    {
+        return $responder->bpjs($bpjs, $bpjs->approvalSEP($request->payload()), 'Approval SEP berhasil dikirim');
     }
 }
