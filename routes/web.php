@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\AdminAuthController;
+use App\Http\Controllers\Web\BpjsMedicalRecordPageController;
 use App\Http\Controllers\Web\BpjsTesterPageController;
 use App\Http\Controllers\Web\SatuSehatTesterPageController;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,7 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware(['auth', 'role:superadmin'])->group(function () {
     Route::get('/admin/bpjs-tester', BpjsTesterPageController::class)->name('admin.bpjs-tester');
+    Route::get('/admin/bpjs-medical-record', BpjsMedicalRecordPageController::class)->name('admin.bpjs-medical-record');
     Route::get('/admin/satusehat-tester', SatuSehatTesterPageController::class)->name('admin.satusehat-tester');
     Route::post('/logout', [AdminAuthController::class, 'destroy'])->name('logout');
 });

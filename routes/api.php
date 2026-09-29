@@ -3,10 +3,27 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\Antrol\AntreanRsController;
-use App\Http\Controllers\Api\Bpjs\BpjsVClaimController;
+
+use App\Http\Controllers\Api\Bpjs\BpjsMedicalRecordController;
 use App\Http\Controllers\Api\Bpjs\BpjsReferensiController;
+use App\Http\Controllers\Api\Bpjs\BpjsRujukanController;
 use App\Http\Controllers\Api\Bpjs\BpjsSukonController;
+use App\Http\Controllers\Api\Bpjs\BpjsVClaimController;
+use App\Http\Controllers\Api\SatuSehat\AccountController;
+use App\Http\Controllers\Api\SatuSehat\AllergyIntoleranceController;
+use App\Http\Controllers\Api\SatuSehat\ChargeItemController;
+use App\Http\Controllers\Api\SatuSehat\ClaimController;
+use App\Http\Controllers\Api\SatuSehat\ConditionController;
+use App\Http\Controllers\Api\SatuSehat\CoverageController;
+use App\Http\Controllers\Api\SatuSehat\DiagnosticReportController;
 use App\Http\Controllers\Api\SatuSehat\EncounterController;
+use App\Http\Controllers\Api\SatuSehat\ImmunizationController;
+use App\Http\Controllers\Api\SatuSehat\InvoiceController;
+use App\Http\Controllers\Api\SatuSehat\MedicationDispenseController;
+use App\Http\Controllers\Api\SatuSehat\MedicationRequestController;
+use App\Http\Controllers\Api\SatuSehat\ObservationController;
+use App\Http\Controllers\Api\SatuSehat\ProcedureController;
+use App\Http\Controllers\Api\SatuSehat\ServiceRequestController;
 use App\Http\Controllers\Api\SatuSehat\TokenController;
 
 Route::prefix('v1')->group(function () {
@@ -44,7 +61,22 @@ Route::prefix('v1')->group(function () {
         Route::get('/referensi/kabupaten', [BpjsReferensiController::class, 'kabupaten']);
         Route::get('/referensi/kecamatan', [BpjsReferensiController::class, 'kecamatan']);
         Route::get('/referensi/prosedur', [BpjsReferensiController::class, 'prosedur']);
+        Route::get('/rekam-medis/resources', [BpjsMedicalRecordController::class, 'resources']);
+        Route::get('/rekam-medis/resources/{resource}', [BpjsMedicalRecordController::class, 'resourceDetail']);
+        Route::get('/rekam-medis/history', [BpjsMedicalRecordController::class, 'history']);
+        Route::post('/rekam-medis/preview', [BpjsMedicalRecordController::class, 'preview']);
+        Route::post('/rekam-medis/insert', [BpjsMedicalRecordController::class, 'insert']);
+        Route::post('/rekam-medis/dispatch', [BpjsMedicalRecordController::class, 'dispatch']);
 
+        // Rujukan
+        Route::get('/rujukan/list', [BpjsRujukanController::class, 'list']);
+        Route::get('/rujukan/detail', [BpjsRujukanController::class, 'detail']);
+        Route::get('/rujukan/jumlah-sep', [BpjsRujukanController::class, 'jumlahSep']);
+
+        // SEP tambahan
+        Route::put('/sep/checkout', [BpjsVClaimController::class, 'checkoutSep']);
+        Route::post('/sep/pengajuan', [BpjsVClaimController::class, 'pengajuanSep']);
+        Route::post('/sep/approval', [BpjsVClaimController::class, 'approvalSep']);
 
         //Sukon
         Route::get('/surat-kontrol/sep', [BpjsSukonController::class, 'cariSep']);
@@ -53,6 +85,7 @@ Route::prefix('v1')->group(function () {
         Route::get('/surat-kontrol/list-tanggal', [BpjsSukonController::class, 'listRencanaKontrolByTanggal']);
         Route::post('/surat-kontrol/insert', [BpjsSukonController::class, 'insertSuratKontrol']);
         Route::post('/surat-kontrol/update', [BpjsSukonController::class, 'updateSuratKontrol']);
+        Route::delete('/surat-kontrol', [BpjsSukonController::class, 'hapusSuratKontrol']);
 
         // SPRI
         Route::post('/spri/insert', [BpjsSukonController::class, 'insertSpri']);
@@ -61,13 +94,34 @@ Route::prefix('v1')->group(function () {
 
     Route::prefix('antrol')->group(function () {
         Route::get('/antrean', [AntreanRsController::class, 'index']);
+        Route::get('/poli', [AntreanRsController::class, 'poli']);
+        Route::get('/dokter', [AntreanRsController::class, 'dokter']);
+        Route::get('/jadwal-dokter', [AntreanRsController::class, 'jadwalDokter']);
     });
 
 
 
     Route::prefix('satu-sehat')->group(function () {
         Route::get('/token', [TokenController::class, 'index']);
-        Route::post('/encounter/send', [EncounterController::class, 'send']);
+        Route::post('/encounter/send',       [EncounterController::class,      'send']);
+        Route::post('/condition/send',       [ConditionController::class,      'send']);
+        Route::post('/observation/send',     [ObservationController::class,    'send']);
+        Route::post('/procedure/send',       [ProcedureController::class,      'send']);
+        Route::post('/service-request/send', [ServiceRequestController::class, 'send']);
+
+        // Klaim BPJS-K
+        Route::post('/coverage/send',     [CoverageController::class,   'send']);
+        Route::post('/account/send',      [AccountController::class,    'send']);
+        Route::post('/charge-item/send',  [ChargeItemController::class, 'send']);
+        Route::post('/invoice/send',      [InvoiceController::class,    'send']);
+        Route::post('/claim/send',        [ClaimController::class,      'send']);
+
+        // Klinis tambahan
+        Route::post('/allergy-intolerance/send',  [AllergyIntoleranceController::class,  'send']);
+        Route::post('/medication-request/send',   [MedicationRequestController::class,   'send']);
+        Route::post('/medication-dispense/send',  [MedicationDispenseController::class,  'send']);
+        Route::post('/diagnostic-report/send',    [DiagnosticReportController::class,    'send']);
+        Route::post('/immunization/send',         [ImmunizationController::class,        'send']);
     });
 
     Route::fallback(function () {

@@ -4,6 +4,21 @@ namespace App\Services\Bpjs;
 
 class BridgingV3 extends BaseBridgingV3
 {
+    public function insertMedicalRecord(array $data): static
+    {
+        $this->ver = (string) config('services.bpjs_medical_record.api_ver', $this->ver);
+        $this->baseUrl = rtrim((string) config('services.bpjs_medical_record.base_url', $this->baseUrl), '/');
+        $this->cID = (string) config('services.bpjs_medical_record.cons_id', $this->cID);
+        $this->cSecret = (string) config('services.bpjs_medical_record.secret_key', $this->cSecret);
+        $this->user_key = (string) config('services.bpjs_medical_record.user_key', $this->user_key);
+        $this->refreshSecurityContext();
+        $this->header['Content-Type'] = 'text/plain';
+
+        $this->setUpUrl(['eclaim', 'rekammedis', 'insert'], json_encode($data), 'POST');
+
+        return $this;
+    }
+
     public function queryGetPeserta(string $nomor, int $tipe = 1): static
     {
         if ($tipe === 1) {

@@ -4,11 +4,23 @@ import { computed } from 'vue';
 
 const page = usePage();
 
+defineProps({
+    title: {
+        type: String,
+        default: 'BPJS Integration Console',
+    },
+    subtitle: {
+        type: String,
+        default: 'Panel admin untuk menguji endpoint BPJS dengan mode live maupun mock preview.',
+    },
+});
+
 const user = computed(() => page.props.auth?.user ?? null);
 const currentPath = computed(() => page.url ?? '');
 
 const navItems = [
     { label: 'BPJS Tester', href: '/admin/bpjs-tester' },
+    { label: 'BPJS Medical Record', href: '/admin/bpjs-medical-record' },
     { label: 'SATUSEHAT Tester', href: '/admin/satusehat-tester' },
 ];
 
@@ -24,9 +36,9 @@ const logout = () => {
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div>
                         <p class="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--app-accent)]">SIMRS Admin</p>
-                        <h1 class="mt-2 text-2xl font-semibold tracking-tight text-slate-900">BPJS Integration Console</h1>
+                        <h1 class="mt-2 text-2xl font-semibold tracking-tight text-slate-900">{{ title }}</h1>
                         <p class="mt-1 max-w-2xl text-sm text-slate-600">
-                            Panel admin untuk menguji endpoint BPJS dengan mode live maupun mock preview.
+                            {{ subtitle }}
                         </p>
                     </div>
 
