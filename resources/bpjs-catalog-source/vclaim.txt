@@ -1,0 +1,4487 @@
+
+BASE URL : https://apijkn.bpjs-kesehatan.go.id/vclaim-rest
+
+Lembar Pengajuan Klaim
+
+Insert LPK
+JSON
+{BASE URL}/LPK/insert
+Fungsi : Insert Rujukan
+
+Method : POST
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                                        
+        {
+           "request": {
+              "t_lpk": {
+                 "noSep": "0301R0011017V000015",
+                 "tglMasuk": "2017-10-30",
+                 "tglKeluar": "2017-10-30",
+                 "jaminan": "1",
+                 "poli": {
+                    "poli": "INT"
+                 },
+                 "perawatan": {
+                    "ruangRawat": "1",
+                    "kelasRawat": "1",
+                    "spesialistik": "1",
+                    "caraKeluar": "1",
+                    "kondisiPulang": "1"
+                 },
+                 "diagnosa": [
+                    {
+                       "kode": "N88.0",
+                       "level": "1"
+                    },
+                    {
+                       "kode": "A00.1",
+                       "level": "2"
+                    }
+                 ],
+                 "procedure": [
+                    {
+                       "kode": "00.82"
+                    },
+                    {
+                       "kode": "00.83"
+                    }
+                 ],
+                 "rencanaTL": {
+                    "tindakLanjut": "1",
+                    "dirujukKe": {
+                       "kodePPK": ""
+                    },
+                    "kontrolKembali": {
+                       "tglKontrol": "2017-11-10",
+                       "poli": ""
+                    }
+                 },
+                 "DPJP": "3",
+                 "user": "Coba Ws"
+              }
+           }
+        }               
+                                     
+                       
+
+Update LPK
+JSON
+{BASE URL}/LPK/update
+Fungsi : Update Rujukan
+
+Method : PUT
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                                        
+        {
+           "request": {
+              "t_lpk": {
+                 "noSep": "0301R0011017V000015",
+                 "tglMasuk": "2017-10-30",
+                 "tglKeluar": "2017-10-30",
+                 "jaminan": "1",
+                 "poli": {
+                    "poli": "INT"
+                 },
+                 "perawatan": {
+                    "ruangRawat": "1",
+                    "kelasRawat": "1",
+                    "spesialistik": "1",
+                    "caraKeluar": "1",
+                    "kondisiPulang": "1"
+                 },
+                 "diagnosa": [
+                    {
+                       "kode": "N88.0",
+                       "level": "1"
+                    },
+                    {
+                       "kode": "A00.1",
+                       "level": "2"
+                    }
+                 ],
+                 "procedure": [
+                    {
+                       "kode": "00.82"
+                    },
+                    {
+                       "kode": "00.83"
+                    }
+                 ],
+                 "rencanaTL": {
+                    "tindakLanjut": "1",
+                    "dirujukKe": {
+                       "kodePPK": ""
+                    },
+                    "kontrolKembali": {
+                       "tglKontrol": "2017-11-10",
+                       "poli": ""
+                    }
+                 },
+                 "DPJP": "3",
+                 "user": "Coba Ws"
+              }
+           }
+        }               
+                                     
+
+Delete LPK
+JSON
+{BASE URL}/LPK/delete
+Fungsi : Delete Rujukan
+
+Method : DELETE
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                                        
+        {
+           "request": {
+              "t_lpk": {
+                 "noSep": "0301R0011017V000015"             
+              }
+           }
+        }               
+                                     
+                                     
+
+Data Lembar Pengajuan Klaim
+{BASE URL}/LPK/TglMasuk/{Parameter 1}/JnsPelayanan/{Paramater 2}
+Fungsi : Pencarian data peserta berdasarkan NIK Kependudukan
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter 1 : Tanggal Masuk - format : yyyy-MM-dd
+
+Parameter 2 : Jenis Pelayanan 1. Inap 2.Jalan
+
+                                    
+        {
+           "metaData": {
+              "code": "200",
+              "message": "OK"
+           },
+           "response": {
+              "lpk": {
+                 "list": [
+                    {
+                       "DPJP": {
+                          "dokter": {
+                             "kode": "3",
+                             "nama": "Satro Jadhit, dr"
+                          }
+                       },
+                       "diagnosa": {
+                          "list": [
+                             {
+                                "level": "1",
+                                "list": {
+                                   "kode": "N88.1",
+                                   "nama": "Old laceration of cervix uteri"
+                                }
+                             },
+                             {
+                                "level": "2",
+                                "list": {
+                                   "kode": "A00.1",
+                                   "nama": "Cholera due to Vibrio cholerae 01, biovar eltor"
+                                }
+                             }
+                          ]
+                       },
+                       "jnsPelayanan": "1",
+                       "noSep": "0301R0011017V000014",
+                       "perawatan": {
+                          "caraKeluar": {
+                             "kode": "1",
+                             "nama": "Atas Persetujuan Dokter"
+                          },
+                          "kelasRawat": {
+                             "kode": "1",
+                             "nama": "VVIP"
+                          },
+                          "kondisiPulang": {
+                             "kode": "1",
+                             "nama": "Sembuh"
+                          },
+                          "ruangRawat": {
+                             "kode": "3",
+                             "nama": "Ruang Melati I"
+                          },
+                          "spesialistik": {
+                             "kode": "1",
+                             "nama": "Spesialis Penyakit dalam"
+                          }
+                       },
+                       "peserta": {
+                          "kelamin": "L",
+                          "nama": "123456",
+                          "noKartu": "0000000001231",
+                          "noMR": "123456",
+                          "tglLahir": "2008-02-05"
+                       },
+                       "poli": {
+                          "eksekutif": "0",
+                          "poli": {
+                             "kode": "INT"
+                          }
+                       },
+                       "procedure": {
+                          "list": [
+                             {
+                                "list": {
+                                   "kode": "00.82",
+                                   "nama": "Revision of knee replacement, femoral component"
+                                }
+                             },
+                             {
+                                "list": {
+                                   "kode": "00.83",
+                                   "nama": "Revision of knee replacement,patellar component"
+                                }
+                             }
+                          ]
+                       },
+                       "rencanaTL": null,
+                       "tglKeluar": "2017-10-30",
+                       "tglMasuk": "2017-10-30"
+                    }
+                 ]
+              }
+           }
+        }             
+                                     
+
+Monitoring
+Data Kunjungan
+{Base URL}/Monitoring/Kunjungan/Tanggal/{Parameter 1}/JnsPelayanan/{Parameter 2}
+Fungsi : Data Kunjungan
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter 1 : Tanggal SEP format: yyyy-mm-dd
+
+Parameter 2 : Jenis Pelayanan (1. Inap 2. Jalan)
+
+                                    
+        {
+           "metaData": {
+              "code": "200",
+              "message": "Sukses"
+           },
+           "response": {
+              "sep": [
+                 {
+                    "diagnosa": "K65.0",
+                    "jnsPelayanan": "R.Inap",
+                    "kelasRawat": "2",
+                    "nama": "HANIF ABDURRAHMAN",
+                    "noKartu": "0001819122189",
+                    "noSep": "0301R00110170000004",
+                    "noRujukan": "0301U01108180200084",
+                    "poli": null,
+                    "tglPlgSep": "2017-10-03",
+                    "tglSep": "2017-10-01"
+                 },
+                 {
+                    "diagnosa": "I50.0",
+                    "jnsPelayanan": "R.Inap",
+                    "kelasRawat": "3",
+                    "nama": "ASRIZAL",
+                    "noKartu": "0002283324674",
+                    "noSep": "0301R00110170000005",
+                    "noRujukan": "0301U01108180200184",
+                    "poli": null,
+                    "tglPlgSep": "2017-10-10",
+                    "tglSep": "2017-10-01"
+                 }
+              ]
+           }
+        }
+                                            
+                                        
+Data Klaim
+{Base URL}/Monitoring/Klaim/Tanggal/{Parameter 1}/JnsPelayanan/{Parameter 2}/Status/{Parameter 3}
+Fungsi : Data Klaim
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter 1 : Tanggal Pulang format: yyyy-mm-dd
+
+Parameter 2 : Jenis Pelayanan (1. Inap 2. Jalan)
+
+Parameter 3 : Status Klaim (1. Proses Verifikasi 2. Pending Verifikasi 3. Klaim)
+
+                                    
+                                        {
+       "metaData": {
+          "code": "200",
+          "message": "Sukses"
+       },
+       "response": {
+          "klaim": [
+             {
+                "Inacbg": {
+                   "kode": "N-3-15-0",
+                   "nama": "DIALYSIS"
+                },
+                "biaya": {
+                   "byPengajuan": "991200",
+                   "bySetujui": "0",
+                   "byTarifGruper": "991200",
+                   "byTarifRS": "1170689",
+                   "byTopup": "0"
+                },
+                "kelasRawat": "3",
+                "noFPK": "",
+                "noSEP": "0301R00109170001280",
+                "peserta": {
+                   "nama": "NUR",
+                   "noKartu": "0033681422715",
+                   "noMR": "974956"
+                },
+                "poli": "Hemodialisa",
+                "status": "Proses Verifikasi",
+                "tglPulang": "2017-09-02",
+                "tglSep": "2017-09-02"
+             },
+             {
+                "Inacbg": {
+                   "kode": "N-3-15-0",
+                   "nama": "DIALYSIS"
+                },
+                "biaya": {
+                   "byPengajuan": "991200",
+                   "bySetujui": "0",
+                   "byTarifGruper": "991200",
+                   "byTarifRS": "1015000",
+                   "byTopup": "0"
+                },
+                "kelasRawat": "3",
+                "noFPK": "",
+                "noSEP": "0301R00109170000094",
+                "peserta": {
+                   "nama": "YUH",
+                   "noKartu": "0223416974628",
+                   "noMR": "878410"
+                },
+                "poli": "Hemodialisa",
+                "status": "Proses Verifikasi",
+                "tglPulang": "2017-09-02",
+                "tglSep": "2017-09-02"
+             }
+          ]
+       }
+    }
+                                            
+Data Histori Pelayanan Peserta
+{Base URL}/monitoring/HistoriPelayanan/NoKartu/{Parameter 1}/tglMulai/{Parameter 2}/tglAkhir/{Parameter 3}
+Fungsi : Histori Pelayanan Per Peserta
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter 1 : No.Kartu Peserta
+
+Parameter 2 : Tgl Mulai Pencarian (yyyy-mmdd)
+
+Parameter 3 : Tgl Akhir Pencarian (yyyy-mmdd)
+
+                                    
+    {
+       "metaData": {
+          "code": "200",
+          "message": "Sukses"
+       },
+       "response": {
+          "histori": [
+             {
+                "diagnosa": "A00.1 - Cholera due to Vibrio cholerae 01, biovar eltor",
+                "jnsPelayanan": "1",
+                "kelasRawat": "Kelas 1",
+                "namaPeserta": "STAMI",
+                "noKartu": "0001160271256",
+                "noSep": "0301R0110818V200084",
+                "noRujukan": "0301U01108180200084",
+                "poli": "",
+                "ppkPelayanan": "RS YOS SUDARSO",
+                "tglPlgSep": "2018-07-11",
+                "tglSep": "2018-07-09"
+             },
+             {
+                "diagnosa": "A00.1 - Cholera due to Vibrio cholerae 01, biovar eltor",
+                "jnsPelayanan": "2",
+                "kelasRawat": null,
+                "namaPeserta": "STAMI",
+                "noKartu": "0001160271256",
+                "noSep": "0301R0110818V100085",
+                "noRujukan": "0301U01108180201084",
+                "poli": "",
+                "ppkPelayanan": "RS YOS SUDARSO",
+                "tglPlgSep": "2018-08-09",
+                "tglSep": "2018-08-09"
+             }
+          ]
+       }
+    }
+                                            
+
+Data Klaim Jaminan Jasa Raharja
+{Base URL}/monitoring/JasaRaharja/JnsPelayanan/{Parameter 1}/tglMulai/{Parameter 2}/tglAkhir/{Parameter 3}
+Fungsi : Monitoring Klaim Jasa Raharja
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter 1 : Jenis Pelayanan (1. Rawat Inap, 2. Rawat Jalan)
+
+Parameter 2 : Tgl Mulai Pencarian (yyyy-mmdd)
+
+Parameter 3 : Tgl Akhir Pencarian (yyyy-mmdd)
+
+                                    
+    {
+       "metaData": {
+          "code": "200",
+          "message": "Sukses"
+       },
+       "response": {
+          "jaminan": [
+             {
+                "sep": 
+                {
+                    "noSEP":"0301R0110818V100085",
+                    "tglSEP":"2018-08-09",
+                    "tglPlgSEP":"2018-08-09",
+                    "noMr":"AA-01-11",
+                    "jnsPelayanan":"2",
+                    "poli":"INT",
+                    "diagnosa":"A00.1",
+                    "peserta":
+                    {
+                        "noKartu":"0001161271256",
+                        "nama":"JASA RAHARJA",
+                        "noMR":"AA-01-11"
+                    }
+                },
+                "jasaRaharja":
+                {
+                    "tglKejadian":"2018-08-09",
+                    "noRegister":"AA-JR-0801",
+                    "ketStatusDijamin":"Dijamin",
+                    "ketStatusDikirim":"Sukses",
+                    "biayaDijamin":"100000",
+                    "plafon":"20000000",
+                    "jmlDibayar":"10000",
+                    "resultsJasaRaharja":"Sukses"
+                }
+             },
+             {
+                "sep": 
+                {
+                    "noSEP":"0301R0110818V100185",
+                    "tglSEP":"2018-08-09",
+                    "tglPlgSEP":"2018-08-09",
+                    "noMr":"AA-01-11",
+                    "jnsPelayanan":"2",
+                    "poli":"INT",
+                    "diagnosa":"A00.1",
+                    "peserta":
+                    {
+                        "noKartu":"0003361271256",
+                        "nama":"JASA RAHARJA",
+                        "noMR":"AA-01-11"
+                    }
+                },
+                "jasaRaharja":
+                {
+                    "tglKejadian":"2018-08-09",
+                    "noRegister":"AA-JR-0801",
+                    "ketStatusDijamin":"Dijamin",
+                    "ketStatusDikirim":"Sukses",
+                    "biayaDijamin":"100000",
+                    "plafon":"20000000",
+                    "jmlDibayar":"10000",
+                    "resultsJasaRaharja":"Sukses"
+                }
+             }
+          ]
+       }
+    }
+                                            
+                                        
+Peserta
+No.Kartu BPJS
+{BASE URL}/Peserta/nokartu/{parameter 1}/tglSEP/{parameter 2}
+Fungsi : Pencarian data peserta BPJS Kesehatan
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter 1 : Nomor Kartu
+
+Parameter 2 : Tanggal Pelayanan/SEP - format : yyyy-MM-dd
+
+                                    
+        {
+           "metaData":{
+              "code":"200",
+              "message":"OK"
+           },
+           "response":{
+              "peserta":{
+                 "cob":{
+                    "nmAsuransi":null,
+                    "noAsuransi":null,
+                    "tglTAT":null,
+                    "tglTMT":null
+                 },
+                 "hakKelas":{
+                    "keterangan":"KELAS I",
+                    "kode":"1"
+                 },
+                 "informasi":{
+                    "dinsos":null,
+                    "noSKTM":null,
+                    "prolanisPRB":null
+                 },
+                 "jenisPeserta":{
+                    "keterangan":"PEGAWAI SWASTA",
+                    "kode":"13"
+                 },
+                 "mr":{
+                    "noMR":null,
+                    "noTelepon":null
+                 },
+                 "nama":"TRI M",
+                 "nik":"3319022010810007",
+                 "noKartu":"0011336526592",
+                 "pisa":"1",
+                 "provUmum":{
+                    "kdProvider":"0138U020",
+                    "nmProvider":"KPRJ PALA MEDIKA"
+                 },
+                 "sex":"L",
+                 "statusPeserta":{
+                    "keterangan":"AKTIF",
+                    "kode":"0"
+                 },
+                 "tglCetakKartu":"2016-02-12",
+                 "tglLahir":"1981-10-10",
+                 "tglTAT":"2014-12-31",
+                 "tglTMT":"2008-10-01",
+                 "umur":{
+                    "umurSaatPelayanan":"35 tahun ,1 bulan ,11 hari",
+                    "umurSekarang":"35 tahun ,2 bulan ,10 hari"
+                 }
+              }
+           }
+        }
+    
+                                            
+                                        
+NIK
+{BASE URL}/Peserta/nik/{parameter 1}/tglSEP/{parameter 2}
+Fungsi : Pencarian data peserta berdasarkan NIK Kependudukan
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter 1 : NIK KTP
+
+Parameter 2 : Tanggal Pelayanan/SEP - format : yyyy-MM-dd
+
+                                    
+    {
+           "metaData":{
+              "code":"200",
+              "message":"OK"
+           },
+           "response":{
+              "peserta":{
+                 "cob":{
+                    "nmAsuransi":null,
+                    "noAsuransi":null,
+                    "tglTAT":null,
+                    "tglTMT":null
+                 },
+                 "hakKelas":{
+                    "keterangan":"KELAS I",
+                    "kode":"1"
+                 },
+                 "informasi":{
+                    "dinsos":null,
+                    "noSKTM":null,
+                    "prolanisPRB":null
+                 },
+                 "jenisPeserta":{
+                    "keterangan":"PEGAWAI SWASTA",
+                    "kode":"13"
+                 },
+                 "mr":{
+                    "noMR":null,
+                    "noTelepon":null
+                 },
+                 "nama":"TRI M",
+                 "nik":"3319022010810007",
+                 "noKartu":"0011336526592",
+                 "pisa":"1",
+                 "provUmum":{
+                    "kdProvider":"0138U020",
+                    "nmProvider":"KPRJ PALA MEDIKA"
+                 },
+                 "sex":"L",
+                 "statusPeserta":{
+                    "keterangan":"AKTIF",
+                    "kode":"0"
+                 },
+                 "tglCetakKartu":"2016-02-12",
+                 "tglLahir":"1981-10-10",
+                 "tglTAT":"2014-12-31",
+                 "tglTMT":"2008-10-01",
+                 "umur":{
+                    "umurSaatPelayanan":"35 tahun ,1 bulan ,11 hari",
+                    "umurSekarang":"35 tahun ,2 bulan ,10 hari"
+                 }
+              }
+           }
+        }                            
+                                     
+
+Pembuatan Rujuk Balik (PRB)
+Insert PRB
+JSON
+{BASE URL}/PRB/insert
+Fungsi : Insert Rujuk balik
+
+Method : POST
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                                        
+            {
+              "request":
+               {
+              "t_prb":
+                {  
+                  "noSep":"1101R0070118V999006",
+                  "noKartu":"0009999979951",
+                  "alamat":"Jln. Medan Merdekah",
+                  "email":"email@gmail.com",
+                  "programPRB":"09",
+                  "kodeDPJP":"27590",
+                  "keterangan":"Kecapekan kerja",
+                  "saran":"Pasien harus olahraga bersama setiap minggu dan cuti, edukasi agar jangan disuruh kerja terus, lama lama stress.",
+                  "user":"1234567",
+                  "obat":
+                    [
+                        { 
+                            "kdObat":"00196120124",
+                            "signa1":"1",
+                            "signa2":"1",
+                            "jmlObat":"11"
+                        },
+                        { 
+                            "kdObat":"00011220018",
+                            "signa1":"1",
+                            "signa2":"1",
+                            "jmlObat":"10"
+                        }
+                    ]      
+                }
+               }
+            }                
+                                     
+
+Update PRB
+{BASE URL}/PRB/Update
+Fungsi : Update PRB
+
+Method : PUT
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                                
+        {
+           "request":{
+              "t_prb":{
+                 "noSrb":"9118924",
+                 "noSep":"0301R0011117V000008",
+                 "alamat":"jl. Merdekah",
+                 "email":"emailkudisadap@gmail.com",
+                 "kodeDPJP":"271190",
+                 "keterangan":"Capek Kerja",
+                 "saran":"Pasien harus Cuti,Kecapekan Kerja dan Kerja.",
+                 "user":"123456",
+                 "obat":[
+                    {
+                       "kdObat":"00196999124",
+                       "signa1":"3",
+                       "signa2":"1",
+                       "jmlObat":"5"
+                    },
+                    {
+                       "kdObat":"00011999918",
+                       "signa1":"3",
+                       "signa2":"1",
+                       "jmlObat":"10"
+                    }
+                 ]
+              }
+           }
+        }     
+                                     
+
+Hapus PRB
+{BASE URL}/PRB/Delete
+Fungsi : Hapus Data PRB
+
+Method : DELETE
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                                
+        {
+          "request":
+           {
+          "t_prb":
+            {  
+              "noSrb":"91141924",
+              "noSep":"0301R0011117V000008",
+              "user": "123456"
+             }
+           }
+        }
+                    
+                                     
+Pencarian Data PRB
+Nomor SRB
+{BASE URL}/prb/{Parameter 1}/nosep/{Parameter 2}
+Fungsi : Pencarian data PRB (Rujuk Balik) Berdasarkan Nomor SRB
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter 1 : No. SRB Peserta
+
+Parameter 2 : No. SEP
+
+                                    
+        {
+          "metaData": {
+            "code": "200",
+            "message": "Sukses"
+          },
+          "response": {
+            "prb": {
+              "DPJP": {
+                "kode": "275190",
+                "nama": "Marwoto, dr. Sp.PD"
+              },
+              "noSEP": "1101R0070118V999996",
+              "noSRB": "9419118",
+              "obat": {
+                "obat": [
+                  {
+                    "jmlObat": "5",
+                    "kdObat": "00019990017",
+                    "nmObat": "Analog Insulin Long Acting inj 100 UI/ml",
+                    "signa1": "3",
+                    "signa2": "1"
+                  },
+                  {
+                    "jmlObat": "10",
+                    "kdObat": "00078990062",
+                    "nmObat": "Human Insulin Long Acting penfill 3 ml",
+                    "signa1": "3",
+                    "signa2": "1"
+                  }
+                ]
+              },
+              "peserta": {
+                "alamat": "Jl. Merdekah",
+                "asalFaskes": {
+                  "kode": "016999901",
+                  "nama": "Klinik KALI ADEM"
+                },
+                "email": "emailkudisadap@gmail.com",
+                "kelamin": "P",
+                "nama": "SITI RONALDO",
+                "noKartu": "0054679979951",
+                "noTelepon": "089101999101",
+                "tglLahir": "1949-09-06"
+              },
+              "programPRB": {
+                "kode": "01 ",
+                "nama": "Diabetes Mellitus"
+              },
+              "keterangan": "Kecapekan Kerja",
+              "saran": "Pasien Harus Cuti, Kebanyakan Kerja",
+              "tglSRB": "2018-01-08"
+            }
+          }
+        }
+                                            
+Tanggal SRB
+{BASE URL}/prb/tglMulai{Parameter 1}/tglAkhir{Parameter 2}
+Fungsi : Pencarian data PRB (Rujuk Balik) Berdasarkan Tanggal SRB
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter 1 : Tgl. Mulai (yyyy-mm-dd)
+
+Parameter 2 : Tgl. Mulai (yyyy-mm-dd)
+
+                                    
+        {
+          "metaData": {
+            "code": "200",
+            "message": "OK"
+          },
+          "response": {
+            "prb": {
+              "list": [
+                  {
+                  "DPJP": {
+                    "kode": "2759111",
+                    "nama": "Marwoto,dr. Sp.PD"
+                  },              
+                  "noSEP": "1101R0070118V110086",
+                  "noSRB": "9419118",
+                  "peserta": {
+                    "alamat": "Jl. Merdekah",
+                    "email": "emailkudisadap@gmail.com",
+                    "nama": "SITI RONALD",
+                    "noKartu": "0011079979951",
+                    "noTelepon": "081728191919191"
+                  },
+                  "programPRB": {
+                    "kode": "01 ",
+                    "nama": "Diabetes Mellitus"
+                  },
+                  "keterangan": "Alergi Cuti",
+                  "saran": "Pasien Wajib Berlibur, Jangan Disuruh Kerja",
+                  "tglSRB": "2018-01-08"
+                },
+                {
+                  "DPJP": {
+                    "kode": "2759111",
+                    "nama": "Marwoto,dr. Sp.PD"
+                  },
+                  
+                  "noSEP": "1101R0070118V110086",
+                  "noSRB": "9419118",
+                  "peserta": {
+                    "alamat": "Jl. Merdekah",
+                    "email": "emailkudisadap@gmail.com",
+                    "nama": "SITI RONALD",
+                    "noKartu": "0011079979951",
+                    "noTelepon": "081728191919191"
+                  },
+                  "programPRB": {
+                    "kode": "01 ",
+                    "nama": "Diabetes Mellitus"
+                  },
+                  "keterangan": "Alergi Cuti",
+                  "saran": "Pasien Wajib Berlibur, Jangan Disuruh Kerja",
+                  "tglSRB": "2018-01-08"
+                }
+              ]
+            }
+          }
+        }
+                                            
+Rekap Data Peserta Potensi PRB
+Rekap Potensi PRB New
+{BASE URL}/prbpotensi/tahun/{parameter 1}/bulan/{parameter 2}
+Fungsi : Menyediakan data rekap klaim yang diajukan oleh Rumah Sakit (RS), di mana dalam klaim tersebut terdapat peserta dengan flagging Potensi PRB
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter 1 : Tahun
+
+Parameter 2 : Bulan
+
+                                    
+{
+    "response": {
+        "list": [
+            {
+                "NamaPeserta": "UJI COBA",
+                "NomorKartu": "0001731124168",
+                "NOSEP": "0112R0270125V002761",
+                "TanggalPelayanan": "07/01/2025",
+                "DiagnosaPotensiPRB": "E11 - Non-insulin-dependent diabetes mellitus",
+                "KategoriPenyakitPRB": "Diabetes Mellitus"
+            }
+        ]
+    },
+    "metaData": {
+        "code": "200",
+        "message": "OK"
+    }
+}
+                                            
+
+Referensi
+Diagnosa
+{BASE URL}/referensi/diagnosa/{parameter}
+Fungsi : Pencarian data diagnosa (ICD-10)
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter : Kode atau Nama Diagnosa
+
+                                        
+    {
+        "metaData": 
+            {
+                "code": "200",
+                "message": "Sukses"
+            },
+        "response": 
+            {
+            "diagnosa": 
+                [
+                    {
+                        "kode": "A04",
+                        "nama": "A04 - Other bacterial intestinal infections"
+                    }
+                ],
+            }
+    }
+                                        
+ Poli
+{BASE URL}referensi/poli/{Parameter}
+Fungsi : Pencarian data poli
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter : Kode atau Nama Poli
+
+                                
+    {
+        "metaData": 
+            {
+            "code": "200",
+            "message": "Sukses"
+            },
+        "response": 
+            {
+                "poli": 
+                 [
+                    {
+                        "kode": "ICU",
+                        "nama": "Intensive Care Unit"
+                    },
+                    {
+                        "kode": "INT",
+                        "nama": "Poli Penyakit Dalam"
+                    },
+                    {
+                        "kode": "IVP",
+                        "nama": "Intravena Pydografi"
+                    }
+                ]
+            }
+    }                     
+                                 
+Fasilitas Kesehatan
+{BASE URL}/referensi/faskes/{Parameter 1}/{Parameter 2}
+Fungsi : Pencarian data fasilitas kesehatan
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter 1 : nama atau kode faskes
+
+Parameter 2 : Jenis Faskes (1. Faskes 1, 2. Faskes 2/RS)
+
+                                
+    {
+        "metaData": 
+            {
+                "code": "200",
+                "message": "Sukses"
+            },
+        "response": 
+            {
+            "faskes": 
+                [
+                    {
+                        "kode": "00161001",
+                        "nama": "PUSKESMAS SANGIRAN - KAB. SIMEULUE"
+                    },
+                    {
+                        "kode": "00161002",
+                        "nama": "PUSKESMAS SIMEULUE - KAB. SIMEULUE"
+                    }
+                ]
+            }
+    }
+             
+                                 
+ Dokter DPJP (Pencarian data dokter DPJP untuk pengisian DPJP Layan)
+{BASE URL}/referensi/dokter/pelayanan/{Parameter 1}/tglPelayanan/{Parameter 2}/Spesialis/{Parameter 3}
+Fungsi : Pencarian data dokter DPJP untuk pengisian DPJP Layan
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter 1 : Jenis Pelayanan (1. Rawat Inap, 2. Rawat Jalan)
+
+Parameter 2 : Tgl.Pelayanan/SEP (yyyy-mm-dd)
+
+Parameter 3 : Kode Spesialis/Subspesialis
+
+                                
+        {
+           "metaData":{
+              "code":"200",
+              "message":"Sukses"
+           },
+           "response":{
+              "list":[
+                 {
+                    "kode":"31486",
+                    "nama":"Satro Jadhit, dr"
+                 },
+                 {
+                    "kode":"31492",
+                    "nama":"Satroni Lawa, dr"
+                 }
+              ]
+           }
+        }
+                                 
+Propinsi
+{BASE URL}/referensi/propinsi
+Fungsi : Pencarian data propinsi
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+                                
+        {
+           "metaData":{
+              "code":"200",
+              "message":"Sukses"
+           },
+           "response":{
+              "list":[
+                 {
+                    "kode":"16",
+                    "nama":"Bali"
+                 },
+                 {
+                    "kode":"17",
+                    "nama":"Banten"
+                 }
+              ]
+           }
+        }
+                                 
+                                 
+Kabupaten
+{BASE URL}/referensi/kabupaten/propinsi/{paramater 1}
+Fungsi : Pencarian data propinsi
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter 1 : Kode Propinsi
+
+                                
+        {
+           "metaData":{
+              "code":"200",
+              "message":"Sukses"
+           },
+           "response":{
+              "list":[
+                 {
+                    "kode":"0227",
+                    "nama":"KAB. BADUNG"
+                 },
+                 {
+                    "kode":"0230",
+                    "nama":"KAB. BANGLI"
+                 }
+              ]
+           }
+        }
+                                 
+Kecamatan
+{BASE URL}/referensi/kecamatan/kabupaten/{paramater 1}
+Fungsi : Pencarian data kecamatan
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter 1 : Kode Kabupaten
+
+                                
+        {
+           "metaData":{
+              "code":"200",
+              "message":"Sukses"
+           },
+           "response":{
+              "list":[
+                 {
+                    "kode":"3139",
+                    "nama":"KUTA"
+                 },
+                 {
+                    "kode":"3135",
+                    "nama":"KUTA UTARA"
+                 }
+              ]
+           }
+        }
+                                 
+Diagnosa Program PRB
+{BASE URL}/referensi/diagnosaprb
+Fungsi : Pencarian data diagnosa program PRB
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+                                
+    {
+      "metaData": {
+        "code": "200",
+        "message": "Sukses"
+      },
+      "response": {
+        "list": [
+          {
+            "kode": "01 ",
+            "nama": "Diabetes Mellitus"
+          },
+          {
+            "kode": "02 ",
+            "nama": "Hypertensi"
+          },
+          {
+            "kode": "03 ",
+            "nama": "Asthma"
+          },
+          {
+            "kode": "04 ",
+            "nama": "Penyakit Jantung"
+          },
+          {
+            "kode": "05 ",
+            "nama": "PPOK (Penyakit Paru Obstruktif Kronik)"
+          },
+          {
+            "kode": "06 ",
+            "nama": "Schizophrenia"
+          },
+          {
+            "kode": "07 ",
+            "nama": "Stroke"
+          },
+          {
+            "kode": "08 ",
+            "nama": "Epilepsi"
+          },
+          {
+            "kode": "09 ",
+            "nama": "Systemic Lupus Erythematosus"
+          }
+        ]
+      }
+    }
+                                 
+Obat Generik Program PRB
+{BASE URL}/referensi/obatprb/{Parameter 1}
+Fungsi : Pencarian data obat generik PRB
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter 1: nama obat generik
+
+                                
+    {
+      "metaData": {
+        "code": "200",
+        "message": "Sukses"
+      },
+      "response": {
+        "list": [
+          {
+            "kode": "00019100017",
+            "nama": "Analog Insulin Long Acting inj 100 UI/ml"
+          },
+          {
+            "kode": "00012300016",
+            "nama": "Analog Insulin Mix Acting inj 100 UI/ml"
+          }
+        ]
+      }
+    }
+                                 
+Procedure / Tindakan (Hanya Untuk Lembar Pengajuan Klaim)
+{BASE URL}/referensi/procedure/{Parameter}
+Fungsi : Pencarian data procedure/tindakan
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter : nama atau kode procedure
+
+                                
+        {  
+            "metaData":{  
+                "code":"200",
+                "message":"Sukses"
+            },
+            "response":{  
+                "procedure":[  
+                    {  
+                    "kode":"21.05",
+                    "nama":"21.05 - Control of epistaxis by (transantral) ligation of the maxillary artery"
+                    },
+                    {  
+                    "kode":"382.2",
+                    "nama":"382.2 - Chronic atticoantral suppurative otitis media"
+                    }
+                ]
+            }
+        }
+             
+                                 
+                                 
+Kelas Rawat (Hanya Untuk Lembar Pengajuan Klaim)
+{BASE URL}/referensi/kelasrawat
+Fungsi : Pencarian data kelas rawat
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+                                
+{
+    "metaData": {
+        "code": "200",
+        "message": "Sukses"
+    },
+    "response": {
+        "list": [
+            {
+                "kode": "1",
+                "nama": "VVIP"
+            },
+            {
+                "kode": "2",
+                "nama": "VIP"
+            },
+            {
+                "kode": "3",
+                "nama": "Kelas 1"
+            },
+            {
+                "kode": "4",
+                "nama": "Kelas 2"
+            },
+            {
+                "kode": "5",
+                "nama": "Kelas 3"
+            }
+        ]
+    }
+}
+             
+                                 
+Dokter (Hanya Untuk Lembar Pengajuan Klaim, Pencarian data dokter dalam faskes sesuai consid)
+{BASE URL}/referensi/dokter/{Parameter}
+Fungsi : Pencarian data dokter dalam faskes sesuai consid
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter : nama dokter/DPJP
+
+                                
+        {
+           "metaData":{
+              "code":"200",
+              "message":"Sukses"
+           },
+           "response":{
+              "list":[
+                 {
+                    "kode":"3",
+                    "nama":"Satro Jadhit, dr"
+                 },
+                 {
+                    "kode":"2",
+                    "nama":"Satroni Lawa, dr"
+                 }
+              ]
+           }
+        }
+                                 
+                                 
+Spesialistik (Hanya Untuk Lembar Pengajuan Klaim)
+{BASE URL}/referensi/spesialistik
+Fungsi : Pencarian data spesialistik
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+                                
+        {
+           "metaData":{
+              "code":"200",
+              "message":"Sukses"
+           },
+           "response":{
+              "list":[
+                 {
+                    "kode":"11",
+                    "nama":"Spesialis Anestesiologi dan Reanimasi"
+                 },
+                 {
+                    "kode":"27",
+                    "nama":"Spesialis Forensik"
+                 },
+                 {
+                    "kode":"28",
+                    "nama":"Spesialis Onkologi"
+                 }
+              ]
+           }
+        }
+                                 
+                                 
+Ruang Rawat (Hanya Untuk Lembar Pengajuan Klaim)
+{BASE URL}/referensi/ruangrawat
+Fungsi : Pencarian data ruang rawat
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+                                
+        {
+           "metaData":{
+              "code":"200",
+              "message":"Sukses"
+           },
+           "response":{
+              "list":[
+                 {
+                    "kode":"3",
+                    "nama":"Ruang Melati I"
+                 },
+                 {
+                    "kode":"4",
+                    "nama":"Ruang Melati II"
+                 },
+                 {
+                    "kode":"5",
+                    "nama":"Ruang Kamboja I"
+                 },
+                 {
+                    "kode":"6",
+                    "nama":"Ruang Kamboja II"
+                 },
+                 {
+                    "kode":"9",
+                    "nama":"Ruang Bougenvile"
+                 }
+              ]
+           }
+        }
+                                 
+                                 
+Cara Keluar (Hanya Untuk Lembar Pengajuan Klaim)
+{BASE URL}/referensi/carakeluar
+Fungsi : Pencarian data cara keluar
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+                                
+        {
+           "metaData":{
+              "code":"200",
+              "message":"Sukses"
+           },
+           "response":{
+              "list":[
+                 {
+                    "kode":"1",
+                    "nama":"Atas Persetujuan Dokter"
+                 },
+                 {
+                    "kode":"2",
+                    "nama":"Dirujuk"
+                 },
+                 {
+                    "kode":"3",
+                    "nama":"Atas Permintaan Sendiri"
+                 },
+                 {
+                    "kode":"4",
+                    "nama":"Meninggal"
+                 },
+                 {
+                    "kode":"5",
+                    "nama":"Lain-Lain"
+                 }
+              ]
+           }
+        }
+                                 
+                                 
+Pasca Pulang (Hanya Untuk Lembar Pengajuan Klaim)
+{BASE URL}/referensi/pascapulang
+Fungsi : Pencarian data pasca pulang
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+                                
+        {
+           "metaData": {
+              "code": "200",
+              "message": "Sukses"
+           },
+           "response": {
+              "list": [
+                 {
+                    "kode": "1",
+                    "nama": "Sembuh"
+                 },
+                 {
+                    "kode": "2",
+                    "nama": "Dirujuk"
+                 },
+                 {
+                    "kode": "3",
+                    "nama": "Pulang Paksa"
+                 },
+                 {
+                    "kode": "4",
+                    "nama": "Meninggal"
+                 },
+                 {
+                    "kode": "5",
+                    "nama": "Lain-Lain"
+                 }
+              ]
+           }
+        }
+                                 
+                                 
+Pembuatan Rencana Kontrol/SPRI
+Insert Rencana Kontrol
+JSON
+{BASE URL}/RencanaKontrol/insert
+Fungsi : Insert Rencana Kontrol
+
+Method : POST
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                                    
+        {
+            "request": {
+                "noSEP":"0301R0111018V000006",
+                "kodeDokter":"12345",
+                "poliKontrol":"INT",
+                "tglRencanaKontrol":"2021-03-20",
+                "user":"ws"
+            }
+        }
+                                                        
+Update Rencana Kontrol
+{BASE URL}/RencanaKontrol/Update
+Fungsi : Update Rencana Kontrol
+
+Method : PUT
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                            
+        {
+            "request": {
+                "noSuratKontrol":"0301R0110321K000002",
+                "noSEP":"0301R0111018V000006",
+                "kodeDokter":"11111",
+                "poliKontrol":"INT",
+                "tglRencanaKontrol":"2021-03-18",
+                "user":"coba"
+            }
+        }
+                                                
+Insert Rencana Kontrol v2 New
+{BASE URL}/RencanaKontrol/v2/Insert
+Fungsi : Insert Rencana Kontrol v2
+
+Method : POST
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                            
+        {
+            "request": {
+                "noSEP":"0301R0111018V000006",
+                "kodeDokter":"12345",
+                "poliKontrol":"INT",
+                "tglRencanaKontrol":"2021-03-20",
+                "user":"ws",
+                "formPRB": {
+                  "kdStatusPRB": "07",
+                  "data": {
+                    "HBA1C": null, 
+                    "GDP": 78, 
+                    "GD2JPP": null,
+                    "eGFR": null,
+                    "TD_Sistolik": 90,
+                    "TD_Diastolik": 90,
+                    "LDL": 20,
+                    "Rata_TD_Sistolik": null,
+                    "Rata_TD_Diastolik": null,
+                    "JantungKoroner": null,
+                    "Stroke": null,
+                    "VaskularPerifer": null,
+                    "Aritmia": null, 
+                    "AtrialFibrilasi": null,
+                    "NadiIstirahat": null,
+                    "SesakNapas3Bulan": null,
+                    "NyeriDada3Bulan": null,
+                    "SesakNapasAktivitas": null,
+                    "NyeriDadaAktivitas": null,
+                    "Terkontrol": null,
+                    "Gejala2xMinggu": null,
+                    "BangunMalam": null,
+                    "KeterbatasanFisik": null,
+                    "FungsiParu": null,
+                    "SkorMMRC": null,
+                    "Eksaserbasi1Tahun": null,
+                    "MampuAktivitas": null,
+                    "Epileptik6Bulan": null,
+                    "EfekSampingOAB": null,
+                    "HamilMenyusui": null,
+                    "Remisi": null,
+                    "TerapiRumatan": null,
+                    "Usia": null,
+                    "AsamUrat": 0.1,
+                    "RemisiSLE": null,
+                    "Hamil": null 
+                  }
+                }
+            }
+        }
+                                                
+Update Rencana Kontrol v2 New
+{BASE URL}/RencanaKontrol/v2/Update
+Fungsi : Update Rencana Kontrol v2
+
+Method : PUT
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                            
+        {
+            "request": {
+                "noSuratKontrol":"0301R0110321K000002",
+                "noSEP":"0301R0111018V000006",
+                "kodeDokter":"11111",
+                "poliKontrol":"INT",
+                "tglRencanaKontrol":"2021-03-18",
+                "user":"coba",
+                "formPRB": {
+                    "kdStatusPRB": "07",
+                    "data": {
+                        "HBA1C": null,
+                        "GDP": 78,
+                        "GD2JPP": null,
+                        "eGFR": null,
+                        "TD_Sistolik": 90,
+                        "TD_Diastolik": 90,
+                        "LDL": 20,
+                        "Rata_TD_Sistolik": null,
+                        "Rata_TD_Diastolik": null,
+                        "JantungKoroner": null,
+                        "Stroke": null,
+                        "VaskularPerifer": null,
+                        "Aritmia": null,
+                        "AtrialFibrilasi": null,
+                        "SesakNapas3Bulan": null,
+                        "NyeriDada3Bulan": null,
+                        "Terkontrol": null,
+                        "Gejala2xMinggu": null,
+                        "BangunMalam": null,
+                        "KeterbatasanFisik": null,
+                        "FungsiParu": null,
+                        "SkorMMRC": null,
+                        "Eksaserbasi1Tahun": null,
+                        "MampuAktivitas": null,
+                        "Epileptik6Bulan": null,
+                        "EfekSampingOAB": null,
+                        "HamilMenyusui": null,
+                        "Remisi": null,
+                        "TerapiRumatan": null,
+                        "Usia": null,
+                        "AsamUrat": 0.1,
+                        "RemisiSLE": null,
+                        "Hamil": null,
+                        "NadiIstirahat": null,
+                        "SesakNapasAktivitas": null,
+                        "NyeriDadaAktivitas": null
+                    }
+                }
+            }
+        }
+                                                
+Hapus Rencana Kontrol New
+{BASE URL}/RencanaKontrol/Delete
+Fungsi : Hapus Data REncana Kontrol
+
+Method : DELETE
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                            
+        {
+            "request": {
+                "t_suratkontrol":{
+                "noSuratKontrol": "0301R0010320K000004",
+                "user": "xxx"
+                }
+            }
+        }
+
+                                                
+                                 
+Insert SPRI New
+{BASE URL}/RencanaKontrol/InsertSPRI
+Fungsi : Insert SPRI
+
+Method : POST
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                            
+        {
+            "request":
+                {
+                    "noKartu":"0001116500714",
+                    "kodeDokter":"31537",
+                    "poliKontrol":"BED",
+                    "tglRencanaKontrol":"2021-04-13",
+                    "user":"sss"
+                }
+        }
+                                                
+                                 
+Update SPRI New
+{BASE URL}/RencanaKontrol/UpdateSPRI
+Fungsi : Update SPRI
+
+Method : PUT
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                            
+        {
+    "request":
+        {
+            "noSPRI":"0301R0110421K000116",
+            "kodeDokter":"31537",
+            "poliKontrol":"ANA",
+            "tglRencanaKontrol":"2021-04-13",
+            "user":"cobdda"
+        }
+}
+                                                
+Cari SEP New
+{BASE URL}/RencanaKontrol/nosep/{parameter}
+Fungsi : Melihat data SEP untuk keperluan rencana kontrol
+
+Method : GET
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Parameter: Nomor SEP Peserta
+
+
+                                
+    {
+        "metaData": {
+            "code": "200",
+            "message": "Sukses"
+           },
+        "response": {
+            "noSep": "0301R0010819V006059",
+            "tglSep": "2019-10-17",
+            "jnsPelayanan": "Rawat Jalan",
+            "poli": "HDL - HEMODIALISA",
+            "diagnosa": "Z49.1 - Extracorporeal dialysis",
+            "peserta": {
+            "noKartu": "0000018965349",
+            "nama": "RASBEN",
+            "tglLahir": "1957-11-10",
+            "kelamin": "L",
+            "hakKelas": "-"
+        },
+        "provUmum": {
+            "kdProvider": "03100202",
+            "nmProvider": "KAMPUNG TELENG"
+        },
+        "provPerujuk": {
+            "kdProviderPerujuk": "03100202",
+            "nmProviderPerujuk": "KAMPUNG TELENG",
+            "asalRujukan": "1",
+            "noRujukan": "031002020619P000413",
+            "tglRujukan": "2019-10-17"
+            }
+        }
+    }
+                                         
+                                 
+Cari Nomor Surat Kontrol New
+{BASE URL}/RencanaKontrol/noSuratKontrol/{parameter}
+Fungsi : Melihat data SEP untuk keperluan rencana kontrol
+
+Method : GET
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Parameter: Nomor Surat Kontrol Peserta
+
+
+                                
+    {
+	"response": {
+		"noSuratKontrol": "0301R0111125K000002",
+		"tglRencanaKontrol": "2025-11-25",
+		"tglTerbit": "2025-11-18",
+		"jnsKontrol": "2",
+		"poliTujuan": "BED",
+		"namaPoliTujuan": "BEDAH",
+		"kodeDokter": "31348",
+		"namaDokter": "CIiNatXXAXSkrIrPId,ManFs.SDDMe",
+		"flagKontrol": "False",
+		"kodeDokterPembuat": "31348",
+		"namaDokterPembuat": "CIiNatXXAXSkrIrPId,ManFs.SDDMe",
+		"namaJnsKontrol": "Kontrol",
+		"sep": {
+			"noSep": "0301R0110725V000006",
+			"tglSep": "2025-07-30",
+			"jnsPelayanan": "Rawat Jalan",
+			"poli": "BED - BEDAH",
+			"diagnosa": "E10 - Insulin-dependent diabetes mellitus",
+			"peserta": {
+				"noKartu": "0002482505324",
+				"nama": "ARMSTIOFIALR",
+				"tglLahir": "1983-09-07",
+				"kelamin": "P",
+				"hakKelas": "-"
+			},
+			"provUmum": {
+				"kdProvider": "10210901",
+				"nmProvider": "KERTASEMAYA"
+			},
+			"provPerujuk": {
+				"kdProviderPerujuk": "0050B107",
+				"nmProviderPerujuk": "Klinik Sehat Gajah Mada",
+				"asalRujukan": "1",
+				"noRujukan": "0050B1070924P000001",
+				"tglRujukan": "2025-10-01"
+			}
+		},
+		"formPRB": {
+			"kdStatusPRB": null,
+			"data": {
+				"HBA1C": null,
+				"GDP": null,
+				"GD2JPP": null,
+				"eGFR": null,
+				"TD_Sistolik": null,
+				"TD_Diastolik": null,
+				"LDL": null,
+				"Rata_TD_Sistolik": null,
+				"Rata_TD_Diastolik": null,
+				"JantungKoroner": null,
+				"Stroke": null,
+				"VaskularPerifer": null,
+				"Aritmia": null,
+				"AtrialFibrilasi": null,
+				"SesakNapas3Bulan": null,
+				"NyeriDada3Bulan": null,
+				"Terkontrol": null,
+				"Gejala2xMinggu": null,
+				"BangunMalam": null,
+				"KeterbatasanFisik": null,
+				"FungsiParu": null,
+				"SkorMMRC": null,
+				"Eksaserbasi1Tahun": null,
+				"MampuAktivitas": null,
+				"Epileptik6Bulan": null,
+				"EfekSampingOAB": null,
+				"HamilMenyusui": null,
+				"Remisi": null,
+				"TerapiRumatan": null,
+				"Usia": null,
+				"AsamUrat": null,
+				"RemisiSLE": null,
+				"Hamil": null,
+				"NadiIstirahat": null,
+				"SesakNapasAktivitas": null,
+				"NyeriDadaAktivitas": null
+			}
+		}
+	},
+	"metaData": {
+		"code": "200",
+		"message": "Sukses"
+	}
+}
+    
+Catatan: 
+Ketika pembuatan SPRI atau jenis kontrol 1 tidak ada referensi nomor SEP asalnya, jadi field response SEP kosong atau null. 
+Sedangkan jika pembuatan surat kontrol atau jenis kontrol 2, akan terisi field response SEP karena terdapat referensi nomor SEP asal ketika pembuatan surat kontrol tersebut.
+                                         
+Data Nomor Surat Kontrol Berdasarkan No Kartu New
+{BASE URL}/RencanaKontrol/ListRencanaKontrol/Bulan/{parameter 1}/Tahun/{parameter 2}/Nokartu/{parameter 3}/filter/{parameter 4}
+Fungsi : Data Rencana Kontrol By No Kartu
+
+Method : GET
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Parameter 1: Bulan. Contoh: Januari => 01
+
+Parameter 2: Tahun
+
+Parameter 3: Nomor Kartu
+
+Parameter 4: Format filter --> 1: tanggal entri, 2: tanggal rencana kontrol
+
+
+                                
+{
+   "metaData":{
+      "code":"200",
+      "message":"Sukses"
+   },
+   "response":{
+      "list":[
+         {
+            "noSuratKontrol":"0117R0770122K000004",
+            "jnsPelayanan":"Rawat Inap",
+            "jnsKontrol":"2",
+            "namaJnsKontrol":"Surat Kontrol",
+            "tglRencanaKontrol":"2022-01-06",
+            "tglTerbitKontrol":"2022-01-05",
+            "noSepAsalKontrol":"0117R0770122V000003",
+            "poliAsal":"INT",
+            "namaPoliAsal":"-",
+            "poliTujuan":"INT",
+            "namaPoliTujuan":"PENYAKIT DALAM",
+            "tglSEP":"2022-01-04",
+            "kodeDokter":"296676",
+            "namaDokter":"ABD KADIR",
+            "noKartu":"0002035874204",
+            "nama":"ANI AZKIA",
+            "terbitSEP":"Belum"
+         }
+      ]
+   }
+}
+                                         
+                                 
+Data Nomor Surat Kontrol New
+{BASE URL}/RencanaKontrol/ListRencanaKontrol/tglAwal/{parameter 1}/tglAkhir/{parameter 2}/filter/{parameter 3}
+Fungsi : Data Rencana Kontrol
+
+Method : GET
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Parameter 1: Tanggal awal format : yyyy-MM-dd
+
+Parameter 2: Tanggal akhir format : yyyy-MM-dd
+
+Parameter 3: Format filter --> 1: tanggal entri, 2: tanggal rencana kontrol
+
+
+                                
+    {
+        "metaData": {
+            "code": "200",
+            "message": "Sukses"
+        },
+        "response": {
+            "list": [
+                {
+                    "noSuratKontrol": "0301R0110321K000002",
+                    "jnsPelayanan": "Rawat Jalan",
+                    "jnsKontrol": "2",
+                    "namaJnsKontrol": "Surat Kontrol",
+                    "tglRencanaKontrol": "2021-03-18",
+                    "tglTerbitKontrol": "2021-03-16",
+                    "noSepAsalKontrol": "0301R0111018V000006",
+                    "poliAsal": "INT",
+                    "namaPoliAsal": "PENYAKIT DALAM",
+                    "poliTujuan": "INT",
+                    "namaPoliTujuan": "PENYAKIT DALAM",
+                    "tglSEP": "2021-03-16",
+                    "kodeDokter": "31479",
+                    "namaDokter": "Prof.dr.Yulius,SpPD, KGEH",
+                    "noKartu": "0001882053808",
+                    "nama": "mela handayani"
+                }
+            ]
+        }
+    }
+                                         
+Data Poli/Spesialistik New
+{BASE URL}/RencanaKontrol/ListSpesialistik/JnsKontrol/{parameter 1}/nomor/{parameter 2}/TglRencanaKontrol/{parameter 3}
+Fungsi : Data Rencana Kontrol
+
+Method : GET
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Parameter 1: Jenis kontrol --> 1: SPRI, 2: Rencana Kontrol
+
+Parameter 2: Nomor --> jika jenis kontrol = 1, maka diisi nomor kartu; jika jenis kontrol = 2, maka diisi nomor SEP
+
+Parameter 3: Tanggal rencana kontrol --> format yyyy-MM-dd
+
+
+                                
+    {
+        "metaData": {
+            "code": "200",
+            "message": "Sukses"
+        },
+        "response": {
+            "list": [
+                {
+                    "kodePoli": "004",
+                    "namaPoli": "Alergi-Immunologi Klinik ",
+                    "kapasitas": "30",
+                    "jmlRencanaKontroldanRujukan": "0",
+                    "persentase": "0.00"
+                },
+                {
+                    "kodePoli": "005",
+                    "namaPoli": "Gastroenterologi-Hepatologi ",
+                    "kapasitas": "12",
+                    "jmlRencanaKontroldanRujukan": "0",
+                    "persentase": "0.00"
+                },
+                {
+                    "kodePoli": "008",
+                    "namaPoli": "Hematologi - Onkologi Medik ",
+                    "kapasitas": "24",
+                    "jmlRencanaKontroldanRujukan": "0",
+                    "persentase": "0.00"
+                },
+                {
+                    "kodePoli": "013",
+                    "namaPoli": "Reumatologi ",
+                    "kapasitas": "24",
+                    "jmlRencanaKontroldanRujukan": "0",
+                    "persentase": "0.00"
+                },
+                {
+                    "kodePoli": "015",
+                    "namaPoli": "Kardiovaskular ",
+                    "kapasitas": "24",
+                    "jmlRencanaKontroldanRujukan": "0",
+                    "persentase": "0.00"
+                },
+                {
+                    "kodePoli": "023",
+                    "namaPoli": "obstetri ginekologi sosial",
+                    "kapasitas": "12",
+                    "jmlRencanaKontroldanRujukan": "0",
+                    "persentase": "0.00"
+                }
+            ]
+        }
+    }
+                                         
+                                 
+Data Dokter New
+{BASE URL}/RencanaKontrol/JadwalPraktekDokter/JnsKontrol/{parameter 1}/KdPoli/{parameter 2}/TglRencanaKontrol/{parameter 3}
+Fungsi : Data Rencana Kontrol
+
+Method : GET
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Parameter 1: Jenis kontrol --> 1: SPRI, 2: Rencana Kontrol
+
+Parameter 2: Kode poli
+
+Parameter 3: Tanggal rencana kontrol --> format yyyy-MM-dd
+
+
+                                
+    {
+        "metaData": {
+            "code": "200",
+            "message": "Sukses"
+        },
+        "response": {
+            "list": [
+                {
+                    "kodeDokter": "31528",
+                    "namaDokter": "Dr.John Wick",
+                    "jadwalPraktek": "16:00 - 18:00",
+                    "kapasitas": "12"
+                },
+                {
+                    "kodeDokter": "31348",
+                    "namaDokter": "Dr. Luffy",
+                    "jadwalPraktek": "10:00 - 12:00",
+                    "kapasitas": "12"
+                }
+            ]
+        }
+    }
+                                         
+Cari Rujukan
+Rujukan Berdasarkan Nomor Rujukan
+PCare
+{BASE URL}/Rujukan/{parameter}
+
+Fungsi : Pencarian data rujukan dari Pcare berdasarkan nomor rujukan
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter : Nomor Rujukan
+
+                                        
+    {
+       "metaData": {
+          "code": "200",
+          "message": "OK"
+       },
+       "response": {
+          "rujukan": {
+             "diagnosa": {
+                "kode": "N40",
+                "nama": "Hyperplasia of prostate"
+             },
+             "keluhan": "kencing tidak puas",
+             "noKunjungan": "030107010217Y001465",
+             "pelayanan": {
+                "kode": "2",
+                "nama": "Rawat Jalan"
+             },
+             "peserta": {
+                "cob": {
+                   "nmAsuransi": null,
+                   "noAsuransi": null,
+                   "tglTAT": null,
+                   "tglTMT": null
+                },
+                "hakKelas": {
+                   "keterangan": "KELAS I",
+                   "kode": "1"
+                },
+                "informasi": {
+                   "dinsos": null,
+                   "noSKTM": null,
+                   "prolanisPRB": null
+                },
+                "jenisPeserta": {
+                   "keterangan": "PENERIMA PENSIUN PNS",
+                   "kode": "15"
+                },
+                "mr": {
+                   "noMR": "298036",
+                   "noTelepon": null
+                },
+                "nama": "MUSDIWAR,BA",
+                "nik": null,
+                "noKartu": "0000416382632",
+                "pisa": "2",
+                "provUmum": {
+                   "kdProvider": "03010701",
+                   "nmProvider": "SITEBA"
+                },
+                "sex": "L",
+                "statusPeserta": {
+                   "keterangan": "AKTIF",
+                   "kode": "0"
+                },
+                "tglCetakKartu": "2017-11-13",
+                "tglLahir": "1938-08-31",
+                "tglTAT": "2038-08-31",
+                "tglTMT": "1996-08-20",
+                "umur": {
+                   "umurSaatPelayanan": "78 tahun ,6 bulan ,6 hari",
+                   "umurSekarang": "79 tahun ,3 bulan ,18 hari"
+                }
+             },
+             "poliRujukan": {
+                "kode": "URO",
+                "nama": "UROLOGI"
+             },
+             "provPerujuk": {
+                "kode": "03010701",
+                "nama": "SITEBA"
+             },
+             "tglKunjungan": "2017-02-25"
+          }
+       }
+    }
+                                        
+Rujukan Berdasarkan Nomor Rujukan
+Rumah Sakit
+{BASE URL}/Rujukan/RS/{parameter}
+
+Fungsi : Pencarian data rujukan dari rumah sakit berdasarkan nomor rujukan
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter : Nomor Rujukan
+
+                                        
+    {
+       "metaData": {
+          "code": "200",
+          "message": "OK"
+       },
+       "response": {
+          "rujukan": {
+             "diagnosa": {
+                "kode": "I21.9",
+                "nama": "Acute myocardial infarction, unspecified"
+             },
+             "keluhan": "",
+             "noKunjungan": "0304R0050217A000079",
+             "pelayanan": {
+                "kode": "1",
+                "nama": "Rawat Inap"
+             },
+             "peserta": {
+                "cob": {
+                   "nmAsuransi": null,
+                   "noAsuransi": null,
+                   "tglTAT": null,
+                   "tglTMT": null
+                },
+                "hakKelas": {
+                   "keterangan": "KELAS III",
+                   "kode": "3"
+                },
+                "informasi": {
+                   "dinsos": null,
+                   "noSKTM": null,
+                   "prolanisPRB": null
+                },
+                "jenisPeserta": {
+                   "keterangan": "PBI (APBN)",
+                   "kode": "21"
+                },
+                "mr": {
+                   "noMR": "971430",
+                   "noTelepon": null
+                },
+                "nama": "MUHAMMAD JUSAR",
+                "nik": "1106081301530001",
+                "noKartu": "0105986780439",
+                "pisa": "1",
+                "provUmum": {
+                   "kdProvider": "03050301",
+                   "nmProvider": "BASO"
+                },
+                "sex": "L",
+                "statusPeserta": {
+                   "keterangan": "AKTIF",
+                   "kode": "0"
+                },
+                "tglCetakKartu": "2017-11-13",
+                "tglLahir": "1953-07-01",
+                "tglTAT": "2053-07-01",
+                "tglTMT": "2013-01-01",
+                "umur": {
+                   "umurSaatPelayanan": "63 tahun ,7 bulan ,23 hari",
+                   "umurSekarang": "64 tahun ,4 bulan ,12 hari"
+                }
+             },
+             "poliRujukan": {
+                "kode": "",
+                "nama": ""
+             },
+             "provPerujuk": {
+                "kode": "0304R005",
+                "nama": "RSI IBNU SINA"
+             },
+             "tglKunjungan": "2017-02-24"
+          }
+       }
+    }
+                                        
+Rujukan Berdasarkan Nomor Kartu (1 Record)
+Pcare
+{BASE URL}/Rujukan/Peserta/{parameter}
+
+Fungsi : Pencarian data rujukan dari PCare berdasarkan nomor kartu
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter : Nomor kartu
+
+                                        
+    {
+       "metaData": {
+          "code": "200",
+          "message": "OK"
+       },
+       "response": {
+          "rujukan": {
+             "diagnosa": {
+                "kode": "N40",
+                "nama": "Hyperplasia of prostate"
+             },
+             "keluhan": "kencing tidak puas",
+             "noKunjungan": "030107010217Y001465",
+             "pelayanan": {
+                "kode": "2",
+                "nama": "Rawat Jalan"
+             },
+             "peserta": {
+                "cob": {
+                   "nmAsuransi": null,
+                   "noAsuransi": null,
+                   "tglTAT": null,
+                   "tglTMT": null
+                },
+                "hakKelas": {
+                   "keterangan": "KELAS I",
+                   "kode": "1"
+                },
+                "informasi": {
+                   "dinsos": null,
+                   "noSKTM": null,
+                   "prolanisPRB": null
+                },
+                "jenisPeserta": {
+                   "keterangan": "PENERIMA PENSIUN PNS",
+                   "kode": "15"
+                },
+                "mr": {
+                   "noMR": "298036",
+                   "noTelepon": null
+                },
+                "nama": "MUSDIWAR,BA",
+                "nik": null,
+                "noKartu": "0000416382632",
+                "pisa": "2",
+                "provUmum": {
+                   "kdProvider": "03010701",
+                   "nmProvider": "SITEBA"
+                },
+                "sex": "L",
+                "statusPeserta": {
+                   "keterangan": "AKTIF",
+                   "kode": "0"
+                },
+                "tglCetakKartu": "2017-11-13",
+                "tglLahir": "1938-08-31",
+                "tglTAT": "2038-08-31",
+                "tglTMT": "1996-08-20",
+                "umur": {
+                   "umurSaatPelayanan": "78 tahun ,6 bulan ,6 hari",
+                   "umurSekarang": "79 tahun ,3 bulan ,18 hari"
+                }
+             },
+             "poliRujukan": {
+                "kode": "URO",
+                "nama": "UROLOGI"
+             },
+             "provPerujuk": {
+                "kode": "03010701",
+                "nama": "SITEBA"
+             },
+             "tglKunjungan": "2017-02-25"
+          }
+       }
+    }
+                                        
+Rujukan Berdasarkan Nomor Kartu (1 Record)
+Rumah Sakit
+{BASE URL}/Rujukan/RS/Peserta/{parameter}
+
+Fungsi : Pencarian data rujukan dari rumah sakit berdasarkan nomor kartu
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter : Nomor kartu
+
+                                        
+    {
+       "metaData": {
+          "code": "200",
+          "message": "OK"
+       },
+       "response": {
+          "rujukan": {
+             "diagnosa": {
+                "kode": "I21.9",
+                "nama": "Acute myocardial infarction, unspecified"
+             },
+             "keluhan": "",
+             "noKunjungan": "0304R0050217A000079",
+             "pelayanan": {
+                "kode": "1",
+                "nama": "Rawat Inap"
+             },
+             "peserta": {
+                "cob": {
+                   "nmAsuransi": null,
+                   "noAsuransi": null,
+                   "tglTAT": null,
+                   "tglTMT": null
+                },
+                "hakKelas": {
+                   "keterangan": "KELAS III",
+                   "kode": "3"
+                },
+                "informasi": {
+                   "dinsos": null,
+                   "noSKTM": null,
+                   "prolanisPRB": null
+                },
+                "jenisPeserta": {
+                   "keterangan": "PBI (APBN)",
+                   "kode": "21"
+                },
+                "mr": {
+                   "noMR": "971430",
+                   "noTelepon": null
+                },
+                "nama": "MUHAMMAD JUSAR",
+                "nik": "1106081301530001",
+                "noKartu": "0105986780439",
+                "pisa": "1",
+                "provUmum": {
+                   "kdProvider": "03050301",
+                   "nmProvider": "BASO"
+                },
+                "sex": "L",
+                "statusPeserta": {
+                   "keterangan": "AKTIF",
+                   "kode": "0"
+                },
+                "tglCetakKartu": "2017-11-13",
+                "tglLahir": "1953-07-01",
+                "tglTAT": "2053-07-01",
+                "tglTMT": "2013-01-01",
+                "umur": {
+                   "umurSaatPelayanan": "63 tahun ,7 bulan ,23 hari",
+                   "umurSekarang": "64 tahun ,4 bulan ,12 hari"
+                }
+             },
+             "poliRujukan": {
+                "kode": "",
+                "nama": ""
+             },
+             "provPerujuk": {
+                "kode": "0304R005",
+                "nama": "RSI IBNU SINA"
+             },
+             "tglKunjungan": "2017-02-24"
+          }
+       }
+    }
+                                        
+Rujukan Berdasarkan Nomor Kartu (Multi Record)
+Pcare
+{BASE URL}/Rujukan/List/Peserta/{parameter}
+
+Fungsi : Pencarian data rujukan dari PCare berdasarkan nomor kartu
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter : Nomor kartu
+
+                                        
+    {
+       "metaData": {
+          "code": "200",
+          "message": "OK"
+       },
+       "response": {
+          "rujukan": 
+            [
+                {
+                 "diagnosa": {
+                    "kode": "N40",
+                    "nama": "Hyperplasia of prostate"
+                 },
+                 "keluhan": "kencing tidak puas",
+                 "noKunjungan": "030107010217Y001465",
+                 "pelayanan": {
+                    "kode": "2",
+                    "nama": "Rawat Jalan"
+                 },
+                 "peserta": {
+                    "cob": {
+                       "nmAsuransi": null,
+                       "noAsuransi": null,
+                       "tglTAT": null,
+                       "tglTMT": null
+                    },
+                    "hakKelas": {
+                       "keterangan": "KELAS I",
+                       "kode": "1"
+                    },
+                    "informasi": {
+                       "dinsos": null,
+                       "noSKTM": null,
+                       "prolanisPRB": null
+                    },
+                    "jenisPeserta": {
+                       "keterangan": "PENERIMA PENSIUN PNS",
+                       "kode": "15"
+                    },
+                    "mr": {
+                       "noMR": "298036",
+                       "noTelepon": null
+                    },
+                    "nama": "MUSDIWAR,BA",
+                    "nik": null,
+                    "noKartu": "0000416382632",
+                    "pisa": "2",
+                    "provUmum": {
+                       "kdProvider": "03010701",
+                       "nmProvider": "SITEBA"
+                    },
+                    "sex": "L",
+                    "statusPeserta": {
+                       "keterangan": "AKTIF",
+                       "kode": "0"
+                    },
+                    "tglCetakKartu": "2017-11-13",
+                    "tglLahir": "1938-08-31",
+                    "tglTAT": "2038-08-31",
+                    "tglTMT": "1996-08-20",
+                    "umur": {
+                       "umurSaatPelayanan": "78 tahun ,6 bulan ,6 hari",
+                       "umurSekarang": "79 tahun ,3 bulan ,18 hari"
+                    }
+                 },
+                 "poliRujukan": {
+                    "kode": "URO",
+                    "nama": "UROLOGI"
+                 },
+                 "provPerujuk": {
+                    "kode": "03010701",
+                    "nama": "SITEBA"
+                 },
+                 "tglKunjungan": "2017-02-25"
+              }
+          ]
+       }
+    }
+                                        
+Rujukan Berdasarkan Nomor Kartu (Multi Record)
+Rumah Sakit
+{BASE URL}/Rujukan/RS/List/Peserta/{parameter}
+
+Fungsi : Pencarian data rujukan dari rumah sakit berdasarkan nomor kartu
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter : Nomor kartu
+
+                                        
+    {
+       "metaData": {
+          "code": "200",
+          "message": "OK"
+       },
+       "response": {
+          "rujukan": 
+            [
+            {
+             "diagnosa": {
+                "kode": "I21.9",
+                "nama": "Acute myocardial infarction, unspecified"
+             },
+             "keluhan": "",
+             "noKunjungan": "0304R0050217A000079",
+             "pelayanan": {
+                "kode": "1",
+                "nama": "Rawat Inap"
+             },
+             "peserta": {
+                "cob": {
+                   "nmAsuransi": null,
+                   "noAsuransi": null,
+                   "tglTAT": null,
+                   "tglTMT": null
+                },
+                "hakKelas": {
+                   "keterangan": "KELAS III",
+                   "kode": "3"
+                },
+                "informasi": {
+                   "dinsos": null,
+                   "noSKTM": null,
+                   "prolanisPRB": null
+                },
+                "jenisPeserta": {
+                   "keterangan": "PBI (APBN)",
+                   "kode": "21"
+                },
+                "mr": {
+                   "noMR": "971430",
+                   "noTelepon": null
+                },
+                "nama": "MUHAMMAD JUSAR",
+                "nik": "1106081301530001",
+                "noKartu": "0105986780439",
+                "pisa": "1",
+                "provUmum": {
+                   "kdProvider": "03050301",
+                   "nmProvider": "BASO"
+                },
+                "sex": "L",
+                "statusPeserta": {
+                   "keterangan": "AKTIF",
+                   "kode": "0"
+                },
+                "tglCetakKartu": "2017-11-13",
+                "tglLahir": "1953-07-01",
+                "tglTAT": "2053-07-01",
+                "tglTMT": "2013-01-01",
+                "umur": {
+                   "umurSaatPelayanan": "63 tahun ,7 bulan ,23 hari",
+                   "umurSekarang": "64 tahun ,4 bulan ,12 hari"
+                }
+             },
+             "poliRujukan": {
+                "kode": "",
+                "nama": ""
+             },
+             "provPerujuk": {
+                "kode": "0304R005",
+                "nama": "RSI IBNU SINA"
+             },
+             "tglKunjungan": "2017-02-24"
+          }
+          ]
+       }
+    }
+                                        
+   Pembuatan Rujukan
+Insert Rujukan
+JSON
+{BASE URL}/Rujukan/insert
+Fungsi : Insert Rujukan
+
+Method : POST
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                                    
+    {
+       "request": {
+          "t_rujukan": {
+             "noSep": "0301R0011017V000014",
+             "tglRujukan": "2017-11-08",
+             "ppkDirujuk": "0301R002",
+             "jnsPelayanan": "1",
+             "catatan": "test",
+             "diagRujukan": "A00.1",
+             "tipeRujukan": "1",
+             "poliRujukan": "INT",
+             "user": "Coba Ws"
+          }
+       }
+    }                  
+                                 
+Update Rujukan
+JSON
+{BASE URL}/Rujukan/update
+Fungsi : Update Rujukan
+
+Method : PUT
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                                    
+    {
+       "request": {
+          "t_rujukan": {
+             "noRujukan": "0301R0011117B000014",
+             "ppkDirujuk": "0301R002",
+             "tipe": "0",
+             "jnsPelayanan": "1",
+             "catatan": "test 3",
+             "diagRujukan": "A00.1",
+             "tipeRujukan": "1",
+             "poliRujukan": "INT",
+             "user": "Coba Ws"
+          }
+       }
+    }             
+                                 
+Delete Rujukan
+JSON
+{BASE URL}/Rujukan/delete
+Fungsi : Update Rujukan
+
+Method : DELETE
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                                    
+    {
+        "request": {
+            "t_rujukan": {
+                "noRujukan": "0301R0011117B000015",
+                "user": "Coba Ws"
+            }
+        }
+    }   
+                                 
+                                 
+Insert Rujukan Khusus New
+JSON
+{BASE URL}/Rujukan/Khusus/insert
+Fungsi : Insert Rujukan Khusus
+
+Method : POST
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                                    
+    {
+         "noRujukan": "0301U0331019P003283",
+         "diagnosa": [
+                 {"kode": "P;N18"},
+                 {"kode": "S;N18.1"}
+         ],
+        "procedure":  [
+                 {"kode": "39.95"}
+         ],
+         "user": "Coba Ws"
+    }                
+                                 
+                                 
+Delete Rujukan Khusus New
+JSON
+{BASE URL}/Rujukan/Khusus/delete
+Fungsi : Delete Rujukan Khusus
+
+Method : POST
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                                    
+    {
+       "request": {
+                "t_rujukan": {
+                          "idRujukan": "98865",
+                          "noRujukan": "0301U0331019P003283",
+                          "user": "Coba Ws"
+                  }
+        }
+    }      
+                                 
+                                 
+List Rujukan Khusus New
+{BASE URL}/Rujukan/Khusus/List/Bulan/{parameter 1}/Tahun/{parameter 2}
+Fungsi : Data Khusus
+
+Method : GET
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Parameter 1: Bulan (1,2,3,4,5,6,7,8,9,10,11,12)
+
+Parameter 2: Tahun (4 digit)
+
+
+                                
+    {
+      "metaData": {
+        "code": "200",
+        "message": "OK"
+      },
+      "response": {
+        "rujukan": [
+          {
+            "idrujukan": "98866",
+            "norujukan": "0301U0331019P003283",
+            "nokapst": "0000016553957",
+            "nmpst": "MUZNI MUKHTAR",
+            "diagppk": "N18",
+            "tglrujukan_awal": "2021-03-22",
+            "tglrujukan_berakhir": "2021-06-19"
+          }
+        ]
+      }
+    }
+                                         
+                                 
+Insert Rujukan 2.0 New
+JSON
+{BASE URL}/Rujukan/2.0/insert
+Fungsi : Insert Rujukan 2.0
+
+Method : POST
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                                    
+    {
+         "request": {
+                        "t_rujukan": {
+                                 "noSep": "0301R0010321V000003",
+                                 "tglRujukan": "2021-03-18",
+                                 "tglRencanaKunjungan":"2021-03-19",
+                                 "ppkDirujuk": "03010402",
+                                 "jnsPelayanan": "1",
+                                 "catatan": "test",
+                                 "diagRujukan": "A15",
+                                 "tipeRujukan": "2",
+                                 "poliRujukan": "",
+                                 "user": "Coba Ws"
+                        }
+         }
+    }             
+                                 
+Update Rujukan 2.0 New
+JSON
+{BASE URL}/Rujukan/2.0/Update
+Fungsi : Update Rujukan 2.0
+
+Method : PUT
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                                    
+    {
+         "request": {
+                "t_rujukan": {
+                            "noRujukan": "0301R0010321V000003",
+                            "tglRujukan": "2021-03-18",
+                            "tglRencanaKunjungan":"2021-03-19",
+                            "ppkDirujuk": "03010402",
+                            "jnsPelayanan": "1",
+                            "catatan": "test",
+                            "diagRujukan": "A15",
+                            "tipeRujukan": "2", (0 Penuh, 1 Partial, 2 balik PRB)
+                            "poliRujukan": "", (kosong untuk tipe rujukan 2)
+                            "user": "Coba Ws"
+                }
+         }
+    }            
+                                 
+                                 
+List Spesialistik Rujukan New
+{BASE URL}/Rujukan/ListSpesialistik/PPKRujukan/{parameter 1}/TglRujukan/{parameter 2}
+Fungsi : Data Spesialistik
+
+Method : GET
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Parameter 1: Kode PPK Rujukan : 8 digit
+
+Parameter 2: Tanggal rujukan format : yyyy-MM-dd
+
+
+                                
+    {
+    "metaData": {
+        "code": "200",
+        "message": "Ok"
+    },
+    "response": {
+        "list": [
+                    {
+                        "kodeSpesialis": "005",
+                        "namaSpesialis": "Gastroenterologi-Hepatologi ",
+                        "kapasitas": "0",
+                        "jumlahRujukan": "0",
+                        "persentase": "0,00"
+                    },
+                    {
+                        "kodeSpesialis": "006",
+                        "namaSpesialis": "Geriatri ",
+                        "kapasitas": "0",
+                        "jumlahRujukan": "0",
+                        "persentase": "0,00"
+                    },
+                    {
+                        "kodeSpesialis": "007",
+                        "namaSpesialis": "Ginjal-Hipertensi ",
+                        "kapasitas": "0",
+                        "jumlahRujukan": "0",
+                        "persentase": "0,00"
+                    },
+                    {
+                        "kodeSpesialis": "008",
+                        "namaSpesialis": "Hematologi - Onkologi Medik ",
+                        "kapasitas": "0",
+                        "jumlahRujukan": "0",
+                        "persentase": "0,00"
+                    },
+                    {
+                        "kodeSpesialis": "010",
+                        "namaSpesialis": "Endokrin-Metabolik-Diabetes",
+                        "kapasitas": "0",
+                        "jumlahRujukan": "0",
+                        "persentase": "0,00"
+                    },
+                    {
+                        "kodeSpesialis": "017",
+                        "namaSpesialis": "Bedah Onkologi ",
+                        "kapasitas": "0",
+                        "jumlahRujukan": "0",
+                        "persentase": "0,00"
+                    },
+                    {
+                        "kodeSpesialis": "018",
+                        "namaSpesialis": "Bedah Digestif ",
+                        "kapasitas": "0",
+                        "jumlahRujukan": "0",
+                        "persentase": "0,00"
+                    },
+                    {
+                        "kodeSpesialis": "020",
+                        "namaSpesialis": "fetomaternal",
+                        "kapasitas": "0",
+                        "jumlahRujukan": "0",
+                        "persentase": "0,00"
+                    },
+                    {
+                        "kodeSpesialis": "021",
+                        "namaSpesialis": "onkologi ginekologi",
+                        "kapasitas": "0",
+                        "jumlahRujukan": "0",
+                        "persentase": "0,00"
+                    }
+                ]
+            }
+        }
+                                         
+                                 
+List Sarana New
+{BASE URL}/Rujukan/ListSarana/PPKRujukan/{parameter 1}
+Fungsi : Data Sarana
+
+Method : GET
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Parameter 1: Kode PPK Rujukan : 8 digit
+
+
+                                
+    {
+    "metaData": {
+        "code": "200",
+        "message": "Ok"
+    },
+    "response": {
+        "list": [
+                    {
+                        "kodeSarana": "1",
+                        "namaSarana": "Rekam Medik"
+                    },
+                    {
+                        "kodeSarana": "2",
+                        "namaSarana": "Laboratorium"
+                    },
+                    {
+                        "kodeSarana": "3",
+                        "namaSarana": "Radiologi"
+                    },
+                    {
+                        "kodeSarana": "4",
+                        "namaSarana": "CT Scan"
+                    },
+                    {
+                        "kodeSarana": "12",
+                        "namaSarana": "CT Scan Kepala leher"
+                    },
+                    {
+                        "kodeSarana": "5",
+                        "namaSarana": "MRI/Magnetic Resonance Imaging"
+                    },
+                    {
+                        "kodeSarana": "25",
+                        "namaSarana": "Venografi"
+                    },
+                    {
+                        "kodeSarana": "6",
+                        "namaSarana": "Hemodialisa"
+                    },
+                    {
+                        "kodeSarana": "7",
+                        "namaSarana": "Farmasi"
+                    },
+                    {
+                        "kodeSarana": "8",
+                        "namaSarana": "Pelayanan Darah"
+                    },
+                    {
+                        "kodeSarana": "10",
+                        "namaSarana": "Pemulasaran Jenasah"
+                    },
+                    {
+                        "kodeSarana": "13",
+                        "namaSarana": "MRI Kepala leher"
+                    },
+                    {
+                        "kodeSarana": "15",
+                        "namaSarana": "USG (Doppler) daerah leher "
+                    },
+                    {
+                        "kodeSarana": "58",
+                        "namaSarana": "BNO IVP"
+                    },
+                    {
+                        "kodeSarana": "9",
+                        "namaSarana": "Ambulan"
+                    },
+                    {
+                        "kodeSarana": "11",
+                        "namaSarana": "Radiografi konvensional"
+                    },
+                    {
+                        "kodeSarana": "14",
+                        "namaSarana": "Dakriosistografi (kelenjar air mata)"
+                    },
+                ]
+            }
+        }
+    }
+                                         
+                                 
+List Rujukan Keluar RS New
+{BASE URL}/Rujukan/Keluar/List/tglMulai/{Parameter 1}/tglAkhir/{Parameter 2}
+Fungsi : List Data Rujukan Keluar RS
+
+Method : GET
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Parameter 1: Tanggal Mulai
+
+Parameter 2: Tanggal Akhir
+
+
+                                
+{
+    "metaData": {
+        "code": "200",
+        "message": "Sukses"
+    },
+    "response": {
+        "list": [
+            {
+                "noRujukan": "1828R0011221B000001",
+                "tglRujukan": "2021-12-06",
+                "jnsPelayanan": "2",
+                "noSep": "1828r0011221v000001",
+                "noKartu": "0002035020396",
+                "nama": "SUSANTI",
+                "ppkDirujuk": "1820R001",
+                "namaPpkDirujuk": "RSUD SAWERIGADING PALOPO"
+            },
+            {
+                "noRujukan": "1828R0011221B000006",
+                "tglRujukan": "2021-12-08",
+                "jnsPelayanan": "2",
+                "noSep": "1828R0011221V000013",
+                "noKartu": "0002059334728",
+                "nama": "MARINGAN HALOMOAN NAPITUPULU",
+                "ppkDirujuk": "0345R001",
+                "namaPpkDirujuk": "RSU INCO SOROWAKO"
+            },
+            {
+                "noRujukan": "1828R0011221B000002",
+                "tglRujukan": "2021-12-13",
+                "jnsPelayanan": "2",
+                "noSep": "1828r0011221v000004",
+                "noKartu": "0002045650173",
+                "nama": "SUTRISNO",
+                "ppkDirujuk": "1820R001",
+                "namaPpkDirujuk": "RSUD SAWERIGADING PALOPO"
+            },
+            {
+                "noRujukan": "1828R0011221B000003",
+                "tglRujukan": "2021-12-15",
+                "jnsPelayanan": "1",
+                "noSep": "1828R0011221V000011",
+                "noKartu": "0002042908222",
+                "nama": "SARMAH",
+                "ppkDirujuk": "1820R001",
+                "namaPpkDirujuk": "RSUD SAWERIGADING PALOPO"
+            }
+        ]
+    }
+}
+                                         
+Data Rujukan Keluar RS Berdasarkan Nomor Rujukan New
+{BASE URL}/Rujukan/Keluar/{Parameter 1}
+Fungsi : Get Data Detail Rujukan Keluar RS Berdasarkan Nomor Rujukan
+
+Method : GET
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Parameter 1: Nomor Rujukan
+
+
+                                
+{
+    "metaData": {
+        "code": "200",
+        "message": "Sukses"
+    },
+    "response": {
+        "rujukan": {
+            "noRujukan": "1828R0011221B000001",
+            "noSep": "1828r0011221v000001",
+            "noKartu": "0002035020396",
+            "nama": "SUSANTI",
+            "kelasRawat": "3",
+            "kelamin": "P",
+            "tglLahir": "1988-04-08",
+            "tglSep": "2021-12-06",
+            "tglRujukan": "2021-12-06",
+            "tglRencanaKunjungan": "2021-12-06",
+            "ppkDirujuk": "1820R001",
+            "namaPpkDirujuk": "RSUD SAWERIGADING PALOPO",
+            "jnsPelayanan": "2",
+            "catatan": "TES DEVELOPMENT",
+            "diagRujukan": "C46.0",
+            "namaDiagRujukan": "Kaposi's sarcoma of skin",
+            "tipeRujukan": "0",
+            "namaTipeRujukan": "Rujukan Penuh",
+            "poliRujukan": "OBG",
+            "namaPoliRujukan": "OBGYN"
+        }
+    }
+}
+                                         
+                                 
+Data Jumlah SEP Rujukan New
+{BASE URL}/Rujukan/JumlahSEP/{Parameter 1}/{Parameter 2}
+Fungsi : Get Data Jumlah SEP yang terbentuk berdasarkan No Rujukan yang masuk ke RS
+
+Method : GET
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Parameter 1: Jenis Rujukan 1 -> fktp, 2 -> fkrtl
+
+Parameter 2: No Rujukan
+
+
+                                
+{
+    "metaData": {
+        "code": "200",
+        "message": "OK"
+    },
+    "response": {
+        "jumlahSEP": "1"
+    }
+}
+                                         
+Pembuatan SEP
+Insert SEP
+JSON
+{BASE URL}/SEP/1.1/insert
+Fungsi : Insert SEP versi 1.1
+
+Method : POST
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                                        
+            {
+               "request": {
+                  "t_sep": {
+                     "noKartu": "0001112230666",
+                     "tglSep": "2017-10-18",
+                     "ppkPelayanan": "0301R001",
+                     "jnsPelayanan": "2",
+                     "klsRawat": "3",
+                     "noMR": "123456",
+                     "rujukan": {
+                        "asalRujukan": "1",
+                        "tglRujukan": "2017-10-17",
+                        "noRujukan": "1234567",
+                        "ppkRujukan": "00010001"
+                     },
+                     "catatan": "test",
+                     "diagAwal": "A00.1",
+                     "poli": {
+                        "tujuan": "INT",
+                        "eksekutif": "0"
+                     },
+                     "cob": {
+                        "cob": "0"
+                     },
+                     "katarak": {
+                        "katarak": "0"
+                     },
+                     "jaminan": {
+                        "lakaLantas": "0",
+                        "penjamin": {
+                            "penjamin": "1",
+                            "tglKejadian": "2018-08-06",
+                            "keterangan": "kll",
+                            "suplesi": {
+                                "suplesi": "0",
+                                "noSepSuplesi": "0301R0010718V000001",
+                                "lokasiLaka": {
+                                    "kdPropinsi": "03",
+                                    "kdKabupaten": "0050",
+                                    "kdKecamatan": "0574"
+                                    }
+                            }
+                        }
+                     },
+                     "skdp": {
+                        "noSurat": "000002",
+                        "kodeDPJP": "31661"
+                     },
+                     "noTelp": "081919999",
+                     "user": "Coba Ws"
+                  }
+               }
+            }                    
+                                     
+Update SEP
+{BASE URL}/SEP/1.1/Update
+Fungsi : Update SEP versi 1.1
+
+Method : PUT
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                                
+        {
+           "request": {
+              "t_sep": {
+                 "noSep": "0301R0011117V000008",
+                 "klsRawat": "1",
+                 "noMR": "123456",
+                 "rujukan": {
+                    "asalRujukan": "1",
+                    "tglRujukan": "2017-10-23",
+                    "noRujukan": "1234567",
+                    "ppkRujukan": "00010001"
+                 },
+                 "catatan": "test",
+                 "diagAwal": "B00.1",
+                 "poli": {
+                    "eksekutif": "0"
+                 },
+                 "cob": {
+                    "cob": "0"
+                 },
+                 "katarak":{
+                    "katarak":"1"
+                 },
+                 "skdp":{
+                    "noSurat":"12313123",
+                    "kodeDPJP":"39508"            
+                 },
+                 "jaminan": {
+                    "lakaLantas":"1",
+                    "penjamin":
+                    {
+                        "penjamin":"1",
+                        "tglKejadian":"2018-08-06",				
+                        "keterangan":"kll",
+                        "suplesi":
+                            {
+                                "suplesi":"0",
+                                "noSepSuplesi":"0301R0010718V000001",
+                                "lokasiLaka": 
+                                    {
+                                    "kdPropinsi":"03",
+                                    "kdKabupaten":"0050",
+                                    "kdKecamatan":"0574"
+                                    }
+                            }					
+                    }
+                 },             
+                 "noTelp": "081919999",
+                 "user": "Coba Ws"
+              }
+           }
+        }                
+                                     
+                                     
+Hapus SEP
+{BASE URL}/SEP/Delete
+Fungsi : Hapus Data SEP
+
+Method : DELETE
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                                
+        {
+           "request": {
+              "t_sep": {
+                 "noSep": "0301R0011017V000007",
+                 "user": "Coba Ws"
+              }
+           }
+        }
+                    
+                                     
+Cari SEP
+{BASE URL}/SEP/{parameter}
+Fungsi : Melihat data detail SEP Peserta
+
+Method : GET
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Parameter: Nomor SEP Peserta
+
+
+                                    
+{
+    "metaData": {
+        "code": "200",
+        "message": "Sukses"
+    },
+    "response": {
+        "assestmenPel": {
+			"kode": "1",
+			"nama": "Poli spesialis tidak tersedia pada hari sebelumnya"
+		},
+		"catatan": "testinsert RJ",
+		"cob": "0",
+		"diagnosa": "Insulin-dependent diabetes mellitus",
+		"dpjp": {
+			"kdDPJP": "31348",
+			"nmDPJP": "CIiNatXXAXSkrIrPId,ManFs.SDDMe"
+		},
+		"eSEP": "False",
+		"flagProcedure": {
+			"kode": "0",
+			"nama": "Prosedur tidak berkelanjutan"
+		},
+		"informasi": null,
+		"jnsPelayanan": "Rawat Jalan",
+		"katarak": "0",
+		"kdPenunjang": {
+			"kode": "0",
+			"nama": ""
+		},
+		"kdStatusKecelakaan": "0",
+		"kelasRawat": "Kelas 3",
+		"klsRawat": {
+			"klsRawatHak": "3",
+			"klsRawatNaik": null,
+			"pembiayaan": null,
+			"penanggungJawab": null
+		},
+		"kontrol": {
+			"kdDokter": null,
+			"nmDokter": null,
+			"noSurat": null
+		},
+		"lokasiKejadian": {
+			"kdKab": null,
+			"kdKec": null,
+			"kdProp": null,
+			"ketKejadian": null,
+			"lokasi": null,
+			"tglKejadian": null
+		},
+		"nmstatusKecelakaan": "Bukan Kecelakaan",
+		"noRujukan": null,
+		"noSep": "0301R0111125V000011",
+		"penjamin": null,
+		"peserta": {
+			"asuransi": null,
+			"hakKelas": "Kelas 3",
+			"jnsPeserta": "MANDIRI",
+			"kdStatusPRB": null,
+			"kelamin": "P",
+			"nama": "ARMSTIOFIALR",
+			"noKartu": "0002482505324",
+			"noMr": "MR0652",
+			"potensiPRB": null,
+			"statusPRB": null,
+			"tglLahir": "1983-09-07"
+		},
+		"poli": "INSTALASI GAWAT DARURAT",
+		"poliEksekutif": "0",
+		"tglSep": "2025-11-25",
+		"tujuanKunj": {
+			"kode": "0",
+			"nama": "Normal"
+		}
+    }
+}
+                                     
+                                     
+Cari SEP Terakhir berdasarkan Nomor Rujukan
+{BASE URL}/Rujukan/lastsep/norujukan/{parameter}
+Fungsi : Melihat data detail SEP Terakhir Peserta Berdasarkan Nomor Rujukan
+
+Method : GET
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Parameter: Nomor Rujukan
+
+
+                                    
+{
+    "metaData": {
+        "code": "200",
+        "message": "Sukses"
+    },
+    "response": {
+        "noSep": "0301R0010323V000039",
+        "tglSep": "2023-03-30",
+        "jnsPelayanan": "Rawat Jalan",
+        "kelasRawat": "Kelas 3",
+        "diagnosa": "Respiratory tuberculosis, bacteriologically and histologically confirmed",
+        "noRujukan": "0050B1070223P000004",
+        "poli": "PENYAKIT DALAM",
+        "poliEksekutif": "0",
+        "catatan": "testinsert RJ",
+        "penjamin": null,
+        "kdStatusKecelakaan": "0",
+        "nmstatusKecelakaan": "Bukan Kecelakaan",
+        "lokasiKejadian": {
+            "kdKab": null,
+            "kdKec": null,
+            "kdProp": null,
+            "ketKejadian": null,
+            "lokasi": null,
+            "tglKejadian": null
+        },
+        "dpjp": {
+            "kdDPJP": "34050",
+            "nmDPJP": "tapS,XXXryoShR..PaBDd"
+        },
+        "peserta": {
+            "asuransi": null,
+            "hakKelas": "Kelas 3",
+            "jnsPeserta": "PBI (APBN)",
+            "kelamin": "P",
+            "nama": "ARSTNUU",
+            "noKartu": "0002802875185",
+            "noMr": "MR5185",
+            "tglLahir": "1944-02-24"
+        },
+        "klsRawat": {
+            "klsRawatHak": "3",
+            "klsRawatNaik": null,
+            "pembiayaan": null,
+            "penanggungJawab": null
+        },
+        "kontrol": {
+            "kdDokter": "34050",
+            "nmDokter": "tapS,XXXryoShR..PaBDd",
+            "noSurat": "0301R0010323K000008"
+        },
+        "cob": "0",
+        "katarak": "0",
+        "tujuanKunj": {
+            "kode": "2",
+            "nama": "Konsul Dokter"
+        },
+        "flagProcedure": {
+            "kode": "0",
+            "nama": "Prosedur tidak berkelanjutan"
+        },
+        "kdPenunjang": {
+            "kode": "0",
+            "nama": ""
+        },
+        "assestmenPel": {
+            "kode": "1",
+            "nama": "Poli spesialis tidak tersedia pada hari sebelumnya"
+        },
+        "eSEP": "True"
+    }
+}
+                                     
+                                     
+Insert SEP 2.0 New
+{BASE URL}/SEP/2.0/insert
+Fungsi : Insert SEP versi 2.0
+
+Method : POST
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+{
+           "request":{
+              "t_sep":{
+                 "noKartu":"{nokartu BPJS}",
+                 "tglSep":"{tanggal penerbitan sep format yyyy-mm-dd}",
+                 "ppkPelayanan":"{kode faskes pemberi pelayanan}",
+                 "jnsPelayanan":"{jenis pelayanan = 1. r.inap 2. r.jalan}",
+                 "klsRawat":{
+                    "klsRawatHak":"{sesuai kelas rawat peserta, 1. Kelas 1, 2. Kelas 2, 3. Kelas 3}",
+                    "klsRawatNaik":"{diisi jika naik kelas rawat, 1. VVIP, 2. VIP, 3. Kelas 1, 4. Kelas 2, 5. Kelas 3, 6. ICCU, 7. ICU, 8. Diatas Kelas 1}",
+                    "pembiayaan":"{1. Pribadi, 2. Pemberi Kerja, 3. Asuransi Kesehatan Tambahan. diisi jika naik kelas rawat}",
+                    "penanggungJawab":"{Contoh: jika pembiayaan 1 maka penanggungJawab=Pribadi. diisi jika naik kelas rawat}"
+                 },
+                 "noMR":"{nomor medical record RS}",
+                 "rujukan":{
+                    "asalRujukan":"{asal rujukan ->1.Faskes 1, 2. Faskes 2(RS)}",
+                    "tglRujukan":"{tanggal rujukan format: yyyy-mm-dd}",
+                    "noRujukan":"{nomor rujukan}",
+                    "ppkRujukan":"{kode faskes rujukam -> baca di referensi faskes}"
+                 },
+                 "catatan":"{catatan peserta}",
+                 "diagAwal":"{diagnosa awal ICD10 -> baca di referensi diagnosa}",
+                 "poli":{
+                    "tujuan":"{kode poli -> baca di referensi poli}",
+                    "eksekutif":"{poli eksekutif -> 0. Tidak 1.Ya}""
+                 },
+                 "cob":{
+                    "cob":"{cob -> 0.Tidak 1. Ya}"
+                 },
+                 "katarak":{
+                    "katarak":"{katarak --> 0.Tidak 1.Ya}"
+                 },
+                 "jaminan":{
+                    "lakaLantas":" 0 : Bukan Kecelakaan lalu lintas [BKLL], 1 : KLL dan bukan kecelakaan Kerja [BKK], 2 : KLL dan KK, 3 : KK",
+                    "noLP":"{No. LP}",
+                    "penjamin":{
+                       "tglKejadian":"{tanggal kejadian KLL format: yyyy-mm-dd}",
+                       "keterangan":"{Keterangan Kejadian KLL}",
+                       "suplesi":{
+                          "suplesi":"{Suplesi --> 0.Tidak 1. Ya}",
+                          "noSepSuplesi":"{No.SEP yang Jika Terdapat Suplesi}",
+                          "lokasiLaka":{
+                             "kdPropinsi":"{Kode Propinsi}",
+                             "kdKabupaten":"{Kode Kabupaten}",
+                             "kdKecamatan":"{Kode Kecamatan}"
+                          }
+                       }
+                    }
+                 },
+                 "tujuanKunj":{"0": Normal, 
+                               "1": Prosedur, 
+                               "2": Konsul Dokter},
+                 "flagProcedure":{"0": Prosedur Tidak Berkelanjutan, 
+                                  "1": Prosedur dan Terapi Berkelanjutan} ==> diisi "" jika tujuanKunj = "0",
+                 "kdPenunjang":{"1": Radioterapi, 
+                                "2": Kemoterapi, 
+                                "3": Rehabilitasi Medik, 
+                                "4": Rehabilitasi Psikososial, 
+                                "5": Transfusi Darah, 
+                                "6": Pelayanan Gigi, 
+                                "7": Laboratorium, 
+                                "8": USG, 
+                                "9": Farmasi, 
+                                "10": Lain-Lain, 
+                                "11": MRI, 
+                                "12": HEMODIALISA} ==> diisi "" jika tujuanKunj = "0",
+                 "assesmentPel":{"1": Poli spesialis tidak tersedia pada hari sebelumnya, 
+                                 "2": Jam Poli telah berakhir pada hari sebelumnya, 
+                                 "3": Dokter Spesialis yang dimaksud tidak praktek pada hari sebelumnya, 
+                                 "4": Atas Instruksi RS} ==> diisi jika tujuanKunj = "2" atau "0" (politujuan beda dengan poli rujukan dan hari beda),
+                                 "5": Tujuan Kontrol,
+                 "skdp":{
+                    "noSurat":"{Nomor Surat Kontrol}",
+                    "kodeDPJP":"{kode dokter DPJP --> baca di referensi dokter DPJP}"
+                 },
+                 "dpjpLayan":"000002", (tidak diisi jika jnsPelayanan = "1" (RANAP),
+                 "noTelp":"{nomor telepon}",
+                 "user":"{user pembuat SEP}"
+              }
+           }
+        }
+                    
+                                     
+Update SEP 2.0 New
+{BASE URL}/SEP/2.0/update
+Fungsi : Update SEP versi 2.0
+
+Method : PUT
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                              
+                                                    
+    {
+     "request": {
+        "t_sep": {
+                "noSep": "{nomor sep}",
+                "klsRawat":{
+                                "klsRawatHak":"3",
+                                "klsRawatNaik":"",
+                                "pembiayaan":"",
+                                "penanggungJawab":""
+                              },
+                "noMR": "{nomor medical record RS}",
+                "catatan": "{catatan peserta}",
+                "diagAwal": "{diagnosa awal ICD10 -> baca di referensi diagnosa}",
+                "poli": {
+                        "tujuan": "IGD",
+                        "eksekutif": "{poli eksekutif -> 0. Tidak 1.Ya}"
+                },
+                "cob": {
+                        "cob": "{cob -> 0.Tidak 1. Ya}"
+                },
+                "katarak": {
+                        "katarak": "{katarak --> 0.Tidak 1.Ya}"
+                },
+                "jaminan": {
+                        "lakaLantas":" 0 : Bukan Kecelakaan lalu lintas [BKLL], 1 : KLL dan bukan kecelakaan Kerja [BKK], 2 : KLL dan KK, 3 : KK",
+                        "penjamin": {
+                                "tglKejadian": "{tgl kejadian KLL (yyyy-mm-dd)}",
+                                "keterangan": "{keterangan kejadian}",
+                                "suplesi": {
+                                        "suplesi": "0",
+                                        "noSepSuplesi": "{no SEP suplesi --> diambil dari Potensi Suplesi Jasa Raharja}",
+                                        "lokasiLaka": {
+                                                "kdPropinsi": "{kode propinsi}",
+                                                "kdKabupaten": "{kode kabupaten}",
+                                                "kdKecamatan": "{kode kecamatan}"
+                                        }
+                                }
+                        }
+                },
+                "dpjpLayan":"46",
+                "noTelp": "{nomor telepon peserta/pasien}",
+                "user": "{user pembuat SEP}"
+        }
+      }
+    }        
+                                 
+                                 
+                    
+                                     
+Delete SEP 2.0 New
+{BASE URL}/SEP/2.0/delete
+Fungsi : Hapus SEP versi 2.0
+
+Method : DELETE
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                              
+                                                    
+    {
+       "request": {
+          "t_sep": {
+             "noSep": "{nomor SEP}",
+             "user": "{user pengguna SEP}"
+          }
+       }
+    }       
+                                     
+Potensi Suplesi Jasa Raharja
+Suplesi Jasa Raharja
+{BASE URL}/sep/JasaRaharja/Suplesi/{Parameter 1}/tglPelayanan/{Parameter 2}
+Fungsi : Pencarian data potensi SEP Sebagai Suplesi Jasa Raharja
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter 1 : No.Kartu Peserta
+
+Parameter 2 : Tgl.Pelayanan/SEP (yyyy-mm-dd)
+
+                                    
+        {
+            "metaData": 
+                {
+                    "code": "200",
+                    "message": "Sukses"
+                },
+            "response": 
+                {
+                "jaminan": 
+                    [
+                        {
+                            "noRegister": "1234",
+                            "noSep": "0301R0110818V000008",
+                            "noSepAwal": "0301R0110818V000008",
+                            "noSuratJaminan": "-",
+                            "tglKejadian": "2018-08-06",
+                            "tglSep": "2018-08-08"                                    
+                        },
+                                        {
+                            "noRegister": "44222",
+                            "noSep": "0301R0110818V000018",
+                            "noSepAwal": "0301R0110818V000008",
+                            "noSuratJaminan": "-",
+                            "tglKejadian": "2018-08-06",
+                            "tglSep": "2018-08-08"                                    
+                        }    
+                    ],
+                }
+        }
+                                            
+Data Induk Kecelakaan New
+{BASE URL}/sep/KllInduk/List/{Parameter 1}
+Fungsi : Pencarian data SEP Induk Kecelakaan Lalu Lintas
+
+Method : GET
+
+Format : Json
+
+Content-Type: application/json; charset=utf-8
+
+Parameter 1 : No.Kartu Peserta
+
+                                                
+                    {
+                        "metaData": {
+                            "code": "200",
+                            "message": "Ok"
+                        },
+                        "response": {
+                            "list": [
+                                {
+                                    "noSEP": "0301R0110421V000439",
+                                    "tglKejadian": "2021-04-16",
+                                    "ppkPelSEP": "0301R011",
+                                    "kdProp": "14",
+                                    "kdKab": "0200",
+                                    "kdKec": "6122",
+                                    "ketKejadian": "kll",
+                                    "noSEPSuplesi": "0301R0110421V000435, 0301R0110421V000436, 0301R0110421V000437, 0301R0110421V000438"
+                                },
+                                {
+                                    "noSEP": "1111R0010421V001672",
+                                    "tglKejadian": "2021-04-14",
+                                    "ppkPelSEP": "1111R001",
+                                    "kdProp": "10",
+                                    "kdKab": "0115",
+                                    "kdKec": "1192",
+                                    "ketKejadian": "KLL",
+                                    "noSEPSuplesi": null
+                                }
+                            ]
+                        }
+                    }
+                                                        
+                                                    
+Approval Penjaminan SEP
+Pengajuan
+{BASE URL}/Sep/pengajuanSEP
+Fungsi : Pengajuan SEP
+
+Method : POST
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+                                            
+        {
+           "request": {
+              "t_sep": {
+                 "noKartu": "{nomor kartu BPJS}",
+                 "tglSep": "{tanggal penerbitan sep format yyyy-mm-dd}",
+                 "jnsPelayanan": "{}jenis pelayanan (1.R.Inap 2.R.Jalan)}",
+                 "jnsPengajuan": "{}jenis pengajuan (1. pengajuan backdate, 2. pengajuan finger print)}"
+                 "keterangan": "{keterangan}",
+                 "user": "{user pemakai}"
+              }
+         }
+                        
+                                     
+Aproval Pengajuan SEP
+{BASE URL}/Sep/aprovalSEP
+Fungsi : Pengajuan SEP
+
+Method : POST
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+Tanpa parameter jnsPengajuan maka default jnsPengajuan="1" (Approval SEP Backdate)                                           
+        {
+           "request": {
+              "t_sep": {
+                 "noKartu": "{nomor kartu BPJS}",
+                 "tglSep": "{tanggal penerbitan sep format yyyy-mm-dd}",
+                 "jnsPelayanan": "{}jenis pelayanan (1.R.Inap 2.R.Jalan)}",
+                 "jnsPengajuan": "{}jenis pengajuan (1. pengajuan backdate, 2. pengajuan finger print)}",
+                 "keterangan": "{keterangan}",
+                 "user": "{user pemakai}"
+              }
+         }
+                        
+
+        Jika parameter jnsPengajuan ada nilai, maka approval sesuai jnsPengajuan 
+ 
+        {
+           "request": {
+              "t_sep": {
+                 "noKartu": "0003814312013",
+                 "tglSep": "2017-10-26",
+                 "jnsPelayanan": "1",
+                 "jnsPengajuan": "1",
+                 "keterangan": "Hari libur",
+                 "user": "Coba Ws"
+              }
+           }
+        }                                              
+
+List Data Persetujuan SEP New
+{BASE URL}/Sep/persetujuanSEP/list/bulan/{Parameter 1}/tahun/{Parameter 2}
+Fungsi : Get List Data Persetujuan SEP
+
+Method : GET
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Parameter 1: Bulan (1-12)
+
+Parameter 2: Tahun
+
+
+                                
+{
+    "metaData": {
+        "code": "200",
+        "message": "Sukses"
+    },
+    "response": {
+        "list": [
+            {
+                "noKartu": "0002039003212",
+                "nama": "MARTA SENTANA",
+                "tglsep": "2021-11-23",
+                "jnspelayanan": "RJ",
+                "persetujuan": "Pengajuan",
+                "status": "Tgl.SEP Backdate"
+            }
+        ]
+    }
+}
+                                         
+                                 
+Update Tgl Pulang SEP
+Update Tanggal Pulang
+{BASE URL}/Sep/updtglplg
+Fungsi : Update tanggal pulang SEP
+
+Method : PUT
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+{  
+                "request": 
+                    {    
+                    "t_sep":
+                        {
+                            noSep":"{Nomor SEP}",
+                            "tglPlg":"{Tanggal Pulang formt yyyy-MM-dd hh:mm:ss}",
+                            "ppkPelayanan":"{PPK Pelayanan SEP}"
+                        }
+                    }
+            }                  
+                                     
+Update Tanggal Pulang 2.0 New
+{BASE URL}/SEP/2.0/updtglplg
+Fungsi : Update tanggal pulang SEP 2.0
+
+Method : PUT
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+   {
+                "request":{
+                    "t_sep":{
+                        "noSep": "{nosep}",
+                        "statusPulang":"{1:Atas Persetujuan Dokter, 3:Atas Permintaan Sendiri, 4:Meninggal, 5:Lain-lain}",
+                        "noSuratMeninggal":"{diisi jika statusPulang 4, selain itu kosong}",
+                        "tglMeninggal":"{diisi jika statusPulang 4, selain itu kosong. format yyyy-MM-dd}",
+                        "tglPulang":"{format yyyy-MM-dd}",
+                        "noLPManual":"{diisi jika SEPnya adalah KLL}",
+                        "user":"{user}"
+                    }
+                }
+            }
+                                     
+                                     
+
+List Data Update Tanggal Pulang New
+{BASE URL}/Sep/updtglplg/list/bulan/{Parameter 1}/tahun/{Parameter 2}/{Parameter 3}
+Fungsi : Get List Data Update Tanggal Pulang
+
+Method : GET
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Parameter 1: Bulan (1-12)
+
+Parameter 2: Tahun
+
+Parameter 3: Filter (Apabila dikosongkan akan menampilkan semua data pada bulan dan tahun pilihan)
+
+
+                                
+{
+    "metaData": {
+        "code": "200",
+        "message": "Sukses"
+    },
+    "response": {
+        "list": [
+            {
+                "noSep": "0138R0221221V000032",
+                "noSepUpdating": "0112R0761221V000014",
+                "jnsPelayanan": "1",
+                "ppkTujuan": "0138R022",
+                "noKartu": "0002047251712",
+                "nama": "SURIP",
+                "tglSep": "2021-12-13",
+                "tglPulang": "2021-12-15",
+                "status": "",
+                "tglMeninggal": "",
+                "noSurat": "",
+                "keterangan": "3.1.Peserta NoKa 0002047251712 telah mendapat Pelayanan R.Inap pada tgl. 13/12/2021 dan belum dipulangkan di RS CITRA MEDIKA DEPOK Dgn No.SEP 0138R0221221V000032",
+                "user": "AdminUtam"
+            }
+        ]
+    }
+}
+                                         
+                                 
+Integrasi SEP dan Inacbg
+Integrasi SEP dengan Inacbg
+{BASE URL}/sep/cbg/{parameter}
+
+Fungsi : Pencarian No.SEP untuk Aplikasi Inacbg 4.1
+
+Method : GET
+
+Format : Xml
+
+Content-Type: Application/x-www-form-urlencoded
+
+Parameter: Nomor SEP
+
+
+                                    
+        {
+          "metaData": {
+            "code": "200",
+            "message": "OK"
+          },
+          "response": {
+            "pesertasep": {
+              "kelamin": "P",
+              "klsRawat": "3",
+              "nama": "ANNA MIKRAD BA.",
+              "noKartuBpjs": "0000001112958",
+              "noMr": "0",
+              "noRujukan": "222",
+              "tglLahir": "1960-01-26",
+              "tglPelayanan": "2016-09-22",
+              "tktPelayanan": "2"
+            }
+          }
+        }        
+                                     
+SEP Internal
+Data SEP Internal New
+{BASE URL}/SEP/Internal/{parameter 1}
+
+Fungsi : Data SEP Internal
+
+Method : GET
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Parameter: Nomor SEP : 19 digit
+
+
+                                    
+{
+    "metaData": {
+        "code": "200",
+        "message": "OK"
+    },
+    "response": {
+        "count": "3",
+        "list": [
+            {
+                "tujuanrujuk": "SAR",
+                "nmtujuanrujuk": "SARAF",
+                "nmpoliasal": "PENYAKIT DALAM",
+                "tglrujukinternal": "2020-11-19",
+                "nosep": "0905R0031020V000397",
+                "nosepref": "0905R0031120V004160",
+                "ppkpelsep": "0905R003",
+                "nokapst": "0000038761391",
+                "tglsep": "2020-10-02",
+                "nosurat": "0905R0031120N000922",
+                "flaginternal": "0",
+                "kdpoliasal": "0000038761391",
+                "kdpolituj": "SAR",
+                "kdpenunjang": "0",
+                "nmpenunjang": null,
+                "diagppk": "I15",
+                "kddokter": "24271",
+                "nmdokter": "dr. Nurhayana Lubis, Sp.S",
+                "flagprosedur": null,
+                "opsikonsul": "1",
+                "flagsep": "False",
+                "fuser": "0905R003_anhar",
+                "fdate": "2020-11-19",
+                "nmdiag": "Secondary hypertension"
+            },
+            {
+                "tujuanrujuk": "SAR",
+                "nmtujuanrujuk": "SARAF",
+                "nmpoliasal": "PENYAKIT DALAM",
+                "tglrujukinternal": "2020-10-20",
+                "nosep": "0905R0031020V000397",
+                "nosepref": "0905R0031020V003695",
+                "ppkpelsep": "0905R003",
+                "nokapst": "0000038761391",
+                "tglsep": "2020-10-02",
+                "nosurat": "0905R0031020N000912",
+                "flaginternal": "0",
+                "kdpoliasal": "0000038761391",
+                "kdpolituj": "SAR",
+                "kdpenunjang": "0",
+                "nmpenunjang": null,
+                "diagppk": "I15",
+                "kddokter": "24271",
+                "nmdokter": "dr. Nurhayana Lubis, Sp.S",
+                "flagprosedur": null,
+                "opsikonsul": "1",
+                "flagsep": "False",
+                "fuser": "0905R003_ema",
+                "fdate": "2020-10-20",
+                "nmdiag": "Secondary hypertension"
+            },
+            {
+                "tujuanrujuk": "SAR",
+                "nmtujuanrujuk": "SARAF",
+                "nmpoliasal": "PENYAKIT DALAM",
+                "tglrujukinternal": "2020-10-06",
+                "nosep": "0905R0031020V000397",
+                "nosepref": "0905R0031020V000874",
+                "ppkpelsep": "0905R003",
+                "nokapst": "0000038761391",
+                "tglsep": "2020-10-02",
+                "nosurat": "0905R0031020N000230",
+                "flaginternal": "0",
+                "kdpoliasal": "0000038761391",
+                "kdpolituj": "SAR",
+                "kdpenunjang": "0",
+                "nmpenunjang": null,
+                "diagppk": "I15",
+                "kddokter": "24271",
+                "nmdokter": "dr. Nurhayana Lubis, Sp.S",
+                "flagprosedur": null,
+                "opsikonsul": "1",
+                "flagsep": "False",
+                "fuser": "0905R003_ema",
+                "fdate": "2020-10-06",
+                "nmdiag": "Secondary hypertension"
+            }
+        ]
+    }
+}        
+                                     
+
+
+Hapus SEP Internal New
+{BASE URL}/SEP/Internal/delete
+Fungsi : Hapus SEP Internal
+
+Method : DELETE
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+ {
+           "request": {
+              "t_sep": {
+                 "noSep": "{nosep}",
+                 "noSurat": "{nosurat}",
+                 "tglRujukanInternal": "{tglRujukanInternal, format : yyyy-MM-dd",
+                 "kdPoliTuj": "{kdPoli, 3 digit}",
+                 "user": "{user}"
+              }
+           }
+        }
+
+Finger Print
+Get Finger Print
+{BASE URL}/SEP/FingerPrint/Peserta/{parameter1}/TglPelayanan/{parameter2}
+
+Fungsi : Pencarian data fingerprint
+
+Method : GET
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Parameter1: Nomor Kartu Peserta
+
+Parameter2: Tanggal Pelayanan
+
+
+                                    
+Jika telah dilakukan validasi fingerprint: 
+{
+    "metaData": {
+        "code": "200",
+        "message": "Ok"
+    },
+    "response": {
+        "kode": "1",
+        "status": "Peserta telah melakukan validasi finger print pada tanggal 2020-01-21"
+    }
+}
+
+Jika belum dilakukan validasi fingerprint:
+{
+    "metaData": {
+        "code": "200",
+        "message": "Ok"
+    },
+    "response": {
+        "kode": "0",
+        "status": "Peserta belum melakukan validasi finger print"
+    }
+}
+
+        
+                                     
+
+Get List Finger Print
+{BASE URL}/SEP/FingerPrint/List/Peserta/TglPelayanan/{parameter}
+
+Fungsi : List Finger Print
+
+Method : GET
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Parameter: Tanggal Pelayanan
+
+
+                                    
+{
+    "metaData": {
+        "code": "200",
+        "message": "Ok"
+    },
+    "response": {
+        "list": [
+            {
+                "noKartu": "0001244842648",
+                "noSEP": "0301R0110120V009210"
+            },
+            {
+                "noKartu": "0001244856813",
+                "noSEP": "0301R0110120V009041"
+            },
+            {
+                "noKartu": "0001244957229",
+                "noSEP": "0301R0110120V009213"
+            }
+        ]
+    }
+}
+        
+                                     
+                                     
+Random Question
+Get Random Question
+{BASE URL}/SEP/FingerPrint/randomquestion/faskesterdaftar/nokapst/{parameter1}/tglsep/{parameter2}
+
+Fungsi : Menampilkan Random Question
+
+Method : GET
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Parameter1: Nomor Kartu Peserta
+
+Parameter2: Tanggal Pelayanan
+
+
+                                    
+{
+    "metaData": {
+        "code": "200",
+        "message": "Ok"
+    },
+    "response": {
+        "faskes": [
+            {
+                "kode": "0177B030",
+                "nama": "Klinik Citra Madina"
+            },
+            {
+                "kode": "21061801",
+                "nama": "DAMAU"
+            },
+            {
+                "kode": "01031201",
+                "nama": "PEUKAN BADA"
+            }
+        ]
+    }
+}
+
+        
+                                     
+Post Random Answer
+{BASE URL}/SEP/FingerPrint/randomanswer
+
+Fungsi : POST Random Answer
+
+Method : POST
+
+Format : Json
+
+Content-Type: Application/x-www-form-urlencoded
+
+Request
+Response
+Request
+{
+  "request": {
+    "t_sep": {
+      "noKartu": "{nomor kartu}",
+      "tglSep": "{tanggal SEP}",
+      "jenPel":"{jenis pelayanan}",
+      "ppkPelSep": "{ppk pelayanan}",
+      "tglLahir": "{tgl lahir}",
+      "ppkPst": "{ppk peserta}",
+      "user": "{user}"
+    }
+  }
+}                                                                          

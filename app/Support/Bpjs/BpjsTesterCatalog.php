@@ -6,7 +6,7 @@ class BpjsTesterCatalog
 {
     public function groups(): array
     {
-        return [
+        $curated = [
             [
                 'id' => 'vclaim',
                 'label' => 'VClaim',
@@ -1343,6 +1343,62 @@ class BpjsTesterCatalog
                 ],
             ],
         ];
+
+        $sourceGroups = [];
+        foreach (BpjsCatalogSourceLoader::load() as $g) {
+            $sourceGroups[$g['id']] = $g;
+        }
+
+        $curatedVclaimItems = [];
+        $curatedMedRecItems = [];
+
+        foreach ($curated as $cGroup) {
+            if ($cGroup['id'] === 'medical-record') {
+                $curatedMedRecItems = array_merge($curatedMedRecItems, $cGroup['items']);
+            } else {
+                $curatedVclaimItems = array_merge($curatedVclaimItems, $cGroup['items']);
+            }
+        }
+
+        $modules = [
+            [
+                'id' => 'vclaim',
+                'label' => 'VClaim',
+                'items' => array_merge($curatedVclaimItems, $sourceGroups['vclaim']['items'] ?? []),
+            ],
+            [
+                'id' => 'antreanrs',
+                'label' => 'Antrean RS',
+                'items' => $sourceGroups['antreanrs']['items'] ?? [],
+            ],
+            [
+                'id' => 'apotek',
+                'label' => 'Apotek',
+                'items' => $sourceGroups['apotek']['items'] ?? [],
+            ],
+            [
+                'id' => 'pcare',
+                'label' => 'PCare',
+                'items' => $sourceGroups['pcare']['items'] ?? [],
+            ],
+            [
+                'id' => 'aplicares',
+                'label' => 'Aplicares',
+                'items' => $sourceGroups['aplicares']['items'] ?? [],
+            ],
+            [
+                'id' => 'icare',
+                'label' => 'i-Care',
+                'items' => $sourceGroups['icare']['items'] ?? [],
+            ],
+            [
+                'id' => 'antreanfktp',
+                'label' => 'Antrean FKTP',
+                'items' => $sourceGroups['antreanfktp']['items'] ?? [],
+            ],
+        ];
+
+        return array_values(array_filter($modules, fn($m) => !empty($m['items'])));
     }
 
     protected function query(

@@ -1,0 +1,871 @@
+{
+    "info": {
+        "_postman_id": "simrs-gateway-bpjs-v3",
+        "name": "SIMRS Gateway BPJS & SATUSEHAT v3.0",
+        "description": "Koleksi Postman resmi untuk SIMRS Gateway BPJS Kesehatan (VClaim, Rujukan, SEP, Surat Kontrol, Antrean) dan Kemenkes SATUSEHAT FHIR.\n\nSistem mengurus enkripsi AES-256-CBC, kalkulasi signature HMAC-SHA256, dan dekripsi respons LZ-string secara otomatis.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://127.0.0.1:8000",
+            "type": "string"
+        },
+        {
+            "key": "api_key",
+            "value": "MASUKKAN_API_KEY_SANCTUM_ANDA_DISINI",
+            "type": "string"
+        },
+        {
+            "key": "cons_id",
+            "value": "12345",
+            "type": "string"
+        },
+        {
+            "key": "secret_key",
+            "value": "userSecret123",
+            "type": "string"
+        },
+        {
+            "key": "user_key",
+            "value": "userKeyBPJS99",
+            "type": "string"
+        }
+    ],
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "token",
+                "value": "{{api_key}}",
+                "type": "string"
+            }
+        ]
+    },
+    "item": [
+        {
+            "name": "1. Peserta BPJS (VClaim)",
+            "item": [
+                {
+                    "name": "Cari Peserta by No. Kartu BPJS",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/bpjs/peserta?nomor=0001234567890&tipe=1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "bpjs",
+                                "peserta"
+                            ],
+                            "query": [
+                                {
+                                    "key": "nomor",
+                                    "value": "0001234567890",
+                                    "description": "Nomor Kartu BPJS (13 Digit)"
+                                },
+                                {
+                                    "key": "tipe",
+                                    "value": "1",
+                                    "description": "1: No. Kartu, 2: NIK KTP"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Cari Peserta by NIK KTP",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/bpjs/peserta?nomor=3201234567890001&tipe=2",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "bpjs",
+                                "peserta"
+                            ],
+                            "query": [
+                                {
+                                    "key": "nomor",
+                                    "value": "3201234567890001",
+                                    "description": "Nomor NIK KTP (16 Digit)"
+                                },
+                                {
+                                    "key": "tipe",
+                                    "value": "2",
+                                    "description": "1: No. Kartu, 2: NIK KTP"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "2. SEP (Surat Eligibilitas Peserta)",
+            "item": [
+                {
+                    "name": "Cari Detail SEP by Nomor SEP",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/bpjs/sep?noSep=0001R0010124V000001",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "bpjs",
+                                "sep"
+                            ],
+                            "query": [
+                                {
+                                    "key": "noSep",
+                                    "value": "0001R0010124V000001"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Histori Pelayanan Peserta",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/bpjs/sep-riwayat?noKartu=0001234567890&tglMulai=2026-01-01&tglAkhir=2026-03-31",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "bpjs",
+                                "sep-riwayat"
+                            ],
+                            "query": [
+                                {
+                                    "key": "noKartu",
+                                    "value": "0001234567890"
+                                },
+                                {
+                                    "key": "tglMulai",
+                                    "value": "2026-01-01"
+                                },
+                                {
+                                    "key": "tglAkhir",
+                                    "value": "2026-03-31"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Insert / Buat SEP Baru",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"request\": {\n        \"t_sep\": {\n            \"noKartu\": \"0001234567890\",\n            \"tglSep\": \"2026-09-29\",\n            \"ppkPelayanan\": \"0001R001\",\n            \"jnsPelayanan\": \"2\",\n            \"klsRawat\": {\n                \"klsRawatHak\": \"3\"\n            },\n            \"noMR\": \"MR-89210\",\n            \"rujukan\": {\n                \"asalRujukan\": \"1\",\n                \"tglRujukan\": \"2026-09-29\",\n                \"noRujukan\": \"0001R0010124B000001\",\n                \"ppkRujukan\": \"00010001\"\n            },\n            \"catatan\": \"Pemeriksaan Poli Penyakit Dalam\",\n            \"diagAwal\": \"A09\",\n            \"poli\": {\n                \"tujuan\": \"INT\",\n                \"eksekutif\": \"0\"\n            },\n            \"cob\": {\n                \"cob\": \"0\"\n            },\n            \"katarak\": {\n                \"katarak\": \"0\"\n            },\n            \"jaminan\": {\n                \"lakaLantas\": \"0\",\n                \"penjamin\": {\n                    \"tglKejadian\": \"\"\n                }\n            },\n            \"tujuanKunj\": \"0\",\n            \"flagProcedure\": \"\",\n            \"kdPenunjang\": \"\",\n            \"assesmentPel\": \"\",\n            \"skdp\": {\n                \"noSurat\": \"\",\n                \"kodeDPJP\": \"12345\"\n            },\n            \"dpjpLayan\": \"12345\",\n            \"noTelp\": \"081234567890\",\n            \"user\": \"SIMRS-ADMIN\"\n        }\n    }\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/bpjs/sep",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "bpjs",
+                                "sep"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Hapus SEP",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"request\": {\n        \"t_sep\": {\n            \"noSep\": \"0001R0010124V000001\",\n            \"user\": \"SIMRS-ADMIN\"\n        }\n    }\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/bpjs/sep",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "bpjs",
+                                "sep"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "3. Rujukan BPJS (Faskes 1 & Antar RS)",
+            "item": [
+                {
+                    "name": "Cari Rujukan by No. Rujukan (FKTP)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/bpjs/rujukan?noRujukan=0001R0010124B000001",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "bpjs",
+                                "rujukan"
+                            ],
+                            "query": [
+                                {
+                                    "key": "noRujukan",
+                                    "value": "0001R0010124B000001"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Cari Rujukan by No. Kartu BPJS (FKTP)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/bpjs/rujukan/peserta?noKartu=0001234567890",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "bpjs",
+                                "rujukan",
+                                "peserta"
+                            ],
+                            "query": [
+                                {
+                                    "key": "noKartu",
+                                    "value": "0001234567890"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Cari Rujukan Antar RS (FKTL)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/bpjs/rujukan/rs?noRujukan=0001R0010124B000001",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "bpjs",
+                                "rujukan",
+                                "rs"
+                            ],
+                            "query": [
+                                {
+                                    "key": "noRujukan",
+                                    "value": "0001R0010124B000001"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "4. Surat Kontrol & SPRI",
+            "item": [
+                {
+                    "name": "Cari Surat Kontrol by Nomor",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/bpjs/surat-kontrol?noSuratKontrol=0001R0010124K000001",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "bpjs",
+                                "surat-kontrol"
+                            ],
+                            "query": [
+                                {
+                                    "key": "noSuratKontrol",
+                                    "value": "0001R0010124K000001"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Cari Surat Kontrol by Nomor SEP",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/bpjs/surat-kontrol/sep?noSep=0001R0010124V000001",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "bpjs",
+                                "surat-kontrol",
+                                "sep"
+                            ],
+                            "query": [
+                                {
+                                    "key": "noSep",
+                                    "value": "0001R0010124V000001"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Buat Surat Kontrol Baru",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"request\": {\n        \"noSEP\": \"0001R0010124V000001\",\n        \"kodeDokter\": \"12345\",\n        \"poliKontrol\": \"INT\",\n        \"tglRencanaKontrol\": \"2026-10-06\",\n        \"user\": \"SIMRS-ADMIN\"\n    }\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/bpjs/surat-kontrol",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "bpjs",
+                                "surat-kontrol"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Buat SPRI (Surat Perintah Rawat Inap)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"request\": {\n        \"noKartu\": \"0001234567890\",\n        \"kodeDokter\": \"12345\",\n        \"poliKontrol\": \"INT\",\n        \"tglRencanaKontrol\": \"2026-09-29\",\n        \"user\": \"SIMRS-ADMIN\"\n    }\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/bpjs/spri",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "bpjs",
+                                "spri"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "5. Antrean RS (Antrol)",
+            "item": [
+                {
+                    "name": "Status Antrean Poli Hari Ini",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/antrean/status?kodePoli=INT&tanggal=2026-09-29",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "antrean",
+                                "status"
+                            ],
+                            "query": [
+                                {
+                                    "key": "kodePoli",
+                                    "value": "INT"
+                                },
+                                {
+                                    "key": "tanggal",
+                                    "value": "2026-09-29"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Ambil Nomor Antrean",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"nomorkartu\": \"0001234567890\",\n    \"nik\": \"3201234567890001\",\n    \"nohp\": \"081234567890\",\n    \"kodepoli\": \"INT\",\n    \"namapoli\": \"Penyakit Dalam\",\n    \"pasienbaru\": 0,\n    \"norm\": \"MR-89210\",\n    \"tanggalperiksa\": \"2026-09-29\",\n    \"kodedokter\": 12345,\n    \"namadokter\": \"dr. Budi Santoso, Sp.PD\",\n    \"jampraktek\": \"08:00-12:00\",\n    \"jeniskunjungan\": 1,\n    \"nomorreferensi\": \"0001R0010124B000001\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/antrean/ambil",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "antrean",
+                                "ambil"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "6. Referensi BPJS",
+            "item": [
+                {
+                    "name": "Referensi Poli BPJS",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/bpjs/referensi/poli?nama=INT",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "bpjs",
+                                "referensi",
+                                "poli"
+                            ],
+                            "query": [
+                                {
+                                    "key": "nama",
+                                    "value": "INT"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Referensi Diagnosa ICD-10",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/bpjs/referensi/diagnosa?kode=A09",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "bpjs",
+                                "referensi",
+                                "diagnosa"
+                            ],
+                            "query": [
+                                {
+                                    "key": "kode",
+                                    "value": "A09"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Referensi Dokter DPJP",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/bpjs/referensi/dokter-dpjp?pelayanan=2&tglPelayanan=2026-09-29&kodeSpesialis=INT",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "bpjs",
+                                "referensi",
+                                "dokter-dpjp"
+                            ],
+                            "query": [
+                                {
+                                    "key": "pelayanan",
+                                    "value": "2"
+                                },
+                                {
+                                    "key": "tglPelayanan",
+                                    "value": "2026-09-29"
+                                },
+                                {
+                                    "key": "kodeSpesialis",
+                                    "value": "INT"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Referensi Faskes BPJS",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/bpjs/referensi/faskes?nama=Bhakti&tipe=2",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "bpjs",
+                                "referensi",
+                                "faskes"
+                            ],
+                            "query": [
+                                {
+                                    "key": "nama",
+                                    "value": "Bhakti"
+                                },
+                                {
+                                    "key": "tipe",
+                                    "value": "2",
+                                    "description": "1: Faskes 1 / Puskesmas, 2: RS / FKTL"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Referensi Provinsi",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/bpjs/referensi/provinsi",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "bpjs",
+                                "referensi",
+                                "provinsi"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "7. Monitoring BPJS",
+            "item": [
+                {
+                    "name": "Monitoring Kunjungan Pasien",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/bpjs/monitoring-kunjungan?tglPelayanan=2026-09-29&jnsPelayanan=2",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "bpjs",
+                                "monitoring-kunjungan"
+                            ],
+                            "query": [
+                                {
+                                    "key": "tglPelayanan",
+                                    "value": "2026-09-29"
+                                },
+                                {
+                                    "key": "jnsPelayanan",
+                                    "value": "2",
+                                    "description": "1: Rawat Inap, 2: Rawat Jalan"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Monitoring Status Klaim",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/bpjs/monitoring-klaim?tglPulang=2026-09-29&jnsPelayanan=1&status=1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "bpjs",
+                                "monitoring-klaim"
+                            ],
+                            "query": [
+                                {
+                                    "key": "tglPulang",
+                                    "value": "2026-09-29"
+                                },
+                                {
+                                    "key": "jnsPelayanan",
+                                    "value": "1"
+                                },
+                                {
+                                    "key": "status",
+                                    "value": "1",
+                                    "description": "1: Proses Verifikasi, 2: Pending, 3: Klaim"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "8. SatuSehat Kemenkes (FHIR)",
+            "item": [
+                {
+                    "name": "SatuSehat: Auth Token OAuth2",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/satusehat/oauth/token",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "satusehat",
+                                "oauth",
+                                "token"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "SatuSehat: Kirim Encounter (Kunjungan)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"resourceType\": \"Encounter\",\n    \"status\": \"arrived\",\n    \"class\": {\n        \"system\": \"http:\\/\\/terminology.hl7.org\\/CodeSystem\\/v3-ActCode\",\n        \"code\": \"AMB\",\n        \"display\": \"ambulatory\"\n    },\n    \"subject\": {\n        \"reference\": \"Patient\\/100000040001\",\n        \"display\": \"Pasien Uji Coba\"\n    }\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/satusehat/Encounter",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "satusehat",
+                                "Encounter"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -15,6 +15,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phone',
+        'subscription_ends_at',
         'password',
     ];
 
@@ -27,7 +29,27 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'subscription_ends_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function hasActiveSubscription(): bool
+    {
+        if ($this->hasRole('superadmin')) {
+            return true;
+        }
+
+        return $this->subscription_ends_at !== null && $this->subscription_ends_at->isFuture();
+    }
+
+    public function paymentProofs(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(PaymentProof::class);
+    }
+
+    public function gatewayLogs(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(GatewayLog::class);
     }
 }

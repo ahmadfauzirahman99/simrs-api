@@ -1,0 +1,520 @@
+BASE URL : https://apijkn.bpjs-kesehatan.go.id/antreanfktp
+
+Web Service Antrean - FKTP (Diakses oleh Mobile JKN)
+Token
+URL : {BASE_URL}/auth
+
+Fungsi : Membuat token
+
+Method : GET
+
+Format : Json
+
+Header :
+        x-username: {user akses}
+        x-password: {password akses}
+                                
+{
+    "response": {
+        "token": "1231242353534645645"
+    },
+    "metadata": {
+        "message": "Ok",
+        "code": 200
+    }
+}                    
+                                 
+                                 
+Keterangan:
+
+Contoh generate token dapat menggunakan link berikut [jwt] : https://jwt.io/
+
+Status Antrean
+URL : {BASE_URL}/antrean/status/{kode_poli}/{tanggalperiksa}
+
+Contoh URL : {BASE_URL}/antrean/status/001/2020-01-28
+
+Fungsi : Menampilkan status antrean per poli
+
+Method : GET
+
+Format : Json
+
+Header :
+        x-token: {token}
+        x-username: {user akses}
+Response
+Response
+                                            
+{
+    "response": {
+            "namapoli" : "Poli Umum",
+            "totalantrean" : "25",
+            "sisaantrean" : "4",
+            "antreanpanggil" : "A21",
+            "keterangan" : ""
+    },
+    "metadata": {
+        "message": "Ok",
+        "code": 200
+    }
+}
+                                     
+                                     
+Catatan:
+
+Metadata code:
+200: Sukses
+201: Gagal
+Selain metadata code 200, agar message pada metadata diisi sesuai dengan kondisi di lapangan
+
+Ambil Antrean
+URL : {BASE_URL}/antrean
+
+Fungsi : Mengambil antrean
+
+Method : POST
+
+Format : Json
+
+Header :
+        x-token: {token}
+        x-username: {user akses}
+Request
+Response
+Request
+                                            
+{
+    "nomorkartu": "00012345678",
+    "nik": "3212345678987654",
+    "kodepoli": "001",
+    "tanggalperiksa": "2020-01-28",
+    "keluhan": "sakit kepala"
+}
+                                            
+                                            
+Catatan:
+
+Metadata code:
+200: Sukses
+201: Gagal
+202: Pasien Baru
+
+Selain metadata code 200, agar message pada metadata diisi sesuai dengan kondisi di lapangan
+
+Sisa Antrean
+URL : {BASE_URL}/antrean/sisapeserta/{nomorkartu_jkn}/{kode_poli}/{tanggalperiksa}
+
+Contoh URL : {BASE_URL}/antrean/sisapeserta/00012345678/001/2020-01-28
+
+Fungsi : Melihat sisa antrean di hari H pelayanan
+
+Method : GET
+
+Format : Json
+
+Header :
+        x-token: {token}
+        x-username: {user akses}
+Response
+Response
+                                            
+{
+    "response": {
+            "nomorantrean" : "A20",
+            "namapoli" : "Poli Umum",
+            "sisaantrean" : "4",
+            "antreanpanggil" : "A8",
+            "keterangan" : ""
+    },
+    "metadata": {
+        "message": "Ok",
+        "code": 200
+    }
+}
+                                     
+                                     
+Catatan:
+
+Metadata code:
+200: Sukses
+201: Gagal
+
+Selain metadata code 200, agar message pada metadata diisi sesuai dengan kondisi di lapangan
+
+Pasien Baru
+{BASE_URL}/peserta
+Fungsi : Kirim informasi identitas peserta sebagai pasien baru
+
+Method : POST
+
+Format : Json
+
+Header :
+        x-token: {token}
+        x-username: {user akses}
+Request
+Response
+Request
+                                                
+{
+    "nomorkartu": "00012345678",
+    "nik": "3212345678987654",
+    "nomorkk": "3212345678987654",
+    "nama": "sumarsono",
+    "jeniskelamin": "L",
+    "tanggallahir": "1985-03-01",
+    "alamat": "alamat yang muncul merupakan alamat lengkap",
+    "kodeprop": "11",
+    "namaprop": "Jawa Barat",
+    "kodedati2": "0120",
+    "namadati2": "Kab. Bandung",
+    "kodekec": "1319",
+    "namakec": "Soreang",
+    "kodekel": "D2105",
+    "namakel": "Cingcin",
+    "rw": "001",
+    "rt": "013"
+}
+                                     
+                                     
+Catatan:
+
+Metadata code:
+200: Sukses
+201: Gagal
+
+Selain metadata code 200, agar message pada metadata diisi sesuai dengan kondisi di lapangan
+
+Batal Antrean
+URL : {BASE_URL}/antrean/batal
+
+Fungsi : Membatalkan antrean peserta
+
+Method : PUT
+
+Format : Json
+
+Header :
+        x-token: {token}
+        x-username: {user akses}
+Request
+Response
+Request
+                                                
+{
+    "nomorkartu": "00012345678",
+    "kodepoli": "001",
+    "tanggalperiksa": "2020-01-28"
+}
+                                     
+                                     
+Catatan:
+
+Metadata code:
+200: Sukses
+201: Gagal
+
+Selain metadata code 200, agar message pada metadata diisi sesuai dengan kondisi di lapangan
+
+Ambil Antrean V2 New
+URL : {BASE_URL}/antrean
+
+Fungsi : Mengambil antrean
+
+Method : POST
+
+Format : Json
+
+Header :
+        x-token: {token}
+        x-username: {user akses}
+Request
+Response
+Request
+                                        
+{
+"nomorkartu": "0000012345678",
+"nik": "3212345678987654",
+"kodepoli": "001",
+"tanggalperiksa": "2020-01-28",
+"keluhan": "sakit kepala",
+"kodedokter": 123456,
+"jampraktek": "08:00-12:00",
+"norm": "654321",
+"nohp": "081234567890",
+}
+                                        
+                                    
+Catatan:
+
+Metadata code:
+200: Sukses
+201: Gagal
+202: Pasien Baru
+
+Selain metadata code 200, agar message pada metadata diisi sesuai dengan kondisi di lapangan
+
+Status Antrean V2 New
+URL : {BASE_URL}/antrean/status/{kode_poli}/{tanggalperiksa}
+
+Contoh URL : {BASE_URL}/antrean/status/001/2020-01-28
+
+Fungsi : Menampilkan list status antrean per poli
+
+Method : GET
+
+Header :
+        x-token: {token}
+        x-username: {user akses}
+Response
+Response
+                            
+{
+    "response": [
+        {
+            "namapoli" : "Poli Umum",
+            "totalantrean" : "25",
+            "sisaantrean" : 4,
+            "antreanpanggil" : "A1-21",
+            "keterangan" : "",
+            "kodedokter" : 123456,
+            "namadokter" : "Dr. Ali",
+            "jampraktek" : "08:00-13:00"
+        },
+        {
+            "namapoli" : "Poli Umum",
+            "totalantrean" : "11",
+            "sisaantrean" : 1,
+            "antreanpanggil" : "A2-10",
+            "keterangan" : "",
+            "kodedokter" : 123466,
+            "namadokter" : "Dr. Adi",
+            "jampraktek" : "08:00-12:00"
+        }
+    ],
+    "metadata": {
+        "message": "Ok",
+        "code": 200
+    }
+}
+                            
+                        
+Catatan:
+
+Metadata code:
+200: Sukses
+201: Gagal
+
+Selain metadata code 200, agar message pada metadata diisi sesuai dengan kondisi di lapangan
+
+Batal Antrean V2 New
+URL : {BASE_URL}/antrean/batal
+
+Fungsi : Membatalkan antrean peserta
+
+Method : PUT
+
+Format : Json
+
+Header :
+        x-token: {token}
+        x-username: {user akses}
+Request
+Response
+Request
+                            
+{
+    "nomorkartu": "00012345678",
+    "kodepoli": "001",
+    "tanggalperiksa": "2020-01-28",
+    "keterangan": "peserta batal hadir"
+}
+                            
+                        
+Catatan:
+
+Metadata code:
+200: Sukses
+201: Gagal
+
+Selain metadata code 200, agar message pada metadata diisi sesuai dengan kondisi di lapangan
+
+Web Service Antrean - BPJS (Diakses oleh sistem FKTP)
+Referensi Poli New
+{BASE URL}/{Service Name}/ref/poli/tanggal/{tanggal}
+Fungsi : Melihat referensi poli
+
+Method : GET
+
+Format : Json
+
+Header :
+        x-cons-id: {cons id akses}
+        x-timestamp: {timestamp akses}
+        x-signature: {signature akses}
+        user_key: {userkey akses}
+Respon : Perlu dilakukan dekripsi disisi client
+
+                                
+                                
+{
+    "metadata": {
+        "code": 1,
+        "message": "OK"
+    },
+    "response": {
+        "list": [
+            {
+                "namapoli": "POLI UMUM",
+                "nmsubspesialis": "AKUPUNTUR MEDIK",
+                "kdsubspesialis": "AKP",
+                "kodepoli": "001"
+            },
+            {
+                "namapoli": "POLI GIGI & MULUT",
+                "kodepoli": "002"
+            }
+        ]
+    }
+}                    
+                                 
+                                 
+Referensi Dokter New
+{BASE URL}/{Service Name}/ref/dokter/kodepoli/{kodepoli}/tanggal/{tanggal}
+Fungsi : Melihat list dokter per poli
+
+Method : GET
+
+Format : Json
+
+Header :
+        x-cons-id: {cons id akses}
+        x-timestamp: {timestamp akses}
+        x-signature: {signature akses}
+        user_key: {userkey akses}
+Respon : Perlu dilakukan dekripsi disisi client
+
+                                
+{
+    "metadata": {
+        "code": 1,
+        "message": "OK"
+    },
+    "response": {
+        "list": [
+            {
+                "namadokter": "drg. Kusumawati Sukadi, Sp.BM",
+                "kodedokter": 700,
+                "jampraktek": "07:00-12:00",
+                "kapasitas": 100
+            },
+            {
+                "namadokter": "Dr. Dr. Noer Rachma, Sp.KFR",
+                "kodedokter": 854,
+                "jampraktek": "12:00-16:00",
+                "kapasitas": 60
+            }
+        ]
+    }
+}                   
+                                 
+                                 
+Tambah Antrean New
+{BASE URL}/{Service Name}/antrean/add
+Fungsi : Menambah Antrean
+
+Method : POST
+
+Format : Json
+
+Request
+Response
+Request
+                                                
+{
+   "nomorkartu": "00012345678",
+   "nik": "3212345678987654",
+   "nohp": "085635228888",
+   "kodepoli": "ANA",
+   "namapoli": "Anak",
+   "norm": "123345",
+   "tanggalperiksa": "2021-01-28",
+   "kodedokter": 12345,
+   "namadokter": "Dr. Hendra",
+   "jampraktek": "08:00-16:00",
+   "nomorantrean": "A-12",
+   "angkaantrean": 12,
+   "keterangan": ""
+}
+                                     
+                                     
+                                                
+{
+   "nomorkartu": "{noka pasien BPJS,diisi kosong jika NON JKN}",
+   "nik": "{nik pasien}",
+   "nohp": "{no hp pasien}",
+   "kodepoli": "{memakai kode subspesialis BPJS}",
+   "namapoli": "{nama poli}",
+   "norm": "{no rekam medis pasien}",
+   "tanggalperiksa": "{tanggal periksa}",
+   "kodedokter": {kode dokter BPJS},
+   "namadokter": "{nama dokter}",
+   "jampraktek": "{jam praktek dokter}",
+   "nomorantrean": "{nomor antrean pasien}",
+   "angkaantrean": {angka antrean},
+   "keterangan": "{informasi untuk pasien}"
+}                        
+                                     
+                                     
+Update Status / Panggil Antrean New
+{BASE URL}/{Service Name}/antrean/panggil
+Fungsi : Update status antrean hadir/tidak hadir
+
+Method : POST
+
+Format : Json
+
+Header :
+        x-cons-id: {cons id akses}
+        x-timestamp: {timestamp akses}
+        x-signature: {signature akses}
+        user_key: {userkey akses}
+Request
+Response
+Request
+                                                
+{
+   "tanggalperiksa": "2024-03-01",
+   "kodepoli": "001",
+   "nomorkartu": "0000034563234",
+   "status": 1, ---> Status 1 = Hadir; Status 2 = Tidak Hadir
+   "waktu": 1616559330000 ---> Waktu dalam bentuk timestamp milisecond
+}
+                                     
+                                     
+Batal Antrean New
+{BASE URL}/{Service Name}/antrean/batal
+Fungsi : Membatalkan antrean pasien
+
+Method : POST
+
+Format : Json
+
+Header :
+        x-cons-id: {cons id akses}
+        x-timestamp: {timestamp akses}
+        x-signature: {signature akses}
+        user_key: {userkey akses}
+Request
+Response
+Request
+                                                
+{
+   "tanggalperiksa": "2024-01-03",
+   "kodepoli": "001",
+   "nomorkartu": "0000045258563",
+   "alasan": "Terjadi perubahan jadwal dokter"
+}
+                                     
+                                     

@@ -1,0 +1,48 @@
+BASE URL : https://apijkn.bpjs-kesehatan.go.id/erekammedis
+
+Pembuatan Medical Record
+Insert Medical Record
+JSON
+{BASE URL}/eclaim/rekammedis/insert
+Fungsi : Insert Medical Record
+
+Method : POST
+
+Content-Type: text/plain
+
+Request
+Response Sukses
+Response Gagal
+Request
+                                                    
+        {
+            "request": {
+                "noSep": "1111R0010921V014299",
+                "jnsPelayanan": "2",
+                "bulan": "1",
+                "tahun": "2019",
+                "dataMR": "H26BDFZDZmDXtKKLdFXZ+N5V2UKc9XDEzawZtVP0ZXDEkCuNATLUjJtC5p/PDA/IVD4f4EhsKoSXwNJasH3ZeX9HU150JOpcyYs5/y93dZjXICg4Tk238UxqlmM0F8NPUMBxZsw8F+6BgybWE6B/+NDqJAGfGdxojz+Frtf9HQ+Bx+9Q0d3vYjsFrOEGnyK0Ys1r+2sh0cyCIdpJV3LsYFs1I9ZTPxuXDp/STfnezff4w3+ChZfZGEmksjJvmGWtDv7cEeITdvmP/LWndZPlFVBPBR1gi6IZ2MQa98qy1H0eRNVqfIpL1H11e3nEW3Oa7Yz9MJ5dVS4kY2nyI+12TpJZ+imppYFtdYme+r8Ez1a5en/MqlnLKNXuW4ZQC6APitX0QelfeHizPFtNzX3DzC6AwWKiImh1+0kRtmscgw3fYWkuSpdcBQ+Ip6Pp5pbD7mr0n+5tYCqWl5WIRFHSyqzsGu5X8LKl/KGBWLqEuREd1Li7CY6Axm1vulQOJ0Fsc5G3stEtPqsLRXbVHg33I1L5fB9KLwn8lHdmYxoBCQjj4z4x69oUaBJooRxRg8qMYfSnutPeZWoX0/kwZMdadarl1UlD09IfWgxEMxBPxUHEICK2p8PJp6GOl/cMxZZKDDCi2pxrfpUvBV3ZBBsu4vZY6KyY44uPPc69fMBf8WJutifz5LyfpZBDBuhz3sATYeGuGvXQUfwFdC/i1VRVHxPgqqmVxQUQzLaDwsakvCwenEw0zTcV3FKK10gFyTew95T8sPniAHvl8gMaOOhhzCN5kD84juDWkS0fBBahwZyfw8iS4zIej5+M1mstQjq7/cF46g9PEQQOMAuF6pZbZg9leCavOiUECUhnnsIhxrVklSnj3mgkYkR/g9Jdtm4XNtKviIkrYIaM2vLy7CWXt9OCSrsyCQ+TEDjmP4onAXCnEOd8640aB3XLgrNxkaGPet4kDbUVApjvjcM23aft3yyzvJ1ieubHK9aSzdz/u8sC18ZFtwbQaWii0JMfavhNKEXg4CeldWzOkLHuEEqZ+YPNwAcFTUZK7nJAAyI8DQ9LNtKRtjEe95GO9wIXGYqcdTuK8vnKtDwdoXwNG1U6CPktx0XBVCi3RE2fzfYEQhsxxWVK0dhgxAzxIhziJKgP5hN6O4h+RVVvRXrVXNsIxEPLMyEUGZXthjjo+7G92HfdAtoBVm/NjtqsOq7GJdi5YjG3ivrf0k2cyvYjttjGpoXx/cX3FwoPbx3jbdmFJUtui86bQGB7E2HD3b6Kc6o3zue4QaW+uGk1YuFjJEtiMbogkrceGOLrW60Wt3kryX2/iVz2JXRPIFoOTgBPMR5fRKsGwBQ5aBlj712X2ai3mIs1q9Hu9iOFTBB21+H7rMCQ4HkOZGRuxlOgVh9bfLEI6aTMQsNetS75q4YSKcyvfPYmJ9rrHUzUrb6JqNxcB8NgOs3+6ecHDPqZLE+bzK4paYmJS1dmaAxlsHT889hte26ETxX32Cd1jewp7yBx2/80rYYiXaPRC/yyo56tcFsbNcQeBj83ntWt+0hcsF4DwKg9z+syH7ogZQEDQ9CMhATtAPpBPPctDu5BcbodJXEL3Rt1wNtBaY8jHrrm9ZNVier2R4u23xiVN1mlvbll4Q1rYLegiwZwd44TYkUJjcWvzzF/+lcbY10TIJlIJgbUvrljzLhqgazb3Qk4lGYP8VtsrPiguoicbHw5MAFYbNqkDWsvptKA2+vDxs1wptp5hhtr0HHKu1stKd0+DoqcQN3AKsf4cHeadQUMZ1QkJ6Nk6kFqciL/1B3ojnVmBm04lL55UTUihREWQg9VcC9mX6sNaRcZ12Zyvb9Bv9D/CURoWb3s/M0V3P1ItZN3vN11kAndNgalUTUUVQg1w8UDM7vYynzbibPtxDzVxCYfaJHj/mtpP2yP5gWNOUqyjnqCFV87s2wS9XcuLPKIJ9JMms5q3Iy5uluc/e/MmLVdb3snLoS1ujdpGPPXaThOeLkud84NziXcLayV6kAal5ClRYGy50xSqXFA+7HcvYnNQhe6EZ8ia7U4+904Luzi9HK4JycU4QNmX2VLvzV62Fk6S05tEL9DErPmuKRlP5ussJLpXZChJ9YzXlGu/4do+5T8x0rn3Nhqjf0YsVA3XRn6HhZktWgKl3wVFpwY0VdDTBh1K3zomPzU7PpXwy10xgWr8/iIX9Km6jGiQuJhpg1ovIiL69f8lOoC47WHYn/p4SofEPghlVc8lpXQtViIJP0N7ioCWEXg2+4D9dPRGBf44ixecfy+dC48w419PEcXuI7kC1q/if7+ol4+ErTunfLiGQJfiCVbpHY5673hrfvyvLNKGvRJi2q7JJu3mVXQjGz3nA4bZ88VCHSMwkkRO/oThsv02dFj5G5atCohyi706pcigMFRduEQ3simvwoCn7LrDkSy8XAUBtGy8hJ7q4YMYWkt2J9l3VzLs+adG5LVFaxuxOclV2cVRvGtOwtPaZ/C59f6ypSxsH6T/3tnBLJarQxZ7EVKA+wDg7jr8hhM93wXe+dNSsj+w854g1WjIiV7iZTNTPZROwfwph41eMJG6dcbcunPnXPwAc4uEEpcKEmTIMGAksqkmlN71KYaRnNxLfhrFWJOQlk73UTVlf6G9noneM0nDCttvBEW1O2d0quBVZl9WLbLiIwmOPYfSMwZigWXx4gPsxVLcNAFDSCj/nbIc/Pc7b3X4ngkNFOXXfXYaVucE3cJZ2Ie2hG/yvtdzfTIQ7MyfNpQG6A2GDiQl1I+B/FrRlejhwfAtmnKlqHSQEvzD3Z6Prw8wIp2pl0BmIJ5c737w/Ixq4QkWbCX1i7LShODPjulYsjbAAIeIL4z3ODhH0MGc9aTdAjEDcnvSCIEYKtoazjD1cFpvdwuC5yQbxo9xEkE2oPcBG1kSwJRwo0f2LJfnXL0CahzzHnVzEYh7ck/al6jzbo413dzkSuiPghHvtTs+juhi4LP2fxlIH3fX4vjA7zRGi7V9dr+pSs4Y1LVCdd0Yegw7W6yf2LtKuFJVBReXsi0nL1WCoLo9yZNhNiTW9U+bkuo9FX6eGnUZV3rfy1NGQxQPuGYRZ9tLFZnVgvZ9lpa1p9rtQTv5acID/jXrAQ1tye1Soa2HhW2n/9/YaHXFJj9maOcaxSCQPc4ooBFh8dEmiqG7gcM1n71haR/utYn+tWMjyZBBWKcznLsDEfJotFhaAwQWXf0rXLKr3hbnSc7XLgsibseMEPleGc2+f2t2BWzHTqnfXwEPu8nGCvIgWG/Y3jjUNVAIUXDNe1Ti++Eno6nZVOPzsv9nrEYqWyFu5NVHnyd8HwZh/HxIxNGeEqDJzIC2iEBrazMwgAceNlm+6Bu/dxod+TqmmhlsAR97Q3KnZBmD78ampz0z8NbCJqDj3g7J+jJ6Y198wuZloulKThrz/BbqtjXjLWDhUYDZeWEzoqjOc150o0yNxO0TQipasucID2gApoOhyKBC1OVQUq9F7J+SlFdkgBH08JQ3adHKEhPmz+MsFjXUXIg0+i1Q84RdrzszPEO9hhM8wZqCV6GTm8FmMJ/wsXzjR2u6lTNrPRLmamSexWyKudGl1bUAhjOQbZt95wRjdyx+JtrB/jsAbn2EODPmT9c/Z+hO/IqnWI2Cgk66OnlNxZH9KzzmlZEWpncEPzExvyEcX/on1eG/MP4HoI4rSxpbN2kcA69FzpwBO7MNwXQLB0QmjpGzLBBbFvS25jT7U01+8PaotqbQzlHiIHV+Tp/0evI33tV+kuPAlweonDuPACzGcA22AgfFStEC9ym7J3c58x3nerbE9gzn+HGXvQcvgFefJIlwfCnG0e8wmqhkRpnTbjNZ6fS8q+Vznc4hjE+6thmhZ/9EKg+T6cjqsZShuOpY8amaMFeOeuFy2ukDOIh3p3M1bVjjrdEMx5qXop1M9KulJatw/KhqR4o2t7HynY+fVfT571cFwMfUxDUtghpQEOAeifKf8/KhqBDcuM8XZWT8SPd/8oBSRolxAZGqvheMBiebcLnrOG9wyj3sbDXufBBTknpXI2E9x9VAqDydj5qbxvyybUG1cKxC+yCUUdL0lkFA9Ya2qFnlhb36CHHR5RHuWEfk75MvuQ1i0DEvL1fYL6WcFmW0sw+GzN3yGC6PrlfIySm2q0x4Fz8EwnCpOe+5HtYcWHaDEFs9K2o1N6Amp5aQHlaEUDwFkpS4iDNOryDJT/d9LiF8yY5Yl1GIT9NoPytsSe2Dh0dg1M2jefRAAoKjwCJEs1AgXmAtiR4/iTEa+Kw7cRTkxuOturKue+peksRt0VJtHpM/Tc3tQdPVBe3BqsEmZAsfYZa8BZ5Z6vURKzD1qzOEjX34SJyV8j4CmTMFMYH8GtBpTtYNgRZDNqSIVAxZWJ0PMAs+HrEJG0AwdV8LXPbIYhB0dtEhHIoJkFN4KFsnsJZif9WcUNP34viqV+6u+8RnMDkOJ7BM/jiDfIFdFSRg/O2jLq5TLc8Gxy2YO+a1hYoB+xDSzkhCXiEJ4rKnpFLQY5r1tSKLzAVcwoi6IMXH7a5WDRHYxgoQuNU+fNorBtxHziLFpxzZcUGsm5JMhTO9PrNsl3svUgwMaGB/c/usj90XDrXOuZiTLblf+Xo4EB88mqcZ11IF8dONho6sZqM94luzvXgvstSOFkgGSjhCRwpBhLmtlx5OqQ49h54SDXFblMt3yOPjZtSEGKhdTwj35v8vHDtVTlTgVKEVJlzahxGET/UdFtEKaK2SV256JJPkOwQM2MGbadyGD2/HQh7jRe85HKHGSaUm7t7Y0H1rN9gieyqthwZ5U+odVz1XQsVu+KBJlkI2ZeHyDKbx3ahzDQqFAdERdeIY040xFOrdLJy4ZkQgT05u4O915PklZaWgo8oY3Yx12zTscYpHgVe6H3hsi6D+ksAdJvT79aW7luKf7U0L5RJqo85q2Qr/oAJ0hYQt1Z9zdw/bTCbeqKz2XLQFko3zY9oLLcCtlzOmhz+ISff7dHlZYNqXgejISjPjh3Gyop/TEdxwM/4xa8snF61rTu6grN3G+llGA9RLQbrGU7iTt+QgNVFT5kBbh4qpfrbH3K+i/2phiESkSOsCsefrILovscm50O173ZMmKr+WZwmVhJBi874y7DlR2a6oG+IzLHDBNahxkpMj1y/ZvJoaPIJic9Mn9KeW6Hkkc/9RfZbjEUP/hSB7aVTXncLOCLGfBG8RkRAYnYjA4n3ZFcbQOCsNc0dYVZJLDA61xGEjhoDH1+1FCqgY13jMiuKsHkxRVLu+xunQWARC9tLurPwlgdVrHZpj23ngMIglswy+YL+GipBdDTmnx78DNY0wq1ue2BeUNLRrzVlubiyvN9iujtBDXZxhIA5LDf+r5zloQmOEl5Hn9BQbqXLEG293xF73QCJC1wN8b1hmbKfJa/WLN9oRKC0czBO4h7H6gB4nNgNZty35UhCk6FwIC1LCdXg8svucgNl/VSSoskxuZgYEjtJSIvKkXDiMDCTu0xwpAbajPXZrMw6DvSondGCIoUeFnZhDG+5jrT8Colsgox+S25fwd2Al1BFnVK6E+dilfEJgWrCW5xvaEn5LPR8AdPfO2F0VS3UIEcTVy2rZ7c5nnPwCk95tkWofLv3+uoCKQZLWhocISSao++c27SvFqzS/lE9SPF5MW7xjLdhpKJiEr/b+90qbUw7G+bhvHf+qUGw7LubVlh4xyQixz8uaD1BRGBbmY9suiAZdXF+EVTInAEMxznWqKIrTP/dOMVT3bRp9zsp+PGXV+EE/4JFL92Pe6Y8NCIFIQWWWk8ILcxwLcm/q73GzVqtaOVXyZmLNIYsaqDA8LuBmB+hi4G0ZLXIeop1Bz8ul+qnTVvfNclRmptmleYLjLp4GjJKhMEs6Np0M795fGK9x/htt3JEe6rPBgAvug0Cr4FESs8VIlb1tCi0gnyeQDpea47F+oqywtxKkzRBdsQwBHCjevFYL8P4IV491aBwAlsJf9Lq7SXkKsRA57mCEd0RAQrGOijrayWBeAgw2HylDQlChh/mkcnyUQ7s2naHOL7lv1s1qBHd5HVk4nRTo/+6F5M4XYagJ4LRyTJQ8WS88xomQBPg2sWGoyDhgRpo4qoRRcmQhW71ARcvUa+l/LIhwVrYzcpcNlp2WolhlkRxawmEm0IKPk0eMUw/3FShefqrAkNuNsRm4IBXLv2FQt6gb1nKw6xL8tamfl5xN9hx2Fnw89/b18WZrC7rMww5FkCtaCKqk+nj6SJB/NkFaVH2ZPFklmrqYfM26d/AXTgFy4Zh4Dow+Os3bIYUKvupSQVgmu6xd9BcQz3gAxvl5282KoFKwDMDd7prnTofsUwNuKgrqEQT1jC1MmTvr83xum+MaXui5NlMBuOuwZ2pPUC5nQx1jRqbaoj4CdRxzAibU9aP4j477Ky0ojv2PHOOptITAqRtYcIhgWHyX2G96DUpnBrOv0dSfvhobdsZoVHySFXmiY+gh4t6n+n4gHulsQtWRJBE8bf1MUr4PtQhi4XPZe5mrjvZM39XOJZ6CAjPmsGhl45ArsRVksePsrTj0iaipt8ePJ6ZtYRA4t3zgIAuEywDxCcKTBUnsMyIZmZxjVrPF0g0x9fDDvoPvTJgMXfGUIyJLnp3oIJq6kKa+U2+JQNhs8mHwJQ8czfrLEAQax7GJB+2hE+3thrUcJbOsPXdvgQnArk+7gtwhWdbnmbJeQ6e5SirpGHXvDZmiN9syGm41czpzzTtuIH2wUWD5kdOmWKgAiTJQUGUbGSv/lviESe5JqdAPBmzq1YajsB8+eDjNcxe1lnZat99dorxJCZR72pl+xLEJypAxRQLVr6z5r/Ka9JZ0em1U+VBvRhm12yXUNaO3fYGo44PwKN5nuGBv1U2NrDHnrZJRnl4DPwfRO8IUWT5ycO2mfGQc1eBZN+NPCZm8AuxyrW8aSrVwGvAyuE1fllJ4JnN1XLIj1O30RO9sLf4LKW3Gy3Ni/RtnXf9GK3hiBZjsirPJ5GpF5RzHLzc8Bgrbi3uoFpYqABnk0XkhqxUOK9VoSVf9OrUvJRcL/rWbCJFL3Goyv1Xprhpu1isl7tQhdq7uTNA4T7Nx1c3ms0RqiYvrdJcRAo2aCLyFUjir1XtJHK5pGk9puqeE1aELWvGOdOO1zVdGGt2VS93SwoA1r1Pp8Jt2VR5hsRMTeHEhy2P7n1s5l64KlgrZ+JMBpuIgNmkvmQnJQfNRxFTVl8VFs4eRV2qbzvR67q39L6zticKwH7lRB4yoQ/HvtC54ROC5FEHYEGxQcUFUH2k4wuuYUXxWe3HchpYrLq5ENfrdHKKRwl2Tdg9FUeYFun7VdUuXex1a0MXCBJEsXpNljZSjG/OBRSGqS0rExMp+usn0SU7QKKSSxSDcgNHy4fea5UsVIQwHmP7XjcUH9pkhISZ6868Mt6MQTq11Ki7LmlKiKWGG9nWlnHI1ye12Vpy8am+GBjW6vSijmPrYWWEvgsBzYyz9GW4Vr9xp4vj5Qgy0Dc5fINn0k36QwocpJ/AuS4gYAAiOGk4JUVBjKX5mk9msmsO8YklW1eVSMYcmS2PgXuyOniFtuLPLyX53N8qeBkgwP+viXcUfshhYlFhknybNjZvNgtvjwGCsHleaHfJsr/s1xJ49ITjBU/ScVaOIfyOnp8ylqIf5BakmcvfPjhLfK0pKitBNIThZw=="
+            }
+        }
+
+
+
+                                                        
+                                 
+
+    how to generate dataMR :
+    1. compress menggunakan metode gZip
+    2. encrypt menggunakan key dengan kombinasi consid + secretkey + koders
+                                
+                                                    
+        {
+            "request": {
+                "noSep": "{nomor SEP}",
+                "jnsPelayanan": "{jenis pelayanan = 1. r.inap 2. r.jalan}",
+                "bulan": "{bulan}",
+                "tahun": "{tahun}",
+                "dataMR": "{encrypt GZIP}"
+            }
+        }
+                                                        
+                                 

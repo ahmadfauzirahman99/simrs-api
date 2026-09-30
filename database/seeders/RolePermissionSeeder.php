@@ -43,6 +43,7 @@ class RolePermissionSeeder extends Seeder
         $bpjs        = Role::firstOrCreate(['name' => 'bpjs']);
         $farmasi     = Role::firstOrCreate(['name' => 'farmasi']);
         $pendaftaran = Role::firstOrCreate(['name' => 'pendaftaran']);
+        $clientRole  = Role::firstOrCreate(['name' => 'client']);
 
         $superadmin->syncPermissions(Permission::all());
 
@@ -69,6 +70,13 @@ class RolePermissionSeeder extends Seeder
             'antrean-rs.create',
         ]);
 
+        $demoRole = Role::firstOrCreate(['name' => 'demo']);
+        $demoRole->syncPermissions([
+            'dashboard.view',
+            'vclaim.view',
+            'antrean-rs.view',
+        ]);
+
         $user = User::firstOrCreate(
             ['email' => 'admin@simrs.local'],
             [
@@ -78,5 +86,15 @@ class RolePermissionSeeder extends Seeder
         );
 
         $user->assignRole('superadmin');
+
+        $demoUser = User::firstOrCreate(
+            ['email' => 'demo@simrs.local'],
+            [
+                'name' => 'Pengguna Uji Coba (Demo 50 Req/Hari)',
+                'password' => bcrypt('password'),
+            ]
+        );
+
+        $demoUser->assignRole('demo');
     }
 }

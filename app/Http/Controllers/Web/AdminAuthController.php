@@ -17,6 +17,7 @@ class AdminAuthController extends Controller
         return Inertia::render('Auth/Login', [
             'defaultEmail' => 'admin@simrs.local',
             'defaultPassword' => 'password',
+            'trialLimit' => (int) \App\Models\SiteSetting::get('pricing_trial_limit', 50),
         ]);
     }
 
@@ -37,15 +38,63 @@ class AdminAuthController extends Controller
 
         $user = $request->user();
 
-        if (!$user || !$user->hasRole('superadmin')) {
+        $isExpired = $user && $user->subscription_ends_at && $user->subscription_ends_at->isPast();
+
+        if ($isExpired && !$user->hasRole('superadmin')) {
             Auth::logout();
             $request->session()->invalidate();
             $request->session()->regenerateToken();
 
             throw ValidationException::withMessages([
-                'email' => 'Akses hanya untuk admin.',
+                'email' => 'Masa aktif langganan bulanan Anda telah berakhir. Silakan hubungi kami via WhatsApp untuk perpanjangan.',
             ]);
         }
+
+        $isAllowed = $user && (
+            $user->hasRole('superadmin')
+            || $user->hasActiveSubscription()
+            || $user->hasRole('demo')
+            || $user->hasRole('client')
+        );
+
+        if (!$isAllowed) {
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
+            throw ValidationException::withMessages([
+                'email' => 'Akun Anda tidak memiliki lisensi atau masa aktif langganan yang valid.',
+            ]);
+        }
+
+        if ($user->hasRole('superadmin')) {
+            return redirect()->route('admin.clients');
+        }
+
+        if ($user->hasRole('client')) {
+            return redirect()->route('client.dashboard');
+        }
+
+        return redirect()->route('admin.bpjs-tester');
+    }
+
+    public function demoLogin(Request $request): RedirectResponse
+    {
+        $demoUser = \App\Models\User::firstOrCreate(
+            ['email' => 'demo@simrs.local'],
+            [
+                'name' => 'Pengguna Uji Coba (Demo)',
+                'password' => bcrypt('password'),
+            ]
+        );
+
+        if (!$demoUser->hasRole('demo')) {
+            \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'demo']);
+            $demoUser->assignRole('demo');
+        }
+
+        Auth::login($demoUser);
+        $request->session()->regenerate();
 
         return redirect()->route('admin.bpjs-tester');
     }

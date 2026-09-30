@@ -280,4 +280,15 @@ class BaseBridgingV3
 
         return json_decode($output) ?? (object) [];
     }
+
+    public static function stringEncrypt(string $key, mixed $data): string
+    {
+        $json = is_string($data) ? $data : json_encode($data);
+        $compressed = LZString::compressToEncodedURIComponent($json);
+        $key_hash = hex2bin(hash('sha256', $key));
+        $iv = substr($key_hash, 0, 16);
+        $encrypted = openssl_encrypt($compressed, 'AES-256-CBC', $key_hash, OPENSSL_RAW_DATA, $iv);
+
+        return base64_encode($encrypted);
+    }
 }
