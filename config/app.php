@@ -123,8 +123,18 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
-    'aliases' => [
+    /*
+    | Mode on-premise (beli putus): matikan kuota trial & cek langganan SaaS.
+    | Dibaca lewat config() agar tetap berlaku setelah `php artisan config:cache`.
+    */
+    'standalone' => (bool) env('STANDALONE_MODE', false),
+
+    'whatsapp_contact' => env('WHATSAPP_CONTACT', '6281234567890'),
+    'support_email' => env('SUPPORT_EMAIL', 'support@simrsgateway.id'),
+
+    // Digabung dengan alias bawaan Laravel (DB, Cache, Log, ...), bukan menggantikannya.
+    'aliases' => \Illuminate\Support\Facades\Facade::defaultAliases()->merge([
         'SatuSehat' => \App\SatuSehat\SatuSehatFacade::class,
-    ],
+    ])->toArray(),
 
 ];

@@ -26,8 +26,16 @@ html {
 
 body {
     font-family: var(--font-sans);
-    background:
-        radial-gradient(circle at top left, rgba(15, 118, 110, 0.12), transparent 28%),
-        radial-gradient(circle at bottom right, rgba(251, 191, 36, 0.16), transparent 28%),
-        var(--app-canvas);
+    background-color: #f1f5f9;
+    color: #0f172a;
 }
+
+@keyframes loading-slide {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.animate-loading-bar {
+    animation: loading-slide 1.2s infinite ease-in-out;
+}
+

@@ -26,7 +26,7 @@ use App\Http\Controllers\Api\SatuSehat\ProcedureController;
 use App\Http\Controllers\Api\SatuSehat\ServiceRequestController;
 use App\Http\Controllers\Api\SatuSehat\TokenController;
 
-Route::prefix('v1')->group(function () {
+Route::prefix('v1')->middleware(['throttle:api', 'client.api'])->group(function () {
     Route::get('/', function () {
         return response()->json([
             'metaData' => [
