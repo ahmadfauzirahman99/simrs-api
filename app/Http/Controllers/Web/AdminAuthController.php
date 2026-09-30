@@ -15,8 +15,6 @@ class AdminAuthController extends Controller
     public function create(): Response
     {
         return Inertia::render('Auth/Login', [
-            'defaultEmail' => 'admin@simrs.local',
-            'defaultPassword' => 'password',
             'trialLimit' => (int) \App\Models\SiteSetting::get('pricing_trial_limit', 50),
         ]);
     }

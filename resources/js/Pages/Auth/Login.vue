@@ -3,14 +3,6 @@ import { Head, Link, router, useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
 const props = defineProps({
-    defaultEmail: {
-        type: String,
-        default: 'admin@simrs.local',
-    },
-    defaultPassword: {
-        type: String,
-        default: 'password',
-    },
     trialLimit: {
         type: Number,
         default: 50,
@@ -18,21 +10,11 @@ const props = defineProps({
 });
 
 const showPassword = ref(false);
-const autoFillNotice = ref('');
 
 const form = useForm({
-    email: props.defaultEmail,
-    password: props.defaultPassword,
+    email: '',
+    password: '',
 });
-
-const fillDefault = () => {
-    form.email = props.defaultEmail || 'admin@simrs.local';
-    form.password = props.defaultPassword || 'password';
-    autoFillNotice.value = 'Kredensial default berhasil diterapkan';
-    window.setTimeout(() => {
-        autoFillNotice.value = '';
-    }, 2500);
-};
 
 const submit = () => {
     form.post('/login');
@@ -103,7 +85,7 @@ const loginDemo = () => {
                         <div class="space-y-0.5">
                             <p class="font-bold text-rose-900">Autentikasi Gagal</p>
                             <p class="text-[11px] text-rose-700 leading-relaxed">
-                                {{ form.errors.email || form.errors.password || 'Email atau password yang dimasukkan salah, atau akun bukan Super Admin.' }}
+                                {{ form.errors.email || form.errors.password || 'Email atau password yang dimasukkan salah.' }}
                             </p>
                         </div>
                     </div>
@@ -177,26 +159,6 @@ const loginDemo = () => {
                             </div>
                         </div>
 
-                        <!-- Quick 1-Click Fill Helper for Development -->
-                        <div class="rounded-lg border border-slate-200 bg-slate-50/80 p-2.5 flex items-center justify-between text-[11px]">
-                            <div class="flex items-center gap-1.5 text-slate-600">
-                                <svg class="h-3.5 w-3.5 text-teal-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                <span>Akun Default: <strong class="text-slate-800">Super Admin</strong></span>
-                            </div>
-                            <button
-                                type="button"
-                                class="font-bold text-teal-700 hover:text-teal-800 hover:underline transition"
-                                @click="fillDefault"
-                            >
-                                Isi Otomatis
-                            </button>
-                        </div>
-                        <p v-if="autoFillNotice" class="text-center font-medium text-[11px] text-emerald-700 transition">
-                            ✓ {{ autoFillNotice }}
-                        </p>
-
                         <!-- Submit Button with Processing State -->
                         <button
                             type="submit"
@@ -269,7 +231,7 @@ const loginDemo = () => {
                     <span class="font-medium">Enkripsi AES-256-CBC • HMAC-SHA256 Signature Generator</span>
                 </div>
                 <p class="text-[10px] text-slate-400">
-                    Koneksi terenkripsi. Hak akses dibatasi untuk Super Administrator SIMRS.
+                    Koneksi terenkripsi. Hak akses sesuai akun terdaftar.
                 </p>
             </div>
         </div>
