@@ -1,0 +1,19 @@
+services:
+  simrs-api:
+    build: .
+    image: simrs-api:local
+    container_name: simrs-api
+    restart: always
+    ports: ["127.0.0.1:8090:8080"]
+    env_file: .env
+    environment:
+      AUTORUN_ENABLED: "true"
+      PHP_OPCACHE_ENABLE: "1"
+      # Kode di dalam image tidak pernah berubah (tiap deploy = image baru), jadi tidak perlu cek file tiap request.
+      PHP_OPCACHE_VALIDATE_TIMESTAMPS: "0"
+    volumes:
+      - ./data/storage:/var/www/html/storage
+      - ./data/database:/var/www/html/database/data
+    logging:
+      driver: json-file
+      options: { max-size: "10m", max-file: "3" }
