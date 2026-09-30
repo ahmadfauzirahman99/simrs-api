@@ -22,3 +22,11 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Build artefak (zip jualan) & konfigurasi server pribadi
+/dist
+/deploy/deploy.env
+
+# Dokumen internal bisnis (tidak ikut paket jualan, jangan dipublikasikan)
+/docs/PROSES_BISNIS_DAN_MONETISASI.md
+/docs/PANDUAN_PENDAFTARAN_DAN_REQUEST_CLIENT.md
