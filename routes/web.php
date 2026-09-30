@@ -50,6 +50,44 @@ Route::get('/error/{status}', function (int $status) {
     return Inertia::render('Error', ['status' => $status]);
 })->where('status', '403|404|429|500|503');
 
+// robots.txt & sitemap.xml dibuat dari domain aktif (url()), karena protokolnya mewajibkan URL absolut
+// dan tiap instalasi (VPS demo / server RS) punya domain berbeda. Jangan taruh versi statis di public/.
+Route::get('/robots.txt', function () {
+    $lines = [
+        'User-agent: *',
+        'Allow: /',
+        'Disallow: /admin/',
+        'Disallow: /client/',
+        'Disallow: /api/',
+        '',
+        'Sitemap: ' . url('/sitemap.xml'),
+    ];
+
+    return response(implode("\n", $lines) . "\n", 200, ['Content-Type' => 'text/plain; charset=UTF-8']);
+});
+
+Route::get('/sitemap.xml', function () {
+    $pages = [
+        ['/', 'daily', '1.0'],
+        ['/register', 'weekly', '0.9'],
+        ['/downloads/postman-collection', 'weekly', '0.8'],
+        ['/login', 'monthly', '0.7'],
+    ];
+
+    $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n"
+        . '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+    foreach ($pages as [$path, $changefreq, $priority]) {
+        $xml .= "    <url>\n"
+            . '        <loc>' . e(url($path)) . "</loc>\n"
+            . "        <changefreq>{$changefreq}</changefreq>\n"
+            . "        <priority>{$priority}</priority>\n"
+            . "    </url>\n";
+    }
+    $xml .= '</urlset>' . "\n";
+
+    return response($xml, 200, ['Content-Type' => 'application/xml']);
+});
+
 Route::get('/downloads/postman-collection', [\App\Http\Controllers\Web\PostmanCollectionController::class, 'download'])->name('downloads.postman');
 
 use App\Http\Controllers\Web\AdminClientController;

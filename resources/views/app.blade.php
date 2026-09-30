@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title inertia>{{ config('app.name', 'SIMRS API') }}</title>
+        <title inertia>{{ config('app.name', 'SIMRS Gateway - API Bridging BPJS & SATUSEHAT') }}</title>
+
+        <meta name="description" content="SIMRS Gateway: Infrastruktur API Bridging BPJS Kesehatan (VClaim, Antrean RS, Apotek, PCare, Aplicares, Rekam Medis) dan Kemenkes SATUSEHAT FHIR R4. Sedia simulator mock sandbox dan lisensi source code on-premise.">
+        <meta name="keywords" content="SIMRS, Bridging BPJS, BPJS Kesehatan, VClaim v2, Antrean RS, SATUSEHAT Kemenkes, FHIR R4, Rekam Medis Elektronik, Aplicares, PCare, Source Code SIMRS, API Gateway Rumah Sakit">
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+        <link rel="canonical" href="{{ url()->current() }}">
+
+        <!-- Open Graph / WhatsApp / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ url()->current() }}">
+        <meta property="og:title" content="SIMRS Gateway - Solusi Bridging BPJS Kesehatan & SATUSEHAT">
+        <meta property="og:description" content="Integrasi cepat SIMRS ke BPJS Kesehatan dan SATUSEHAT. Otomatisasi enkripsi AES-256, HMAC-SHA256, dan dekripsi LZ-string. Tersedia simulator & lisensi source code RS.">
+        <meta property="og:locale" content="id_ID">
+        <meta property="og:site_name" content="SIMRS Gateway">
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="SIMRS Gateway - API Bridging BPJS & SATUSEHAT">
+        <meta name="twitter:description" content="Infrastruktur API Bridging BPJS Kesehatan & SATUSEHAT FHIR R4 untuk Rumah Sakit, Klinik, dan Vendor SIMRS.">
+
+        <!-- Schema.org JSON-LD Structured Data for Google Rich Snippets -->
+        <script type="application/ld+json">
+        {!! json_encode([
+            '@context' => 'https://schema.org',
+            '@type' => 'SoftwareApplication',
+            'name' => 'SIMRS Gateway BPJS & SATUSEHAT',
+            'operatingSystem' => 'Linux, Windows, Web, Intranet RS',
+            'applicationCategory' => 'HealthApplication',
+            'description' => 'API Gateway dan Simulator BPJS Kesehatan (VClaim, Antrean RS, Apotek) dan SATUSEHAT FHIR R4 untuk Rumah Sakit dan Vendor SIMRS.',
+            'offers' => [
+                '@type' => 'Offer',
+                'price' => (string) \App\Models\SiteSetting::get('pricing_monthly_price', 450000),
+                'priceCurrency' => 'IDR',
+                'availability' => 'https://schema.org/InStock',
+            ],
+        ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_HEX_TAG) !!}
+        </script>
+
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @inertiaHead
     </head>
