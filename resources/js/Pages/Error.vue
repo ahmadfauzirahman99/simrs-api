@@ -25,7 +25,7 @@ const errorDetails = computed(() => {
                 title: 'Hak Akses Ditolak (403)',
                 description: 'Anda tidak memiliki hak akses atau peran (role) yang diperlukan untuk membuka halaman ini.',
                 iconColor: 'rose',
-                tip: 'Pastikan Anda telah masuk menggunakan akun dengan peran Super Administrator SIMRS.',
+                tip: 'Pastikan Anda masuk dengan akun yang memiliki akses ke halaman ini.',
             };
         case 500:
         case 503:

@@ -172,7 +172,7 @@ const logout = () => {
                         </div>
                         <div class="min-w-0">
                             <p class="text-xs font-bold text-slate-900 truncate">{{ user?.name || 'Superadmin' }}</p>
-                            <p class="text-[10px] text-slate-400 truncate">{{ user?.email || 'admin@simrs.local' }}</p>
+                            <p class="text-[10px] text-slate-400 truncate">{{ user?.email }}</p>
                         </div>
                     </div>
 
