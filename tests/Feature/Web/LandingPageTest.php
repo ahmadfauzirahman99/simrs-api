@@ -14,6 +14,46 @@ class LandingPageTest extends TestCase
         $response = $this->get('/');
 
         $response->assertOk()
-            ->assertHeader('Content-Type', 'text/html; charset=UTF-8');
+            ->assertHeader('Content-Type', 'text/html; charset=UTF-8')
+            ->assertSee('meta name="description"', false)
+            ->assertSee('application/ld+json', false);
+    }
+
+    public function test_robots_txt_and_sitemap_are_accessible_for_crawlers(): void
+    {
+        // Protokol sitemap & robots mewajibkan URL absolut; relatif ditolak Google Search Console.
+        $robots = $this->get('/robots.txt');
+        $robots->assertOk()
+            ->assertSee('Sitemap: ' . url('/sitemap.xml'))
+            ->assertSee('Disallow: /admin/');
+
+        $sitemap = $this->get('/sitemap.xml');
+        $sitemap->assertOk()
+            ->assertHeader('Content-Type', 'application/xml')
+            ->assertSee('<loc>' . url('/register') . '</loc>', false)
+            ->assertDontSee('<loc>/', false);
+
+        $this->assertNotFalse(simplexml_load_string($sitemap->getContent()), 'sitemap harus XML valid');
+    }
+
+    public function test_seo_static_files_do_not_shadow_dynamic_routes(): void
+    {
+        // nginx menyajikan file statis lebih dulu; file ini akan membuat route dinamis tak pernah terpanggil.
+        $this->assertFileDoesNotExist(public_path('sitemap.xml'));
+        $this->assertFileDoesNotExist(public_path('robots.txt'));
+    }
+
+    public function test_landing_has_single_meta_description_and_price_follows_settings(): void
+    {
+        \App\Models\SiteSetting::set('pricing_monthly_price', 525000);
+
+        $html = $this->get('/')->getContent();
+
+        $this->assertSame(1, substr_count($html, 'name="description"'));
+        // <Head> Vue dipasang di browser (tanpa SSR), jadi cek sumbernya: meta situs cukup di app.blade.php.
+        $landing = file_get_contents(resource_path('js/Pages/Landing.vue'));
+        $this->assertStringNotContainsString('name="description"', $landing);
+        $this->assertStringNotContainsString('property="og:', $landing);
+        $this->assertStringContainsString('"price": "525000"', $html);
     }
 }

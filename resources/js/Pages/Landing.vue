@@ -210,7 +210,8 @@ const toggleFaq = (idx) => {
 </script>
 
 <template>
-    <Head title="SIMRS Gateway - Infrastruktur Bridging BPJS Kesehatan untuk Rumah Sakit & Vendor SIMRS" />
+    <!-- Meta description, keywords & Open Graph ada di app.blade.php (sekali untuk seluruh situs). -->
+    <Head title="SIMRS Gateway - Infrastruktur Bridging BPJS Kesehatan & SATUSEHAT" />
 
     <div class="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-teal-700 selection:text-white antialiased">
         <!-- Global Promo Announcement Bar -->
