@@ -1,0 +1,64 @@
+<!-- Sumber public/images/og-image.png (1200x630). Render ulang:
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars \
+    --window-size=1200,630 --virtual-time-budget=5000 --screenshot=public/images/og-image.png resources/og/og-image.html -->
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=JetBrains+Mono:wght@500&display=block" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    font-family: 'Instrument Sans', system-ui, sans-serif;
+    background: #f8fafc;
+    color: #020617;
+    position: relative;
+  }
+  .rail { position: absolute; left: 0; top: 0; bottom: 0; width: 14px; background: #115e59; }
+  .wrap { position: absolute; inset: 0 0 0 14px; padding: 64px 72px 56px; display: flex; flex-direction: column; }
+  .brand { display: flex; align-items: center; gap: 14px; font-size: 26px; font-weight: 700; color: #115e59; letter-spacing: -0.01em; }
+  .mark { width: 40px; height: 40px; border-radius: 10px; background: #115e59; display: grid; place-items: center; }
+  .mark svg { width: 24px; height: 24px; }
+  h1 { margin-top: 40px; font-size: 64px; line-height: 1.06; font-weight: 700; letter-spacing: -0.03em; max-width: 900px; }
+  h1 em { font-style: normal; color: #115e59; }
+  .flow { margin-top: 44px; display: flex; align-items: center; gap: 18px; }
+  .node { border: 2px solid #cbd5e1; background: #fff; border-radius: 14px; padding: 16px 26px; font-size: 26px; font-weight: 600; color: #334155; }
+  .node.gw { border-color: #115e59; background: #115e59; color: #fff; }
+  .arrow { width: 44px; height: 2px; background: #94a3b8; position: relative; }
+  .arrow::after { content: ''; position: absolute; right: -2px; top: -6px; border: 7px solid transparent; border-left: 10px solid #94a3b8; border-right: 0; }
+  .foot { margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; }
+  .tags { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 21px; color: #475569; }
+  .tags span + span::before { content: '·'; margin: 0 12px; color: #94a3b8; }
+  .url { font-size: 24px; font-weight: 600; color: #0f172a; }
+</style>
+</head>
+<body>
+  <div class="rail"></div>
+  <div class="wrap">
+    <div class="brand">
+      <div class="mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 5v14M5 12h14"/>
+        </svg>
+      </div>
+      SIMRS Gateway
+    </div>
+
+    <h1>Bridging BPJS &amp; SATUSEHAT<br><em>tanpa pusing enkripsi.</em></h1>
+
+    <div class="flow">
+      <div class="node">SIMRS</div>
+      <div class="arrow"></div>
+      <div class="node gw">Gateway</div>
+      <div class="arrow"></div>
+      <div class="node">BPJS · SATUSEHAT</div>
+    </div>
+
+    <div class="foot">
+      <div class="tags"><span>VClaim</span><span>Antrean RS</span><span>Apotek</span><span>FHIR R4</span></div>
+      <div class="url">Simulator mock · Source code on-premise</div>
+    </div>
+  </div>
+</body>
+</html>

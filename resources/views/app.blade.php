@@ -18,11 +18,16 @@
         <meta property="og:description" content="Integrasi cepat SIMRS ke BPJS Kesehatan dan SATUSEHAT. Otomatisasi enkripsi AES-256, HMAC-SHA256, dan dekripsi LZ-string. Tersedia simulator & lisensi source code RS.">
         <meta property="og:locale" content="id_ID">
         <meta property="og:site_name" content="SIMRS Gateway">
+        <meta property="og:image" content="{{ url('/images/og-image.png') }}">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:image:alt" content="SIMRS Gateway: SIMRS ke Gateway ke BPJS dan SATUSEHAT">
 
         <!-- Twitter Card -->
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="SIMRS Gateway - API Bridging BPJS & SATUSEHAT">
         <meta name="twitter:description" content="Infrastruktur API Bridging BPJS Kesehatan & SATUSEHAT FHIR R4 untuk Rumah Sakit, Klinik, dan Vendor SIMRS.">
+        <meta name="twitter:image" content="{{ url('/images/og-image.png') }}">
 
         <!-- Schema.org JSON-LD Structured Data for Google Rich Snippets -->
         <script type="application/ld+json">
