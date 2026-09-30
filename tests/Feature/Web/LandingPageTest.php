@@ -36,6 +36,21 @@ class LandingPageTest extends TestCase
         $this->assertNotFalse(simplexml_load_string($sitemap->getContent()), 'sitemap harus XML valid');
     }
 
+    public function test_landing_has_absolute_og_image_for_link_previews(): void
+    {
+        $image = url('/images/og-image.png');
+
+        $this->get('/')
+            ->assertSee('<meta property="og:image" content="' . $image . '">', false)
+            ->assertSee('<meta property="og:image:width" content="1200">', false)
+            ->assertSee('<meta property="og:image:height" content="630">', false)
+            ->assertSee('<meta name="twitter:image" content="' . $image . '">', false);
+
+        $this->assertFileExists(public_path('images/og-image.png'));
+        [$width, $height] = getimagesize(public_path('images/og-image.png'));
+        $this->assertSame([1200, 630], [$width, $height]);
+    }
+
     public function test_seo_static_files_do_not_shadow_dynamic_routes(): void
     {
         // nginx menyajikan file statis lebih dulu; file ini akan membuat route dinamis tak pernah terpanggil.
