@@ -51,6 +51,23 @@ class LandingPageTest extends TestCase
         $this->assertSame([1200, 630], [$width, $height]);
     }
 
+    public function test_favicon_set_is_linked_and_not_empty(): void
+    {
+        $this->get('/')
+            ->assertSee('<link rel="icon" href="/favicon.ico?v=2" sizes="48x48">', false)
+            ->assertSee('<link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">', false)
+            ->assertSee('<link rel="apple-touch-icon" href="/apple-touch-icon.png">', false)
+            ->assertSee('<link rel="manifest" href="/manifest.json">', false)
+            ->assertSee('<meta name="theme-color" content="#115e59">', false);
+
+        // favicon.ico bawaan Laravel berukuran 0 byte; pastikan tidak kembali kosong.
+        foreach (['favicon.ico', 'favicon.svg', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png'] as $file) {
+            $this->assertGreaterThan(0, filesize(public_path($file)), $file);
+        }
+        $manifest = json_decode(file_get_contents(public_path('manifest.json')), true);
+        $this->assertSame(['192x192', '512x512'], array_column($manifest['icons'], 'sizes'));
+    }
+
     public function test_seo_static_files_do_not_shadow_dynamic_routes(): void
     {
         // nginx menyajikan file statis lebih dulu; file ini akan membuat route dinamis tak pernah terpanggil.

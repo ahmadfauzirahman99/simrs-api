@@ -4,6 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <link rel="icon" href="/favicon.ico?v=2" sizes="48x48">
+        <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#115e59">
         <title inertia>{{ config('app.name', 'SIMRS Gateway - API Bridging BPJS & SATUSEHAT') }}</title>
 
         <meta name="description" content="SIMRS Gateway: Infrastruktur API Bridging BPJS Kesehatan (VClaim, Antrean RS, Apotek, PCare, Aplicares, Rekam Medis) dan Kemenkes SATUSEHAT FHIR R4. Sedia simulator mock sandbox dan lisensi source code on-premise.">
