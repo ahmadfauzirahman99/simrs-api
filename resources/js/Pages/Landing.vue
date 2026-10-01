@@ -1,6 +1,6 @@
 <script setup>
 import { Head, Link, usePage } from '@inertiajs/vue3';
-import { computed, ref } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 
 const props = defineProps({
     whatsappNumber: {
@@ -31,6 +31,7 @@ const navLinks = [
     { label: 'Katalog API', href: '#katalog', icon: 'M4 6h16M4 10h16M4 14h16M4 18h16', count: '209' },
     { label: 'Integrasi', href: '#kode', icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4' },
     { label: 'Lisensi', href: '#lisensi', icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
+    { label: 'APM', href: '#apm', icon: 'M9 17v-2m3 2v-4m3 4v-6M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z', count: 'Segera' },
     { label: 'FAQ', href: '#faq', icon: 'M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
 ];
 
@@ -91,6 +92,48 @@ const telegramMonthlyUrl = computed(() => {
     const text = encodeURIComponent(`Halo mas @${handle}, saya ingin berlangganan lisensi bulanan SIMRS BPJS (${priceStr} / bulan)${promoCode}. Mohon info aktivasi.`);
     return `https://t.me/${handle}?text=${text}`;
 });
+
+const telegramApmUrl = computed(() => {
+    const handle = telegramHandle.value;
+    const text = encodeURIComponent(`Halo mas @${handle}, rumah sakit kami tertarik menjadi RS uji coba APM (Anjungan Pendaftaran Mandiri). Mohon info jadwal dan syaratnya.`);
+    return `https://t.me/${handle}?text=${text}`;
+});
+
+const apmSteps = [
+    {
+        title: 'Pasien memindai kartu atau mengetik NIK',
+        body: 'Data kepesertaan dicek langsung ke BPJS. Verifikasi mengikuti ketentuan BPJS yang berlaku saat rilis.',
+    },
+    {
+        title: 'Memilih poli dan dokter yang praktik hari ini',
+        body: 'Jadwal ditarik dari SIMRS rumah sakit, jadi pasien hanya melihat dokter yang benar-benar praktik.',
+    },
+    {
+        title: 'SEP terbit, karcis antrean tercetak',
+        body: 'Rujukan dan SEP diproses lewat SIMRS Gateway, nomor antrean langsung terkirim ke Antrean Online.',
+    },
+];
+
+// Satu-satunya animasi bagian APM: karcis keluar dari printer saat bagian terlihat.
+const apmSection = ref(null);
+const apmPrinted = ref(false);
+let apmObserver = null;
+
+onMounted(() => {
+    if (!('IntersectionObserver' in window)) {
+        apmPrinted.value = true;
+        return;
+    }
+    apmObserver = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+            apmPrinted.value = true;
+            apmObserver?.disconnect();
+        }
+    }, { threshold: 0.35 });
+    if (apmSection.value) apmObserver.observe(apmSection.value);
+});
+
+onBeforeUnmount(() => apmObserver?.disconnect());
 
 const telegramHospitalUrl = computed(() => {
     const handle = telegramHandle.value;
@@ -246,7 +289,7 @@ const toggleFaq = (idx) => {
                     <div class="shrink-0">
                         <div class="flex items-center gap-1.5 sm:gap-2">
                             <span class="text-sm font-bold tracking-tight text-slate-900 whitespace-nowrap">SIMRS Gateway</span>
-                            <span class="rounded bg-teal-50 px-1.5 py-0.5 text-[10px] font-bold text-teal-800 border border-teal-200 whitespace-nowrap">v3.0</span>
+                            <span class="hidden min-[400px]:inline rounded bg-teal-50 px-1.5 py-0.5 text-[10px] font-bold text-teal-800 border border-teal-200 whitespace-nowrap">v3.0</span>
                         </div>
                     </div>
                 </Link>
@@ -262,7 +305,7 @@ const toggleFaq = (idx) => {
                         <span>{{ link.label }}</span>
                         <span
                             v-if="link.count"
-                            class="rounded-full bg-teal-100 text-teal-800 px-1.5 py-0.2 text-[10px] font-bold"
+                            class="hidden 2xl:inline rounded-full bg-teal-100 text-teal-800 px-1.5 py-0.2 text-[10px] font-bold"
                         >
                             {{ link.count }}
                         </span>
@@ -878,6 +921,97 @@ const toggleFaq = (idx) => {
                             </a>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: APM (Anjungan Pendaftaran Mandiri) — produk berikutnya, belum dirilis -->
+        <section id="apm" ref="apmSection" class="apm-section relative overflow-hidden border-b border-slate-800 bg-slate-950 py-16 lg:py-24 text-slate-300">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="grid items-center gap-12 lg:grid-cols-[1fr_0.9fr] lg:gap-16">
+                    <div class="space-y-8">
+                        <div class="space-y-5">
+                            <span class="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-1 text-xs font-semibold text-amber-200">
+                                <span class="h-1.5 w-1.5 rounded-full bg-amber-300"></span>
+                                Segera hadir · sedang dikembangkan
+                            </span>
+                            <h2 class="text-3xl font-extrabold tracking-[-0.025em] text-white sm:text-4xl sm:leading-[1.12] text-balance">
+                                Pasien daftar sendiri di kios. SEP terbit tanpa antre di loket.
+                            </h2>
+                            <p class="max-w-xl text-sm sm:text-base leading-relaxed text-slate-400">
+                                <strong class="font-semibold text-slate-200">APM (Anjungan Pendaftaran Mandiri)</strong> adalah layar sentuh di lobi rumah sakit yang tersambung ke SIMRS dan BPJS lewat SIMRS Gateway. Petugas loket fokus ke pasien yang butuh bantuan; sisanya selesai sendiri.
+                            </p>
+                        </div>
+
+                        <ol class="space-y-5">
+                            <li v-for="(step, idx) in apmSteps" :key="step.title" class="grid grid-cols-[2rem_1fr] gap-4">
+                                <span class="flex h-8 w-8 items-center justify-center rounded-full border border-teal-500/40 bg-teal-500/10 text-xs font-bold text-teal-300 tabular-nums">{{ idx + 1 }}</span>
+                                <div class="space-y-1 pt-1">
+                                    <h3 class="text-sm font-bold text-white">{{ step.title }}</h3>
+                                    <p class="max-w-md text-xs sm:text-sm leading-relaxed text-slate-400">{{ step.body }}</p>
+                                </div>
+                            </li>
+                        </ol>
+
+                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
+                            <a
+                                :href="telegramApmUrl"
+                                target="_blank"
+                                rel="noopener"
+                                class="inline-flex items-center justify-center gap-2 rounded-xl bg-teal-500 px-5 py-3 text-xs sm:text-sm font-bold text-teal-950 shadow-[0_8px_24px_-8px_rgba(20,184,166,0.55)] transition hover:bg-teal-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-300"
+                            >
+                                <span>Daftar jadi RS uji coba</span>
+                                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                </svg>
+                            </a>
+                            <p class="text-xs text-slate-400 sm:max-w-[16rem]">
+                                Kuota terbatas. RS uji coba ikut menentukan alur sebelum rilis.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Tiruan layar kios (ilustrasi, bukan produk jadi) -->
+                    <figure class="relative mx-auto w-full max-w-md">
+                        <div class="rounded-[1.75rem] border border-slate-700 bg-slate-900 p-3 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.7)]">
+                            <div class="overflow-hidden rounded-[1.1rem] bg-slate-50 text-slate-900">
+                                <div class="flex items-center justify-between bg-teal-800 px-5 py-3 text-white">
+                                    <span class="text-xs font-bold">Anjungan Pendaftaran Mandiri</span>
+                                    <span class="text-[11px] tabular-nums text-teal-100">07:42</span>
+                                </div>
+                                <div class="space-y-4 p-5">
+                                    <div class="space-y-1">
+                                        <p class="text-[11px] font-semibold text-slate-400">Langkah 3 dari 3</p>
+                                        <p class="text-lg font-bold tracking-[-0.02em] text-slate-900">Pendaftaran berhasil</p>
+                                    </div>
+                                    <dl class="divide-y divide-slate-200 rounded-xl border border-slate-200 bg-white text-xs">
+                                        <div class="flex justify-between px-4 py-2.5"><dt class="text-slate-400">Poli</dt><dd class="font-semibold">Penyakit Dalam</dd></div>
+                                        <div class="flex justify-between px-4 py-2.5"><dt class="text-slate-400">Dokter</dt><dd class="font-semibold">dr. Contoh, Sp.PD</dd></div>
+                                        <div class="flex justify-between px-4 py-2.5"><dt class="text-slate-400">Status SEP</dt><dd class="font-semibold text-teal-700">Terbit</dd></div>
+                                    </dl>
+                                    <div class="flex items-center gap-2 rounded-xl bg-teal-50 px-4 py-3 text-xs font-semibold text-teal-900">
+                                        <svg class="h-4 w-4 shrink-0 text-teal-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                                        </svg>
+                                        Silakan ambil karcis di bawah layar
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Celah printer -->
+                            <div class="mx-auto mt-3 h-1.5 w-40 rounded-full bg-slate-950 shadow-[inset_0_1px_2px_rgba(0,0,0,0.8)]"></div>
+                        </div>
+
+                        <!-- Karcis antrean -->
+                        <div class="apm-ticket-clip mx-auto w-36">
+                            <div class="apm-ticket mx-auto w-36 rounded-b-lg bg-white px-3 pb-3 pt-2 text-center text-slate-900 shadow-[0_12px_24px_-12px_rgba(0,0,0,0.6)]" :class="{ 'is-printed': apmPrinted }">
+                                <p class="text-[9px] font-semibold text-slate-400">Nomor antrean</p>
+                                <p class="text-2xl font-extrabold tracking-[-0.03em] tabular-nums">B-017</p>
+                                <p class="text-[9px] text-slate-400">Poli Penyakit Dalam</p>
+                            </div>
+                        </div>
+
+                        <figcaption class="mt-4 text-center text-[11px] text-slate-400">Ilustrasi tampilan. Data di layar adalah contoh.</figcaption>
+                    </figure>
                 </div>
             </div>
         </section>
