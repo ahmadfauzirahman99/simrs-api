@@ -30,7 +30,7 @@ const navLinks = [
     { label: 'Arsitektur', href: '#arsitektur', icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10' },
     { label: 'Katalog API', href: '#katalog', icon: 'M4 6h16M4 10h16M4 14h16M4 18h16', count: '209' },
     { label: 'Integrasi', href: '#kode', icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4' },
-    { label: 'Lisensi', href: '#lisensi', icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
+    { label: 'Open Source & Donasi', href: '#open-source', icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' },
     { label: 'APM', href: '#apm', icon: 'M9 17v-2m3 2v-4m3 4v-6M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z', count: 'Segera' },
     { label: 'FAQ', href: '#faq', icon: 'M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
 ];
@@ -54,24 +54,19 @@ const copyCoupon = async (code) => {
     }
 };
 
+const saweriaUrl = 'https://saweria.co/fauzirahman05';
+const githubRepoUrl = 'https://github.com/ahmadfauzirahman99/simrs-api';
+const githubZipUrl = 'https://github.com/ahmadfauzirahman99/simrs-api/archive/refs/heads/feat/client-portal-dan-deploy.zip';
+const postmanCollectionUrl = '/downloads/postman-collection';
 const waGeneralUrl = computed(() => {
     const wa = settings.value.whatsapp_contact || props.whatsappNumber;
-    const text = encodeURIComponent('Halo Tim SIMRS Gateway, saya ingin konsultasi mengenai implementasi Bridging BPJS & demo simulator.');
+    const text = encodeURIComponent('Halo Mas Fauzi, saya ingin konsultasi mengenai implementasi SIMRS Gateway / jasa setup on-premise di RS kami.');
     return `https://wa.me/${wa}?text=${text}`;
 });
 
-const waMonthlyUrl = computed(() => {
+const waConsultUrl = computed(() => {
     const wa = settings.value.whatsapp_contact || props.whatsappNumber;
-    const priceStr = formatRupiah(settings.value.pricing_monthly_price ?? 450000);
-    const promoCode = settings.value.pricing_monthly_promo_code ? ` (Kode Promo: ${settings.value.pricing_monthly_promo_code})` : '';
-    const text = encodeURIComponent(`Halo Tim SIMRS Gateway, saya ingin berlangganan lisensi akses bulanan SIMRS BPJS Studio (${priceStr} / bulan)${promoCode}. Mohon info aktivasi akun.`);
-    return `https://wa.me/${wa}?text=${text}`;
-});
-
-const waHospitalUrl = computed(() => {
-    const wa = settings.value.whatsapp_contact || props.whatsappNumber;
-    const priceStr = formatRupiah(settings.value.pricing_hospital_price ?? 4500000);
-    const text = encodeURIComponent(`Halo Tim SIMRS Gateway, saya tertarik membeli Full Source Code Paket Lisensi Rumah Sakit (Single Hospital License - ${priceStr}). Mohon info prosedur dan invoice.`);
+    const text = encodeURIComponent('Halo Mas Fauzi, rumah sakit kami membutuhkan pendampingan teknis / jasa kustomisasi bridging SIMRS Gateway. Mohon info ketersediaan jadwal.');
     return `https://wa.me/${wa}?text=${text}`;
 });
 
@@ -81,38 +76,62 @@ const telegramHandle = computed(() => {
 
 const telegramGeneralUrl = computed(() => {
     const handle = telegramHandle.value;
-    const text = encodeURIComponent(`Halo mas @${handle}, saya ingin konsultasi mengenai implementasi Bridging BPJS & lisensi SIMRS Gateway.`);
+    const text = encodeURIComponent(`Halo mas @${handle}, saya pengguna SIMRS Gateway open-source, ingin konsultasi/tanya seputar implementasi.`);
     return `https://t.me/${handle}?text=${text}`;
 });
 
-const telegramMonthlyUrl = computed(() => {
+const telegramConsultUrl = computed(() => {
     const handle = telegramHandle.value;
-    const priceStr = formatRupiah(settings.value.pricing_monthly_price ?? 450000);
-    const promoCode = settings.value.pricing_monthly_promo_code ? ` (Kode Promo: ${settings.value.pricing_monthly_promo_code})` : '';
-    const text = encodeURIComponent(`Halo mas @${handle}, saya ingin berlangganan lisensi bulanan SIMRS BPJS (${priceStr} / bulan)${promoCode}. Mohon info aktivasi.`);
+    const text = encodeURIComponent(`Halo mas @${handle}, rumah sakit kami membutuhkan jasa setup on-premise & asistensi bridging SIMRS Gateway. Mohon info ketersediaan dan prosedurnya.`);
     return `https://t.me/${handle}?text=${text}`;
 });
-
 const telegramApmUrl = computed(() => {
     const handle = telegramHandle.value;
     const text = encodeURIComponent(`Halo mas @${handle}, rumah sakit kami tertarik menjadi RS uji coba APM (Anjungan Pendaftaran Mandiri). Mohon info jadwal dan syaratnya.`);
     return `https://t.me/${handle}?text=${text}`;
 });
 
-const apmSteps = [
+const activeApmTab = ref('checkin'); // 'checkin' | 'daftar'
+
+const apmCheckInSteps = [
     {
-        title: 'Pasien memindai kartu atau mengetik NIK',
-        body: 'Data kepesertaan dicek langsung ke BPJS. Verifikasi mengikuti ketentuan BPJS yang berlaku saat rilis.',
+        title: 'Pasien Sentuh Menu "Check-In Kode Booking"',
+        body: 'Pasien yang sudah mendaftar via Mobile JKN atau web faskes langsung mendatangi anjungan kiosk di lobi tanpa antre di loket admisi.',
     },
     {
-        title: 'Memilih poli dan dokter yang praktik hari ini',
-        body: 'Jadwal ditarik dari SIMRS rumah sakit, jadi pasien hanya melihat dokter yang benar-benar praktik.',
+        title: 'Scan QR Code atau Ketik Kode Booking (Huruf & Angka)',
+        body: 'Dekatkan layar HP pasien ke barcode scanner kiosk atau masukkan kode booking (misal: JKN261001) melalui keypad layar sentuh.',
     },
     {
-        title: 'SEP terbit, karcis antrean tercetak',
-        body: 'Rujukan dan SEP diproses lewat SIMRS Gateway, nomor antrean langsung terkirim ke Antrean Online.',
+        title: 'Validasi & Otomatis Kirim Task ID 3 ke BPJS Antrol',
+        body: 'Gateway memvalidasi jadwal hari ini dan mencatat Task ID 3 (waktu pasien tiba di RS & siap menuju poli) ke server BPJS Antrean Online.',
+    },
+    {
+        title: 'Karcis Antrean Poli & SEP Tercetak Otomatis',
+        body: 'Printer thermal kiosk mencetak karcis antrean poli dan SEP VClaim. Pasien langsung menuju ruang tunggu poliklinik.',
     },
 ];
+
+const apmDaftarSteps = [
+    {
+        title: 'Pasien Sentuh Menu "Daftar Mandiri BPJS"',
+        body: 'Untuk pasien rujukan baru atau pasien kontrol yang belum memiliki kode booking online sebelumnya (pasien datang langsung / go-show).',
+    },
+    {
+        title: 'Ketik NIK KTP (16 Digit) atau No Kartu BPJS',
+        body: 'Pasien memasukkan NIK atau nomor kartu BPJS via keypad layar sentuh, atau menempelkan KTP elektronik pada reader.',
+    },
+    {
+        title: 'Cek Eligibilitas Rujukan & Surat Kontrol Aktif',
+        body: 'Sistem mengecek status keaktifan BPJS, riwayat rujukan FKTP aktif, dan surat kontrol (Sukon) secara instan lewat bridging VClaim 2.0.',
+    },
+    {
+        title: 'Pilih Poliklinik & Dokter Jaga Hari Ini',
+        body: 'Pasien memilih dokter spesialis dan jam praktik yang tersedia kuotanya hari ini, lalu mesin menerbitkan nomor antrean poli.',
+    },
+];
+
+const apmSteps = computed(() => activeApmTab.value === 'checkin' ? apmCheckInSteps : apmDaftarSteps);
 
 // Satu-satunya animasi bagian APM: karcis keluar dari printer saat bagian terlihat.
 const apmSection = ref(null);
@@ -135,12 +154,6 @@ onMounted(() => {
 
 onBeforeUnmount(() => apmObserver?.disconnect());
 
-const telegramHospitalUrl = computed(() => {
-    const handle = telegramHandle.value;
-    const priceStr = formatRupiah(settings.value.pricing_hospital_price ?? 4500000);
-    const text = encodeURIComponent(`Halo mas @${handle}, saya tertarik membeli Full Source Code Paket Rumah Sakit (${priceStr}). Mohon info prosedur dan invoice.`);
-    return `https://t.me/${handle}?text=${text}`;
-});
 
 const codeSnippets = {
     php: `// Integrasi SIMRS Lokal ke Gateway BPJS (Cukup 4 Baris):
@@ -229,8 +242,16 @@ const moduleList = [
 
 const faqs = [
     {
-        q: 'Apakah sistem ini sesuai dengan regulasi PMK 24 / 2022 tentang Rekam Medis?',
-        a: 'Sangat sesuai. Dengan opsi lisensi On-Premise (Beli Putus Source Code), gateway diinstal di server intranet lokal rumah sakit Anda sendiri. Tidak ada data rekam medis pasien yang dikirim ke cloud pihak ketiga, menjamin kepatuhan penuh terhadap UU PDP dan PMK 24.',
+        q: 'Apakah SIMRS Gateway ini benar-benar 100% Gratis & Open Source?',
+        a: 'Ya, 100% Bebas & Terbuka. Anda bebas mengunduh source code lengkap (Laravel 12 + Vue 3), memodifikasi, dan memasangnya di server intranet lokal rumah sakit tanpa kewajiban membayar biaya lisensi bulanan, royalti per-pasien, atau biaya tersembunyi apa pun.',
+    },
+    {
+        q: 'Bagaimana model bisnis proyek ini bertahan jika source code gratis?',
+        a: 'Mengadopsi model open-source murni (seperti ekosistem Linux, Curl, SQLite): pengembangan inti didanai sukarela melalui donasi komunitas via Saweria (saweria.co/fauzirahman05). Pendapatan profesional diperoleh dari jasa nilai tambah opsional: asistensi instalasi on-site, kustomisasi bridging SIMRS lama, dan pendampingan UAT BPJS Cabang bagi rumah sakit yang membutuhkan.',
+    },
+    {
+        q: 'Apakah sistem ini sesuai dengan regulasi PMK 24 / 2022 tentang Rekam Medis & UU PDP?',
+        a: 'Sangat sesuai. Karena gateway open-source ini diinstal on-premise di server lokal rumah sakit Anda, seluruh data rekam medis pasien mengalir langsung dari database SIMRS lokal ke server BPJS Kesehatan / Kemenkes tanpa pernah melewati cloud pihak ketiga.',
     },
     {
         q: 'Bagaimana cara gateway menangani enkripsi AES-256 dan Signature BPJS?',
@@ -239,10 +260,6 @@ const faqs = [
     {
         q: 'Apakah bisa digunakan untuk persiapan UAT (User Acceptance Test) BPJS Cabang?',
         a: 'Ya. Salah satu fungsi utama gateway ini adalah sebagai simulator pengujian. Seluruh 209 endpoint telah dilengkapi dengan mock response dummy yang terstruktur rapi sesuai standar katalog BPJS Kesehatan, sehingga tim IT Anda siap melakukan demonstrasi UAT di hadapan tim IT Kantor Cabang BPJS.',
-    },
-    {
-        q: 'Teknologi apa yang digunakan dalam source code SIMRS Gateway?',
-        a: 'Dibangun menggunakan stack enterprise modern: PHP 8.2+ / Laravel 12 pada sisi backend, dan Vue 3 Inertia + Tailwind CSS pada sisi frontend. Sangat ringan, terstruktur rapi, tanpa bloatware, dan mudah dihubungkan ke database SIMRS existing (MySQL, PostgreSQL, atau SQL Server).',
     },
 ];
 
@@ -257,21 +274,25 @@ const toggleFaq = (idx) => {
     <Head title="SIMRS Gateway - Infrastruktur Bridging BPJS Kesehatan & SATUSEHAT" />
 
     <div class="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-teal-700 selection:text-white antialiased">
-        <!-- Global Promo Announcement Bar -->
+        <!-- Open Source & Donation Announcement Bar -->
         <div
-            v-if="settings.promo_banner_active"
             class="bg-gradient-to-r from-teal-950 via-teal-900 to-emerald-950 px-4 py-2 text-white text-xs font-semibold shadow-inner border-b border-teal-800/60"
         >
             <div class="mx-auto flex max-w-7xl items-center justify-between gap-3">
                 <div class="flex items-center gap-2 truncate">
-                    <span class="inline-flex h-2 w-2 rounded-full bg-amber-400 animate-ping shrink-0"></span>
-                    <span class="truncate text-[11px] sm:text-xs font-medium text-teal-100">{{ settings.promo_banner_text }}</span>
+                    <span class="inline-flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                    <span class="truncate text-[11px] sm:text-xs font-medium text-teal-100">
+                        Proyek Open Source untuk Komunitas IT Rumah Sakit Indonesia — 100% Gratis & On-Premise
+                    </span>
                 </div>
                 <a
-                    :href="settings.promo_banner_link || '#lisensi'"
-                    class="shrink-0 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 px-3 py-0.5 text-[10px] font-extrabold uppercase tracking-wider transition shadow-xs"
+                    :href="saweriaUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="shrink-0 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 px-3 py-0.5 text-[10px] font-extrabold uppercase tracking-wider transition shadow-xs flex items-center gap-1"
                 >
-                    Lihat Promo →
+                    <span>☕ Dukung di Saweria</span>
+                    <span>→</span>
                 </a>
             </div>
         </div>
@@ -449,7 +470,7 @@ const toggleFaq = (idx) => {
                                 </div>
                                 <div>
                                     <div class="text-xs font-bold text-sky-900">Telegram @{{ telegramHandle }}</div>
-                                    <div class="text-[10px] text-sky-700">Konsultasi Source Code & Lisensi RS</div>
+                                    <div class="text-[10px] text-sky-700">Konsultasi Teknis & Jasa Setup RS</div>
                                 </div>
                             </div>
                             <a
@@ -525,9 +546,9 @@ const toggleFaq = (idx) => {
                     <!-- Left Column: Value Statement & Proof -->
                     <div class="space-y-6 text-left">
                         <!-- Security Badge -->
-                        <div class="inline-flex items-center gap-2 rounded-md border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-700">
-                            <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
-                            <span>AES-256-CBC • HMAC-SHA256 • On-Premise Intranet Ready</span>
+                        <div class="inline-flex items-center gap-2 rounded-md border border-emerald-300 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-900">
+                            <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span>100% Open Source (Gratis) • On-Premise Intranet Ready • PMK 24 / UU PDP</span>
                         </div>
 
                         <h1 class="text-3xl font-extrabold tracking-tight text-slate-950 sm:text-5xl sm:leading-[1.15]">
@@ -535,7 +556,7 @@ const toggleFaq = (idx) => {
                         </h1>
 
                         <p class="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl">
-                            Hilangkan kerumitan kalkulasi signature timestamp, enkripsi AES-256, dan dekripsi LZ-string. Gateway lokal ini menyediakan <strong>209 endpoint terverifikasi</strong> dan simulator interaktif yang siap dipasang langsung di intranet RS Anda.
+                            Hilangkan kerumitan kalkulasi signature timestamp, enkripsi AES-256, dan dekripsi LZ-string. Gateway lokal bebas pakai ini menyediakan <strong>209 endpoint terverifikasi</strong> dan simulator interaktif yang siap dipasang langsung di intranet RS Anda tanpa biaya lisensi.
                         </p>
 
                         <!-- Primary CTAs -->
@@ -551,18 +572,16 @@ const toggleFaq = (idx) => {
                             </Link>
 
                             <a
-                                :href="telegramHospitalUrl"
+                                :href="saweriaUrl"
                                 target="_blank"
-                                class="inline-flex items-center justify-center gap-2 rounded-xl border border-sky-300 bg-sky-50 px-5 py-3 text-xs sm:text-sm font-bold text-sky-900 shadow-2xs hover:bg-sky-100 transition w-full sm:w-auto"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center justify-center gap-2 rounded-xl border border-amber-300 bg-amber-50 px-5 py-3 text-xs sm:text-sm font-bold text-amber-950 shadow-2xs hover:bg-amber-100 transition w-full sm:w-auto"
                             >
-                                <svg class="h-4 w-4 fill-sky-600" viewBox="0 0 24 24">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
-                                </svg>
-                                <span>Konsultasi Source Code RS</span>
+                                <span class="text-base">☕</span>
+                                <span>Dukung via Saweria</span>
                             </a>
                         </div>
 
-                        <!-- Technical Specs Bar -->
                         <div class="border-t border-slate-200 pt-5 grid grid-cols-3 gap-4 text-xs font-mono">
                             <div>
                                 <span class="text-slate-400 block text-[10px] uppercase font-sans font-bold">Katalog Resmi</span>
@@ -756,168 +775,164 @@ const toggleFaq = (idx) => {
             </div>
         </section>
 
-        <!-- Section: Licensing & Pricing -->
-        <section id="lisensi" class="py-16 bg-white border-b border-slate-200">
+        <!-- Section: Open Source & Community Support -->
+        <section id="open-source" class="py-16 bg-white border-b border-slate-200">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
                 <div class="text-center space-y-2">
-                    <span class="font-mono text-xs font-bold text-teal-800 uppercase tracking-wider">Opsi Investasi</span>
+                    <span class="font-mono text-xs font-bold text-emerald-700 uppercase tracking-wider">Filosofi & Dukungan</span>
                     <h2 class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-                        Pilihan Lisensi Transparan Tanpa Biaya Tersembunyi
+                        100% Bebas & Terbuka untuk Seluruh Rumah Sakit Indonesia
                     </h2>
                     <p class="mx-auto max-w-2xl text-xs sm:text-sm text-slate-600">
-                        Tersedia model langganan cloud untuk evaluasi API, serta opsi beli putus source code untuk instalasi intranet rumah sakit.
+                        Model open-source ala Linux & Curl: kode sumber bebas dipelajari, dimodifikasi, dan dijalankan di intranet RS Anda sendiri tanpa royalti. Didanai murni oleh donasi komunitas dan jasa konsultasi profesional.
                     </p>
                 </div>
 
                 <div class="grid gap-6 lg:grid-cols-3 max-w-6xl mx-auto items-stretch">
-                    <!-- Card 1: Coba Gratis / Trial -->
+                    <!-- Card 1: Self-Hosted Open Source -->
                     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6 flex flex-col justify-between space-y-6">
                         <div class="space-y-4">
-                            <span class="rounded bg-slate-200 px-2 py-0.5 text-[11px] font-bold text-slate-700">
-                                {{ settings.pricing_trial_tag || 'Uji Coba Terbatas' }}
+                            <span class="rounded bg-emerald-100 px-2 py-0.5 text-[11px] font-bold text-emerald-800">
+                                100% Free & Open Source
                             </span>
-                            <h3 class="text-xl font-bold text-slate-900">{{ settings.pricing_trial_title || 'Coba Gratis (Trial)' }}</h3>
-                            <p class="text-xs text-slate-600">{{ settings.pricing_trial_desc || 'Untuk developer yang ingin mencoba simulator sebelum berlangganan.' }}</p>
+                            <h3 class="text-xl font-bold text-slate-900">Self-Host Bebas</h3>
+                            <p class="text-xs text-slate-600">Unduh source code lengkap dan pasang langsung di server intranet lokal rumah sakit Anda.</p>
                             <div class="pt-2">
-                                <span class="text-3xl font-extrabold text-slate-900">{{ formatRupiah(settings.pricing_trial_price ?? 0) }}</span>
-                                <span class="text-xs text-slate-500 font-semibold"> (Gratis)</span>
+                                <span class="text-3xl font-extrabold text-slate-900">Rp 0</span>
+                                <span class="text-xs text-slate-500 font-semibold"> (Gratis Selamanya)</span>
                             </div>
 
                             <ul class="space-y-2 text-xs text-slate-700 pt-3 border-t border-slate-200 font-medium">
-                                <li
-                                    v-for="(feat, fIdx) in (settings.pricing_trial_features || [`⚠️ Limit ${settings.pricing_trial_limit ?? 50} Request / Hari`, '✓ Akses Simulator UI (209 Endpoint)', '✓ Preview Data Mock Realistis', '✓ Tanpa Kartu Kredit / Tanpa Bayar'])"
-                                    :key="fIdx"
-                                    :class="fIdx === 0 ? 'font-bold text-amber-700' : ''"
-                                >
-                                    {{ feat }}
-                                </li>
+                                <li>✓ Full Source Code (Laravel 12 + Vue 3)</li>
+                                <li>✓ 209 Endpoint Resmi BPJS & SATUSEHAT</li>
+                                <li>✓ On-Premise Intranet (Kepatuhan PMK 24)</li>
+                                <li>✓ Tanpa Biaya Lisensi / Tanpa Batas Pasien</li>
+                                <li>✓ Bebas Modifikasi Sesuai SIMRS Lokal</li>
                             </ul>
                         </div>
 
-                        <Link
-                            href="/register"
-                            class="block w-full text-center rounded-lg border border-slate-300 bg-white py-2.5 text-xs font-bold text-slate-800 hover:bg-slate-100 transition shadow-2xs"
-                        >
-                            {{ settings.pricing_trial_cta_text || `Daftar Uji Coba (${settings.pricing_trial_limit ?? 50} Req / Hari)` }}
-                        </Link>
-                    </div>
-
-                    <!-- Card 2: Cloud SaaS / Langganan Bulanan (Akses Semaunya) -->
-                    <div class="rounded-2xl border-2 border-teal-600 bg-white p-6 flex flex-col justify-between space-y-6 shadow-xl ring-4 ring-teal-50 relative overflow-hidden">
-                        <!-- Promo Ribbon -->
-                        <div
-                            v-if="settings.pricing_monthly_promo_active"
-                            class="absolute -top-1 -right-1 bg-gradient-to-r from-rose-500 to-amber-500 text-white font-extrabold text-[10px] px-4 py-1 rounded-bl-xl shadow-xs uppercase tracking-wider"
-                        >
-                            {{ settings.pricing_monthly_promo_badge || 'PROMO SPESIAL' }}
-                        </div>
-
-                        <div class="space-y-4">
-                            <span class="rounded bg-teal-100 px-2.5 py-0.5 text-[11px] font-bold text-teal-800">
-                                {{ settings.pricing_monthly_tag || 'Akses Semaunya' }}
-                            </span>
-                            <h3 class="text-xl font-bold text-slate-900">{{ settings.pricing_monthly_title || 'Lisensi Bulanan (SaaS)' }}</h3>
-                            <p class="text-xs text-slate-600 leading-relaxed">{{ settings.pricing_monthly_desc || `Akses tanpa batas ${settings.pricing_trial_limit ?? 50} req/hari, uji coba bebas semua modul sepuasnya.` }}</p>
-
-                            <div class="pt-2">
-                                <!-- Strike Price if Promo Active -->
-                                <div v-if="settings.pricing_monthly_promo_active && settings.pricing_monthly_strike_price" class="flex items-center gap-2 mb-1">
-                                    <span class="text-sm font-bold text-rose-500 line-through">{{ formatRupiah(settings.pricing_monthly_strike_price) }}</span>
-                                    <span class="rounded bg-rose-50 px-1.5 py-0.2 text-[10px] font-bold text-rose-700 ring-1 ring-inset ring-rose-600/20">
-                                        Hemat {{ formatRupiah(settings.pricing_monthly_strike_price - (settings.pricing_monthly_price ?? 450000)) }}
-                                    </span>
-                                </div>
-                                <div class="flex items-baseline gap-1">
-                                    <span class="text-3xl font-extrabold text-teal-800">{{ formatRupiah(settings.pricing_monthly_price ?? 450000) }}</span>
-                                    <span class="text-xs text-slate-500 font-semibold">{{ settings.pricing_monthly_period || ' / bulan' }}</span>
-                                </div>
-                            </div>
-
-                            <!-- Clickable Promo Coupon Code -->
-                            <div
-                                v-if="settings.pricing_monthly_promo_code"
-                                class="flex items-center justify-between rounded-lg border border-dashed border-teal-300 bg-teal-50/80 px-3 py-2 text-xs cursor-pointer hover:bg-teal-100/70 transition"
-                                @click="copyCoupon(settings.pricing_monthly_promo_code)"
-                            >
-                                <div class="flex items-center gap-1.5 text-teal-900 font-medium">
-                                    <svg class="h-4 w-4 text-teal-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
-                                    </svg>
-                                    <span>Kupon: <strong class="font-mono font-bold">{{ settings.pricing_monthly_promo_code }}</strong></span>
-                                </div>
-                                <span class="text-[10px] font-bold text-teal-700 underline">
-                                    {{ couponCopied ? 'Tersalin!' : 'Salin Kode' }}
-                                </span>
-                            </div>
-
-                            <ul class="space-y-2 text-xs text-slate-700 pt-3 border-t border-slate-100 font-medium">
-                                <li
-                                    v-for="(feat, fIdx) in (settings.pricing_monthly_features || ['✓ Unlimited Request (Akses Semaunya)', '✓ Semua 209 Endpoint Simulator & Proxy', '✓ Akun Personal Aktif 30 Hari', '✓ Perpanjangan Fleksibel Setiap Bulan'])"
-                                    :key="fIdx"
-                                    :class="fIdx === 0 ? 'font-bold text-emerald-700' : ''"
-                                >
-                                    {{ feat }}
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div>
+                        <div class="space-y-2 pt-2">
                             <a
-                                :href="telegramMonthlyUrl"
+                                :href="githubZipUrl"
                                 target="_blank"
-                                class="flex items-center justify-center gap-2 w-full text-center rounded-lg bg-sky-500 hover:bg-sky-600 py-2.5 text-xs font-bold text-white transition shadow-md"
+                                rel="noopener noreferrer"
+                                class="flex items-center justify-center gap-2 w-full text-center rounded-lg bg-teal-800 hover:bg-teal-900 py-2.5 text-xs font-bold text-white transition shadow-sm"
                             >
-                                <svg class="h-4 w-4 fill-white" viewBox="0 0 24 24">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+                                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                                 </svg>
-                                <span>{{ settings.pricing_monthly_cta_text || 'Langganan via Telegram' }}</span>
+                                <span>Download Source Code (.ZIP)</span>
                             </a>
+
+                            <div class="grid grid-cols-2 gap-2">
+                                <a
+                                    :href="postmanCollectionUrl"
+                                    class="flex items-center justify-center gap-1.5 text-center rounded-lg border border-slate-300 bg-white py-2 text-[11px] font-bold text-slate-700 hover:bg-slate-100 transition shadow-2xs"
+                                >
+                                    <svg class="h-3.5 w-3.5 text-amber-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
+                                    </svg>
+                                    <span>Postman (209)</span>
+                                </a>
+                                <a
+                                    :href="githubRepoUrl"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="flex items-center justify-center gap-1.5 text-center rounded-lg border border-slate-300 bg-white py-2 text-[11px] font-bold text-slate-700 hover:bg-slate-100 transition shadow-2xs"
+                                >
+                                    <svg class="h-3.5 w-3.5 text-slate-900" fill="currentColor" viewBox="0 0 24 24">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                                    </svg>
+                                    <span>GitHub Repo</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Card 3: Single Hospital License -->
-                    <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6 flex flex-col justify-between space-y-6">
+                    <!-- Card 2: Saweria Community Sponsor (Featured / Highlight) -->
+                    <div class="rounded-2xl border-2 border-amber-500 bg-gradient-to-b from-amber-50/50 to-white p-6 flex flex-col justify-between space-y-6 shadow-xl ring-4 ring-amber-100 relative overflow-hidden">
+                        <!-- Heart Badge -->
+                        <div class="absolute -top-1 -right-1 bg-gradient-to-r from-amber-500 to-rose-500 text-white font-extrabold text-[10px] px-4 py-1 rounded-bl-xl shadow-xs uppercase tracking-wider flex items-center gap-1">
+                            <span>❤️ DUKUNG CREATOR</span>
+                        </div>
+
                         <div class="space-y-4">
-                            <span class="rounded bg-slate-200 px-2 py-0.5 text-[11px] font-bold text-slate-700">
-                                {{ settings.pricing_hospital_tag || 'Beli Putus Source Code' }}
+                            <span class="rounded bg-amber-100 px-2.5 py-0.5 text-[11px] font-bold text-amber-900">
+                                Traktir Kopi & Donasi
                             </span>
-                            <h3 class="text-xl font-bold text-slate-900">{{ settings.pricing_hospital_title || 'Single Hospital' }}</h3>
-                            <p class="text-xs text-slate-600">{{ settings.pricing_hospital_desc || 'Full source code untuk diinstalasi di server lokal intranet 1 Rumah Sakit.' }}</p>
+                            <h3 class="text-xl font-bold text-slate-900">Dukung via Saweria</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Donasi Anda menjaga server pengujian publik tetap aktif, membiayai riset pembaruan endpoint BPJS terbaru, dan memastikan proyek ini tetap gratis untuk seluruh RS.
+                            </p>
 
                             <div class="pt-2">
-                                <div v-if="settings.pricing_hospital_promo_active && settings.pricing_hospital_strike_price" class="flex items-center gap-2 mb-1">
-                                    <span class="text-sm font-bold text-slate-400 line-through">{{ formatRupiah(settings.pricing_hospital_strike_price) }}</span>
-                                    <span class="rounded bg-emerald-50 px-1.5 py-0.2 text-[10px] font-bold text-emerald-700 ring-1 ring-inset ring-emerald-600/20">
-                                        {{ settings.pricing_hospital_promo_badge || 'Hemat' }}
-                                    </span>
-                                </div>
                                 <div class="flex items-baseline gap-1">
-                                    <span class="text-3xl font-extrabold text-slate-900">{{ formatRupiah(settings.pricing_hospital_price ?? 4500000) }}</span>
-                                    <span class="text-xs text-slate-500 font-semibold">{{ settings.pricing_hospital_period || ' (Sekali Bayar)' }}</span>
+                                    <span class="text-3xl font-extrabold text-amber-900">Sukarela</span>
+                                    <span class="text-xs text-slate-500 font-semibold">(Mulai Rp10.000)</span>
                                 </div>
+                                <p class="text-[11px] text-slate-500 mt-0.5">Dukungan via QRIS, GoPay, OVO, DANA, ShopeePay & Bank Transfer.</p>
                             </div>
 
-                            <ul class="space-y-2 text-xs text-slate-700 pt-3 border-t border-slate-200 font-medium">
-                                <li
-                                    v-for="(feat, fIdx) in (settings.pricing_hospital_features || ['✓ Full Source Code (Laravel + Vue)', '✓ Deploy Intranet (Kepatuhan PMK 24)', '✓ Tanpa Biaya Bulanan / Transaksi', '✓ Panduan Setup & Garansi 30 Hari'])"
-                                    :key="fIdx"
-                                    :class="fIdx === 0 ? 'font-semibold text-slate-800' : ''"
-                                >
-                                    {{ feat }}
-                                </li>
+                            <ul class="space-y-2 text-xs text-slate-700 pt-3 border-t border-amber-200 font-medium">
+                                <li class="font-bold text-amber-900">✓ Biaya operasional server demo publik</li>
+                                <li>✓ Riset berkala update katalog BPJS & SatuSehat</li>
+                                <li>✓ Pengembangan fitur APM & bridging baru</li>
+                                <li>✓ Nama/RS Anda dicantumkan di list kontributor (opsional)</li>
                             </ul>
                         </div>
 
                         <div>
                             <a
-                                :href="telegramHospitalUrl"
+                                :href="saweriaUrl"
                                 target="_blank"
+                                rel="noopener noreferrer"
+                                class="flex items-center justify-center gap-2 w-full text-center rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 py-3 text-xs font-extrabold text-slate-950 transition shadow-md"
+                            >
+                                <span class="text-base">☕</span>
+                                <span>Traktir Kopi di Saweria (fauzirahman05)</span>
+                            </a>
+                            <div class="text-center mt-2 text-[10px] text-slate-500 font-mono">
+                                saweria.co/fauzirahman05
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Professional Setup & Assistance (Optional) -->
+                    <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6 flex flex-col justify-between space-y-6">
+                        <div class="space-y-4">
+                            <span class="rounded bg-sky-100 px-2 py-0.5 text-[11px] font-bold text-sky-800">
+                                Jasa Profesional (Opsional)
+                            </span>
+                            <h3 class="text-xl font-bold text-slate-900">Setup & Asistensi RS</h3>
+                            <p class="text-xs text-slate-600">
+                                Untuk rumah sakit yang membutuhkan bantuan instalasi on-premise, pendampingan UAT BPJS Cabang, atau kustomisasi bridging khusus SIMRS lama.
+                            </p>
+
+                            <div class="pt-2">
+                                <span class="text-3xl font-extrabold text-slate-900">Sesuai Kebutuhan</span>
+                                <span class="text-xs text-slate-500 font-semibold"> (Berdasarkan Ruang Lingkup)</span>
+                            </div>
+
+                            <ul class="space-y-2 text-xs text-slate-700 pt-3 border-t border-slate-200 font-medium">
+                                <li>✓ Setup & Deployment On-Premise di Server RS</li>
+                                <li>✓ Integrasi ke Database SIMRS Existing</li>
+                                <li>✓ Pendampingan Teknis saat UAT BPJS Cabang</li>
+                                <li>✓ Pelatihan Tim IT Internal Rumah Sakit</li>
+                                <li>✓ SLA & Dukungan Teknis Langsung dari Pembuat</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <a
+                                :href="waConsultUrl"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 class="flex items-center justify-center gap-2 w-full text-center rounded-lg border border-sky-300 bg-sky-50 hover:bg-sky-100 py-2.5 text-xs font-bold text-sky-900 transition shadow-2xs"
                             >
                                 <svg class="h-4 w-4 fill-sky-600" viewBox="0 0 24 24">
                                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
                                 </svg>
-                                <span>{{ settings.pricing_hospital_cta_text || 'Beli Source Code via Telegram' }}</span>
+                                <span>Konsultasi Kebutuhan RS</span>
                             </a>
                         </div>
                     </div>
@@ -931,69 +946,128 @@ const toggleFaq = (idx) => {
                 <div class="grid items-center gap-12 lg:grid-cols-[1fr_0.9fr] lg:gap-16">
                     <div class="space-y-8">
                         <div class="space-y-5">
-                            <span class="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-1 text-xs font-semibold text-amber-200">
-                                <span class="h-1.5 w-1.5 rounded-full bg-amber-300"></span>
-                                Segera hadir · sedang dikembangkan
+                            <span class="inline-flex items-center gap-2 rounded-full border border-teal-400/30 bg-teal-500/10 px-3 py-1 text-xs font-semibold text-teal-300">
+                                <span class="h-1.5 w-1.5 rounded-full bg-teal-400"></span>
+                                Fitur Tersedia & Terhubung BPJS Antrol
                             </span>
                             <h2 class="text-3xl font-extrabold tracking-[-0.025em] text-white sm:text-4xl sm:leading-[1.12] text-balance">
                                 Pasien daftar sendiri di kios. SEP terbit tanpa antre di loket.
                             </h2>
                             <p class="max-w-xl text-sm sm:text-base leading-relaxed text-slate-400">
-                                <strong class="font-semibold text-slate-200">APM (Anjungan Pendaftaran Mandiri)</strong> adalah layar sentuh di lobi rumah sakit yang tersambung ke SIMRS dan BPJS lewat SIMRS Gateway. Petugas loket fokus ke pasien yang butuh bantuan; sisanya selesai sendiri.
+                                <strong class="font-semibold text-slate-200">APM (Anjungan Pasien Mandiri)</strong> adalah antarmuka layar sentuh di lobi RS yang terhubung ke SIMRS dan BPJS Kesehatan. Pasien mandiri memilih poli dan cetak SEP, petugas loket fokus melayani kasus khusus.
                             </p>
+
+                            <!-- TAB SELECTOR CARA PAKAI APM -->
+                            <div class="pt-2">
+                                <p class="text-xs font-bold uppercase tracking-wider text-teal-400 mb-2.5">Pilih Cara / Alur Penggunaan:</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 p-1.5 rounded-xl bg-slate-900 border border-slate-800">
+                                    <button
+                                        type="button"
+                                        @click="activeApmTab = 'checkin'"
+                                        :class="[
+                                            activeApmTab === 'checkin'
+                                                ? 'bg-teal-700 text-white shadow-sm font-bold'
+                                                : 'text-slate-400 hover:text-slate-200 font-medium',
+                                            'px-3.5 py-2.5 rounded-lg text-xs transition cursor-pointer text-left'
+                                        ]"
+                                    >
+                                        <div class="font-bold text-xs">Alur 1: Check-In Online</div>
+                                        <div class="text-[11px] opacity-80">Sudah booking di Mobile JKN / Web</div>
+                                    </button>
+                                    <button
+                                        type="button"
+                                        @click="activeApmTab = 'daftar'"
+                                        :class="[
+                                            activeApmTab === 'daftar'
+                                                ? 'bg-teal-700 text-white shadow-sm font-bold'
+                                                : 'text-slate-400 hover:text-slate-200 font-medium',
+                                            'px-3.5 py-2.5 rounded-lg text-xs transition cursor-pointer text-left'
+                                        ]"
+                                    >
+                                        <div class="font-bold text-xs">Alur 2: Daftar Mandiri</div>
+                                        <div class="text-[11px] opacity-80">Pasien datang langsung (Go-Show)</div>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
 
-                        <ol class="space-y-5">
+                        <!-- STEP BY STEP LIST -->
+                        <ol class="space-y-4">
                             <li v-for="(step, idx) in apmSteps" :key="step.title" class="grid grid-cols-[2rem_1fr] gap-4">
-                                <span class="flex h-8 w-8 items-center justify-center rounded-full border border-teal-500/40 bg-teal-500/10 text-xs font-bold text-teal-300 tabular-nums">{{ idx + 1 }}</span>
-                                <div class="space-y-1 pt-1">
+                                <span class="flex h-8 w-8 items-center justify-center rounded-full border border-teal-500/40 bg-teal-500/10 text-xs font-bold text-teal-300 tabular-nums">
+                                    {{ idx + 1 }}
+                                </span>
+                                <div class="space-y-1 pt-0.5">
                                     <h3 class="text-sm font-bold text-white">{{ step.title }}</h3>
                                     <p class="max-w-md text-xs sm:text-sm leading-relaxed text-slate-400">{{ step.body }}</p>
                                 </div>
                             </li>
                         </ol>
 
-                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
+                        <!-- ACTION CTAs -->
+                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
+                            <Link
+                                href="/apm"
+                                class="inline-flex items-center justify-center gap-2 rounded-xl bg-teal-500 hover:bg-teal-400 px-5 py-3.5 text-xs sm:text-sm font-bold text-teal-950 shadow-[0_8px_24px_-8px_rgba(20,184,166,0.55)] transition active:scale-95"
+                            >
+                                <span>Buka Demo Kiosk APM (/apm)</span>
+                                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </Link>
                             <a
                                 :href="telegramApmUrl"
                                 target="_blank"
                                 rel="noopener"
-                                class="inline-flex items-center justify-center gap-2 rounded-xl bg-teal-500 px-5 py-3 text-xs sm:text-sm font-bold text-teal-950 shadow-[0_8px_24px_-8px_rgba(20,184,166,0.55)] transition hover:bg-teal-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-300"
+                                class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-900 hover:bg-slate-800 px-4 py-3.5 text-xs sm:text-sm font-semibold text-slate-300 transition"
                             >
-                                <span>Daftar jadi RS uji coba</span>
-                                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                </svg>
+                                <span>Konsultasi Implementasi RS</span>
                             </a>
-                            <p class="text-xs text-slate-400 sm:max-w-[16rem]">
-                                Kuota terbatas. RS uji coba ikut menentukan alur sebelum rilis.
-                            </p>
                         </div>
                     </div>
 
-                    <!-- Tiruan layar kios (ilustrasi, bukan produk jadi) -->
+                    <!-- Tiruan layar kios (interaktif mengikuti tab aktif) -->
                     <figure class="relative mx-auto w-full max-w-md">
                         <div class="rounded-[1.75rem] border border-slate-700 bg-slate-900 p-3 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.7)]">
                             <div class="overflow-hidden rounded-[1.1rem] bg-slate-50 text-slate-900">
                                 <div class="flex items-center justify-between bg-teal-800 px-5 py-3 text-white">
-                                    <span class="text-xs font-bold">Anjungan Pendaftaran Mandiri</span>
-                                    <span class="text-[11px] tabular-nums text-teal-100">07:42</span>
+                                    <span class="text-xs font-bold">{{ activeApmTab === 'checkin' ? 'Check-In Mobile JKN' : 'Pendaftaran Mandiri BPJS' }}</span>
+                                    <span class="text-[11px] tabular-nums text-teal-100">08:15</span>
                                 </div>
                                 <div class="space-y-4 p-5">
                                     <div class="space-y-1">
-                                        <p class="text-[11px] font-semibold text-slate-400">Langkah 3 dari 3</p>
-                                        <p class="text-lg font-bold tracking-[-0.02em] text-slate-900">Pendaftaran berhasil</p>
+                                        <p class="text-[11px] font-semibold text-slate-400">
+                                            {{ activeApmTab === 'checkin' ? 'Verifikasi Kode Booking' : 'Langkah 3 dari 3' }}
+                                        </p>
+                                        <p class="text-lg font-bold tracking-[-0.02em] text-slate-900">
+                                            {{ activeApmTab === 'checkin' ? 'Check-In Berhasil Terkonfirmasi' : 'Pendaftaran Berhasil' }}
+                                        </p>
                                     </div>
                                     <dl class="divide-y divide-slate-200 rounded-xl border border-slate-200 bg-white text-xs">
-                                        <div class="flex justify-between px-4 py-2.5"><dt class="text-slate-400">Poli</dt><dd class="font-semibold">Penyakit Dalam</dd></div>
-                                        <div class="flex justify-between px-4 py-2.5"><dt class="text-slate-400">Dokter</dt><dd class="font-semibold">dr. Contoh, Sp.PD</dd></div>
-                                        <div class="flex justify-between px-4 py-2.5"><dt class="text-slate-400">Status SEP</dt><dd class="font-semibold text-teal-700">Terbit</dd></div>
+                                        <div class="flex justify-between px-4 py-2.5">
+                                            <dt class="text-slate-400">{{ activeApmTab === 'checkin' ? 'Kode Booking' : 'Pasien' }}</dt>
+                                            <dd class="font-semibold">{{ activeApmTab === 'checkin' ? 'JKN261001' : 'Ny. Rahmawati' }}</dd>
+                                        </div>
+                                        <div class="flex justify-between px-4 py-2.5">
+                                            <dt class="text-slate-400">Poliklinik</dt>
+                                            <dd class="font-semibold">Penyakit Dalam</dd>
+                                        </div>
+                                        <div class="flex justify-between px-4 py-2.5">
+                                            <dt class="text-slate-400">Dokter</dt>
+                                            <dd class="font-semibold">dr. Budi Santoso, Sp.PD</dd>
+                                        </div>
+                                        <div class="flex justify-between px-4 py-2.5">
+                                            <dt class="text-slate-400">Status BPJS</dt>
+                                            <dd class="font-semibold text-teal-700">
+                                                {{ activeApmTab === 'checkin' ? 'Task 3 Tercatat (Tiba di RS)' : 'SEP & Antrean Terbit' }}
+                                            </dd>
+                                        </div>
                                     </dl>
                                     <div class="flex items-center gap-2 rounded-xl bg-teal-50 px-4 py-3 text-xs font-semibold text-teal-900">
-                                        <svg class="h-4 w-4 shrink-0 text-teal-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <svg class="h-4 w-4 shrink-0 text-teal-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
                                         </svg>
-                                        Silakan ambil karcis di bawah layar
+                                        Silakan ambil karcis antrean di bawah layar
                                     </div>
                                 </div>
                             </div>
@@ -1001,16 +1075,23 @@ const toggleFaq = (idx) => {
                             <div class="mx-auto mt-3 h-1.5 w-40 rounded-full bg-slate-950 shadow-[inset_0_1px_2px_rgba(0,0,0,0.8)]"></div>
                         </div>
 
-                        <!-- Karcis antrean -->
+                        <!-- Karcis antrean thermal -->
                         <div class="apm-ticket-clip mx-auto w-36">
                             <div class="apm-ticket mx-auto w-36 rounded-b-lg bg-white px-3 pb-3 pt-2 text-center text-slate-900 shadow-[0_12px_24px_-12px_rgba(0,0,0,0.6)]" :class="{ 'is-printed': apmPrinted }">
                                 <p class="text-[9px] font-semibold text-slate-400">Nomor antrean</p>
-                                <p class="text-2xl font-extrabold tracking-[-0.03em] tabular-nums">B-017</p>
+                                <p class="text-2xl font-extrabold tracking-[-0.03em] tabular-nums text-teal-800">
+                                    {{ activeApmTab === 'checkin' ? 'INT-001' : 'INT-002' }}
+                                </p>
                                 <p class="text-[9px] text-slate-400">Poli Penyakit Dalam</p>
                             </div>
                         </div>
 
-                        <figcaption class="mt-4 text-center text-[11px] text-slate-400">Ilustrasi tampilan. Data di layar adalah contoh.</figcaption>
+                        <div class="mt-4 text-center">
+                            <Link href="/apm" class="inline-flex items-center gap-1.5 text-xs font-bold text-teal-400 hover:text-teal-300">
+                                <span>Buka Layar Kiosk Layar Penuh</span>
+                                <span>&rarr;</span>
+                            </Link>
+                        </div>
                     </figure>
                 </div>
             </div>
@@ -1057,7 +1138,8 @@ const toggleFaq = (idx) => {
                 <div class="flex flex-wrap items-center gap-4 sm:gap-5">
                     <a href="#arsitektur" class="hover:text-slate-800">Arsitektur</a>
                     <a href="#katalog" class="hover:text-slate-800">Katalog</a>
-                    <a href="#lisensi" class="hover:text-slate-800">Harga Lisensi</a>
+                    <a href="#open-source" class="hover:text-slate-800">Open Source & Donasi</a>
+                    <a :href="saweriaUrl" target="_blank" rel="noopener noreferrer" class="text-amber-600 font-bold hover:underline">Saweria</a>
                     <a :href="telegramGeneralUrl" target="_blank" class="text-sky-600 font-bold hover:underline">Telegram @{{ telegramHandle }}</a>
                 </div>
             </div>

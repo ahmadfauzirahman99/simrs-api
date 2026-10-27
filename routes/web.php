@@ -17,6 +17,13 @@ Route::get('/', function () {
     ]);
 })->name('landing');
 
+Route::get('/apm', [\App\Http\Controllers\Web\ApmKioskPageController::class, 'index'])->name('apm.kiosk');
+
+Route::get('/display/antrean', [\App\Http\Controllers\Web\DisplayAntreanController::class, 'index'])->name('display.antrean');
+Route::get('/poli/panggil', [\App\Http\Controllers\Web\PoliPanggilController::class, 'index'])->name('poli.panggil');
+Route::post('/poli/panggil/{antrean}/panggil', [\App\Http\Controllers\Web\PoliPanggilController::class, 'panggil'])->name('poli.panggil.call');
+Route::post('/poli/panggil/{antrean}/selesai', [\App\Http\Controllers\Web\PoliPanggilController::class, 'selesai'])->name('poli.panggil.done');
+
 
 
 Route::middleware('guest')->group(function () {
@@ -94,6 +101,8 @@ use App\Http\Controllers\Web\AdminClientController;
 use App\Http\Controllers\Web\AdminDashboardController;
 use App\Http\Controllers\Web\AdminPricingSettingController;
 
+use App\Http\Controllers\Web\AdminAntrolMonitorController;
+use App\Http\Controllers\Web\AdminSepController;
 Route::middleware(['auth', 'subscribed'])->group(function () {
     Route::get('/admin', function () {
         if (auth()->user()?->hasRole('superadmin')) {
@@ -122,6 +131,13 @@ Route::middleware(['auth', 'subscribed'])->group(function () {
         Route::get('/admin/pricing', [AdminPricingSettingController::class, 'index'])->name('admin.pricing');
         Route::post('/admin/pricing', [AdminPricingSettingController::class, 'update'])->name('admin.pricing.update');
     });
+
+        Route::get('/admin/antrol-monitor', [AdminAntrolMonitorController::class, 'index'])->name('admin.antrol-monitor');
+        Route::post('/admin/antrol-monitor/{antrean}/advance-task', [AdminAntrolMonitorController::class, 'advanceTask'])->name('admin.antrol-monitor.advance');
+
+        Route::get('/admin/sep', [AdminSepController::class, 'index'])->name('admin.sep');
+        Route::post('/admin/sep/search', [AdminSepController::class, 'search'])->name('admin.sep.search');
+        Route::post('/admin/sep/generate', [AdminSepController::class, 'generate'])->name('admin.sep.generate');
 
     // Developer & testing endpoints
     Route::get('/admin/bpjs-tester', BpjsTesterPageController::class)->name('admin.bpjs-tester');
