@@ -18,6 +18,11 @@
 </p>
 
 <p align="center">
+  <a href="https://haurakirana.my.id" target="_blank"><strong>🌐 Live Demo & Web Simulator: haurakirana.my.id</strong></a>
+</p>
+
+<p align="center">
+  <a href="#-live-demo--preview-aplikasi">🌐 Live Demo</a> •
   <a href="#-unduh-langsung-gratis">📦 Unduh Gratis</a> •
   <a href="#-fitur-utama">✨ Fitur</a> •
   <a href="#-antrean-online--layar-sentuh-apm-kiosk">🖥️ APM & Display TV</a> •
@@ -28,6 +33,21 @@
 
 ---
 
+## 🌐 Live Demo & Preview Aplikasi
+
+Mau langsung melihat dan mencoba aplikasi yang sudah berjalan tanpa perlu instalasi di komputer Anda? Kunjungi tautan live berikut:
+
+👉 **[https://haurakirana.my.id](https://haurakirana.my.id)**
+
+| Layanan / Halaman | Tautan Langsung | Keterangan |
+|---|---|---|
+| **Landing Page Utama** | [haurakirana.my.id](https://haurakirana.my.id) | Katalog modul, arsitektur, dan tautan unduh |
+| **Studio Testing BPJS & SatuSehat** | [haurakirana.my.id/login](https://haurakirana.my.id/login) | Simulator 209 endpoint BPJS & SatuSehat |
+| **Display TV Antrean Poli** | [haurakirana.my.id/antrean/display](https://haurakirana.my.id/antrean/display) | Layar ruang tunggu TV dengan pemanggilan suara |
+| **Layar Sentuh APM Mandiri** | [haurakirana.my.id/apm/kiosk](https://haurakirana.my.id/apm/kiosk) | Kiosk anjungan check-in Mobile JKN & pendaftaran pasien |
+| **Layar Panggil Dokter/Perawat** | [haurakirana.my.id/poli/panggil](https://haurakirana.my.id/poli/panggil) | Kontrol pemanggilan antrean per poli |
+
+---
 ## 🎯 Mengapa SIMRS Gateway?
 
 Bridging API BPJS Kesehatan dan SATUSEHAT sering menjadi momok bagi tim IT Rumah Sakit:
@@ -43,7 +63,7 @@ Bridging API BPJS Kesehatan dan SATUSEHAT sering menjadi momok bagi tim IT Rumah
 
 | Paket | Format | Tautan Unduhan |
 |---|---|---|
-| **Full Source Code (v3.0)** | `.zip` | 👉 [**Download Source Code (.ZIP)**](https://github.com/ahmadfauzirahman99/simrs-api/archive/refs/heads/feat/client-portal-dan-deploy.zip) |
+| **Full Source Code (v3.0)** | `.zip` | 👉 [**Download Source Code (.ZIP)**](https://github.com/ahmadfauzirahman99/simrs-api/archive/refs/heads/pmaster.zip) |
 | **Postman Collection (209 Endpoint)** | `.json` | 👉 [**Download Postman Collection**](https://haurakirana.my.id/downloads/postman-collection) |
 | **Koleksi Resmi GitHub** | `git clone` | `https://github.com/ahmadfauzirahman99/simrs-api.git` |
 
