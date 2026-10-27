@@ -326,34 +326,30 @@ Repositori ini tidak untuk diperjualbelikan kembali dalam bentuk source code asl
 
 README ini sekarang difokuskan sebagai pintu masuk project. Dokumentasi endpoint yang lebih detail akan lebih baik jika dipisah per domain agar repo tetap mudah dipelajari.
 
-## Author
+## Dukung Pengembangan (Donasi Saweria)
 
-**Ahmad Fauzi Rahman**
+Project ini bersifat **100% Bebas & Open Source** untuk membantu digitalisasi fasilitas kesehatan di Indonesia. 
 
-Backend Developer  
-SIMRS Developer  
-Healthcare Technology Enthusiast
+Jika project ini membantu pekerjaan Anda atau menghemat waktu integrasi tim IT rumah sakit Anda, Anda dapat mendukung kelangsungan riset dan pembaruan endpoint BPJS melalui:
 
-## Lisensi dan Penggunaan
+[![Dukung via Saweria](https://img.shields.io/badge/Saweria-Dukung%20Kopi-FF813F?style=for-the-badge&logo=kofi&logoColor=white)](https://saweria.co/fauzirahman05)
 
-Project ini dibagikan untuk tujuan:
+👉 **[saweria.co/fauzirahman05](https://saweria.co/fauzirahman05)**  
+*(Mendukung QRIS, GoPay, OVO, DANA, ShopeePay, dan Transfer Bank)*
 
-- pembelajaran
-- pengembangan
-- pengujian integrasi
-- implementasi internal yang sah
+## Author & Jasa Konsultasi
 
-Pengguna diperbolehkan untuk:
+**Ahmad Fauzi Rahman**  
+SIMRS & Healthcare Integration Developer  
+Telegram: [@FauziRahman95](https://t.me/FauziRahman95)
 
-- mempelajari source code
-- melakukan modifikasi sesuai kebutuhan implementasi
-- menggunakan project ini sebagai fondasi pengembangan sistem
-- mengintegrasikan project ini ke lingkungan kerja yang memiliki otorisasi yang sah
+Untuk rumah sakit yang membutuhkan bantuan implementasi langsung:
+- Setup & deployment on-premise di intranet server RS
+- Kustomisasi bridging untuk database SIMRS lama
+- Pendampingan teknis saat UAT Kantor Cabang BPJS
 
-Pengguna tidak diperbolehkan untuk:
+Silakan hubungi melalui Telegram di atas.
 
-- memperjualbelikan ulang source code ini dalam bentuk mentah
-- melakukan repackaging lalu menjual ulang project ini tanpa kontribusi pengembangan yang nyata
-- mengklaim ulang project ini sebagai karya sendiri tanpa atribusi yang layak
+## Lisensi
 
-Jika ada kebutuhan kerja sama, distribusi khusus, atau penggunaan komersial yang melibatkan penjualan ulang source code, silakan hubungi author secara langsung.
+Didistribusikan di bawah lisensi terbuka [MIT License](LICENSE). Bebas digunakan, dipelajari, dan dimodifikasi untuk kebutuhan intranet fasilitas kesehatan seluruh Indonesia.

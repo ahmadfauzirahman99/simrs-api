@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\Antrol\AntreanRsController;
+use App\Http\Controllers\Api\Apm\ApmController;
 
 use App\Http\Controllers\Api\Bpjs\BpjsMedicalRecordController;
 use App\Http\Controllers\Api\Bpjs\BpjsReferensiController;
@@ -99,6 +100,15 @@ Route::prefix('v1')->middleware(['throttle:api', 'client.api'])->group(function 
         Route::get('/jadwal-dokter', [AntreanRsController::class, 'jadwalDokter']);
     });
 
+    Route::prefix('apm')->group(function () {
+        Route::post('/search-peserta', [ApmController::class, 'searchPeserta']);
+        Route::get('/jadwal-hari-ini', [ApmController::class, 'jadwalHariIni']);
+        Route::post('/check-in', [ApmController::class, 'checkIn']);
+        Route::post('/daftar-mandiri', [ApmController::class, 'daftarMandiri']);
+        Route::post('/update-task', [ApmController::class, 'updateTask']);
+        Route::get('/status-antrean', [ApmController::class, 'statusAntrean']);
+    });
+
 
 
     Route::prefix('satu-sehat')->group(function () {
@@ -133,4 +143,15 @@ Route::prefix('v1')->middleware(['throttle:api', 'client.api'])->group(function 
             'response' => (object) [],
         ], 404);
     });
+});
+
+// Endpoint khusus Kiosk APM (Layar Sentuh Mesin Mandiri RS)
+Route::prefix('apm-api')->middleware('throttle:120,1')->group(function () {
+    Route::post('/search-peserta', [ApmController::class, 'searchPeserta']);
+    Route::get('/jadwal-hari-ini', [ApmController::class, 'jadwalHariIni']);
+    Route::post('/check-in', [ApmController::class, 'checkIn']);
+    Route::post('/daftar-mandiri', [ApmController::class, 'daftarMandiri']);
+    Route::post('/update-task', [ApmController::class, 'updateTask']);
+    Route::get('/status-antrean', [ApmController::class, 'statusAntrean']);
+    Route::get('/display-state', [\App\Http\Controllers\Web\DisplayAntreanController::class, 'state']);
 });
