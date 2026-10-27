@@ -43,8 +43,8 @@ Mau langsung melihat dan mencoba aplikasi yang sudah berjalan tanpa perlu instal
 |---|---|---|
 | **Landing Page Utama** | [haurakirana.my.id](https://haurakirana.my.id) | Katalog modul, arsitektur, dan tautan unduh |
 | **Studio Testing BPJS & SatuSehat** | [haurakirana.my.id/login](https://haurakirana.my.id/login) | Simulator 209 endpoint BPJS & SatuSehat |
-| **Display TV Antrean Poli** | [haurakirana.my.id/antrean/display](https://haurakirana.my.id/antrean/display) | Layar ruang tunggu TV dengan pemanggilan suara |
-| **Layar Sentuh APM Mandiri** | [haurakirana.my.id/apm/kiosk](https://haurakirana.my.id/apm/kiosk) | Kiosk anjungan check-in Mobile JKN & pendaftaran pasien |
+| **Display TV Antrean Poli** | [haurakirana.my.id/display/antrean](https://haurakirana.my.id/display/antrean) | Layar ruang tunggu TV dengan pemanggilan suara |
+| **Layar Sentuh APM Mandiri** | [haurakirana.my.id/apm](https://haurakirana.my.id/apm) | Kiosk anjungan check-in Mobile JKN & pendaftaran pasien |
 | **Layar Panggil Dokter/Perawat** | [haurakirana.my.id/poli/panggil](https://haurakirana.my.id/poli/panggil) | Kontrol pemanggilan antrean per poli |
 
 ---
@@ -91,10 +91,10 @@ Bridging API BPJS Kesehatan dan SATUSEHAT sering menjadi momok bagi tim IT Rumah
 
 Selain API backend, SIMRS Gateway kini dilengkapi antarmuka frontend siap pakai untuk operasional rumah sakit:
 
-1. **Layar Sentuh Anjungan Pendaftaran Mandiri (`/apm/kiosk`)**
+1. **Layar Sentuh Anjungan Pendaftaran Mandiri (`/apm`)**
    - Check-in mandiri kode booking Mobile JKN via scan barcode atau input kode.
    - Pendaftaran pasien baru / umum secara mandiri di anjungan sentuh lobby RS.
-2. **Display TV Antrean Poliklinik (`/antrean/display`)**
+2. **Display TV Antrean Poliklinik (`/display/antrean`)**
    - Layar ruang tunggu TV dengan palet klinis modern (navy & teal, tanpa elemen teks berjalan yang mengganggu).
    - Dilengkapi pemanggilan suara (Text-to-Speech) nomor antrean otomatis.
 3. **Layar Panggil Dokter & Perawat (`/poli/panggil`)**
@@ -160,8 +160,8 @@ php artisan serve
 Akses aplikasi di peramban:
 - **Landing Page**: `http://127.0.0.1:8000/`
 - **Dashboard Studio Tester**: `http://127.0.0.1:8000/login`
-- **Display TV Antrean**: `http://127.0.0.1:8000/antrean/display`
-- **Kiosk APM Mandiri**: `http://127.0.0.1:8000/apm/kiosk`
+- **Display TV Antrean**: `http://127.0.0.1:8000/display/antrean`
+- **Kiosk APM Mandiri**: `http://127.0.0.1:8000/apm`
 - **Layar Panggil Poli**: `http://127.0.0.1:8000/poli/panggil`
 
 ---
