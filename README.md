@@ -1,355 +1,204 @@
-# SIMRS API
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ahmadfauzirahman99/simrs-api/feat/client-portal-dan-deploy/public/favicon.svg" width="80" alt="SIMRS Gateway Logo" />
+</p>
 
-Base project berbasis `Laravel 12` untuk kebutuhan integrasi `SIMRS`, `BPJS`, dan `SATUSEHAT`.
+<h1 align="center">SIMRS Gateway & Simulator BPJS / SATUSEHAT</h1>
 
-Project ini ditujukan sebagai fondasi yang bisa dipakai ulang oleh programmer Indonesia untuk membangun bridging layanan kesehatan yang rapi, konsisten, dan mudah dikembangkan.
+<p align="center">
+  <strong>Platform Open-Source Bridging Layanan Kesehatan (BPJS VClaim, Antrol, Rekam Medis & Kemenkes SATUSEHAT) Siap Pakai untuk Rumah Sakit & Faskes Indonesia.</strong>
+</p>
 
-## Visi Project
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="MIT License" /></a>
+  <a href="https://laravel.com"><img src="https://img.shields.io/badge/Laravel-12.x-FF2D20?style=flat-square&logo=laravel&logoColor=white" alt="Laravel 12" /></a>
+  <a href="https://vuejs.org"><img src="https://img.shields.io/badge/Vue.js-3.x-4FC08D?style=flat-square&logo=vue.js&logoColor=white" alt="Vue 3" /></a>
+  <a href="https://saweria.co/fauzirahman05"><img src="https://img.shields.io/badge/Saweria-Traktir%20Kopi-FF813F?style=flat-square&logo=kofi&logoColor=white" alt="Dukung via Saweria" /></a>
+  <img src="https://img.shields.io/badge/Endpoints-209%20Tested-0284c7?style=flat-square" alt="209 Endpoints" />
+  <img src="https://img.shields.io/badge/Regulasi-PMK%2024%20%2F%20UU%20PDP-059669?style=flat-square" alt="Kepatuhan PMK 24" />
+</p>
 
-Repositori ini tidak hanya ditujukan untuk kebutuhan satu implementasi internal, tetapi diarahkan menjadi:
+<p align="center">
+  <a href="#-unduh-langsung-gratis">📦 Unduh Gratis</a> •
+  <a href="#-fitur-utama">✨ Fitur</a> •
+  <a href="#-antrean-online--layar-sentuh-apm-kiosk">🖥️ APM & Display TV</a> •
+  <a href="#-arsitektur--kepatuhan-pmk-24">🏛️ Arsitektur</a> •
+  <a href="#-instalasi-cepat">🚀 Instalasi</a> •
+  <a href="#-dukung-proyek-saweria">☕ Donasi</a>
+</p>
 
-- base project integrasi `BPJS`
-- base project integrasi `SATUSEHAT`
-- referensi arsitektur backend bridging untuk `SIMRS`
-- starter kit pengembangan API layanan kesehatan di Indonesia
+---
 
-## Fokus Saat Ini
+## 🎯 Mengapa SIMRS Gateway?
 
-Saat ini project berfokus pada `API backend` dan `integration tester dashboard`, dengan ruang pengembangan untuk:
+Bridging API BPJS Kesehatan dan SATUSEHAT sering menjadi momok bagi tim IT Rumah Sakit:
+1. **Kompleksitas Enkripsi**: Menghitung HMAC-SHA256 timestamp signature, enkripsi AES-256-CBC, dan dekompresi LZ-string yang rentan gagal.
+2. **Kepatuhan Task ID Antrean**: Pelaporan waktu tunggu pasien poliklinik (Task 1 sampai Task 7) ke BPJS Mobile JKN.
+3. **Kepatuhan Privasi (UU PDP & PMK 24/2022)**: Data rekam medis pasien **wajib berada di server lokal (On-Premise)**, bukan di cloud pihak ketiga.
 
-- integrasi `BPJS VClaim`
-- integrasi `BPJS Antrean/Antrol`
-- integrasi `SATUSEHAT`
-- dashboard tester admin untuk `live` dan `mock preview`
-- standardisasi format response
-- dokumentasi implementasi integrasi
-- fondasi modular untuk pertumbuhan project skala besar
+**SIMRS Gateway menyelesaikan semua masalah tersebut:** Anda cukup mengirim dan menerima **JSON biasa** ke gateway lokal ini, dan seluruh enkripsi, dekompresi, bridging, hingga simulator pengujian diurus secara otomatis!
 
-## Fitur yang Sudah Ada
+---
 
-- Integrasi `BPJS VClaim`
-- Referensi master `BPJS`
-- Monitoring kunjungan dan klaim `BPJS`
-- Pengelolaan `SEP`
-- Pengelolaan `Surat Kontrol` dan `SPRI`
-- Endpoint dasar `Antrol`
-- Generate dan cache token `SATUSEHAT`
-- Kirim `Encounter` ke `SATUSEHAT`
-- Dashboard admin tester untuk `BPJS`
-- Dashboard admin tester untuk `SATUSEHAT`
-- Mode `Live API` dan `Mock Preview`
-- Visualisasi request, response, dan debug payload outbound
-- Format response API konsisten
-- Dukungan environment terpisah untuk kredensial integrasi
+## 📦 Unduh Langsung (Gratis)
 
-## Showcase Update Terbaru
+| Paket | Format | Tautan Unduhan |
+|---|---|---|
+| **Full Source Code (v3.0)** | `.zip` | 👉 [**Download Source Code (.ZIP)**](https://github.com/ahmadfauzirahman99/simrs-api/archive/refs/heads/feat/client-portal-dan-deploy.zip) |
+| **Postman Collection (209 Endpoint)** | `.json` | 👉 [**Download Postman Collection**](https://haurakirana.my.id/downloads/postman-collection) |
+| **Koleksi Resmi GitHub** | `git clone` | `https://github.com/ahmadfauzirahman99/simrs-api.git` |
 
-Update terbaru project ini membawa repositori dari versi `API-only` menjadi `API + Web Tester`.
+---
 
-Yang sekarang sudah bisa dilakukan:
+## ✨ Fitur Utama
 
-- login admin untuk membuka integration console
-- testing endpoint `BPJS` langsung dari dashboard web
-- testing endpoint `SATUSEHAT` langsung dari dashboard web
-- mode `Live API` untuk memanggil endpoint Laravel yang aktif
-- mode `Mock Preview` untuk simulasi request/response
-- melihat `URL lokal`, `URL vendor BPJS`, `request sent`, `final outbound payload`, `final query params`, dan header debug aman
-- melihat response array seperti `list`, `klaim`, `sep`, `poli`, `diagnosa`, dan `faskes` dalam tampilan yang lebih mudah dibaca
+### 1. Modul BPJS Kesehatan Terlengkap (209 Endpoint)
+- **VClaim v2 & v3**: Registrasi SEP, riwayat rujukan, Surat Kontrol, SPRI, monitoring klaim & diagnosa ICD-10/ICD-9.
+- **Antrean Farmasi & Poli (Antrol)**: Pendaftaran antrean poliklinik, pembatalan, pembaruan waktu tunggu, dan monitoring sisa kuota.
+- **Rekam Medis Elektronik (E-Klaim / Sharing Rekam Medis)**: Ekstraksi dan enkripsi bundle resume medis terpadu sesuai standar BPJS.
+- **Auto Cipher Engine**: HMAC-SHA256 signature generator + AES-256-CBC cipher + LZ-string decompressor transparan.
 
-Project ini diarahkan untuk membantu:
+### 2. Modul Kemenkes SATUSEHAT (FHIR R4)
+- **Token Manager**: Generate & cache token OAuth2 otomatis sebelum kedaluwarsa.
+- **Resource FHIR Submissions**: `Encounter`, `Condition`, `Observation`, `Procedure`, `MedicationRequest`, `MedicationDispense`, `AllergyIntolerance`, `Immunization`, `ServiceRequest`, `DiagnosticReport`, `ChargeItem`, `Invoice`, dan `Coverage`.
 
-- programmer IT rumah sakit di Indonesia
-- vendor dan tim pengembang `SIMRS`
-- developer yang ingin belajar integrasi `BPJS` dan `SATUSEHAT`
-- tim yang membutuhkan fondasi integrasi kesehatan yang bisa langsung dikembangkan
+### 3. Simulator Interaktif & Studio Testing UI
+- Antarmuka web modern (Inertia Vue 3) untuk menguji seluruh 209 endpoint tanpa perlu pasien riil.
+- Mode **Live API** (koneksi langsung ke server dev/prod BPJS) dan Mode **Mock Preview** (simulasi dummy realistis untuk demonstrasi UAT Kantor Cabang BPJS).
 
-## Tech Stack
+---
 
-- `PHP 8.2`
-- `Laravel 12`
-- `Laravel Sanctum`
-- `Spatie Laravel Permission`
-- `Vite`
-- `SQLite` / `MySQL`
+## 🖥️ Antrean Online & Layar Sentuh APM Kiosk
 
-## Struktur Project Saat Ini
+Selain API backend, SIMRS Gateway kini dilengkapi antarmuka frontend siap pakai untuk operasional rumah sakit:
 
-```text
-simrs-api/
-├── app/
-│   ├── Helpers/
-│   ├── Http/Controllers/Api/
-│   │   ├── Antrol/
-│   │   ├── Bpjs/
-│   │   └── SatuSehat/
-│   ├── Models/
-│   └── Services/
-│       ├── Antrian/
-│       ├── Bpjs/
-│       └── SatuSehat/
-├── config/
-├── database/
-├── docs/
-├── routes/
-├── tests/
-├── .env.example
-├── artisan
-├── composer.json
-└── package.json
-```
+1. **Layar Sentuh Anjungan Pendaftaran Mandiri (`/apm/kiosk`)**
+   - Check-in mandiri kode booking Mobile JKN via scan barcode atau input kode.
+   - Pendaftaran pasien baru / umum secara mandiri di anjungan sentuh lobby RS.
+2. **Display TV Antrean Poliklinik (`/antrean/display`)**
+   - Layar ruang tunggu TV dengan palet klinis modern (navy & teal, tanpa elemen teks berjalan yang mengganggu).
+   - Dilengkapi pemanggilan suara (Text-to-Speech) nomor antrean otomatis.
+3. **Layar Panggil Dokter & Perawat (`/poli/panggil`)**
+   - Kontrol pemanggilan pasien masuk ruang periksa, tombol lewati, dan panggilan ulang.
+4. **Sinkronisasi Task ID 1-7 Otomatis (`simrs:sync-bpjs`)**
+   - Command CLI untuk sinkronisasi antrean lokal RS ke endpoint `updatewaktu` BPJS Antrol secara berkala via Cron.
 
-Struktur ini masih mengikuti pola standar Laravel, sehingga mudah dipahami, tetapi juga sudah mulai dipisahkan berdasarkan domain integrasi.
+---
 
-## Endpoint yang Sudah Tersedia
-
-Base URL lokal:
+## 🏛️ Arsitektur & Kepatuhan PMK 24
 
 ```text
-http://127.0.0.1:8000/api/v1
+[ Komputer Klien / EMR RS ]
+             │  (JSON Biasa / Intranet Lokal)
+             ▼
+┌────────────────────────────────────────────────────────┐
+│     SIMRS GATEWAY (Server On-Premise Rumah Sakit)      │
+│  - Laravel 12 + SQLite/MySQL                           │
+│  - Mesin Otomatis HMAC-SHA256, AES-256, LZ-String      │
+│  - Simulator & Web UI Studio Testing                   │
+└────────────────────────────────────────────────────────┘
+             │  (HTTPS Terenkripsi Keluar)
+             ├───► [ Server BPJS Kesehatan (VClaim / Antrol) ]
+             └───► [ Server Kemenkes RI (SATUSEHAT FHIR) ]
 ```
 
-### Root API
+> **Catatan Kepatuhan**: SIMRS Gateway diinstal di server lokal rumah sakit Anda. Data pasien tidak pernah disimpan atau transit di server pihak ketiga, menjamin kepatuhan penuh terhadap **UU Perlindungan Data Pribadi (UU PDP)** dan **PMK 24 Tahun 2022**.
 
-```http
-GET /api/v1
-```
+---
 
-### BPJS
+## 🚀 Instalasi Cepat
 
-```http
-GET    /api/v1/bpjs/peserta
-GET    /api/v1/bpjs/sep
-GET    /api/v1/bpjs/sep-riwayat
-POST   /api/v1/bpjs/sep
-PUT    /api/v1/bpjs/sep
-DELETE /api/v1/bpjs/sep
+### Prasyarat
+- PHP 8.2 atau lebih tinggi (ekstensi `curl`, `openssl`, `mbstring`, `pdo_sqlite` / `pdo_mysql`)
+- Composer
+- Node.js & NPM
 
-GET    /api/v1/bpjs/monitoring-kunjungan
-GET    /api/v1/bpjs/monitoring-klaim
-
-GET    /api/v1/bpjs/referensi/poli
-GET    /api/v1/bpjs/referensi/diagnosa
-GET    /api/v1/bpjs/referensi/faskes
-GET    /api/v1/bpjs/referensi/dokter-dpjp
-GET    /api/v1/bpjs/referensi/provinsi
-GET    /api/v1/bpjs/referensi/kabupaten
-GET    /api/v1/bpjs/referensi/kecamatan
-GET    /api/v1/bpjs/referensi/prosedur
-
-GET    /api/v1/bpjs/surat-kontrol/list-tanggal
-GET    /api/v1/bpjs/surat-kontrol/list
-GET    /api/v1/bpjs/surat-kontrol/detail
-GET    /api/v1/bpjs/surat-kontrol/sep
-POST   /api/v1/bpjs/surat-kontrol/insert
-POST   /api/v1/bpjs/surat-kontrol/update
-POST   /api/v1/bpjs/spri/insert
-POST   /api/v1/bpjs/spri/update
-```
-
-### Antrol
-
-```http
-GET /api/v1/antrol/antrean
-```
-
-### SATUSEHAT
-
-```http
-GET  /api/v1/satu-sehat/token
-POST /api/v1/satu-sehat/encounter/send
-```
-
-## Format Response
-
-Success response:
-
-```json
-{
-  "metaData": {
-    "code": "200",
-    "message": "Sukses"
-  },
-  "response": {}
-}
-```
-
-Error response:
-
-```json
-{
-  "metaData": {
-    "code": "400",
-    "message": "Pesan error"
-  },
-  "response": {}
-}
-```
-
-## Instalasi
-
-### 1. Clone repository
-
+### Langkah Instalasi
 ```bash
+# 1. Clone repositori
 git clone https://github.com/ahmadfauzirahman99/simrs-api.git
 cd simrs-api
-```
 
-### 2. Pindah ke branch utama project
+# 2. Checkout branch terkini
+git checkout feat/client-portal-dan-deploy
 
-```bash
-git checkout pmaster
-```
-
-### 3. Install dependency backend
-
-```bash
+# 3. Install dependency backend & frontend
 composer install
-```
-
-### 4. Install dependency frontend
-
-```bash
 npm install
-```
 
-### 5. Siapkan file environment
-
-```bash
+# 4. Siapkan file konfigurasi
 cp .env.example .env
 php artisan key:generate
-```
 
-### 6. Jalankan migrasi
+# 5. Jalankan migrasi database
+php artisan migrate --seed
 
-```bash
-php artisan migrate
-```
-
-### 7. Jalankan project
-
-Mode cepat:
-
-```bash
-composer run dev
-```
-
-Mode manual:
-
-```bash
+# 6. Kompilasi aset & jalankan server
+npm run build
 php artisan serve
-npm run dev
 ```
 
-### Akses Dashboard Admin
+Akses aplikasi di peramban:
+- **Landing Page**: `http://127.0.0.1:8000/`
+- **Dashboard Studio Tester**: `http://127.0.0.1:8000/login`
+- **Display TV Antrean**: `http://127.0.0.1:8000/antrean/display`
+- **Kiosk APM Mandiri**: `http://127.0.0.1:8000/apm/kiosk`
+- **Layar Panggil Poli**: `http://127.0.0.1:8000/poli/panggil`
 
-Dashboard tester tersedia melalui web route:
+---
 
-```text
-http://127.0.0.1:8000/login
-http://127.0.0.1:8000/admin/bpjs-tester
-http://127.0.0.1:8000/admin/satusehat-tester
-```
-
-Gunakan akun admin yang sudah memiliki role `superadmin`.
-
-## Konfigurasi Environment
-
-Contoh dasar:
+## ⚙️ Konfigurasi Kredensial (.env)
 
 ```env
-APP_NAME="SIMRS API"
-APP_ENV=local
-APP_KEY=
-APP_DEBUG=true
-APP_URL=http://localhost
-
-DB_CONNECTION=sqlite
-```
-
-### BPJS VClaim
-
-```env
+# Kredensial BPJS Kesehatan (VClaim & Antrol)
 BPJS_V3_API_VER=3
 BPJS_V3_BASE_URL=https://apijkn-dev.bpjs-kesehatan.go.id/vclaim-rest
 BPJS_V3_CONS_ID=your_cons_id
 BPJS_V3_SECRET_KEY=your_secret_key
 BPJS_V3_USER_KEY=your_user_key
-```
 
-### SATUSEHAT
-
-```env
+# Kredensial SATUSEHAT Kemenkes RI
 SATUSEHAT_ENV=DEV
-
 SATUSEHAT_AUTH_DEV=https://api-satusehat-dev.dto.kemkes.go.id/oauth2/v1
 SATUSEHAT_FHIR_DEV=https://api-satusehat-dev.dto.kemkes.go.id/fhir-r4/v1
-SATUSEHAT_CLIENTID_DEV=your_client_id_dev
-SATUSEHAT_CLIENTSECRET_DEV=your_client_secret_dev
-SATUSEHAT_ORGID_DEV=your_org_id_dev
-
-SATUSEHAT_AUTH_PROD=https://api-satusehat.kemkes.go.id/oauth2/v1
-SATUSEHAT_FHIR_PROD=https://api-satusehat.kemkes.go.id/fhir-r4/v1
-SATUSEHAT_CLIENTID_PROD=your_client_id_prod
-SATUSEHAT_CLIENTSECRET_PROD=your_client_secret_prod
-SATUSEHAT_ORGID_PROD=your_org_id_prod
+SATUSEHAT_CLIENTID_DEV=your_client_id
+SATUSEHAT_CLIENTSECRET_DEV=your_client_secret
+SATUSEHAT_ORGID_DEV=your_organization_id
 ```
 
-## Arah Pengembangan
+---
 
-Project ini diarahkan untuk menjadi fondasi jangka panjang. Target pengembangan berikutnya:
+## ☕ Dukung Proyek (Saweria)
 
-- modularisasi domain `BPJS`, `SATUSEHAT`, dan shared components
-- dokumentasi endpoint yang lebih lengkap dan mudah diikuti
-- penguatan `testing`
-- logging dan observability integrasi eksternal
-- contoh implementasi alur bridging dari `SIMRS/HIS`
-- penambahan resource `FHIR` lain selain `Encounter`
+Proyek ini dikembangkan secara independen dan dibagikan **100% Bebas & Terbuka** untuk memajukan digitalisasi layanan kesehatan di Indonesia.
 
-Blueprint arsitektur pengembangan tersedia di:
+Jika SIMRS Gateway menghemat waktu riset atau mempermudah integrasi bridging di rumah sakit Anda, Anda dapat memberikan dukungan sukarela untuk biaya server demo publik dan riset pembaruan API melalui:
 
-- [docs/architecture-blueprint.md](/Users/ahmadfauzirahman/Documents/project/simrs-api/docs/architecture-blueprint.md)
+<p align="center">
+  <a href="https://saweria.co/fauzirahman05">
+    <img src="https://img.shields.io/badge/Saweria-Traktir%20Kopi%20Pengembang-FF813F?style=for-the-badge&logo=kofi&logoColor=white" alt="Traktir Kopi di Saweria" />
+  </a>
+  <br>
+  👉 <strong><a href="https://saweria.co/fauzirahman05">saweria.co/fauzirahman05</a></strong><br>
+  <em>(Mendukung QRIS, GoPay, OVO, DANA, ShopeePay, dan Transfer Bank)</em>
+</p>
 
-## Dokumentasi Tambahan
+---
 
-- [docs/api-documentation.md](/Users/ahmadfauzirahman/Documents/project/simrs-api/docs/api-documentation.md)
-- [docs/satusehat.md](/Users/ahmadfauzirahman/Documents/project/simrs-api/docs/satusehat.md)
-- [docs/bpjs-medical-record-database-design.md](/Users/ahmadfauzirahman/Documents/project/simrs-api/docs/bpjs-medical-record-database-design.md)
-- [docs/postman/000001 - SIMRS NEW API.postman_collection.json](/Users/ahmadfauzirahman/Documents/project/simrs-api/docs/postman/000001%20-%20SIMRS%20NEW%20API.postman_collection.json)
-
-## Catatan
-
-## Disclaimer
-
-Project ini disediakan untuk tujuan pembelajaran, pengembangan, dan pengujian integrasi. Penggunaan layanan `BPJS` dan `SATUSEHAT` secara `live` hanya dapat dilakukan oleh rumah sakit, fasilitas kesehatan, atau institusi yang telah memiliki kerja sama resmi, kredensial aktif, dan akses yang sah sesuai ketentuan masing-masing layanan.
-
-Repositori ini tidak untuk diperjualbelikan kembali dalam bentuk source code asli maupun hasil repackaging yang hanya mengganti identitas project tanpa kontribusi pengembangan yang nyata.
-
-README ini sekarang difokuskan sebagai pintu masuk project. Dokumentasi endpoint yang lebih detail akan lebih baik jika dipisah per domain agar repo tetap mudah dipelajari.
-
-## Dukung Pengembangan (Donasi Saweria)
-
-Project ini bersifat **100% Bebas & Open Source** untuk membantu digitalisasi fasilitas kesehatan di Indonesia. 
-
-Jika project ini membantu pekerjaan Anda atau menghemat waktu integrasi tim IT rumah sakit Anda, Anda dapat mendukung kelangsungan riset dan pembaruan endpoint BPJS melalui:
-
-[![Dukung via Saweria](https://img.shields.io/badge/Saweria-Dukung%20Kopi-FF813F?style=for-the-badge&logo=kofi&logoColor=white)](https://saweria.co/fauzirahman05)
-
-👉 **[saweria.co/fauzirahman05](https://saweria.co/fauzirahman05)**  
-*(Mendukung QRIS, GoPay, OVO, DANA, ShopeePay, dan Transfer Bank)*
-
-## Author & Jasa Konsultasi
+## 👨‍💻 Author & Jasa Konsultasi RS
 
 **Ahmad Fauzi Rahman**  
-SIMRS & Healthcare Integration Developer  
+*SIMRS & Healthcare Systems Developer*  
 Telegram: [@FauziRahman95](https://t.me/FauziRahman95)
 
-Untuk rumah sakit yang membutuhkan bantuan implementasi langsung:
-- Setup & deployment on-premise di intranet server RS
-- Kustomisasi bridging untuk database SIMRS lama
-- Pendampingan teknis saat UAT Kantor Cabang BPJS
+Bagi fasilitas kesehatan atau vendor SIMRS yang memerlukan asistensi profesional:
+- 🛠️ **Instalasi & Deployment On-Premise** di server intranet RS.
+- 🔄 **Kustomisasi Bridging** ke database SIMRS lama (SQL Server, MySQL, Postgres, dsb).
+- 📋 **Pendampingan Teknis UAT** langsung bersama tim IT Kantor Cabang BPJS Kesehatan.
 
-Silakan hubungi melalui Telegram di atas.
+Silakan menghubungi via tautan Telegram di atas.
 
-## Lisensi
+---
 
-Didistribusikan di bawah lisensi terbuka [MIT License](LICENSE). Bebas digunakan, dipelajari, dan dimodifikasi untuk kebutuhan intranet fasilitas kesehatan seluruh Indonesia.
+## 📄 Lisensi
+
+Didistribusikan di bawah lisensi terbuka [MIT License](LICENSE). Bebas digunakan, dimodifikasi, dan didistribusikan untuk fasilitas kesehatan di seluruh Indonesia.
