@@ -140,6 +140,7 @@ if [ ! -f .env ]; then
     -e 's|^APP_DEBUG=.*|APP_DEBUG=false|' \\
     -e 's|^APP_URL=.*|APP_URL=https://$DOMAIN|' \\
     -e 's|^APP_LOCALE=.*|APP_LOCALE=id|' \\
+    -e 's|^APP_TIMEZONE=.*|APP_TIMEZONE=Asia/Jakarta|' \\
     -e 's|^LOG_STACK=.*|LOG_STACK=daily|' \\
     -e 's|^LOG_LEVEL=.*|LOG_LEVEL=warning|' \\
     -e 's|^SESSION_ENCRYPT=.*|SESSION_ENCRYPT=true|' \\
@@ -149,6 +150,7 @@ if [ ! -f .env ]; then
   printf 'APP_KEY=base64:%s\nDB_DATABASE=/var/www/html/database/data/database.sqlite\nSESSION_SECURE_COOKIE=true\n' "\$(openssl rand -base64 32)" >> .env
   chmod 600 .env
 fi
+grep -q '^APP_TIMEZONE=' .env && sed -i 's|^APP_TIMEZONE=.*|APP_TIMEZONE=Asia/Jakarta|' .env || echo 'APP_TIMEZONE=Asia/Jakarta' >> .env
 
 sudo mkdir -p data/storage/{app/public,app/private,framework/{cache/data,sessions,views},logs} data/database
 [ -f data/database/database.sqlite ] || sudo touch data/database/database.sqlite

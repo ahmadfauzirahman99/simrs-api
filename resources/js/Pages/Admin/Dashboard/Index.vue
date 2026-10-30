@@ -529,7 +529,7 @@ const getStatusBadge = (code) => {
                     <table class="w-full text-left text-xs">
                         <thead class="bg-slate-50 text-slate-600 border-b border-slate-200 font-semibold">
                             <tr>
-                                <th class="p-3 whitespace-nowrap">Waktu</th>
+                                <th class="p-3 whitespace-nowrap">Waktu (WIB)</th>
                                 <th class="p-3">Faskes / Klien</th>
                                 <th class="p-3">Method & Endpoint</th>
                                 <th class="p-3">Layanan</th>
@@ -542,7 +542,10 @@ const getStatusBadge = (code) => {
                             <tr v-for="log in recentLogs" :key="log.id" class="hover:bg-slate-50/70 transition">
                                 <!-- Waktu -->
                                 <td class="p-3 whitespace-nowrap font-mono text-slate-600 text-[11px]">
-                                    <div class="font-bold text-slate-900">{{ log.created_at_time }}</div>
+                                    <div class="font-bold text-slate-900 flex items-center gap-1.5">
+                                        <span>{{ log.created_at_time }}</span>
+                                        <span class="text-[9px] font-semibold text-emerald-700 bg-emerald-50 px-1 py-0.2 rounded border border-emerald-200">WIB</span>
+                                    </div>
                                     <div class="text-[10px] text-slate-400">{{ log.created_at_human }}</div>
                                 </td>
 

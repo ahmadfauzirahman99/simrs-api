@@ -33,7 +33,6 @@ class BaseBridgingV3
 
     public function __construct()
     {
-        date_default_timezone_set('UTC');
 
         $this->ver      = (string) config('services.bpjs_v3.api_ver');
         $this->baseUrl  = rtrim((string) config('services.bpjs_v3.base_url'), '/');
@@ -48,12 +47,10 @@ class BaseBridgingV3
             'timeout' => 60,
         ];
 
-        date_default_timezone_set('Asia/Jakarta');
     }
 
     protected function refreshSecurityContext(): void
     {
-        date_default_timezone_set('UTC');
 
         $this->timestamp = (string) time();
 

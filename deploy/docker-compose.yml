@@ -7,6 +7,7 @@ services:
     ports: ["127.0.0.1:8090:8080"]
     env_file: .env
     environment:
+      TZ: "Asia/Jakarta"
       AUTORUN_ENABLED: "true"
       PHP_OPCACHE_ENABLE: "1"
       # Kode di dalam image tidak pernah berubah (tiap deploy = image baru), jadi tidak perlu cek file tiap request.
