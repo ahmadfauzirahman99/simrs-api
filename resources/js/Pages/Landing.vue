@@ -42,9 +42,9 @@ const navLinks = [
     { label: 'Arsitektur', href: '#arsitektur', icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10' },
     { label: 'Katalog API', href: '#katalog', icon: 'M4 6h16M4 10h16M4 14h16M4 18h16', count: '209' },
     { label: 'Integrasi', href: '#kode', icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4' },
-    { label: 'Open Source & Donasi', href: '#open-source', icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' },
-    { label: 'APM', href: '#apm', icon: 'M9 17v-2m3 2v-4m3 4v-6M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z', count: 'Segera' },
-    { label: 'Versi & Rilis', href: '#versi', icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15', count: props.currentVersion },
+    { label: 'Open Source', href: '#open-source', icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' },
+    { label: 'APM', href: '#apm', icon: 'M9 17v-2m3 2v-4m3 4v-6M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z' },
+    { label: 'Versi & Rilis', href: '#versi', icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15' },
     { label: 'FAQ', href: '#faq', icon: 'M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
 ];
 
@@ -328,8 +328,8 @@ const toggleFaq = (idx) => {
                     </div>
                 </Link>
 
-                <!-- Navigation Links (Desktop: xl+) Strictly single line / whitespace-nowrap -->
-                <nav class="hidden xl:flex items-center gap-1 2xl:gap-2 text-[13px] font-semibold text-slate-600 shrink-0">
+                <!-- Navigation Links (Desktop: 2xl+ show full, below 2xl hidden to hamburger) -->
+                <nav class="hidden 2xl:flex items-center gap-1 text-[13px] font-semibold text-slate-600 shrink-0">
                     <a
                         v-for="link in navLinks"
                         :key="link.label"
@@ -348,29 +348,17 @@ const toggleFaq = (idx) => {
 
                 <!-- Action Buttons: Strictly single line / whitespace-nowrap -->
                 <div class="flex items-center gap-2 sm:gap-2.5 shrink-0 flex-nowrap">
-                    <!-- Telegram Direct Button (Desktop & Tablet) -->
+                    <!-- Telegram Button (Desktop & Tablet & Mobile) -->
                     <a
                         :href="telegramGeneralUrl"
                         target="_blank"
-                        class="hidden md:inline-flex items-center gap-1.5 whitespace-nowrap shrink-0 rounded-full border border-sky-300 bg-sky-50 px-3.5 py-1.5 text-xs font-bold text-sky-800 hover:bg-sky-100 transition shadow-2xs"
+                        class="inline-flex items-center gap-1.5 whitespace-nowrap shrink-0 rounded-full border border-sky-300 bg-sky-50 px-3 py-1.5 text-xs font-bold text-sky-800 hover:bg-sky-100 transition shadow-2xs"
                         title="Chat Telegram ke @FauziRahman95"
                     >
                         <svg class="h-3.5 w-3.5 fill-sky-600 shrink-0" viewBox="0 0 24 24">
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
                         </svg>
-                        <span>Telegram @{{ telegramHandle }}</span>
-                    </a>
-
-                    <!-- Compact Telegram Button (Mobile phone) -->
-                    <a
-                        :href="telegramGeneralUrl"
-                        target="_blank"
-                        class="inline-flex md:hidden items-center justify-center h-8 w-8 shrink-0 rounded-lg border border-sky-300 bg-sky-50 text-sky-700 hover:bg-sky-100 transition shadow-2xs"
-                        title="Chat Telegram ke @FauziRahman95"
-                    >
-                        <svg class="h-4 w-4 fill-sky-600" viewBox="0 0 24 24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
-                        </svg>
+                        <span class="hidden lg:inline">@{{ telegramHandle }}</span>
                     </a>
 
                     <template v-if="user">
@@ -426,7 +414,7 @@ const toggleFaq = (idx) => {
                     <!-- Mobile Hamburger Toggle Button -->
                     <button
                         type="button"
-                        class="inline-flex xl:hidden items-center justify-center h-9 w-9 shrink-0 rounded-lg border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition shadow-2xs focus:outline-hidden"
+                        class="inline-flex 2xl:hidden items-center justify-center h-9 w-9 shrink-0 rounded-lg border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition shadow-2xs focus:outline-hidden"
                         @click="isMobileMenuOpen = !isMobileMenuOpen"
                         :aria-expanded="isMobileMenuOpen"
                         aria-label="Menu Navigasi Mobile"
