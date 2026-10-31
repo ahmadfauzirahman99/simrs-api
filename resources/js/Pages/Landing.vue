@@ -328,13 +328,13 @@ const toggleFaq = (idx) => {
                     </div>
                 </Link>
 
-                <!-- Navigation Links (Desktop: 2xl+ show full, below 2xl hidden to hamburger) -->
-                <nav class="hidden 2xl:flex items-center gap-1 text-[13px] font-semibold text-slate-600 shrink-0">
+                <!-- Navigation Links (Desktop: lg+) -->
+                <nav class="hidden lg:flex items-center gap-0.5 xl:gap-1 text-xs xl:text-[13px] font-semibold text-slate-600 shrink-0">
                     <a
                         v-for="link in navLinks"
                         :key="link.label"
                         :href="link.href"
-                        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-slate-600 hover:text-teal-900 hover:bg-teal-50/70 transition-colors whitespace-nowrap shrink-0"
+                        class="inline-flex items-center gap-1.5 px-2 xl:px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-teal-900 hover:bg-teal-50/70 transition-colors whitespace-nowrap shrink-0"
                     >
                         <span>{{ link.label }}</span>
                         <span
@@ -414,7 +414,7 @@ const toggleFaq = (idx) => {
                     <!-- Mobile Hamburger Toggle Button -->
                     <button
                         type="button"
-                        class="inline-flex 2xl:hidden items-center justify-center h-9 w-9 shrink-0 rounded-lg border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition shadow-2xs focus:outline-hidden"
+                        class="inline-flex lg:hidden items-center justify-center h-9 w-9 shrink-0 rounded-lg border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition shadow-2xs focus:outline-hidden"
                         @click="isMobileMenuOpen = !isMobileMenuOpen"
                         :aria-expanded="isMobileMenuOpen"
                         aria-label="Menu Navigasi Mobile"
@@ -440,7 +440,7 @@ const toggleFaq = (idx) => {
             >
                 <div
                     v-if="isMobileMenuOpen"
-                    class="xl:hidden border-b border-slate-200 bg-white/98 shadow-xl backdrop-blur-md px-4 py-4 space-y-4 max-h-[calc(100vh-4.5rem)] overflow-y-auto"
+                    class="lg:hidden border-b border-slate-200 bg-white/98 shadow-xl backdrop-blur-md px-4 py-4 space-y-4 max-h-[calc(100vh-4.5rem)] overflow-y-auto"
                 >
                     <!-- Nav Links List -->
                     <div class="space-y-1">
