@@ -138,6 +138,10 @@ class EnsureClientApiKey
     private function logRequest(Request $request, $user, int $statusCode, int $durationMs, ?string $summary = null): void
     {
         try {
+            $isMock = (bool) ($request->attributes->get('is_mock_response', false)
+                || $request->header('X-Mock-Mode') === 'true'
+                || $request->header('X-Mock') === 'true');
+
             GatewayLog::create([
                 'user_id' => $user?->id,
                 'client_name' => $user?->name ?? 'Unauthenticated Client',
@@ -151,7 +155,7 @@ class EnsureClientApiKey
                 'user_agent' => substr((string) $request->userAgent(), 0, 500),
                 'request_payload' => !empty($request->all()) ? json_encode($request->except(['password', 'secret', 'key'])) : null,
                 'response_summary' => $summary,
-                'is_mock' => false,
+                'is_mock' => $isMock,
             ]);
         } catch (\Throwable) {
             // Fail safely to never break request cycle

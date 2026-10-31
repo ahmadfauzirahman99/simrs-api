@@ -41,6 +41,12 @@ class PostmanCollectionBuilder
                     'value' => 'userKeyBPJS99',
                     'type' => 'string',
                 ],
+                [
+                    'key' => 'mock_mode',
+                    'value' => 'true',
+                    'type' => 'string',
+                    'description' => 'true = simulasi dummy response (aman tanpa kredensial BPJS), false = live bridging',
+                ],
             ],
             'auth' => [
                 'type' => 'bearer',

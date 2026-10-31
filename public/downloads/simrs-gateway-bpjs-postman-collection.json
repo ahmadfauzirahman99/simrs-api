@@ -30,6 +30,12 @@
             "key": "user_key",
             "value": "userKeyBPJS99",
             "type": "string"
+        },
+        {
+            "key": "mock_mode",
+            "value": "true",
+            "type": "string",
+            "description": "true = simulasi dummy response (aman tanpa kredensial BPJS), false = live bridging"
         }
     ],
     "auth": {
@@ -207,7 +213,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"request\": {\n        \"t_sep\": {\n            \"noKartu\": \"0001234567890\",\n            \"tglSep\": \"2026-09-29\",\n            \"ppkPelayanan\": \"0001R001\",\n            \"jnsPelayanan\": \"2\",\n            \"klsRawat\": {\n                \"klsRawatHak\": \"3\"\n            },\n            \"noMR\": \"MR-89210\",\n            \"rujukan\": {\n                \"asalRujukan\": \"1\",\n                \"tglRujukan\": \"2026-09-29\",\n                \"noRujukan\": \"0001R0010124B000001\",\n                \"ppkRujukan\": \"00010001\"\n            },\n            \"catatan\": \"Pemeriksaan Poli Penyakit Dalam\",\n            \"diagAwal\": \"A09\",\n            \"poli\": {\n                \"tujuan\": \"INT\",\n                \"eksekutif\": \"0\"\n            },\n            \"cob\": {\n                \"cob\": \"0\"\n            },\n            \"katarak\": {\n                \"katarak\": \"0\"\n            },\n            \"jaminan\": {\n                \"lakaLantas\": \"0\",\n                \"penjamin\": {\n                    \"tglKejadian\": \"\"\n                }\n            },\n            \"tujuanKunj\": \"0\",\n            \"flagProcedure\": \"\",\n            \"kdPenunjang\": \"\",\n            \"assesmentPel\": \"\",\n            \"skdp\": {\n                \"noSurat\": \"\",\n                \"kodeDPJP\": \"12345\"\n            },\n            \"dpjpLayan\": \"12345\",\n            \"noTelp\": \"081234567890\",\n            \"user\": \"SIMRS-ADMIN\"\n        }\n    }\n}"
+                            "raw": "{\n    \"request\": {\n        \"t_sep\": {\n            \"noKartu\": \"0001234567890\",\n            \"tglSep\": \"2026-10-31\",\n            \"ppkPelayanan\": \"0001R001\",\n            \"jnsPelayanan\": \"2\",\n            \"klsRawat\": {\n                \"klsRawatHak\": \"3\"\n            },\n            \"noMR\": \"MR-89210\",\n            \"rujukan\": {\n                \"asalRujukan\": \"1\",\n                \"tglRujukan\": \"2026-10-31\",\n                \"noRujukan\": \"0001R0010124B000001\",\n                \"ppkRujukan\": \"00010001\"\n            },\n            \"catatan\": \"Pemeriksaan Poli Penyakit Dalam\",\n            \"diagAwal\": \"A09\",\n            \"poli\": {\n                \"tujuan\": \"INT\",\n                \"eksekutif\": \"0\"\n            },\n            \"cob\": {\n                \"cob\": \"0\"\n            },\n            \"katarak\": {\n                \"katarak\": \"0\"\n            },\n            \"jaminan\": {\n                \"lakaLantas\": \"0\",\n                \"penjamin\": {\n                    \"tglKejadian\": \"\"\n                }\n            },\n            \"tujuanKunj\": \"0\",\n            \"flagProcedure\": \"\",\n            \"kdPenunjang\": \"\",\n            \"assesmentPel\": \"\",\n            \"skdp\": {\n                \"noSurat\": \"\",\n                \"kodeDPJP\": \"12345\"\n            },\n            \"dpjpLayan\": \"12345\",\n            \"noTelp\": \"081234567890\",\n            \"user\": \"SIMRS-ADMIN\"\n        }\n    }\n}"
                         },
                         "url": {
                             "raw": "{{base_url}}/api/v1/bpjs/sep",
@@ -434,7 +440,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"request\": {\n        \"noSEP\": \"0001R0010124V000001\",\n        \"kodeDokter\": \"12345\",\n        \"poliKontrol\": \"INT\",\n        \"tglRencanaKontrol\": \"2026-10-06\",\n        \"user\": \"SIMRS-ADMIN\"\n    }\n}"
+                            "raw": "{\n    \"request\": {\n        \"noSEP\": \"0001R0010124V000001\",\n        \"kodeDokter\": \"12345\",\n        \"poliKontrol\": \"INT\",\n        \"tglRencanaKontrol\": \"2026-11-07\",\n        \"user\": \"SIMRS-ADMIN\"\n    }\n}"
                         },
                         "url": {
                             "raw": "{{base_url}}/api/v1/bpjs/surat-kontrol",
@@ -466,7 +472,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"request\": {\n        \"noKartu\": \"0001234567890\",\n        \"kodeDokter\": \"12345\",\n        \"poliKontrol\": \"INT\",\n        \"tglRencanaKontrol\": \"2026-09-29\",\n        \"user\": \"SIMRS-ADMIN\"\n    }\n}"
+                            "raw": "{\n    \"request\": {\n        \"noKartu\": \"0001234567890\",\n        \"kodeDokter\": \"12345\",\n        \"poliKontrol\": \"INT\",\n        \"tglRencanaKontrol\": \"2026-10-31\",\n        \"user\": \"SIMRS-ADMIN\"\n    }\n}"
                         },
                         "url": {
                             "raw": "{{base_url}}/api/v1/bpjs/spri",
@@ -498,7 +504,7 @@
                             }
                         ],
                         "url": {
-                            "raw": "{{base_url}}/api/v1/antrean/status?kodePoli=INT&tanggal=2026-09-29",
+                            "raw": "{{base_url}}/api/v1/antrean/status?kodePoli=INT&tanggal=2026-10-31",
                             "host": [
                                 "{{base_url}}"
                             ],
@@ -515,7 +521,7 @@
                                 },
                                 {
                                     "key": "tanggal",
-                                    "value": "2026-09-29"
+                                    "value": "2026-10-31"
                                 }
                             ]
                         }
@@ -537,7 +543,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"nomorkartu\": \"0001234567890\",\n    \"nik\": \"3201234567890001\",\n    \"nohp\": \"081234567890\",\n    \"kodepoli\": \"INT\",\n    \"namapoli\": \"Penyakit Dalam\",\n    \"pasienbaru\": 0,\n    \"norm\": \"MR-89210\",\n    \"tanggalperiksa\": \"2026-09-29\",\n    \"kodedokter\": 12345,\n    \"namadokter\": \"dr. Budi Santoso, Sp.PD\",\n    \"jampraktek\": \"08:00-12:00\",\n    \"jeniskunjungan\": 1,\n    \"nomorreferensi\": \"0001R0010124B000001\"\n}"
+                            "raw": "{\n    \"nomorkartu\": \"0001234567890\",\n    \"nik\": \"3201234567890001\",\n    \"nohp\": \"081234567890\",\n    \"kodepoli\": \"INT\",\n    \"namapoli\": \"Penyakit Dalam\",\n    \"pasienbaru\": 0,\n    \"norm\": \"MR-89210\",\n    \"tanggalperiksa\": \"2026-10-31\",\n    \"kodedokter\": 12345,\n    \"namadokter\": \"dr. Budi Santoso, Sp.PD\",\n    \"jampraktek\": \"08:00-12:00\",\n    \"jeniskunjungan\": 1,\n    \"nomorreferensi\": \"0001R0010124B000001\"\n}"
                         },
                         "url": {
                             "raw": "{{base_url}}/api/v1/antrean/ambil",
@@ -631,7 +637,7 @@
                             }
                         ],
                         "url": {
-                            "raw": "{{base_url}}/api/v1/bpjs/referensi/dokter-dpjp?pelayanan=2&tglPelayanan=2026-09-29&kodeSpesialis=INT",
+                            "raw": "{{base_url}}/api/v1/bpjs/referensi/dokter-dpjp?pelayanan=2&tglPelayanan=2026-10-31&kodeSpesialis=INT",
                             "host": [
                                 "{{base_url}}"
                             ],
@@ -649,7 +655,7 @@
                                 },
                                 {
                                     "key": "tglPelayanan",
-                                    "value": "2026-09-29"
+                                    "value": "2026-10-31"
                                 },
                                 {
                                     "key": "kodeSpesialis",
@@ -736,7 +742,7 @@
                             }
                         ],
                         "url": {
-                            "raw": "{{base_url}}/api/v1/bpjs/monitoring-kunjungan?tglPelayanan=2026-09-29&jnsPelayanan=2",
+                            "raw": "{{base_url}}/api/v1/bpjs/monitoring-kunjungan?tglPelayanan=2026-10-31&jnsPelayanan=2",
                             "host": [
                                 "{{base_url}}"
                             ],
@@ -749,7 +755,7 @@
                             "query": [
                                 {
                                     "key": "tglPelayanan",
-                                    "value": "2026-09-29"
+                                    "value": "2026-10-31"
                                 },
                                 {
                                     "key": "jnsPelayanan",
@@ -771,7 +777,7 @@
                             }
                         ],
                         "url": {
-                            "raw": "{{base_url}}/api/v1/bpjs/monitoring-klaim?tglPulang=2026-09-29&jnsPelayanan=1&status=1",
+                            "raw": "{{base_url}}/api/v1/bpjs/monitoring-klaim?tglPulang=2026-10-31&jnsPelayanan=1&status=1",
                             "host": [
                                 "{{base_url}}"
                             ],
@@ -784,7 +790,7 @@
                             "query": [
                                 {
                                     "key": "tglPulang",
-                                    "value": "2026-09-29"
+                                    "value": "2026-10-31"
                                 },
                                 {
                                     "key": "jnsPelayanan",
