@@ -152,5 +152,7 @@ Route::middleware(['auth', 'subscribed'])->group(function () {
         ->name('admin.bpjs-tester.log-simulation');
     Route::get('/admin/bpjs-medical-record', BpjsMedicalRecordPageController::class)->name('admin.bpjs-medical-record');
     Route::get('/admin/satusehat-tester', SatuSehatTesterPageController::class)->name('admin.satusehat-tester');
+    Route::get('/admin/version', [\App\Http\Controllers\Web\AdminVersionController::class, 'index'])->name('admin.version');
+    Route::get('/admin/version/check', [\App\Http\Controllers\Web\AdminVersionController::class, 'checkUpdate'])->name('admin.version.check');
     Route::post('/logout', [AdminAuthController::class, 'destroy'])->name('logout');
 });
