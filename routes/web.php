@@ -14,6 +14,9 @@ Route::get('/', function () {
         'whatsappNumber' => config('app.whatsapp_contact'),
         'supportEmail' => config('app.support_email'),
         'user' => auth()->user(),
+        'currentVersion' => \App\Support\SystemVersion::CURRENT_VERSION,
+        'releaseName' => \App\Support\SystemVersion::RELEASE_NAME,
+        'releases' => \App\Support\SystemVersion::releases(),
     ]);
 })->name('landing');
 

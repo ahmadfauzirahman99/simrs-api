@@ -15,6 +15,18 @@ const props = defineProps({
         type: Object,
         default: null,
     },
+    currentVersion: {
+        type: String,
+        default: 'v3.2.0',
+    },
+    releaseName: {
+        type: String,
+        default: 'Auto-Mock Simulator & Multi-Poli APM',
+    },
+    releases: {
+        type: Array,
+        default: () => [],
+    },
 });
 
 const page = usePage();
@@ -32,6 +44,7 @@ const navLinks = [
     { label: 'Integrasi', href: '#kode', icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4' },
     { label: 'Open Source & Donasi', href: '#open-source', icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' },
     { label: 'APM', href: '#apm', icon: 'M9 17v-2m3 2v-4m3 4v-6M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z', count: 'Segera' },
+    { label: 'Versi & Rilis', href: '#versi', icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15', count: props.currentVersion },
     { label: 'FAQ', href: '#faq', icon: 'M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
 ];
 
@@ -310,7 +323,7 @@ const toggleFaq = (idx) => {
                     <div class="shrink-0">
                         <div class="flex items-center gap-1.5 sm:gap-2">
                             <span class="text-sm font-bold tracking-tight text-slate-900 whitespace-nowrap">SIMRS Gateway</span>
-                            <span class="hidden min-[400px]:inline rounded bg-teal-50 px-1.5 py-0.5 text-[10px] font-bold text-teal-800 border border-teal-200 whitespace-nowrap">v3.0</span>
+                            <span class="hidden min-[400px]:inline rounded bg-teal-50 px-1.5 py-0.5 text-[10px] font-bold text-teal-800 border border-teal-200 whitespace-nowrap">{{ currentVersion }}</span>
                         </div>
                     </div>
                 </Link>
@@ -1097,6 +1110,95 @@ const toggleFaq = (idx) => {
             </div>
         </section>
 
+        <!-- Section: Riwayat Versi & Rilis Sistem (Changelog) -->
+        <section id="versi" class="py-16 bg-white border-b border-slate-200">
+            <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-10">
+                <div class="text-center space-y-2">
+                    <span class="font-mono text-xs font-bold text-teal-800 uppercase tracking-wider">Evolusi & Pembaruan Sistem</span>
+                    <h2 class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                        Riwayat Rilis & Pembaruan (Changelog)
+                    </h2>
+                    <p class="mx-auto max-w-2xl text-xs sm:text-sm text-slate-600">
+                        Transparan, terdokumentasi, dan selalu diperbarui mengikuti regulasi BPJS Kesehatan v3.0 dan SATUSEHAT Kemenkes RI.
+                    </p>
+                </div>
+
+                <!-- Banner Versi Aktif -->
+                <div class="rounded-2xl border border-teal-200 bg-teal-50/60 p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <div class="flex items-center gap-2">
+                            <span class="rounded bg-teal-800 text-white font-mono font-bold text-xs px-2.5 py-0.5">Versi Rilis Aktif</span>
+                            <span class="inline-flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">
+                            {{ currentVersion }} <span class="text-slate-500 font-medium text-sm">— {{ releaseName }}</span>
+                        </h3>
+                        <p class="text-xs text-slate-600">
+                            Kompatibel dengan Laravel 12 & Vue 3 • MIT License • Auto-Mock Postman bawaan
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <a
+                            href="https://github.com/ahmadfauzirahman99/simrs-api"
+                            target="_blank"
+                            class="inline-flex items-center gap-1.5 rounded-xl border border-teal-300 bg-white px-3.5 py-2 text-xs font-semibold text-teal-900 shadow-2xs hover:bg-teal-50 transition"
+                        >
+                            <svg class="h-4 w-4 text-slate-800" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                            </svg>
+                            <span>GitHub Repo</span>
+                        </a>
+                        <Link
+                            v-if="user && user.is_superadmin"
+                            href="/admin/version"
+                            class="inline-flex items-center gap-1.5 rounded-xl bg-teal-800 hover:bg-teal-900 text-white px-3.5 py-2 text-xs font-semibold shadow-2xs transition"
+                        >
+                            <span>Buka Console Update &rarr;</span>
+                        </Link>
+                    </div>
+                </div>
+
+                <!-- Timeline Items -->
+                <div class="space-y-6 relative before:absolute before:inset-0 before:left-4 before:h-full before:w-0.5 before:bg-slate-200">
+                    <div
+                        v-for="(rel, idx) in releases"
+                        :key="rel.version"
+                        class="relative flex items-start gap-4 pl-10"
+                    >
+                        <div
+                            class="absolute left-2.5 top-1.5 -translate-x-1/2 rounded-full border-2 border-white flex items-center justify-center shadow-2xs"
+                            :class="idx === 0 ? 'h-4 w-4 bg-emerald-500 ring-4 ring-emerald-100' : 'h-3.5 w-3.5 bg-slate-400'"
+                        ></div>
+
+                        <div class="flex-1 rounded-2xl border border-slate-200 bg-slate-50/50 p-5 hover:bg-white hover:shadow-xs transition">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                                <div class="flex items-center gap-2">
+                                    <span class="font-mono text-sm font-bold text-slate-900">{{ rel.version }}</span>
+                                    <span class="rounded bg-teal-50 text-teal-800 border border-teal-200 px-2 py-0.5 text-[10px] font-bold">
+                                        {{ rel.badge }}
+                                    </span>
+                                </div>
+                                <span class="text-xs text-slate-400 font-medium">{{ rel.date }}</span>
+                            </div>
+
+                            <h4 class="text-xs font-bold text-slate-800 mb-2.5">{{ rel.title }}</h4>
+
+                            <ul class="space-y-1.5 text-xs text-slate-600">
+                                <li
+                                    v-for="(point, pIdx) in rel.highlights"
+                                    :key="pIdx"
+                                    class="flex items-start gap-2"
+                                >
+                                    <span class="text-teal-600 font-bold mt-0.5">•</span>
+                                    <span class="leading-relaxed">{{ point }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Section: FAQ -->
         <section id="faq" class="py-16 bg-slate-50 border-b border-slate-200">
             <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-8">
@@ -1131,7 +1233,7 @@ const toggleFaq = (idx) => {
         <footer class="bg-white py-10 text-xs text-slate-500">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div class="flex items-center gap-2">
-                    <span class="font-bold text-slate-800">SIMRS Gateway v3.0</span>
+                    <span class="font-bold text-slate-800">SIMRS Gateway {{ currentVersion }}</span>
                     <span>•</span>
                     <span>Modul Integrasi BPJS Kesehatan Terlengkap</span>
                 </div>
