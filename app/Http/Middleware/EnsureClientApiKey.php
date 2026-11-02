@@ -53,14 +53,25 @@ class EnsureClientApiKey
                 }
             }
 
-            $this->logRequest($request, null, 401, $durationMs, '401 Unauthorized: API Key missing or invalid');
+            $reason = $rawToken ? 'invalid' : 'missing';
+            $this->logRequest($request, null, 401, $durationMs, "401 Unauthorized: API Key {$reason}");
 
             return response()->json([
                 'metaData' => [
                     'code' => '401',
-                    'message' => 'Autentikasi Gagal: Silakan sertakan API Key pada Header (Authorization: Bearer <API_KEY> atau X-API-KEY: <API_KEY>).',
+                    'message' => $rawToken
+                        ? 'Autentikasi Gagal: API Key tidak valid, sudah dicabut, atau sudah di-generate ulang. Ambil API Key terbaru di Portal Klien.'
+                        : 'Autentikasi Gagal: API Key belum disertakan. Tambahkan header Authorization: Bearer <API_KEY> atau X-API-KEY: <API_KEY>.',
                 ],
-                'response' => null,
+                'response' => [
+                    'cara_mendapatkan_api_key' => [
+                        '1. Daftar akun klien (gratis) di ' . url('/register') . ' atau login di ' . url('/login'),
+                        '2. Buka Portal Klien ' . url('/client/dashboard') . ' lalu salin API Key Anda',
+                        '3. Kirim di header: Authorization: Bearer <API_KEY> (atau X-API-KEY: <API_KEY>)',
+                    ],
+                    'postman' => 'Import koleksi dari ' . url('/downloads/postman-collection') . ', lalu isi variabel koleksi "api_key" dengan API Key Anda. Header Authorization otomatis terpasang.',
+                    'contoh_curl' => 'curl -H "Authorization: Bearer <API_KEY>" "' . url('/api/v1/bpjs/peserta') . '?nomor=0001234567890&tipe=1"',
+                ],
             ], 401);
         }
 

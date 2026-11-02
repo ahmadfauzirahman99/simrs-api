@@ -139,7 +139,8 @@ class ClientRegistrationAndApiTest extends TestCase
             ->getJson('/api/v1/bpjs/peserta?nomor=0001234567890&tipe=1');
 
         $response->assertStatus(401)
-            ->assertJsonPath('metaData.code', '401');
+            ->assertJsonPath('metaData.code', '401')
+            ->assertJsonPath('response.cara_mendapatkan_api_key.1', '2. Buka Portal Klien ' . url('/client/dashboard') . ' lalu salin API Key Anda');
     }
 
     public function test_trial_client_exceeding_50_requests_returns_429(): void
